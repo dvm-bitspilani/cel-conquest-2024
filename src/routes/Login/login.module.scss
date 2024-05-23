@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    .logo {
+        aspect-ratio: 377 / 50 !important;
+        width: clamp(12.5rem, 50vw, 23.563rem);
+        display: inline;
+        object-fit: contain;
+        margin-top: clamp(1rem, 5dvh, 2rem);
+    }
+
+    .loginContainer {
+        width: clamp(20rem, 95vw, 78.875rem);
+        height: clamp(20rem, 100%, 45.125rem);
+        filter: drop-shadow(0px 13px 49px rgba(0, 0, 0, 0.20));
+        font-family: "Montserrat";
+        display: flex;
+
+        @mixin loginSectionsCommonStyles {
+            display: inline-flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+
+            h1 {
+                font-size: 3rem;
+            }
+        }
+
+        .orangeSection {
+            width: 40%;
+            background-color: #FB723D;
+            border-radius: 63px 0px 0px 63px;
+            @include loginSectionsCommonStyles();
+        }
+
+        .whiteSection {
+            width: 60%;
+            background-color: #FFFAF8;
+            border-radius: 0px 63px 63px 0px;
+            @include loginSectionsCommonStyles();
+        }
+    }
+
+    .endTimer {
+        margin-bottom: clamp(1rem, 5dvh, 2rem);
+        font-size: 1.75rem;
+        font-family: "Montserrat";
+        font-weight: 400;
+    }
+}
