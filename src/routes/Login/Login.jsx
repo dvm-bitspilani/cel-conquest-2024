@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { WebContext } from '../../store/website-context';
 
+import Countdown from '../../components/Countdown/Countdown';
+
 import current from '../../assets/stepperCurrent.svg'
 import logoImage from '../../assets/signUpLogo.png'
 
@@ -19,7 +21,9 @@ export default function Login() {
                     <h1>Conquest Registration Portal</h1>
                 </section>
             </div>
-            <p className={styles.endTimer}>Registration ends in</p>
+            <div className={styles.countdownContainer}>
+                Registration Ends In: <Countdown dateString='June 7, 2024, 00:00:00' className={styles.countdown} />
+            </div>
         </main>
     )
 }

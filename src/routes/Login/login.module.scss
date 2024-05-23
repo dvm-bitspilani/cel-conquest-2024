@@ -55,10 +55,16 @@
         }
     }
 
-    .endTimer {
-        margin-bottom: clamp(1rem, 5dvh, 2rem);
+    .countdownContainer {
         font-size: 1.75rem;
         font-family: "Montserrat";
         font-weight: 400;
+        margin-bottom: clamp(1rem, 5dvh, 2rem);
+
+        .countdown {
+            display: inline;
+            color: #FB723D;
+        }
     }
+
 }
