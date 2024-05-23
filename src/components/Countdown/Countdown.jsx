@@ -8,9 +8,11 @@ export default function Countdown({ dateString, ...args }) {
     const [timeLeft, setTimeLeft] = useState({});
 
     useEffect(() => {
-        setInterval(() => {
-            setCurr(new Date().getTime())
-        }, 500)
+        if (conquest > curr) {
+            setInterval(() => {
+                setCurr(new Date().getTime());
+            }, 1000)
+        }
     }, [conquest])
 
     useEffect(() => {
@@ -27,7 +29,13 @@ export default function Countdown({ dateString, ...args }) {
             })
         }
         else {
-            clearInterval(dateRefresh)
+            setTimeLeft({
+                days: 0,
+                hours: 0,
+                minutes: 0,
+                seconds: 0
+            })
+
         }
     }, [curr])
 
