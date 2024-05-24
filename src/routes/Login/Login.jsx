@@ -1,11 +1,10 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { WebContext } from '../../store/website-context';
 
 import Countdown from '../../components/Countdown/Countdown';
 import GoogleSignIn from '../../components/GoogleSignIn/GoogleSignIn';
-import { Steps } from 'antd';
+import Stepper from '../../components/Stepper/Stepper';
 
-import current from '../../assets/stepperCurrent.svg'
 import logoImage from '../../assets/signUpLogo.png'
 
 import * as styles from './login.module.scss'
@@ -25,25 +24,7 @@ export default function Login() {
             <div className={styles.loginContainer}>
                 <section className={styles.orangeSection}>
                     <h1>Registration</h1>
-                    <Steps
-                        direction='vertical'
-                        current={0}
-                        progressDot={true}
-                        items={[
-                            {
-                                title: 'First',
-                                description: 'test'
-                            },
-                            {
-                                title: 'Second',
-                                description: 'test'
-                            },
-                            {
-                                title: 'Third',
-                                description: 'test'
-                            }
-                        ]}
-                    />
+                    <Stepper activeCircle={0} />
                 </section>
                 <section className={styles.whiteSection}>
                     <h1>Conquest Registration Portal</h1>
