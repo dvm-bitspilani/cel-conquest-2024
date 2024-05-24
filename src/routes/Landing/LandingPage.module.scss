@@ -1,14 +1,76 @@
 .pageContainer {
-  margin: 10px 70px;
+  margin: 0px 70px;
   height: 100vh;
 }
 
 .backgroundGrid {
   position: absolute;
+  top: 0;
+  z-index: -1;
 }
 
 .heroSection {
+  margin-top: 130px;
+  margin-bottom: 150px;
   gap: 30px;
+  .heroSectionUpperPart {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 150px;
+    gap: 50px;
+    .heroSectionLeft {
+      width: 40%;
+      background-color: black;
+    }
+    .heroSectionRight {
+      width: 50%;
+      p {
+        color: #4e4e4e;
+        font-size: 72px;
+        font-weight: 700;
+        line-height: 100%;
+      }
+      .titleBitsPilani {
+        color: #fb723d;
+      }
+      .conquestDesc {
+        margin: 20px 0px;
+        color: #000;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .registerAndSignUp {
+        display: flex;
+        gap: 20px;
+        .register {
+          width: 130px;
+          border: none;
+          padding: 13px 25px;
+          border-radius: 12px;
+          background-color: #fb723d;
+          color: #fff;
+          text-align: center;
+          box-shadow: 0px 2.714px 16.286px 0px rgba(0, 0, 0, 0.2);
+          font-size: 20.357px;
+          font-weight: 600;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .signUp {
+          width: 130px;
+          border: none;
+          padding: 13px 25px;
+          border-radius: 12px;
+          box-shadow: 0px 2.714px 16.286px 0px rgba(0, 0, 0, 0.12);
+          background: #fff;
+          &:hover {
+            cursor:pointer;
+          }
+        }
+      }
+    }
+  }
   .heroSectionCardContainer {
     display: flex;
     justify-content: space-between;
@@ -38,5 +100,3 @@
     }
   }
 }
-
-

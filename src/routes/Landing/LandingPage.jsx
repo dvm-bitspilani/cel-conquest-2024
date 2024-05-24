@@ -2,20 +2,37 @@ import BackgroundGridFadeImage from "../../assets/images/Landing Page/Background
 import HeroSectionCard from "../../components/Landing/HeroSectionCard/HeroSectionCard";
 import InvestorCard from "../../components/Landing/InvestorCard/InvestorCard";
 import TimelineCard from "../../components/Landing/TimelineCard/TimelineCard";
+import NewsCarouselCard from "../../components/Landing/NewsCarouselCard/NewsCarouselCard";
 import * as styles from "./LandingPage.module.scss";
 
 import nasscom from "../../assets/images/Landing Page/nasscom_logo.svg.png";
-import NewsCarouselCard from "../../components/Landing/NewsCarouselCard/NewsCarouselCard";
+import Navbar from "../../components/Navbar/Navbar";
 
 const LandingPage = () => {
   return (
     <>
+      <Navbar></Navbar>
       <img className={styles.backgroundGrid} src={BackgroundGridFadeImage} />
       <div className={styles.pageContainer}>
         <div className={styles.heroSection}>
           <div className={styles.heroSectionUpperPart}>
-            <div></div>
-            <div></div>
+            <div className={styles.heroSectionLeft}></div>
+            <div className={styles.heroSectionRight}>
+              <div>
+                <p className={styles.titleBitsPilani}>BITS Pilani’s</p>
+                <p>Startup</p>
+                <p>Accelerator Is</p>
+                <p>Back</p>
+              </div>
+              <div className={styles.conquestDesc}>
+                We are India’s largest student-led startup accelerator entirely
+                run by Center for Entrepreneurial Leadership, BITS Pilani.
+              </div>
+              <div className={styles.registerAndSignUp}>
+                <button className={styles.register}>Register</button>
+                <button className={styles.signUp}>Sign Up</button>
+              </div>
+            </div>
           </div>
           <div className={styles.heroSectionCardContainer}>
             <HeroSectionCard value="75+" property="Investors" />
