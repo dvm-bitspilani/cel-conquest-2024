@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Login from "./routes/Login/Login";
 import LandingPage from "./routes/Landing/LandingPage";
@@ -18,10 +18,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <WebContextProvider>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      <RouterProvider router={router} />
     </WebContextProvider>
   );
 }
