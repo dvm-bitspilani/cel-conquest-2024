@@ -2,8 +2,7 @@ import * as styles from './stepper.module.scss'
 import StepperCircle from '../StepperCircle/StepperCircle'
 import { useState } from 'react'
 
-export default function Stepper() {
-    const [activeCircle, setActiveCircle] = useState(0)
+export default function Stepper({ activeCircle = 0 }) {
     return (
         <div className={styles.container}>
             <div className={styles.grid}>

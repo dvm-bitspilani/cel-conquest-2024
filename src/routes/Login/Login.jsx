@@ -24,7 +24,7 @@ export default function Login() {
             <div className={styles.loginContainer}>
                 <section className={styles.orangeSection}>
                     <h1>Registration</h1>
-                    <Stepper />
+                    <Stepper activeCircle={0} />
                 </section>
                 <section className={styles.whiteSection}>
                     <h1>Conquest Registration Portal</h1>
