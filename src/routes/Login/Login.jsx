@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { WebContext } from '../../store/website-context';
 
 import Countdown from '../../components/Countdown/Countdown';
