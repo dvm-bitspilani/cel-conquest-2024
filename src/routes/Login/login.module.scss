@@ -13,9 +13,10 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 1em;
+    gap: 2em;
 
-    @media screen and (max-height: 710px) {
+    @media screen and (max-height: 710px),
+    screen and (max-width: 1075px) {
         font-size: 12px;
     }
 
@@ -32,11 +33,15 @@
     }
 
     .loginContainer {
-        width: clamp(20em, 95vw, 78.875em);
+        width: clamp(20em, 80vw, 78.875em);
         height: clamp(20em, 100%, 45.125em);
         filter: drop-shadow(0px 13px 49px rgba(0, 0, 0, 0.20));
         font-family: "Montserrat";
         display: flex;
+
+        @media screen and (max-width: 800px) {
+            width: clamp(20em, 95vw, 78.875em);
+        }
 
         @mixin loginSectionsCommonStyles {
             display: inline-flex;
@@ -51,7 +56,7 @@
                 text-align: center;
                 margin-top: 6%;
 
-                @media screen and (max-width: 950px) {
+                @media screen and (max-width: 1075px) {
                     font-size: 2rem;
                 }
             }
