@@ -1,7 +1,7 @@
+import LandingPage from "../pages/Landing/LandingPage";
+
 export default function Landing() {
     return (
-        <>
-            <h1>Landing</h1>
-        </>
+        <LandingPage></LandingPage>
     )
 }
