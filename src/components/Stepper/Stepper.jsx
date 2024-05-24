@@ -1,12 +1,14 @@
 import * as styles from './stepper.module.scss'
 import StepperCircle from '../StepperCircle/StepperCircle'
+import { useState } from 'react'
 
 export default function Stepper() {
+    const [activeCircle, setActiveCircle] = useState(0)
     return (
         <div className={styles.container}>
             <div className={styles.grid}>
                 <div className={styles.circTail}>
-                    <StepperCircle isFilled='' />
+                    <StepperCircle isFilled={activeCircle > 0 ? 'completed' : 'selected'} />
                     <div className={styles.tail}></div>
                 </div>
                 <section className={styles.content}>
@@ -17,7 +19,7 @@ export default function Stepper() {
                     </ul>
                 </section>
                 <div className={styles.circTail}>
-                    <StepperCircle isFilled='' />
+                    <StepperCircle isFilled={activeCircle > 1 ? 'completed' : (activeCircle === 1 ? 'selected' : '')} />
                     <div className={styles.tail}></div>
                 </div>
                 <section className={styles.content}>
@@ -29,7 +31,7 @@ export default function Stepper() {
                     </ul>
                 </section>
                 <div className={styles.circTail}>
-                    <StepperCircle isFilled='' />
+                    <StepperCircle isFilled={activeCircle === 2 ? 'selected' : ''} />
                 </div>
                 <section className={styles.content}>
                     <h2>Imperative</h2>
