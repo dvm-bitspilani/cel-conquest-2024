@@ -4,9 +4,7 @@ import { WebContext } from '../../store/website-context';
 import Countdown from '../../components/Countdown/Countdown';
 import GoogleSignIn from '../../components/GoogleSignIn/GoogleSignIn';
 import Stepper from '../../components/Stepper/Stepper';
-import { Steps } from 'antd';
 
-import current from '../../assets/stepperCurrent.svg'
 import logoImage from '../../assets/signUpLogo.png'
 
 import * as styles from './login.module.scss'
