@@ -1,28 +1,19 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
-import Landing from "./routes/Landing/Landing";
-import Login from "./routes/Login/Login";
-import RootLayout from "./routes/RootLayout/RootLayout";
+import Landing from "./routes/Landing";
+import Login from "./routes/Login";
 
 import WebContextProvider from "./store/website-context";
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <RootLayout />,
-    children: [
-      { path: '/', element: <Landing /> },
-      { path: '/login', element: <Login /> }
-    ]
-  },
-])
 
 function App() {
   return (
     <WebContextProvider>
-      <RouterProvider router={router} />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </WebContextProvider>
-  )
+  );
 }
 
 export default App;
