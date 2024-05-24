@@ -32,11 +32,15 @@
         @mixin loginSectionsCommonStyles {
             display: inline-flex;
             height: 100%;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            flex-direction: column;
 
             h1 {
                 font-size: 3rem;
+                width: 90%;
+                text-align: center;
+                margin-top: 6%;
             }
         }
 
@@ -44,6 +48,7 @@
             width: 40%;
             background-color: #FB723D;
             border-radius: 63px 0px 0px 63px;
+            color: #FFFFFF;
             @include loginSectionsCommonStyles();
         }
 
@@ -52,13 +57,32 @@
             background-color: #FFFAF8;
             border-radius: 0px 63px 63px 0px;
             @include loginSectionsCommonStyles();
+
+            button {
+                margin-bottom: 6%;
+            }
+
+            p {
+                width: 80%;
+                font-size: 1.28rem;
+
+                @media screen and (max-width: 1000px) {
+                    font-size: 1rem;
+                }
+            }
         }
     }
 
-    .endTimer {
-        margin-bottom: clamp(1rem, 5dvh, 2rem);
+    .countdownContainer {
         font-size: 1.75rem;
         font-family: "Montserrat";
         font-weight: 400;
+        margin-bottom: clamp(1rem, 5dvh, 2rem);
+
+        .countdown {
+            display: inline;
+            color: #FB723D;
+        }
     }
+
 }
