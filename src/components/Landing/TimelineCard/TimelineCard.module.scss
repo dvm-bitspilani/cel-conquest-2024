@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+.Timelinecard {
+  min-height: 270px;
+  .srno {
+    position: absolute;
+    z-index: -1;
+    color: #f4f4f4;
+    font-family: "Inter", sans-serif;
+    font-size: 220px;
+    font-weight: 700;
+    line-height: 0.75;
+  }
+  .cardContent {
+    width: calc(100% - 80px);
+    position: relative;
+    top: 60px;
+    left: 80px;
+    margin: 50px 0px;
+    display: flex;
+    justify-content: space-between;
+    .leftPart {
+      width: 40%;
+      .date {
+        font-size: 20px;
+        font-weight: 700;
+        color: #FB723D;
+;
+      }
+      .title {
+        margin-top: 10px;
+        color: #000;
+        font-size: 48px;
+        font-weight: 700;
+      }
+    }
+    .para {
+      width: 45%;
+      color: #9c9c9c;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 21px
+;
+    }
+  }
+}

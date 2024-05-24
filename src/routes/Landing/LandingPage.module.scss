@@ -8,7 +8,35 @@
 }
 
 .heroSection {
-  display: flex;
-  justify-content: space-between;
   gap: 30px;
+  .heroSectionCardContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
 }
+
+.timeline {
+}
+
+.investors {
+  h2 {
+    font-size: 72px;
+    font-weight: 800;
+    span {
+      color: #fb723d;
+    }
+  }
+}
+
+.news {
+  h2 {
+    font-size: 72px;
+    font-weight: 800;
+    span {
+      color: #fb723d;
+    }
+  }
+}
+
+

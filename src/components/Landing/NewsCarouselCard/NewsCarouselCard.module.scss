@@ -1,0 +1,29 @@
+.newsCardCarousel {
+    background-color: red;
+    border-radius: 15px;
+    width: 500px;
+    padding: 60px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+  .newsCardTitle {
+    color: #fff;
+    color: black;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 32px;
+  }
+  .newCardButton {
+    padding: 10px 20px;
+    color: #fff;
+    border: white 2px solid;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 12px; 
+  }
+}
