@@ -14,7 +14,9 @@ export default function Login() {
     const { user, logout } = useContext(WebContext)
     if (user) {
         return (
-            <button onClick={logout}>Logout</button>
+            <main className={styles.container} style={{ justifyContent: 'center' }}>
+                <button onClick={logout}>Logout</button>
+            </main>
         )
     }
     return (
