@@ -1,5 +1,5 @@
 import BackgroundGridFadeImage from "../../assets/images/Landing Page/Background Grid Fade.png";
-import HeroSectionCard from "./Components/HeroSectionCard/HeroSectionCard";
+import HeroSectionCard from "../../components/Landing/HeroSectionCard/HeroSectionCard";
 import * as styles from "./LandingPage.module.scss";
 
 const LandingPage = () => {
