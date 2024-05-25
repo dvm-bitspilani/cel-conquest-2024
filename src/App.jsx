@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import Login from "./routes/Login/Login";
 import LandingPage from "./routes/Landing/LandingPage";
@@ -6,19 +6,32 @@ import ErrorPage from "./routes/ErrorPage/ErrorPage";
 
 import WebContextProvider from "./store/website-context";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <LandingPage />,
-    errorElement: <ErrorPage />
-  },
-  { path: "/login", element: <Login /> }
-]);
+// importing and initializing react ga
+import ReactGA from "react-ga4";
+import { useEffect } from "react";
+ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment variables -> will do later
 
 function App() {
+  // tracking page views
+  const location = useLocation();
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: location.pathname + location.search,
+      title: "Custom Title",
+    });
+  }, [location]);
+
   return (
     <WebContextProvider>
-      <RouterProvider router={router} />
+      <Routes>
+        <Route
+          path="/"
+          element={<LandingPage />}
+          errorElement={<ErrorPage />}
+        />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </WebContextProvider>
   );
 }

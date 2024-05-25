@@ -8,6 +8,22 @@ import * as styles from "./LandingPage.module.scss";
 import nasscom from "../../assets/images/Landing Page/nasscom_logo.svg.png";
 import Navbar from "../../components/Navbar/Navbar";
 
+import ReactGA from "react-ga4";
+
+// temporary function for now
+function handleClick() {
+  // Track registration click event
+  ReactGA.event({
+    category: "Button Click",
+    action: "Registration Button",
+    label: "Landing Page",
+  });
+
+  console.log("hello world");
+
+  // rest of the registration click code
+}
+
 const LandingPage = () => {
   return (
     <>
@@ -29,7 +45,9 @@ const LandingPage = () => {
                 run by Center for Entrepreneurial Leadership, BITS Pilani.
               </div>
               <div className={styles.registerAndSignUp}>
-                <button className={styles.register}>Register</button>
+                <button className={styles.register} onClick={handleClick}>
+                  Register
+                </button>
                 <button className={styles.signUp}>Sign Up</button>
               </div>
             </div>
