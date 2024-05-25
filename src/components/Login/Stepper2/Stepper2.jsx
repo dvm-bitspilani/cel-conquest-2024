@@ -15,14 +15,11 @@ export default function Stepper2() {
                         components: {
                             Slider: {
                                 handleColor: '#FFFFFF',
-                                handleActiveColor: '#FFFFFF',
                                 handleSize: 22,
-                                handleSizeHover: 22,
                                 handleLineWidth: 4,
                                 railBg: '#FFC4A6',
-                                railHoverBg: '#FFC4A6',
-                                trackBg: '#FFFFFF',
-                                trackHoverBg: '#FFFFFF'
+                                railSize: 3,
+                                trackBg: '#FFFFFF'
                             }
                         }
                     }}
@@ -34,6 +31,9 @@ export default function Stepper2() {
                         tooltip={{
                             open: false
                         }}
+                        min={1}
+                        max={10}
+                        value={5}
                     />
                 </ConfigProvider>
             </div>
