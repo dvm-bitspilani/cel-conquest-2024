@@ -8,7 +8,7 @@ import WebContextProvider from "./store/website-context";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LandingPage />
+    element: <LandingPage />,
   },
   { path: "/login", element: <Login /> }
 ]);
