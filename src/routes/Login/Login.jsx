@@ -4,6 +4,7 @@ import { WebContext } from '../../store/website-context';
 import Countdown from '../../components/Countdown/Countdown';
 import GoogleSignIn from '../../components/GoogleSignIn/GoogleSignIn';
 import Stepper from '../../components/Stepper/Stepper';
+import Stepper2 from '../../components/Login/Stepper2/Stepper2';
 
 import logoImage from '../../assets/signUpLogo.png'
 
@@ -24,7 +25,8 @@ export default function Login() {
             <div className={styles.loginContainer}>
                 <section className={styles.orangeSection}>
                     <h1>Registration</h1>
-                    <Stepper activeCircle={0} />
+                    {/* <Stepper activeCircle={0} /> */}
+                    <Stepper2 />
                 </section>
                 <section className={styles.whiteSection}>
                     <h1>Conquest Registration Portal</h1>
