@@ -58,13 +58,13 @@ const LandingPage = () => {
           </div>
           <div className={styles.heroSectionCardContainer}>
             {heroSectionCardsData.map((data) => {
-              return <HeroSectionCard {...data}></HeroSectionCard>;
+              return <HeroSectionCard key={data.property} {...data}></HeroSectionCard>;
             })}
           </div>
         </div>
         <div className={styles.timeline}>
           {timelineData.map((data) => {
-            return <TimelineCard {...data}></TimelineCard>;
+            return <TimelineCard key={data.srno} {...data}></TimelineCard>;
           })}
         </div>
         <div className={styles.investors}>
