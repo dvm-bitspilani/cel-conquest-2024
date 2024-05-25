@@ -9,18 +9,20 @@ export default function Stepper2() {
                 <ConfigProvider
                     theme={{
                         token: {
-                            colorBgElevated: '#FB723D'
+                            colorBgElevated: '#FB723D',
+                            colorPrimaryBorderHover: '#FFFFFF'
                         },
                         components: {
                             Slider: {
                                 handleColor: '#FFFFFF',
                                 handleActiveColor: '#FFFFFF',
-                                handleSize: 12,
+                                handleSize: 22,
+                                handleSizeHover: 22,
                                 handleLineWidth: 4,
                                 railBg: '#FFC4A6',
                                 railHoverBg: '#FFC4A6',
                                 trackBg: '#FFFFFF',
-                                trackHoverBg: '#FFFFFF',
+                                trackHoverBg: '#FFFFFF'
                             }
                         }
                     }}
