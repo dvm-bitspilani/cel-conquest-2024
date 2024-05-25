@@ -91,7 +91,20 @@ const LandingPage = () => {
             meet our <span>investors</span>
           </h2>
           <div className={styles.investorCardContainer}>
-            <div>
+            <div className={styles.investorCardUpperRow}>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
+            </div>
+            <div className={styles.investorCardLowerRow}>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
               <InvestorCard investorImg={nasscom}></InvestorCard>
             </div>
           </div>
@@ -101,7 +114,9 @@ const LandingPage = () => {
             in the <span>news</span>
           </h2>
           <div>
-            <NewsCarouselCard></NewsCarouselCard>
+            <div>
+              <NewsCarouselCard></NewsCarouselCard>
+            </div>
             <div></div>
             <div></div>
             <div></div>

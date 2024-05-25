@@ -65,7 +65,7 @@
           box-shadow: 0px 2.714px 16.286px 0px rgba(0, 0, 0, 0.12);
           background: #fff;
           &:hover {
-            cursor:pointer;
+            cursor: pointer;
           }
         }
       }
@@ -85,8 +85,26 @@
   h2 {
     font-size: 72px;
     font-weight: 800;
+    margin-bottom: 80px;
+    margin-top: 120px;
     span {
       color: #fb723d;
+    }
+  }
+  .investorCardContainer {
+    background-color: black;
+    margin: 0px -70px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-x: scroll;
+    .investorCardUpperRow {
+      display: flex;
+      gap: 20px;
+    }
+    .investorCardLowerRow {
+      display: flex;
+      gap: 20px;
     }
   }
 }
@@ -95,6 +113,8 @@
   h2 {
     font-size: 72px;
     font-weight: 800;
+    margin-bottom: 80px;
+    margin-top: 150px;
     span {
       color: #fb723d;
     }
