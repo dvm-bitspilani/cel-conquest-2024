@@ -1,0 +1,42 @@
+.container {
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+
+    .heading {
+        color: #FB723D;
+        font-size: 6em;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+        font-size: 2em;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 0.0625em;
+            bottom: 0;
+            left: 0;
+            transform-origin: bottom right;
+            background-color: black;
+            transition: transform 0.25s ease-out;
+
+        }
+
+        &:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    }
+}
