@@ -55,4 +55,9 @@ h6 {
 .ant-slider-track {
   width: 7px !important;
   left: 1px !important;
+  transition: height 1s linear !important;
+}
+
+.ant-slider-handle {
+  transition: top 1s linear !important;
 }
