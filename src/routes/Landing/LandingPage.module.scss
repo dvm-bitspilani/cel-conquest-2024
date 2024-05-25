@@ -78,8 +78,8 @@
   }
 }
 
-.timeline {
-}
+// .timeline {
+// }
 
 .investors {
   h2 {
@@ -92,18 +92,10 @@
     }
   }
   .investorCardContainer {
-    background-color: black;
     margin: 0px -70px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    overflow-x: hidden;
-
-    // &::-webkit-scrollbar {
-    //   display: none;
-    // }
-    // -ms-overflow-style: none;
-    // scrollbar-width: none;
 
     .investorCardUpperRow {
       display: flex;

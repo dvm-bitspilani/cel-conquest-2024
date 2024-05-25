@@ -73,22 +73,26 @@ const LandingPage = () => {
           </h2>
           <div className={styles.investorCardContainer}>
             <div className={styles.investorCardUpperRow}>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
+              <Marquee>
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+              </Marquee>
             </div>
             <div className={styles.investorCardLowerRow}>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
-              <InvestorCard investorImg={nasscom}></InvestorCard>
+              <Marquee direction="right">
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+                <InvestorCard investorImg={nasscom}></InvestorCard>
+              </Marquee>
             </div>
           </div>
         </div>
