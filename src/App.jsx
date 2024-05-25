@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import Login from "./routes/Login/Login";
 import LandingPage from "./routes/Landing/LandingPage";
@@ -13,14 +13,15 @@ ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment var
 
 function App() {
   // tracking page views
-  const location = useLocation();
+  // const location = useLocation();
   useEffect(() => {
+    console.log(window.location.pathname + window.location.search); // for debugging
     ReactGA.send({
       hitType: "pageview",
       page: location.pathname + location.search,
       title: "Custom Title",
     });
-  }, [location]);
+  }, []);
 
   return (
     <WebContextProvider>

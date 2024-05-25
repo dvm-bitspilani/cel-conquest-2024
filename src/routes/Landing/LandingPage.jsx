@@ -19,7 +19,7 @@ function handleClick() {
     label: "Landing Page",
   });
 
-  console.log("hello world");
+  console.log("hello world"); // for debugging
 
   // rest of the registration click code
 }
