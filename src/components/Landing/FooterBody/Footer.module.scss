@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8rem;
+  align-items: center;
+  justify-content: center;
+
+  .footerImg {
+    transform: translateY(30%);
+    z-index: 1;
+  }
+}

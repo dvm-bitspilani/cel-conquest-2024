@@ -4,6 +4,7 @@ import InvestorCard from "../../components/Landing/InvestorCard/InvestorCard";
 import TimelineCard from "../../components/Landing/TimelineCard/TimelineCard";
 import NewsCarouselCard from "../../components/Landing/NewsCarouselCard/NewsCarouselCard";
 import * as styles from "./LandingPage.module.scss";
+import Footer from "../../components/Landing/FooterBody/Footer";
 
 import nasscom from "../../assets/images/Landing Page/nasscom_logo.svg.png";
 import Navbar from "../../components/Navbar/Navbar";
@@ -58,7 +59,12 @@ const LandingPage = () => {
           </div>
           <div className={styles.heroSectionCardContainer}>
             {heroSectionCardsData.map((data) => {
-              return <HeroSectionCard key={data.property} {...data}></HeroSectionCard>;
+              return (
+                <HeroSectionCard
+                  key={data.property}
+                  {...data}
+                ></HeroSectionCard>
+              );
             })}
           </div>
         </div>
@@ -109,7 +115,7 @@ const LandingPage = () => {
             <div></div>
           </div>
         </div>
-        <div className={styles.footer}></div>
+        <Footer />
       </div>
     </>
   );
