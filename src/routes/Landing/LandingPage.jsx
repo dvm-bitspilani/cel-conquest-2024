@@ -99,8 +99,12 @@ const LandingPage = () => {
               <InvestorCard investorImg={nasscom}></InvestorCard>
               <InvestorCard investorImg={nasscom}></InvestorCard>
               <InvestorCard investorImg={nasscom}></InvestorCard>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
             </div>
             <div className={styles.investorCardLowerRow}>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
+              <InvestorCard investorImg={nasscom}></InvestorCard>
               <InvestorCard investorImg={nasscom}></InvestorCard>
               <InvestorCard investorImg={nasscom}></InvestorCard>
               <InvestorCard investorImg={nasscom}></InvestorCard>
