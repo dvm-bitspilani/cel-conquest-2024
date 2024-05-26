@@ -13,7 +13,7 @@ import logoImage from '../../assets/signUpLogo.png'
 import * as styles from './login.module.scss'
 
 export default function Login() {
-    const { user, logout } = useContext(WebContext);
+    const { user } = useContext(WebContext);
     let content = <GoogleSignUpPage />
     if (user) {
         content = <RegistrationForm />
@@ -26,7 +26,14 @@ export default function Login() {
                 <section className={styles.orangeSection}>
                     <h1>Registration</h1>
                     {/* <Stepper activeCircle={0} /> */}
-                    <Stepper2 />
+                    <div style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center'
+                    }}>
+                        <Stepper2 />
+                    </div>
                 </section>
                 <section className={styles.whiteSection}>
                     {content}
