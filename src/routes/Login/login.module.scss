@@ -35,7 +35,7 @@
     .loginContainer {
         width: clamp(20em, 80vw, 78.875em);
         height: clamp(20em, 100%, 45.125em);
-        filter: drop-shadow(0px 13px 49px rgba(0, 0, 0, 0.20));
+        filter: drop-shadow(0px 6px 10.5px rgba(0, 0, 0, 0.15));
         font-family: "Montserrat";
         display: flex;
 
@@ -73,7 +73,7 @@
 
         .whiteSection {
             width: 60%;
-            background-color: #FFFAF8;
+            background-color: #FEFAF9;
             border-radius: 0px 63px 63px 0px;
             @include loginSectionsCommonStyles();
 

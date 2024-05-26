@@ -1,0 +1,25 @@
+.register {
+    width: 100%;
+    height: 100%;
+
+    .inputGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .next {
+        border-radius: 10px;
+        background: #FB723D;
+        width: 194px;
+        height: 55px;
+        flex-shrink: 0;
+        color: #FFF;
+        font-family: Montserrat;
+        font-size: 20.48px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        border: none;
+        cursor: pointer;
+    }
+}
