@@ -124,23 +124,23 @@ export default function Stepper2() {
                         <div className={styles.content}>
                             <h2>Founder's Profile</h2>
                             <ul>
-                                <li>About You</li>
-                                <li>Team</li>
+                                <li style={stepperPos === 1 ? { fontWeight: '600' } : { fontWeight: '400' }}>About You</li>
+                                <li style={stepperPos === 2 ? { fontWeight: '600' } : { fontWeight: '400' }}>Team</li>
                             </ul>
                         </div>
                         <div className={styles.content}>
                             <h2>Product</h2>
                             <ul>
-                                <li>Details</li>
-                                <li>Market</li>
-                                <li>Vision</li>
+                                <li style={stepperPos === 4 ? { fontWeight: '600' } : { fontWeight: '400' }}>Details</li>
+                                <li style={stepperPos === 5 ? { fontWeight: '600' } : { fontWeight: '400' }}>Market</li>
+                                <li style={stepperPos === 6 ? { fontWeight: '600' } : { fontWeight: '400' }}>Vision</li>
                             </ul>
                         </div>
                         <div className={styles.content}>
                             <h2>Imperative</h2>
                             <ul>
-                                <li>Fundraising</li>
-                                <li>Why Conquest</li>
+                                <li style={stepperPos === 8 ? { fontWeight: '600' } : { fontWeight: '400' }}>Fundraising</li>
+                                <li style={stepperPos === 9 ? { fontWeight: '600' } : { fontWeight: '400' }}>Why Conquest</li>
                             </ul>
                         </div>
                     </div>
