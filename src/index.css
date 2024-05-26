@@ -54,6 +54,7 @@ h6 {
 /* OVERRIDE ANTD STYLES */
 .ant-slider {
   transform: translateY(-1%);
+  pointer-events: none !important;
 }
 
 .ant-slider-track {
