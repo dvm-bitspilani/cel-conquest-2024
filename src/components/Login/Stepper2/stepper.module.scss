@@ -1,7 +1,7 @@
 .container {
     margin-bottom: 20%;
     margin-top: 8%;
-    height: 100%;
+    height: 60%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -10,7 +10,7 @@
     .grid {
         display: grid;
         grid-template-columns: 30px auto;
-        gap: 1em;
+        gap: 1rem;
     }
 
     .stepperContainer {
@@ -26,17 +26,17 @@
         .content {
             h2 {
                 margin-top: 0;
-                font-size: 1.75em;
+                font-size: 1.625em;
                 font-weight: 700;
             }
 
             ul {
-                font-size: 1.375em;
+                font-size: 1.25em;
                 font-weight: 500;
 
                 li {
                     list-style: none;
-                    margin-top: 0.2em;
+                    margin-top: 0.2rem;
                 }
             }
         }

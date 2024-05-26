@@ -52,6 +52,10 @@ h6 {
 }
 
 /* OVERRIDE ANTD STYLES */
+.ant-slider {
+  transform: translateY(-1%);
+}
+
 .ant-slider-track {
   width: 7px !important;
   left: 1px !important;

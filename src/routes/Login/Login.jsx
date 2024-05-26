@@ -16,11 +16,6 @@ export default function Login() {
     const { user, logout } = useContext(WebContext);
     let content = <GoogleSignUpPage />
     if (user) {
-        // return (
-        //     <main className={styles.container} style={{ justifyContent: 'center' }}>
-        //         <button onClick={logout}>Logout</button>
-        //     </main>
-        // )
         content = <RegistrationForm />
     }
     return (
