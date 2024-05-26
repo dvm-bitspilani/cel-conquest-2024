@@ -16,29 +16,38 @@ export default function Stepper2() {
     });
 
     useEffect(() => {
-        const [head1, list1] = contentWrapper.current.children[0].children
-        const [head2, list2] = contentWrapper.current.children[1].children
-        const [head3, list3] = contentWrapper.current.children[2].children
-        function findMidPt(elem) {
-            return (elem.getBoundingClientRect().top + (elem.getBoundingClientRect().height / 2))
+        function resizeHandler() {
+            const [head1, list1] = contentWrapper.current.children[0].children
+            const [head2, list2] = contentWrapper.current.children[1].children
+            const [head3, list3] = contentWrapper.current.children[2].children
+            function findMidPt(elem) {
+                return (elem.getBoundingClientRect().top + (elem.getBoundingClientRect().height / 2))
+            }
+            const subStops = [findMidPt(head1)]
+            for (let child of list1.children) {
+                subStops.push(findMidPt(child))
+            }
+            subStops.push(findMidPt(head2))
+            for (let child of list2.children) {
+                subStops.push(findMidPt(child))
+            }
+            subStops.push(findMidPt(head3))
+            for (let child of list3.children) {
+                subStops.push(findMidPt(child))
+            }
+            const height = subStops[9] - subStops[0]
+            setStepperState({
+                stops: subStops.map(pos => (pos - findMidPt(head1)) * (100 / height)),
+                height
+            })
         }
-        const subStops = [findMidPt(head1)]
-        for (let child of list1.children) {
-            subStops.push(findMidPt(child))
+        resizeHandler();
+
+        window.addEventListener('resize', resizeHandler);
+
+        return () => {
+            window.removeEventListener('resize', resizeHandler)
         }
-        subStops.push(findMidPt(head2))
-        for (let child of list2.children) {
-            subStops.push(findMidPt(child))
-        }
-        subStops.push(findMidPt(head3))
-        for (let child of list3.children) {
-            subStops.push(findMidPt(child))
-        }
-        const height = subStops[9] - subStops[0]
-        setStepperState({
-            stops: subStops.map(pos => (pos - findMidPt(head1)) * (100 / height)),
-            height
-        })
     }, [])
 
     function stepInc() {
