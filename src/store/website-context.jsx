@@ -19,6 +19,7 @@ export default function WebContextProvider({ children }) {
 
     const login = useGoogleLogin({
         onSuccess: response => {
+            console.log(response)
             axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
                 headers: {
                     Authorization: `Bearer ${response.access_token}`
