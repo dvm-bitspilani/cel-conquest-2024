@@ -13,13 +13,13 @@ export default function Stepper2() {
         gsap.to('.ant-slider-handle', {
             top: `${stepperPos}%`,
             ease: "power1.inOut",
-            duration: 0.1
+            duration: 0.5
         })
 
         gsap.to('.ant-slider-track', {
             height: `${stepperPos}%`,
             ease: "power1.inOut",
-            duration: 0.1
+            duration: 0.5
         })
     }, { dependencies: [stepperPos] })
 
@@ -28,7 +28,7 @@ export default function Stepper2() {
             if (prev === 100) {
                 return 0
             }
-            return prev + 10
+            return prev + 20
         })
     }
 
