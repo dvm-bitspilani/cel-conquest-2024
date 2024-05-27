@@ -35,7 +35,7 @@
     .loginContainer {
         width: clamp(20em, 80vw, 78.875em);
         height: clamp(20em, 100%, 45.125em);
-        filter: drop-shadow(0px 13px 49px rgba(0, 0, 0, 0.20));
+        filter: drop-shadow(0px 6px 10.5px rgba(0, 0, 0, 0.15));
         font-family: "Montserrat";
         display: flex;
 
@@ -51,13 +51,13 @@
             flex-direction: column;
 
             h1 {
-                font-size: 3em;
+                font-size: 2.5em;
                 width: 90%;
                 text-align: center;
                 margin-top: 6%;
 
                 @media screen and (max-width: 1075px) {
-                    font-size: 2rem;
+                    font-size: 2em;
                 }
             }
         }
@@ -68,11 +68,12 @@
             border-radius: 63px 0px 0px 63px;
             color: #FFFFFF;
             @include loginSectionsCommonStyles();
+            justify-content: flex-start;
         }
 
         .whiteSection {
             width: 60%;
-            background-color: #FFFAF8;
+            background-color: #FEFAF9;
             border-radius: 0px 63px 63px 0px;
             @include loginSectionsCommonStyles();
 
@@ -82,7 +83,7 @@
 
             p {
                 width: 80%;
-                font-size: 1.28em;
+                font-size: 1.405em;
 
                 // @media screen and (max-width: 1000px) {
                 //     font-size: 1em;

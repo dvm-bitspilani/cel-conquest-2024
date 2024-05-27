@@ -50,3 +50,14 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+/* OVERRIDE ANTD STYLES */
+.ant-slider {
+  transform: translateY(-1%);
+  pointer-events: none !important;
+}
+
+.ant-slider-track {
+  width: 7px !important;
+  left: 1px !important;
+}
