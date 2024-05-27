@@ -30,8 +30,8 @@ export default function RegistrationForm() {
     const { values, errors, handleBlur, handleSubmit, handleChange, setFieldValue } = useFormik({
         initialValues: {
             startup_name: '',
-            web_url: 'https://',
-            team_size: 1,
+            web_url: '',
+            team_size: null,
             state: '',
             city: '',
             founder_name: '',
@@ -47,8 +47,6 @@ export default function RegistrationForm() {
 
     useEffect(() => {
         const state = statesData.find(state => state.name === values.state)
-
-        setFieldValue('city', "")
 
         if (state) {
             const cities = state.cities.map(city => {
@@ -110,7 +108,7 @@ export default function RegistrationForm() {
                 <TextDropdown
                     name='state'
                     heading='State'
-                    changeFn={(newVal) => setFieldValue('state', newVal)}
+                    changeFn={(newVal) => { setFieldValue('state', newVal) }}
                     blurFn={handleBlur}
                     searchFn={handleStateSearch}
                     options={stateOptions}
@@ -126,6 +124,38 @@ export default function RegistrationForm() {
                     options={availableCities}
                     value={values.city}
                     error={errors.city}
+                />
+                <TextInput
+                    name='founder_name'
+                    heading="Founder's Page"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.founder_name}
+                    error={errors.founder_name}
+                />
+                <TextInput
+                    name='email'
+                    heading="Email Address"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.email}
+                    error={errors.email}
+                />
+                <TextInput
+                    name='phone'
+                    heading="Mobile Number"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.phone}
+                    error={errors.phone}
+                />
+                <TextInput
+                    name='linkedin_url'
+                    heading="LinkedIn URL"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.linkedin_url}
+                    error={errors.linkedin_url}
                 />
             </div>
             <footer>

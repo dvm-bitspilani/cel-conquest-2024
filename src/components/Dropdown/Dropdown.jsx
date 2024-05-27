@@ -50,6 +50,13 @@ export function NumDropdown({ name, heading, changeFn, blurFn, value, error, min
                         colorError: '#EB0E00',
                         borderRadius: 8,
                         lineWidth: 1.5
+                    },
+                    components: {
+                        Select: {
+                            optionSelectedBg: '#FFECE5',
+                            optionSelectedColor: '#FB723D',
+                            optionSelectedFontWeight: '500',
+                        }
                     }
                 }}
             >
@@ -62,6 +69,7 @@ export function NumDropdown({ name, heading, changeFn, blurFn, value, error, min
                     status={error ? 'error' : ''}
                     style={error ? { backgroundColor: '#FFE6E6', width: '100%' } : { width: '100%' }}
                     options={options}
+                    placeholder="1-5"
                 />
             </ConfigProvider>
             <span className={styles.errMsg} style={error ? { visibility: 'visible' } : { visibility: 'hidden' }}>*{error}</span>
