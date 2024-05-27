@@ -30,7 +30,7 @@ export default function RegistrationForm() {
     const { values, errors, handleBlur, handleSubmit, handleChange, setFieldValue } = useFormik({
         initialValues: {
             startup_name: '',
-            web_url: 'https://',
+            web_url: '',
             team_size: null,
             state: '',
             city: '',
