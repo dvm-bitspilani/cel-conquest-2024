@@ -10,6 +10,8 @@ import WebContextProvider from "./store/website-context";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
 import Dashboard from "./routes/Dashboard/Dashboard";
+import Home from "./routes/Dashboard/Home/Home"
+import Meetings from "./routes/Dashboard/Meetings/Meetings"
 ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment variables -> will do later
 
 function App() {
@@ -32,8 +34,11 @@ function App() {
           element={<LandingPage />}
           errorElement={<ErrorPage />}
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="login" element={<Login />} />
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route path="home" element={<Home/>}></Route>
+          <Route path="Meetings" element={<Meetings/>}></Route>
+        </Route>
       </Routes>
     </WebContextProvider>
   );

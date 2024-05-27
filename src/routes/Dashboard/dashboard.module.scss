@@ -1,0 +1,16 @@
+.orangeHeader {
+    position: absolute;
+    // background-color: #FB723D;
+    padding-right: 3vw;
+    background-color: black;
+    width: 100vw;
+    height: 15vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    .img {
+        z-index: 1;
+        height: 200%;
+    }
+}
