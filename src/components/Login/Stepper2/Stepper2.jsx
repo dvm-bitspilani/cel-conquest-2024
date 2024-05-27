@@ -25,7 +25,7 @@ export default function Stepper2() {
             }
             const subStops = [findMidPt(head1)]
             for (let child of list1.children) {
-                // subStops.push(findMidPt(child))
+                subStops.push(findMidPt(child))
             }
             // subStops.push(findMidPt(head2))
             for (let child of list2.children) {
@@ -35,7 +35,7 @@ export default function Stepper2() {
             for (let child of list3.children) {
                 subStops.push(findMidPt(child))
             }
-            const height = subStops[5] - subStops[0]
+            const height = subStops[subStops.length - 1] - subStops[0]
             setStepperState({
                 stops: subStops.map(pos => (pos - findMidPt(head1)) * (100 / height)),
                 height
@@ -52,7 +52,7 @@ export default function Stepper2() {
 
     function stepInc() {
         setStepperPos(prev => {
-            if (prev === 5) {
+            if (prev === stepperState.stops.length - 1) {
                 return 0
             }
             return prev + 1
@@ -125,12 +125,12 @@ export default function Stepper2() {
                             <h2>Founder's Profile</h2>
                             <ul>
                                 <li
-                                // style={stepperPos === 1 ? { fontWeight: '600' } : { fontWeight: '400' }}
+                                    style={stepperPos === 1 ? { fontWeight: '600' } : { fontWeight: '400' }}
                                 >
                                     About You
                                 </li>
                                 <li
-                                // style={stepperPos === 2 ? { fontWeight: '600' } : { fontWeight: '400' }}
+                                    style={stepperPos === 2 ? { fontWeight: '600' } : { fontWeight: '400' }}
                                 >
                                     Team
                                 </li>
@@ -140,17 +140,17 @@ export default function Stepper2() {
                             <h2>Product</h2>
                             <ul>
                                 <li
-                                    style={stepperPos === 1 ? { fontWeight: '600' } : { fontWeight: '400' }}
+                                    style={stepperPos === 3 ? { fontWeight: '600' } : { fontWeight: '400' }}
                                 >
                                     Details
                                 </li>
                                 <li
-                                    style={stepperPos === 2 ? { fontWeight: '600' } : { fontWeight: '400' }}
+                                    style={stepperPos === 4 ? { fontWeight: '600' } : { fontWeight: '400' }}
                                 >
                                     Market
                                 </li>
                                 <li
-                                    style={stepperPos === 3 ? { fontWeight: '600' } : { fontWeight: '400' }}
+                                    style={stepperPos === 5 ? { fontWeight: '600' } : { fontWeight: '400' }}
                                 >
                                     Vision
                                 </li>
@@ -160,12 +160,12 @@ export default function Stepper2() {
                             <h2>Imperative</h2>
                             <ul>
                                 <li
-                                    style={stepperPos === 4 ? { fontWeight: '600' } : { fontWeight: '400' }}
+                                    style={stepperPos === 6 ? { fontWeight: '600' } : { fontWeight: '400' }}
                                 >
                                     Fundraising
                                 </li>
                                 <li
-                                    style={stepperPos === 5 ? { fontWeight: '600' } : { fontWeight: '400' }}
+                                    style={stepperPos === 7 ? { fontWeight: '600' } : { fontWeight: '400' }}
                                 >
                                     Why Conquest
                                 </li>
