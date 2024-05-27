@@ -9,6 +9,7 @@ import WebContextProvider from "./store/website-context";
 // importing and initializing react ga
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
+import Dashboard from "./routes/Dashboard/Dashboard";
 ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment variables -> will do later
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           errorElement={<ErrorPage />}
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </WebContextProvider>
   );
