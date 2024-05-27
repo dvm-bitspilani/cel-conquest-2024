@@ -1,8 +1,22 @@
-import { Input, ConfigProvider } from "antd"
+import { Select, ConfigProvider } from "antd"
 
-import * as styles from './input.module.scss'
+import * as styles from './dropdown.module.scss'
 
-export default function TextInput({ name, heading, changeFn, blurFn, value, error }) {
+export function TextDropdown({ name, heading, changeFn, blurFn, value, error }) {
+    return (
+        <h1>TextDrop</h1>
+    )
+}
+
+export function NumDropdown({ name, heading, changeFn, blurFn, value, error, min, max }) {
+    const options = []
+    for (let i = min; i < max; i++) {
+        options.push({
+            value: i,
+            label: `${i}`
+        })
+    }
+
     return (
         <div className={styles.inputGrp}>
             <label htmlFor={name}>{heading}</label>
@@ -15,7 +29,7 @@ export default function TextInput({ name, heading, changeFn, blurFn, value, erro
                     }
                 }}
             >
-                <Input
+                <Select
                     name={name}
                     id={name}
                     onChange={changeFn}
@@ -23,6 +37,7 @@ export default function TextInput({ name, heading, changeFn, blurFn, value, erro
                     value={value}
                     status={error ? 'error' : ''}
                     style={error ? { backgroundColor: '#FFE6E6', width: '100%' } : { width: '100%' }}
+                    options={options}
                 />
             </ConfigProvider>
             <span className={styles.errMsg} style={error ? { visibility: 'visible' } : { visibility: 'hidden' }}>*{error}</span>
