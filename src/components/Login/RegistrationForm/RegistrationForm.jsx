@@ -33,6 +33,14 @@ export default function RegistrationForm() {
                     value={values.startup_name}
                     error={errors.startup_name}
                 />
+                <TextInput
+                    name='web_url'
+                    heading='Website URL'
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.web_url}
+                    error={errors.web_url}
+                />
             </div>
             <footer>
                 <button className={styles.prev}>Previous Page</button>
