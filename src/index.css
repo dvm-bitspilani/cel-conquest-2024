@@ -75,3 +75,15 @@ h6 {
   border-radius: 0 !important;
   border-left: 2.486px solid #FB723D !important;
 }
+
+.ant-dropdown-menu.ant-dropdown-menu-root {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.ant-dropdown-menu-item:hover {
+  border-left: 2px solid #FB723D !important;
+  background: #FFECE5 !important;
+  border-radius: 0 !important;
+  transition: border 0s !important;
+}
