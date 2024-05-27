@@ -36,8 +36,8 @@ function App() {
         />
         <Route path="login" element={<Login />} />
         <Route path="dashboard" element={<Dashboard />}>
-          <Route path="home" element={<Home/>}></Route>
-          <Route path="Meetings" element={<Meetings/>}></Route>
+          <Route path="home" element={<Home />}></Route>
+          <Route path="meetings" element={<Meetings />}></Route>
         </Route>
       </Routes>
     </WebContextProvider>

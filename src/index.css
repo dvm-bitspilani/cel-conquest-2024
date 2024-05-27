@@ -61,3 +61,17 @@ h6 {
   width: 7px !important;
   left: 1px !important;
 }
+
+.ant-select-dropdown {
+  padding: 0 !important;
+}
+
+.ant-select-item-option {
+  border-radius: 0 !important;
+}
+
+.ant-select-item-option-selected {
+  background-color: #FFECE5 !important;
+  border-radius: 0 !important;
+  border-left: 2.486px solid #FB723D !important;
+}
