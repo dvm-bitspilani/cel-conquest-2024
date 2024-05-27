@@ -62,6 +62,7 @@ export function NumDropdown({ name, heading, changeFn, blurFn, value, error, min
                     status={error ? 'error' : ''}
                     style={error ? { backgroundColor: '#FFE6E6', width: '100%' } : { width: '100%' }}
                     options={options}
+                    placeholder="1-5"
                 />
             </ConfigProvider>
             <span className={styles.errMsg} style={error ? { visibility: 'visible' } : { visibility: 'hidden' }}>*{error}</span>
