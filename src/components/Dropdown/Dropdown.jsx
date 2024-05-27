@@ -50,6 +50,13 @@ export function NumDropdown({ name, heading, changeFn, blurFn, value, error, min
                         colorError: '#EB0E00',
                         borderRadius: 8,
                         lineWidth: 1.5
+                    },
+                    components: {
+                        Select: {
+                            optionSelectedBg: '#FFECE5',
+                            optionSelectedColor: '#FB723D',
+                            optionSelectedFontWeight: '500',
+                        }
                     }
                 }}
             >
