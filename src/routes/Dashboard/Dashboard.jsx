@@ -6,11 +6,11 @@ const Dashboard = () => {
   return (
     <>
       <div className={styles.orangeHeader}>
-        <img src={dashboard_mountain_circle}/>
+        <img src={dashboard_mountain_circle} />
       </div>
       <div className={styles.dashboardElementContainer}>
         <div className={styles.sidebar}></div>
-        <div className={styles.dashboardContent}>{<Outlet/>}</div>
+        <div className={styles.dashboardContent}>{<Outlet />}</div>
       </div>
     </>
   );
