@@ -8,6 +8,7 @@ import Footer from "../../components/Landing/FooterBody/Footer";
 
 import nasscom from "../../assets/images/Landing Page/nasscom_logo.svg.png";
 import Navbar from "../../components/Navbar/Navbar";
+import Navbar2 from "../../components/Navbar2/Navbar2";
 
 import { heroSectionCardsData, timelineData } from "./data/landingPageData";
 
@@ -32,7 +33,7 @@ function handleClick() {
 const LandingPage = () => {
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar2 />
       <img className={styles.backgroundGrid} src={BackgroundGridFadeImage} />
       <div className={styles.pageContainer}>
         <div className={styles.heroSection}>
@@ -40,7 +41,7 @@ const LandingPage = () => {
             <div className={styles.heroSectionLeft}></div>
             <div className={styles.heroSectionRight}>
               <div>
-                <p className={styles.titleBitsPilani}>BITS Pilani’s</p>
+                <p className={styles.titleBitsPilani}>Pilani’s</p>
                 <p>Startup</p>
                 <p>Accelerator Is</p>
                 <p>Back</p>
