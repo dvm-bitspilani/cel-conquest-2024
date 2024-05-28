@@ -13,7 +13,10 @@ export default function WebContextProvider({ children }) {
 
     const logout = () => {
         googleLogout();
-        localStorage.removeItem("userData")
+        axios.post('http://127.0.0.1:8000/api/users/logout/', {
+            refresh_token: localStorage.getItem("userData")
+        })
+        localStorage.removeItem("userData");
         setUser(null);
     }
 
@@ -26,7 +29,7 @@ export default function WebContextProvider({ children }) {
             }).then((res) => {
                 try {
                     setUser(res.user_profile_obj)
-                    localStorage.setItem("userData", JSON.stringify(res.user_profile_obj))
+                    localStorage.setItem("userData", JSON.stringify(res))
                 }
                 catch (err) {
                     console.log(err)
