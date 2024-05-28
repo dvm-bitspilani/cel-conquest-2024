@@ -30,8 +30,8 @@ export default function MeetingItem({ date, avatar, mentorName, duration }) {
                                 sm: 32,
                                 md: 40,
                                 lg: 64,
-                                xl: 80,
-                                xxl: 100,
+                                xl: 64,
+                                xxl: 80,
                             }}
                             icon={<img src={avatar} alt="icon" />}
                         />
