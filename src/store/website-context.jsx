@@ -13,20 +13,28 @@ export default function WebContextProvider({ children }) {
 
     const logout = () => {
         googleLogout();
-        localStorage.removeItem("userData")
+        axios.post('http://127.0.0.1:8000/api/users/logout/', {
+            refresh_token: localStorage.getItem("userData")
+        })
+        localStorage.removeItem("userData");
         setUser(null);
     }
 
     const login = useGoogleLogin({
         onSuccess: response => {
             console.log(response)
-            axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
-                headers: {
-                    Authorization: `Bearer ${response.access_token}`
-                }
+            // Send access token
+            axios.post('http://127.0.0.1:8000/api/users/login/google/', {
+                access_token: response.access_token
             }).then((res) => {
-                setUser(res.data)
-                localStorage.setItem("userData", JSON.stringify(res.data))
+                try {
+                    setUser(res.user_profile_obj)
+                    localStorage.setItem("userData", JSON.stringify(res))
+                }
+                catch (err) {
+                    console.log(err)
+                    console.log("User not found")
+                }
             }).catch(err => console.log(err))
         }
     })
