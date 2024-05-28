@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 .itemBox {
     width: 100%;
     border-radius: 9px;
     background: #FFF;
     box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.08);
-    display: inline-flex;
+    display: flex;
     justify-content: space-between;
-    padding: 16px 24.5px 16px 7.5px;
+    padding: 2% 24.5px 2% 7.5px;
     align-items: center;
-    gap: 72px;
+    font-family: 'Montserrat';
 
     @mixin vertiAlignment() {
         display: flex;
@@ -23,7 +25,16 @@
 
         .time {
             @include vertiAlignment();
-            border-right: 0.75px #DCDCDC;
+            border-right: 0.75px solid #DCDCDC;
+
+            span:first-of-type {
+                font-weight: 600;
+            }
+
+            span:last-of-type {
+                font-weight: 500;
+                color: #A0A0A0;
+            }
         }
 
         .mentor {
@@ -32,18 +43,42 @@
 
             .nameWrapper {
                 @include vertiAlignment();
+
+                span {
+                    font-weight: 600;
+                }
+
+                span:first-of-type {
+                    color: #A0A0A0;
+                }
             }
         }
     }
 
     .link {
+        height: 100px;
+        font-weight: 500;
+
         @include vertiAlignment();
+
+        @mixin setHeight($screenWidth, $height) {
+            @media screen and (max-width: $screenWidth) {
+                height: $height;
+            }
+        }
 
         a {
             display: flex;
             align-items: center;
+            gap: 0.5rem;
             color: #138CFD;
             cursor: pointer;
         }
+
+        @include setHeight(1600px, 80px);
+        @include setHeight(1200px, 64px);
+        @include setHeight(992px, 40px);
+        @include setHeight(768px, 32px);
+        @include setHeight(576px, 24px);
     }
 }
