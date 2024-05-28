@@ -1,0 +1,28 @@
+.orangeHeader {
+  position: absolute;
+  background-color: #fb723d;
+  padding-right: 3vw;
+  z-index: -1;
+  width: 100vw;
+  height: 15vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  .img {
+    height: 200%;
+  }
+}
+
+.dashboardElementContainer {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  .sidebar {
+    width: 23vw;
+    padding: 25px;
+  }
+  .dashboardContent {
+    padding-top: 15vh;
+  }
+}
