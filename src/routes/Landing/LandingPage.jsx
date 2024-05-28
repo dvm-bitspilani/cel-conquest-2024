@@ -41,7 +41,7 @@ const LandingPage = () => {
             <div className={styles.heroSectionLeft}></div>
             <div className={styles.heroSectionRight}>
               <div>
-                <p className={styles.titleBitsPilani}>BITS Pilani’s</p>
+                <p className={styles.titleBitsPilani}>Pilani’s</p>
                 <p>Startup</p>
                 <p>Accelerator Is</p>
                 <p>Back</p>
