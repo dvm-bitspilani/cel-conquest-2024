@@ -1,4 +1,5 @@
 import styles from "./meetings.module.scss";
+import MeetingDetails from "../../../components/Dashboard/Meetings/MeetingDetails/MeetingDetails";
 
 const Meetings = () => {
   return (
@@ -12,7 +13,9 @@ const Meetings = () => {
           <div className={styles.meetingsListOptions}>Past</div>
         </div>
       </div>
-      <div className={styles.meetingsDetails}></div>
+      <div className={styles.meetingsDetails}>
+        <MeetingDetails></MeetingDetails>
+      </div>
     </div>
   );
 };
