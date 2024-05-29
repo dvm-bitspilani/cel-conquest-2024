@@ -15,7 +15,7 @@ const Sidebar = () => {
       </div>
       <div>
         <div>
-          <img height={10} src={dashboard_mountain_circle} />
+          <img height={50} src={dashboard_mountain_circle} />
         </div>
         <p>Welcome back,</p>
         <p>Madhur Jain</p>
@@ -34,7 +34,7 @@ const Sidebar = () => {
         <Button text="Home"></Button>
         <Button text="Home"></Button>
       </div>
-      <img height={10} src={dashboard_mountain_circle} />
+      <img height={50} src={dashboard_mountain_circle} />
     </div>
   );
 };
