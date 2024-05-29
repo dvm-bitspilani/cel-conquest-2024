@@ -1,6 +1,6 @@
 import * as styles from "./MeetingList.module.scss";
 
-export default function MeetingList({ listItms }) {
+export default function MeetingList({ listItms, ...props }) {
     const meetList = [];
     for (let i = 0; i < 3; i++) {
         const newWeek = (
@@ -13,7 +13,7 @@ export default function MeetingList({ listItms }) {
     }
 
     return (
-        <div className={styles.wrapper}>
+        <div className={styles.wrapper} {...props}>
             {/* <div className={styles.week}>
                 <p className={styles.weekHeading}>This Week</p>
                 <MeetingItem

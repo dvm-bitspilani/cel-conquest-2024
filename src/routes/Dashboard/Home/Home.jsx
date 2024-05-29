@@ -13,6 +13,7 @@ export default function Home() {
         avatar={avatar}
         mentorName="Bhavesh"
         duration={30}
+        // isGrayLink={true}
         key={j}
       />
     );
