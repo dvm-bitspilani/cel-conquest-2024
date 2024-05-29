@@ -22,8 +22,13 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <p className={styles.bs}>Bs</p>
-      <MeetingList listItms={listItms} />
+      <div className={styles.meetings}>
+        <p className={styles.bs}>Bs</p>
+        <MeetingList listItms={listItms} />
+      </div>
+      <div className={styles.right}>
+        <h1>Pod</h1>
+      </div>
     </div>
   )
 }
