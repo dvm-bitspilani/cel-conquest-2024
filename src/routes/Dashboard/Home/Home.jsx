@@ -21,6 +21,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <p className={styles.bs}>Bs</p>
       <MeetingList listItms={listItms} />
     </div>
   )

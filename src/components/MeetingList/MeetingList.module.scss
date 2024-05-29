@@ -1,6 +1,8 @@
 .wrapper {
     width: 100%;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
 
     &::-webkit-scrollbar {
         width: 8px;
@@ -17,10 +19,13 @@
     }
 
     .week {
+        width: 95%;
+        align-self: center;
+
         .weekHeading {
             color: #8F8F8F;
             font-weight: 500;
-            // padding-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
         }
     }
 }
