@@ -1,11 +1,26 @@
 .wrapper {
     width: 100%;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #FB723D;
+        border-radius: calc(8px / 2);
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: calc(8px / 2);
+        background-color: #EAEAEA;
+    }
 
     .week {
         .weekHeading {
             color: #8F8F8F;
             font-weight: 500;
-            padding-bottom: 1.5rem;
+            // padding-bottom: 1.5rem;
         }
     }
 }
