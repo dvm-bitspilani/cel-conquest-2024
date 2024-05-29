@@ -24,7 +24,11 @@
         font-size: 17px;
         font-weight: 600;
         line-height: normal;
-    
+        &:hover {
+          border: 0.5px solid #fb723d;
+          color: #fb723d;
+          cursor: pointer;
+        }
       }
       .active {
         color: #fb723d;
