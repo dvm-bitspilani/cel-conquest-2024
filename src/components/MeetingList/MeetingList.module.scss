@@ -1,41 +1,7 @@
 .wrapper {
     width: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
-
-    &::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: #FB723D;
-        border-radius: calc(8px / 2);
-    }
-
-    @mixin scrollHeight($scrollMargin) {
-        margin-top: $scrollMargin;
-        margin-bottom: $scrollMargin;
-    }
-
-    &::-webkit-scrollbar-track {
-        border-radius: calc(8px / 2);
-        background-color: #EAEAEA;
-        @include scrollHeight(10rem);
-
-        @media screen and (max-height: 580px) {
-            @include scrollHeight(5rem);
-        }
-
-        @media screen and (max-height: 400px) {
-            @include scrollHeight(2rem);
-        }
-
-        @media screen and (max-height: 200px) {
-            @include scrollHeight(0.5rem);
-        }
-    }
 
     .week {
         width: 95%;
