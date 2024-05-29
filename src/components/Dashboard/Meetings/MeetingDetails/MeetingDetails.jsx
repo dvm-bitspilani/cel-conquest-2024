@@ -3,8 +3,8 @@ import styles from "./MeetingDetails.module.scss";
 const MeetingDetails = () => {
   return (
     <div className={styles.MeetingDetailsContainer}>
-      <h3>Meeting details</h3>
-      <p>Confirmed</p>
+      <h3 className={styles.MeetingDetailsHeader}>Meeting details</h3>
+      <p className={styles.MeetingStatus}>Confirmed</p>
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
