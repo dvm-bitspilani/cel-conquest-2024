@@ -2,13 +2,14 @@ import { Avatar, ConfigProvider } from "antd";
 
 import MeetingList from "../../../components/MeetingList/MeetingList"
 import MeetingItem from '../../../components/MeetingList/MeetingItem/MeetingItem';
+import UserPill from "../../../components/UserPill/UserPill";
 import avatar from '../../../assets/images/Dashboard/demoAvatar.jpeg'
 
 import * as styles from './home.module.scss'
 
 export default function Home() {
   const listItms = [];
-  for (let j = 0; j < 6; j++) {
+  for (let i = 0; i < 6; i++) {
     const newItm = (
       <MeetingItem
         date="May 24, 2024, 00:30:00"
@@ -16,7 +17,7 @@ export default function Home() {
         mentorName="Bhavesh"
         duration={30}
         // isGrayLink={true}
-        key={j}
+        key={Math.random()}
       />
     );
     listItms.push(newItm);
@@ -72,7 +73,17 @@ export default function Home() {
         <MeetingList listItms={listItms} />
       </div>
       <div className={styles.right}>
-        <h1>Pod</h1>
+        <div className={styles.wrapper}>
+          <h1 className={styles.heading}>Your <span>Pod:</span></h1>
+          <div className={styles.coach}>
+            <div className={styles.pillGrid}>
+              <UserPill avatar={avatar} name='Paritosh Jain' />
+              <UserPill avatar={avatar} name='Paritosh Jain' />
+              <UserPill avatar={avatar} name='Paritosh Jain' />
+              <UserPill avatar={avatar} name='Paritosh Jain' />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
