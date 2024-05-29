@@ -1,11 +1,67 @@
 .container {
-    width: 50vw;
-    height: 100%;
+    width: 77vw;
+    // height: 100%;
+    height: 85dvh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    overflow: auto;
 
-    .bs {
-        margin-bottom: 3rem;
+    .meetings {
+        width: 59%;
+        margin-right: 1%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
+
+        .bs {
+            margin-bottom: 1.5rem;
+        }
+
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #FB723D;
+            border-radius: calc(8px / 2);
+        }
+
+        @mixin scrollHeight($scrollMargin) {
+            margin-top: $scrollMargin;
+            margin-bottom: $scrollMargin;
+        }
+
+        &::-webkit-scrollbar-track {
+            border-radius: calc(8px / 2);
+            background-color: #EAEAEA;
+            @include scrollHeight(10rem);
+
+            @media screen and (max-height: 580px) {
+                @include scrollHeight(5rem);
+            }
+
+            @media screen and (max-height: 400px) {
+                @include scrollHeight(2rem);
+            }
+
+            @media screen and (max-height: 200px) {
+                @include scrollHeight(0.5rem);
+            }
+        }
+    }
+
+    .right {
+        height: 100%;
+        width: 40%;
+        display: flex;
+        align-items: center;
+
+        &:before {
+            content: "";
+            height: 95%;
+            width: 0;
+            border-left: dashed #a0a0a0 1px;
+        }
     }
 }
