@@ -35,6 +35,10 @@
             span:last-of-type {
                 font-weight: 500;
                 color: #A0A0A0;
+
+                @media screen and (max-width: 1000px) {
+                    font-size: 0.75rem;
+                }
             }
         }
 
