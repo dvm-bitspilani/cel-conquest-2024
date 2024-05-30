@@ -1,12 +1,8 @@
 import { Avatar, ConfigProvider } from "antd";
 
 import * as styles from "./item.module.scss";
-import { useContext } from "react";
-import { WebContext } from "../../../store/website-context";
 
-export default function MeetingItem({ date, avatar, mentorName, duration, isGrayLink = false, data }) {
-    const { activeMeet, selectMeet } = useContext(WebContext)
-
+export default function MeetingItem({ date, avatar, mentorName, duration, isGrayLink = false, data, dataRef, handleClick }) {
     const dateObj = new Date(date);
     const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
         dateObj
@@ -31,7 +27,10 @@ export default function MeetingItem({ date, avatar, mentorName, duration, isGray
                 if (e.target.tagName !== "A") {
                     e.currentTarget.id = 'selected-meeting-item'
                 }
-                selectMeet(data)
+
+                // LIFTING CLICK DATA TO HOME COMPONENT
+                dataRef.current = data
+                handleClick()
             }}
         >
             <div className={styles.gridLeft}>
