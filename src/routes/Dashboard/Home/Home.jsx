@@ -23,6 +23,25 @@ export default function Home() {
     listItms.push(newItm);
   }
 
+  const coach = [];
+  const mentors = [];
+  const startups = [];
+
+  for (let i = 0; i < 1; i++) {
+    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' />
+    coach.push(newPill)
+  }
+
+  for (let i = 0; i < 4; i++) {
+    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' />
+    mentors.push(newPill)
+  }
+
+  for (let i = 0; i < 3; i++) {
+    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' />
+    startups.push(newPill)
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.meetings}>
@@ -75,14 +94,26 @@ export default function Home() {
       <div className={styles.right}>
         <div className={styles.wrapper}>
           <h1 className={styles.heading}>Your <span>Pod:</span></h1>
-          <div className={styles.coach}>
-            <div className={styles.pillGrid}>
-              <UserPill avatar={avatar} name='Paritosh Jain' />
-              <UserPill avatar={avatar} name='Paritosh Jain' />
-              <UserPill avatar={avatar} name='Paritosh Jain' />
-              <UserPill avatar={avatar} name='Paritosh Jain' />
-            </div>
-          </div>
+          <section className={styles.pillsWrapper}>
+            {coach[0] ? <div className={styles.userPills}>
+              <h3>Coach</h3>
+              <div className={styles.pillGrid}>
+                {...coach}
+              </div>
+            </div> : null}
+            {mentors[0] ? <div className={styles.userPills}>
+              <h3>Mentors</h3>
+              <div className={styles.pillGrid}>
+                {...mentors}
+              </div>
+            </div> : null}
+            {startups[0] ? <div className={styles.userPills}>
+              <h3>Startups</h3>
+              <div className={styles.pillGrid}>
+                {...startups}
+              </div>
+            </div> : null}
+          </section>
         </div>
       </div>
     </div>
