@@ -4,14 +4,14 @@ import axios from "axios";
 
 export const WebContext = createContext({
     user: {},
-    login: () => { },
-    logout: () => { }
+    glogin: () => { },
+    glogout: () => { }
 });
 
 export default function WebContextProvider({ children }) {
     const [user, setUser] = useState(null);
 
-    const logout = () => {
+    const glogout = () => {
         googleLogout();
         axios.post('http://127.0.0.1:8000/api/users/logout/', {
             refresh_token: localStorage.getItem("userData")
@@ -20,7 +20,7 @@ export default function WebContextProvider({ children }) {
         setUser(null);
     }
 
-    const login = useGoogleLogin({
+    const glogin = useGoogleLogin({
         onSuccess: response => {
             console.log(response)
             // Send access token
@@ -46,8 +46,8 @@ export default function WebContextProvider({ children }) {
 
     const ctxValue = {
         user: user,
-        login,
-        logout
+        glogin,
+        glogout
     };
 
     return (

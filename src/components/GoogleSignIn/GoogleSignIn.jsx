@@ -4,10 +4,10 @@ import { WebContext } from '../../store/website-context';
 import * as styles from './signInBtn.module.scss'
 
 export default function GoogleSignIn() {
-    const { login } = useContext(WebContext);
+    const { glogin } = useContext(WebContext);
 
     return (
-        <button className={styles.btn} onClick={login}><svg width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button className={styles.btn} onClick={glogin}><svg width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M28.7 15.3125C28.7 14.3375 28.6125 13.4 28.45 12.5H15.5V17.8188H22.9C22.5813 19.5375 21.6125 20.9938 20.1563 21.9688V25.4187H24.6C27.2 23.025 28.7 19.5 28.7 15.3125Z" fill="#4285F4" />
             <path d="M15.5004 28.75C19.2129 28.75 22.3254 27.5188 24.6004 25.4188L20.1566 21.9688C18.9254 22.7938 17.3504 23.2813 15.5004 23.2813C11.9191 23.2813 8.88789 20.8625 7.80664 17.6125H3.21289V21.175C5.47539 25.6688 10.1254 28.75 15.5004 28.75Z" fill="#34A853" />
             <path d="M7.80625 17.6125C7.53125 16.7875 7.375 15.9062 7.375 15C7.375 14.0937 7.53125 13.2125 7.80625 12.3875V8.82495H3.2125C2.25 10.741 1.74915 12.8557 1.75 15C1.75 17.2187 2.28125 19.3187 3.2125 21.175L7.80625 17.6125Z" fill="#FBBC05" />
