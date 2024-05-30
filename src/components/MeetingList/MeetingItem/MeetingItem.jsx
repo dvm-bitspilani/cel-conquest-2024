@@ -4,7 +4,7 @@ import * as styles from "./item.module.scss";
 import { useContext } from "react";
 import { WebContext } from "../../../store/website-context";
 
-export default function MeetingItem({ date, avatar, mentorName, duration, isGrayLink = false }) {
+export default function MeetingItem({ date, avatar, mentorName, duration, isGrayLink = false, data }) {
     const { activeMeet, selectMeet } = useContext(WebContext)
 
     const dateObj = new Date(date);
@@ -25,9 +25,13 @@ export default function MeetingItem({ date, avatar, mentorName, duration, isGray
         <div
             className={styles.itemBox}
             onClick={(e) => {
-                if (e.target.tagName !== "A") {
-                    selectMeet(e.currentTarget)
+                if (document.querySelector('#selected-meeting-item')) {
+                    document.querySelector('#selected-meeting-item').removeAttribute('id')
                 }
+                if (e.target.tagName !== "A") {
+                    e.currentTarget.id = 'selected-meeting-item'
+                }
+                selectMeet(data)
             }}
         >
             <div className={styles.gridLeft}>
