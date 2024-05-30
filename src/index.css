@@ -51,6 +51,11 @@ h6 {
   isolation: isolate;
 }
 
+#selected-meeting-item {
+  background-color: #FFECE5;
+  outline: 0.75px solid #FB723D;
+}
+
 /* OVERRIDE ANTD STYLES */
 .ant-slider {
   transform: translateY(-1%);

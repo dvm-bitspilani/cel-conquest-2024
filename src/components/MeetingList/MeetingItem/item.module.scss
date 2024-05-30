@@ -12,6 +12,10 @@
     font-family: 'Montserrat';
     margin-bottom: 1rem;
 
+    &:hover {
+        outline: 0.75px solid #FB723D;
+    }
+
     @mixin vertiAlignment() {
         display: flex;
         flex-direction: column;

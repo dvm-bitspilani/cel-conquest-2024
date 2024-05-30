@@ -1,8 +1,12 @@
 import { Avatar, ConfigProvider } from "antd";
 
 import * as styles from "./item.module.scss";
+import { useContext } from "react";
+import { WebContext } from "../../../store/website-context";
 
 export default function MeetingItem({ date, avatar, mentorName, duration, isGrayLink = false }) {
+    const { activeMeet, selectMeet } = useContext(WebContext)
+
     const dateObj = new Date(date);
     const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
         dateObj
@@ -18,7 +22,14 @@ export default function MeetingItem({ date, avatar, mentorName, duration, isGray
                 ? `12:${minutes} AM`
                 : `${hours}:${minutes} AM`;
     return (
-        <div className={styles.itemBox}>
+        <div
+            className={styles.itemBox}
+            onClick={(e) => {
+                if (e.target.tagName !== "A") {
+                    selectMeet(e.currentTarget)
+                }
+            }}
+        >
             <div className={styles.gridLeft}>
                 <div className={styles.time}>
                     <span>{fullTime}</span>

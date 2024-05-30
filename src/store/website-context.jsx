@@ -4,12 +4,15 @@ import axios from "axios";
 
 export const WebContext = createContext({
     user: {},
+    activeMeet: <div />,
     glogin: () => { },
-    glogout: () => { }
+    glogout: () => { },
+    selectMeet: () => { }
 });
 
 export default function WebContextProvider({ children }) {
     const [user, setUser] = useState(null);
+    const [activeMeet, setActiveMeet] = useState(null);
 
     const glogout = () => {
         googleLogout();
@@ -39,15 +42,27 @@ export default function WebContextProvider({ children }) {
         }
     })
 
+    const selectMeet = (target) => {
+        setActiveMeet(prev => {
+            if (prev) {
+                prev.id = '';
+            }
+            target.id = 'selected-meeting-item';
+            return target
+        })
+    }
+
     useEffect(() => {
         const userData = localStorage.getItem("userData");
         setUser(JSON.parse(userData))
     }, []);
 
     const ctxValue = {
-        user: user,
+        user,
+        activeMeet,
         glogin,
-        glogout
+        glogout,
+        selectMeet
     };
 
     return (
