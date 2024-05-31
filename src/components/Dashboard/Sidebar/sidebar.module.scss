@@ -5,8 +5,16 @@
   border-radius: 20px;
   background: #fff;
   box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
   .profileSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .profileAvatar {
+      margin: 20px 0px;
       height: 80px;
       width: 80px;
       border-radius: 50%;
@@ -47,5 +55,10 @@
   .bottomButtons {
     display: flex;
     flex-direction: column;
+  }
+  .conquestLogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

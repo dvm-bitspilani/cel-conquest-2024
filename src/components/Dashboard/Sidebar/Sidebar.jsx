@@ -35,7 +35,9 @@ const Sidebar = () => {
         <Button text="Home"></Button>
         <Button text="Home"></Button>
       </div>
-      <img height={50} src={dashboard_mountain_circle} />
+      <div className={styles.conquestLogo}>
+        <img height={50} width={50} src={dashboard_mountain_circle} />
+      </div>
     </div>
   );
 };
