@@ -22,7 +22,12 @@ const Meetings = () => {
         </div>
       </div>
       <div className={styles.rightPart}>
-        <div className={styles.selectSlots} onClick={handleSelectSlotsButtonClick}>Select Slots</div>
+        <button
+          className={styles.selectSlots}
+          onClick={handleSelectSlotsButtonClick}
+        >
+          Select Slots
+        </button>
         {selectSlots ? <SelectSlots></SelectSlots> : null}
         <div className={styles.meetingsDetails}>
           <MeetingDetails></MeetingDetails>
