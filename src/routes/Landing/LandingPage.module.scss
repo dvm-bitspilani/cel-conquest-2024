@@ -119,14 +119,17 @@
     }
   }
   .carouselCenter {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: red;
+    margin-right: -70px;
+    margin-left: -70px;
     .carouselContainer {
       background-color: black;
-      width: 90%;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
       .leftButton,
       .rightButton {
         width: 40px;
@@ -139,12 +142,18 @@
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
       }
       .leftButton {
+        position: absolute;
+        top: 0;
+        left: 0;
       }
       .carouselCardsContainer {
         display: flex;
         gap: 30px;
       }
       .rightButton {
+        position: absolute;
+        top: 0;
+        left: 0;
       }
     }
   }
