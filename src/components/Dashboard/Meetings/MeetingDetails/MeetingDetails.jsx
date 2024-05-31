@@ -1,4 +1,5 @@
 import styles from "./MeetingDetails.module.scss";
+import demoAvatar from "../../../../assets/images/Dashboard/demoAvatar.jpeg";
 
 const MeetingDetails = () => {
   return (
@@ -6,7 +7,7 @@ const MeetingDetails = () => {
       <div className={styles.MeetingDetails}>
         <h3 className={styles.MeetingDetailsHeader}>Meeting details</h3>
         <p className={styles.MeetingStatus}>Confirmed</p>
-        <div>
+        <div className={styles.DateSlider}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -19,7 +20,7 @@ const MeetingDetails = () => {
               fill="#111213"
             />
           </svg>
-          <div></div>
+          <div>25 May, 2024</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -33,8 +34,10 @@ const MeetingDetails = () => {
             />
           </svg>
         </div>
-        <div>
-          <div></div>
+        <div className={styles.photos}>
+          <div className={styles.avatarContainer}>
+            <img src={demoAvatar} alt="" />
+          </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -78,24 +81,26 @@ const MeetingDetails = () => {
               stroke-linejoin="round"
             />
           </svg>
-          <div></div>
+          <div className={styles.avatarContainer}>
+            <img src={demoAvatar} alt="" />
+          </div>
         </div>
-        <div>
+        <div className={styles.personDetails}>
           <p>with</p>
           <p>bhavesh</p>
           <p>+91 00001 00001</p>
         </div>
-        <div>
-          <div>
-            <div>Date & Time</div>
-            <div>
-              <div>May 25th</div>
-              <div>15:30 - 16:00</div>
+        <div className={styles.lowerContent}>
+          <div className={styles.upper}>
+            <div className={styles.lowerBold}>Date & Time</div>
+            <div className={styles.dateTime}>
+              <p>May 25th</p>
+              <p>15:30 - 16:00</p>
             </div>
           </div>
-          <div>
-            <div>Join meet</div>
-            <div>
+          <div className={styles.lower}>
+            <p className={styles.lowerBold}>Join meet</p>
+            <div className={styles.joinLink}>
               <p>Click to join</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

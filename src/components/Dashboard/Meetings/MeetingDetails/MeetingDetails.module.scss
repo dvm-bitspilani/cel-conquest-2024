@@ -4,22 +4,84 @@
   justify-content: center;
   align-items: center;
   .MeetingDetails {
-    width: 80%;
+    width: 100%;
+    margin: 0px 30px;
     max-width: 400px;
     display: inline-flex;
     padding: 24px 32px 32px 32px;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    align-items: center;
+    gap: 25px;
 
     border-radius: 12px;
     border: 0.75px solid rgba(251, 114, 61, 0.8);
     background: #fff;
     box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.1);
+    .DateSlider {
+      display: flex;
+      gap: 15px;
+      div {
+        color: #111213;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+      svg:hover {
+        cursor: pointer;
+      }
+    }
+    .photos {
+      width: 100%;
+      max-width: 250px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0px;
+      .avatarContainer {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+    .personDetails {
+      p:first-child {
+        text-align: center;
+        color: #a0a0a0;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+      p:nth-child(2) {
+        text-align: center;
+        color: #111213;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        padding-bottom: 10px;
+      }
+      p:nth-child(3) {
+        text-align: center;
+        color: #a0a0a0;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
     .MeetingDetailsHeader {
       color: #111213;
       font-size: 24px;
       font-weight: 700;
+      text-align: center;
     }
     .MeetingStatus {
       color: #138cfd;
@@ -28,6 +90,57 @@
       font-style: normal;
       font-weight: 600;
       line-height: normal;
+    }
+    .lowerContent {
+      border-top: #dcdcdc solid 2px;
+      width: 100%;
+      padding-top: 27px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .upper {
+        display: flex;
+        justify-content: space-between;
+        .dateTime {
+          p {
+            text-align: end;
+            color: #a0a0a0;
+            font-family: Montserrat;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+          }
+        }
+      }
+      .lower {
+        display: flex;
+        justify-content: space-between;
+        .joinLink {
+          display: flex;
+          gap: 2px;
+          p {
+            color: #138cfd;
+            font-family: Montserrat;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            text-decoration-line: underline;
+          }
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+      .lowerBold {
+        color: #111213;
+        font-family: Montserrat;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
     }
   }
 }

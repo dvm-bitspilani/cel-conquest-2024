@@ -1,7 +1,16 @@
+.blur {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
 .meetingsContainer {
   width: 77vw;
   height: 85vh;
   display: flex;
+  align-items: center;
   .meetingsList {
     width: 60%;
     height: 100%;
@@ -37,17 +46,46 @@
       }
     }
   }
-  .meetingsDetails {
-    &:before {
-      content: "";
-      height: 95%;
-      width: 0;
-      border-left: dashed #a0a0a0 1px;
-    }
-    width: 40%;
+  .divider {
+    height: 95%;
+    border-left: #A0A0A0 dashed 1px;
+  }
+
+  .rightPart {
     height: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
+    width: 40%;
+    overflow: hidden;
+    .selectSlots {
+      position: absolute;
+      right: 20px;
+      transform: translateY(20px);
+      display: inline-flex;
+      padding: 12px 24px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 8px;
+      background: #fb723d;
+      color: #fff;
+      font-family: Montserrat;
+      font-size: 17px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      border: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .meetingsDetails {
+      z-index: -1;
+      transition: filter 0.1s;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+    }
   }
 }

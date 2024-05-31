@@ -6,8 +6,16 @@ import UserPill from "../../../components/UserPill/UserPill";
 import avatar from '../../../assets/images/Dashboard/demoAvatar.jpeg'
 
 import * as styles from './home.module.scss'
+import { useRef } from "react";
 
 export default function Home() {
+  // GETTING MEETING DATA FROM CLICK
+  const dataRef = useRef(null)
+
+  function handleClick() {
+    console.log(dataRef.current)
+  }
+
   const listItms = [];
   for (let i = 0; i < 6; i++) {
     const newItm = (
@@ -18,6 +26,9 @@ export default function Home() {
         duration={30}
         // isGrayLink={true}
         key={Math.random()}
+        data={{ test: 'hello', id: i }}
+        handleClick={handleClick}
+        dataRef={dataRef}
       />
     );
     listItms.push(newItm);

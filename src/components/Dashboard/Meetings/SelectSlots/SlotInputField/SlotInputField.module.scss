@@ -1,0 +1,27 @@
+.inputField {
+  font-size: 17px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  gap: 10px;
+  background-color: #fff;
+  padding: 8px 8px 8px 24px;
+  margin-top: 2rem;
+
+  input {
+    border: none;
+    outline: none;
+    font-weight: 600;
+    color: #a0a0a0;
+  }
+  .subscribeButton {
+    background-color: #fb723d;
+    padding: 6px 24px;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
