@@ -1,4 +1,5 @@
 import * as styles from "./NewsCarouselCard.module.scss";
+import background from "../../../assets/images/Landing Page/landing-carousel-background.png";
 
 const NewsCarouselCard = () => {
   return (

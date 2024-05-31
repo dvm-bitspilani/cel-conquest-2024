@@ -118,4 +118,31 @@
       color: #fb723d;
     }
   }
+  .carouselCenter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .carouselContainer {
+      width: 90%;
+      .leftButton,
+      .rightButton {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+      }
+      .leftButton {
+      }
+      .carouselCardsContainer {
+        display: flex;
+        gap: 30px;
+      }
+      .rightButton {
+      }
+    }
+  }
 }
