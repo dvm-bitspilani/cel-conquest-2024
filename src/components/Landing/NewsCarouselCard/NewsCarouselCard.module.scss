@@ -38,5 +38,8 @@
     border-radius: 4.147px;
     border: 1.659px solid #fff;
     background: rgba(255, 255, 255, 0.18);
+    &:hover{
+      cursor: pointer;
+    }
   }
 }
