@@ -6,7 +6,9 @@ import { useState } from "react";
 const Meetings = () => {
   const [selectSlots, setselectSlots] = useState(false);
 
-  handleSelectSlotsClick = () => {};
+  let handleSelectSlotsButtonClick = () => {
+    setselectSlots(!selectSlots);
+  };
 
   return (
     <div className={styles.meetingsContainer}>
@@ -20,7 +22,7 @@ const Meetings = () => {
         </div>
       </div>
       <div className={styles.rightPart}>
-        <div className={styles.selectSlots}>Select Slots</div>
+        <div className={styles.selectSlots} onClick={handleSelectSlotsButtonClick}>Select Slots</div>
         {selectSlots ? <SelectSlots></SelectSlots> : null}
         <div className={styles.meetingsDetails}>
           <MeetingDetails></MeetingDetails>
