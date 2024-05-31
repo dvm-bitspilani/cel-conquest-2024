@@ -14,6 +14,7 @@ const Meetings = () => {
         </div>
       </div>
       <div className={styles.meetingsDetails}>
+        <div className={styles.selectSlots}>Select Slots</div>
         <MeetingDetails></MeetingDetails>
       </div>
     </div>

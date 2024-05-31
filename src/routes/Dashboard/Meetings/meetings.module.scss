@@ -37,6 +37,23 @@
       }
     }
   }
+  .selectSlots {
+    display: inline-flex;
+    padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #fb723d;
+    color: #fff;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: Montserrat;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
   .meetingsDetails {
     &:before {
       content: "";
