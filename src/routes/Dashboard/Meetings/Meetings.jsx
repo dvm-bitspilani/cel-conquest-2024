@@ -13,9 +13,12 @@ const Meetings = () => {
           <div className={styles.meetingsListOptions}>Past</div>
         </div>
       </div>
-      <div className={styles.meetingsDetails}>
+      <div className={styles.rightPart}>
         <div className={styles.selectSlots}>Select Slots</div>
-        <MeetingDetails></MeetingDetails>
+
+        <div className={styles.meetingsDetails}>
+          <MeetingDetails></MeetingDetails>
+        </div>
       </div>
     </div>
   );

@@ -4,7 +4,8 @@
   justify-content: center;
   align-items: center;
   .MeetingDetails {
-    width: 80%;
+    width: 100%;
+    margin: 0px 30px;
     max-width: 400px;
     display: inline-flex;
     padding: 24px 32px 32px 32px;
@@ -25,6 +26,9 @@
         font-style: normal;
         font-weight: 600;
         line-height: normal;
+      }
+      svg:hover {
+        cursor: pointer;
       }
     }
     .photos {
@@ -123,6 +127,9 @@
             font-weight: 600;
             line-height: normal;
             text-decoration-line: underline;
+          }
+          &:hover {
+            cursor: pointer;
           }
         }
       }
