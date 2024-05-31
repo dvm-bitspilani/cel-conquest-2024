@@ -18,6 +18,7 @@
   .addDone {
     display: flex;
     justify-content: space-between;
+    width: 100%;
     //select first button in the SelectSlots component
     button {
       &:hover {
