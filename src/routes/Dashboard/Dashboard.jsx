@@ -1,5 +1,5 @@
 import * as styles from "./dashboard.module.scss";
-import dashboard_mountain_circle from "../../assets/images/Dashboard/dashboard-mountain-circle.png";
+import dashboard_mountain_circle from "../../assets/images/Dashboard/grey-dashboard-mountain-circle.png";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../../components/Dashboard/Sidebar/Sidebar";
 
