@@ -2,7 +2,7 @@ import styles from "./SelectSlots.module.scss";
 
 const SelectSlots = () => {
   return (
-    <div>
+    <div className={styles.SelectSlots}>
       <h3>Select Slots</h3>
       <div className={styles.addDone}>
         <button>Add</button>
