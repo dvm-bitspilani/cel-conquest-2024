@@ -21,15 +21,21 @@ const Meetings = () => {
           <div className={styles.meetingsListOptions}>Past</div>
         </div>
       </div>
+      <div className={styles.divider}></div>
       <div className={styles.rightPart}>
         <button
+          style={{zIndex: 2}}
           className={styles.selectSlots}
           onClick={handleSelectSlotsButtonClick}
         >
           Select Slots
         </button>
         {selectSlots ? <SelectSlots></SelectSlots> : null}
-        <div className={styles.meetingsDetails}>
+        <div
+          className={`${styles.meetingsDetails} ${
+            selectSlots ? styles.blur : null
+          }`}
+        >
           <MeetingDetails></MeetingDetails>
         </div>
       </div>

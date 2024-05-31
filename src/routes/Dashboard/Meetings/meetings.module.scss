@@ -10,6 +10,7 @@
   width: 77vw;
   height: 85vh;
   display: flex;
+  align-items: center;
   .meetingsList {
     width: 60%;
     height: 100%;
@@ -45,18 +46,15 @@
       }
     }
   }
+  .divider {
+    height: 95%;
+    border-left: #A0A0A0 dashed 1px;
+  }
 
   .rightPart {
     height: 100%;
     width: 40%;
     overflow: hidden;
-    &:before {
-      content: "";
-      height: 80%;
-      width: 0;
-      border-left: dashed #a0a0a0 1px;
-    }
-
     .selectSlots {
       position: absolute;
       right: 20px;
@@ -81,6 +79,8 @@
       }
     }
     .meetingsDetails {
+      z-index: -1;
+      transition: filter 0.1s;
       width: 100%;
       height: 100%;
       display: flex;
