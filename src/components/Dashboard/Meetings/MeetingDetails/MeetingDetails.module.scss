@@ -9,8 +9,8 @@
     display: inline-flex;
     padding: 24px 32px 32px 32px;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    align-items: center;
+    gap: 25px;
 
     border-radius: 12px;
     border: 0.75px solid rgba(251, 114, 61, 0.8);
@@ -28,9 +28,12 @@
       }
     }
     .photos {
+      width: 100%;
+      max-width: 250px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 5px 0px;
       .avatarContainer {
         width: 80px;
         height: 80px;
@@ -44,8 +47,8 @@
       }
     }
     .personDetails {
-      // div targeting the first div in the personDetails class
       p:first-child {
+        text-align: center;
         color: #a0a0a0;
         font-size: 14px;
         font-style: normal;
@@ -53,13 +56,16 @@
         line-height: normal;
       }
       p:nth-child(2) {
+        text-align: center;
         color: #111213;
         font-size: 17px;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+        padding-bottom: 10px;
       }
       p:nth-child(3) {
+        text-align: center;
         color: #a0a0a0;
         font-size: 14px;
         font-style: normal;
@@ -71,6 +77,7 @@
       color: #111213;
       font-size: 24px;
       font-weight: 700;
+      text-align: center;
     }
     .MeetingStatus {
       color: #138cfd;
@@ -81,14 +88,18 @@
       line-height: normal;
     }
     .lowerContent {
-      border-top: #dcdcdc solid 1px;
-
+      border-top: #dcdcdc solid 2px;
       width: 100%;
+      padding-top: 27px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
       .upper {
         display: flex;
         justify-content: space-between;
         .dateTime {
           p {
+            text-align: end;
             color: #a0a0a0;
             font-family: Montserrat;
             font-size: 14px;
