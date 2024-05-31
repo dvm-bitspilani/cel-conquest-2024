@@ -23,17 +23,18 @@ const Sidebar = () => {
       </div>
       <div className={styles.topButtons}>
         <Button text="Home"></Button>
-        <Button text="Home" active={true}></Button>
-        <Button text="Home"></Button>
-        <Button text="Home"></Button>
-        <Button text="Home"></Button>
+        <Button text="Meetings" active={true}></Button>
+        <Button text="Cohort of 2024"></Button>
+        <Button text="Mentors"></Button>
+        <Button text="Experts"></Button>
+        <Button text="Investment Partners"></Button>
       </div>
       <div className={styles.bottomButtons}>
-        <Button text="Home"></Button>
-        <Button text="Home"></Button>
-        <Button text="Home"></Button>
-        <Button text="Home"></Button>
-        <Button text="Home"></Button>
+        <Button text="Contact Us"></Button>
+        <Button text="Forms"></Button>
+        <Button text="Resources"></Button>
+        <Button text="Conquest Info"></Button>
+        <Button text="Developers"></Button>
       </div>
       <div className={styles.conquestLogo}>
         <img height={50} width={50} src={dashboard_mountain_circle} />
