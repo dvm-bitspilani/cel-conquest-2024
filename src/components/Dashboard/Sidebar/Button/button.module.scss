@@ -5,8 +5,9 @@
   font-size: 17px;
   font-style: normal;
   font-weight: 500;
-  height: 50px;
+  height: 40px;
   border: 0px solid #fb723d;
+  line-height: 95%;
   &:hover {
     cursor: pointer;
     border: 1px solid #fb723d;
@@ -18,4 +19,10 @@
   border: 1px solid #fb723d;
   background: #ffece5;
   padding: 11px 23px;
+  color: #fb723d;
+  font-family: Montserrat;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 17px */
 }
