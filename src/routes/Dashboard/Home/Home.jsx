@@ -109,19 +109,19 @@ export default function Home() {
             {coach[0] ? <div className={styles.userPills}>
               <h3>Coach</h3>
               <div className={styles.pillGrid}>
-                {...coach}
+                {coach}
               </div>
             </div> : null}
             {mentors[0] ? <div className={styles.userPills}>
               <h3>Mentors</h3>
               <div className={styles.pillGrid}>
-                {...mentors}
+                {mentors}
               </div>
             </div> : null}
             {startups[0] ? <div className={styles.userPills}>
               <h3>Startups</h3>
               <div className={styles.pillGrid}>
-                {...startups}
+                {startups}
               </div>
             </div> : null}
           </section>
