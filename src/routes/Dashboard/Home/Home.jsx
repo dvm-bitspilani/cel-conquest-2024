@@ -39,17 +39,17 @@ export default function Home() {
   const startups = [];
 
   for (let i = 0; i < 1; i++) {
-    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' />
+    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' key={i} />
     coach.push(newPill)
   }
 
   for (let i = 0; i < 4; i++) {
-    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' />
+    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' key={i} />
     mentors.push(newPill)
   }
 
   for (let i = 0; i < 3; i++) {
-    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' />
+    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' key={i} />
     startups.push(newPill)
   }
 
