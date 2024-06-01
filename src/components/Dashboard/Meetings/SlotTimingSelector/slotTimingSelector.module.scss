@@ -1,3 +1,23 @@
-.container{
-    
+.blurBackground {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  top: 0;
+  left: 0;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  z-index: 2;
+}
+
+.modalContainer {
+  height: 50vh;
+  width: 50vw;
+  background-color: black;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 3;
 }
