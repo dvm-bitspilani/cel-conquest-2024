@@ -1,6 +1,5 @@
 .modalContainer {
   display: flex;
-  width: 719px;
   padding: 44px;
   flex-direction: column;
   justify-content: center;
@@ -17,4 +16,12 @@
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   z-index: 9;
+  .slotDataButtonContainer {
+    display: flex;
+    padding: 12px;
+    justify-content: space-between;
+    gap: 16px;
+    border-radius: 12px;
+    border: 1px solid #a0a0a0;
+  }
 }

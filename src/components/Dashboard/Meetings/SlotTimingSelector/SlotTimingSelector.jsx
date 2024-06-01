@@ -34,7 +34,7 @@ const SlotTimingSelector = ({ selectSlotTiming }) => {
           </svg>
           <h2>Select Slot 1</h2>
         </div>
-        <div>
+        <div className={styles.slotDataButtonContainer}>
           <SlotDateButton day="Mon" date="12" />
           <SlotDateButton day="Mon" date="12" />
           <SlotDateButton day="Mon" date="12" />
