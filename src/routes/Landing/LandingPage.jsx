@@ -137,6 +137,7 @@ const LandingPage = () => {
                 <NewsCarouselCard></NewsCarouselCard>
                 <NewsCarouselCard></NewsCarouselCard>
                 <NewsCarouselCard></NewsCarouselCard>
+                <NewsCarouselCard></NewsCarouselCard>
               </div>
               <div className={styles.rightButton}>
                 <svg
