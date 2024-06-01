@@ -143,6 +143,9 @@
         top: 50%;
         transform: translateY(-50%);
         opacity: 90%;
+        &:hover{
+          cursor: pointer;
+        }
       }
       .leftButton {
         position: absolute;
