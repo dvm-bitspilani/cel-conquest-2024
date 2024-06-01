@@ -6,7 +6,7 @@ const SlotTimingSelector = ({ selectSlotTiming }) => {
   return (
     <>
       <div
-        style={{ display: selectSlotTiming ? "block" : "none" }}
+        style={{ display: selectSlotTiming ? "flex" : "none" }}
         className={styles.modalContainer}
       >
         <div className={styles.header}>
@@ -43,7 +43,7 @@ const SlotTimingSelector = ({ selectSlotTiming }) => {
           <SlotDateButton day="Mon" date="12" />
           <SlotDateButton day="Mon" date="12" />
         </div>
-        <div>
+        <div className={styles.slotTimingContainer}>
           <div>
             <div></div>
             <TimeSelectButton />
@@ -66,7 +66,7 @@ const SlotTimingSelector = ({ selectSlotTiming }) => {
             <TimeSelectButton />
           </div>
         </div>
-        <div>
+        <div className={styles.bottomSection}>
           <p>Select a 45 min. slot</p>
           <button>Select</button>
         </div>
