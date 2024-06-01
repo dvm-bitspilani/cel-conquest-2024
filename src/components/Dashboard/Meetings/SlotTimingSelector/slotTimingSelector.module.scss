@@ -1,10 +1,76 @@
 .modalContainer {
-  height: 50vh;
-  width: 50vw;
-  background-color: black;
+  display: flex;
+  padding: 44px;
+  flex-direction: column;
+  justify-content: stretch;
+  gap: 35px;
+
+  border-radius: 16px;
+  border: 1.5px solid #fb723d;
+  background: #fff;
+  box-shadow: 0px 4px 28px 0px rgba(0, 0, 0, 0.12);
+
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   z-index: 9;
+  .header {
+    display: flex;
+    position: relative;
+    svg {
+      position: absolute;
+      top: 2px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    h2 {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .slotDataButtonContainer {
+    display: flex;
+    padding: 12px;
+    justify-content: space-between;
+    gap: 16px;
+    border-radius: 12px;
+    border: 1px solid #a0a0a0;
+  }
+  .slotTimingContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  .bottomSection {
+    display: flex;
+    justify-content: space-between;
+    p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #138cfd;
+      font-family: Montserrat;
+      font-size: 17px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+    button {
+      display: inline-flex;
+      padding: 10px 16px;
+      align-items: center;
+      gap: 8px;
+      border-radius: 6px;
+      background: #fb723d;
+      border: none;
+      color: #fff;
+      text-align: right;
+      font-family: Montserrat;
+      font-size: 17px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
 }
