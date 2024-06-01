@@ -2,10 +2,10 @@ import styles from "./slotDateButton.module.scss";
 
 function SlotDateButton({ day, date }) {
   return (
-    <div className={styles.container}>
+    <button className={styles.container}>
       <div>{day}</div>
       <div>{date}</div>
-    </div>
+    </button>
   );
 }
 

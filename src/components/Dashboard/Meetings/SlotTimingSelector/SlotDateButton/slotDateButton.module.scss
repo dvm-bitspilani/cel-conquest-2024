@@ -14,4 +14,8 @@
   padding: 7px 15px;
   justify-content: center;
   align-items: center;
+  border: none;
+  &:hover{
+    cursor: pointer;
+  }
 }
