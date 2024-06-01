@@ -1,8 +1,13 @@
-import styles from './slotTimingSelector.module.css'
+import styles from "./slotTimingSelector.module.scss";
 
-const SlotTimingSelector = () => {
+const SlotTimingSelector = ({ selectSlotTiming }) => {
   return (
-    <div>SlotTimingSelector</div>
-  )
-}
-export default SlotTimingSelector
+    <div
+      style={{ display: selectSlotTiming ? "block" : "none" }}
+      className={styles.container}
+    >
+      <div className={styles.modalContainer}></div>
+    </div>
+  );
+};
+export default SlotTimingSelector;
