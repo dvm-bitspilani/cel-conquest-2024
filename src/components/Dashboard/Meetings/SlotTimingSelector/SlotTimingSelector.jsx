@@ -5,12 +5,6 @@ const SlotTimingSelector = ({ selectSlotTiming }) => {
     <>
       <div
         style={{ display: selectSlotTiming ? "block" : "none" }}
-        className={styles.blurBackground}
-      >
-        {/* hello */}
-      </div>
-      <div
-        style={{ display: selectSlotTiming ? "block" : "none" }}
         className={styles.modalContainer}
       >
         hello
