@@ -1,4 +1,5 @@
 import SlotDateButton from "./SlotDateButton/SlotDateButton";
+import TimeSelectButton from "./TimeSelectButton/TimeSelectButton";
 import styles from "./slotTimingSelector.module.scss";
 
 const SlotTimingSelector = ({ selectSlotTiming }) => {
@@ -43,9 +44,27 @@ const SlotTimingSelector = ({ selectSlotTiming }) => {
           <SlotDateButton day="Mon" date="12" />
         </div>
         <div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div>
+            <div></div>
+            <TimeSelectButton />
+            <TimeSelectButton />
+            <TimeSelectButton />
+            <TimeSelectButton />
+          </div>
+          <div>
+            <div></div>
+            <TimeSelectButton />
+            <TimeSelectButton />
+            <TimeSelectButton />
+            <TimeSelectButton />
+          </div>
+          <div>
+            <div></div>
+            <TimeSelectButton />
+            <TimeSelectButton />
+            <TimeSelectButton />
+            <TimeSelectButton />
+          </div>
         </div>
         <div>
           <p>Select a 45 min. slot</p>
