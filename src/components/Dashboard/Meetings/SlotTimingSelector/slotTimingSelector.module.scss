@@ -1,7 +1,17 @@
 .modalContainer {
-  height: 50vh;
-  width: 50vw;
-  background-color: black;
+  display: flex;
+  width: 719px;
+  padding: 44px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+
+  border-radius: 16px;
+  border: 1.5px solid #fb723d;
+  background: #fff;
+  box-shadow: 0px 4px 28px 0px rgba(0, 0, 0, 0.12);
+
   position: absolute;
   top: 50%;
   left: 50%;
