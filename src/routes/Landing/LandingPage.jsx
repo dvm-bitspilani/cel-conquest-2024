@@ -127,7 +127,7 @@ const LandingPage = () => {
           </h2>
           <div className={styles.carouselCenter}>
             <div className={styles.carouselContainer}>
-              <div className={styles.leftButton}>
+              {/* <div className={styles.leftButton}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -149,9 +149,8 @@ const LandingPage = () => {
                     </clipPath>
                   </defs>
                 </svg>
-              </div>
+              </div> */}
               <Carousel
-                centerMode={true}
                 focusOnSelect={true}
                 infinite={true}
                 draggable={true}
@@ -165,7 +164,7 @@ const LandingPage = () => {
                 <NewsCarouselCard data={5}></NewsCarouselCard>
                 <NewsCarouselCard data={6}></NewsCarouselCard>
               </Carousel>
-              <div
+              {/* <div
                 className={styles.carouselCardsContainer}
               >
                 <NewsCarouselCard data={1}></NewsCarouselCard>
@@ -174,8 +173,8 @@ const LandingPage = () => {
                 <NewsCarouselCard data={4}></NewsCarouselCard>
                 <NewsCarouselCard data={5}></NewsCarouselCard>
                 <NewsCarouselCard data={6}></NewsCarouselCard>
-              </div>
-              <div className={styles.rightButton}>
+              </div> */}
+              {/* <div className={styles.rightButton}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -190,7 +189,7 @@ const LandingPage = () => {
                     fill="black"
                   />
                 </svg>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
