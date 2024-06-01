@@ -9,7 +9,7 @@ const SlotTimingSelector = ({ selectSlotTiming }) => {
         style={{ display: selectSlotTiming ? "block" : "none" }}
         className={styles.modalContainer}
       >
-        <div>
+        <div className={styles.header}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
