@@ -133,11 +133,12 @@ const LandingPage = () => {
                 </svg>
               </div>
               <div className={styles.carouselCardsContainer}>
-                <NewsCarouselCard></NewsCarouselCard>
-                <NewsCarouselCard></NewsCarouselCard>
-                <NewsCarouselCard></NewsCarouselCard>
-                <NewsCarouselCard></NewsCarouselCard>
-                <NewsCarouselCard></NewsCarouselCard>
+                <NewsCarouselCard data={1}></NewsCarouselCard>
+                <NewsCarouselCard data={2}></NewsCarouselCard>
+                <NewsCarouselCard data={3}></NewsCarouselCard>
+                <NewsCarouselCard data={4}></NewsCarouselCard>
+                <NewsCarouselCard data={5}></NewsCarouselCard>
+                <NewsCarouselCard data={6}></NewsCarouselCard>
               </div>
               <div className={styles.rightButton}>
                 <svg
