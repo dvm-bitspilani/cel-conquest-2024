@@ -1,3 +1,4 @@
+import SlotDateButton from "./SlotDateButton/SlotDateButton";
 import styles from "./slotTimingSelector.module.scss";
 
 const SlotTimingSelector = ({ selectSlotTiming }) => {
@@ -32,7 +33,15 @@ const SlotTimingSelector = ({ selectSlotTiming }) => {
           </svg>
           <h2>Select Slot 1</h2>
         </div>
-        <div>//calendar component</div>
+        <div>
+          <SlotDateButton day="Mon" date="12" />
+          <SlotDateButton day="Mon" date="12" />
+          <SlotDateButton day="Mon" date="12" />
+          <SlotDateButton day="Mon" date="12" />
+          <SlotDateButton day="Mon" date="12" />
+          <SlotDateButton day="Mon" date="12" />
+          <SlotDateButton day="Mon" date="12" />
+        </div>
         <div>
           <div></div>
           <div></div>
