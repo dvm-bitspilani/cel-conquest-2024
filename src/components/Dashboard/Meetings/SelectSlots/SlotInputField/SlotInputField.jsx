@@ -1,10 +1,15 @@
 import styles from "./SlotInputField.module.scss";
 
-const SlotInputField = () => {
+const SlotInputField = ({ showHideSelectSlotTiming }) => {
   return (
     <div className={styles.inputField}>
       <input type="text" placeholder="Slot 1" />
-      <div className={styles.SelectButton}>Select</div>
+      <button
+        className={styles.SelectButton}
+        onClick={showHideSelectSlotTiming}
+      >
+        Select
+      </button>
     </div>
   );
 };

@@ -1,9 +1,9 @@
 .newsCardCarousel {
   border-radius: 15px;
-  min-width: 500px;
-  width: 500px;
+  width: 450px;
+
   padding: 70px 20px;
-  margin-left: 11.5vw;
+  // margin-left: 11.5vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,6 +13,10 @@
     no-repeat;
   background-size: cover;
   scroll-snap-align: center;
+  @media only screen and (max-width: 1500px) {
+    //responsiveness here
+  }
+
   .newsCardTitle {
     max-width: 400px;
     color: #fff;
@@ -38,7 +42,8 @@
     border-radius: 4.147px;
     border: 1.659px solid #fff;
     background: rgba(255, 255, 255, 0.18);
-    &:hover{
+
+    &:hover {
       cursor: pointer;
     }
   }
