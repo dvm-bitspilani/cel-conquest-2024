@@ -22,7 +22,7 @@ import "react-multi-carousel/lib/styles.css";
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 1,
+    items: 3,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -156,6 +156,8 @@ const LandingPage = () => {
                 draggable={true}
                 swipeable={true}
                 responsive={responsive}
+                itemClass={styles.carouselItem}
+                // centerMode={true}
               >
                 <NewsCarouselCard data={1}></NewsCarouselCard>
                 <NewsCarouselCard data={2}></NewsCarouselCard>
