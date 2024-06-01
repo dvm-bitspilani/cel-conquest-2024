@@ -10,7 +10,7 @@
   background: url("../../../assets/images/Landing Page/landing-carousel-background.png")
     no-repeat;
   background-size: cover;
-
+  scroll-snap-align: center;
   .newsCardTitle {
     max-width: 400px;
     color: #fff;
