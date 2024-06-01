@@ -1,29 +1,45 @@
 .newsCardCarousel {
-    background-color: red;
-    border-radius: 15px;
-    width: 500px;
-    padding: 60px 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
+  border-radius: 15px;
+  min-width: 500px;
+  width: 500px;
+  padding: 70px 20px;
+  margin-left: 11.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  background: url("../../../assets/images/Landing Page/landing-carousel-background.png")
+    no-repeat;
+  background-size: cover;
+  scroll-snap-align: center;
   .newsCardTitle {
+    max-width: 400px;
     color: #fff;
-    color: black;
     text-align: center;
-    font-size: 25px;
-    font-weight: 600;
-    line-height: 32px;
+    font-family: Montserrat;
+    font-size: 24.548px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 134%; /* 32.894px */
   }
   .newCardButton {
-    padding: 10px 20px;
+    display: flex;
+    width: 140px;
+    height: 38px;
+    padding: 5px 20px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
     color: #fff;
-    border: white 2px solid;
-    border-radius: 5px;
     text-align: center;
     font-size: 12px;
     font-weight: 400;
-    line-height: 12px; 
+    border-radius: 4.147px;
+    border: 1.659px solid #fff;
+    background: rgba(255, 255, 255, 0.18);
+    &:hover{
+      cursor: pointer;
+    }
   }
 }
