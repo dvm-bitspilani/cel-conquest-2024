@@ -128,7 +128,6 @@
     .carouselContainer {
       background-color: black;
       width: 100%;
-      overflow: hidden;
       position: relative;
       .leftButton,
       .rightButton {
@@ -143,7 +142,7 @@
         top: 50%;
         transform: translateY(-50%);
         opacity: 90%;
-        &:hover{
+        &:hover {
           cursor: pointer;
         }
       }
@@ -152,6 +151,12 @@
         left: 60px;
       }
       .carouselCardsContainer {
+        overflow-x: scroll;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
         display: flex;
         gap: 30px;
       }
