@@ -20,6 +20,7 @@
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.4",
     "react-ga4": "^2.1.0",
+    "react-multi-carousel": "^2.8.5",
     "react-router-dom": "^6.23.1",
     "sass": "^1.77.2",
     "yup": "^1.4.0"

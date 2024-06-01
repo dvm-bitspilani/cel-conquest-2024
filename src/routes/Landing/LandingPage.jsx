@@ -16,6 +16,24 @@ import Marquee from "react-fast-marquee";
 
 import ReactGA from "react-ga4";
 
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
 // temporary function for now
 function handleClick() {
   // Track registration click event
@@ -132,7 +150,24 @@ const LandingPage = () => {
                   </defs>
                 </svg>
               </div>
-              <div className={styles.carouselCardsContainer}>
+              <Carousel
+                centerMode={true}
+                focusOnSelect={true}
+                infinite={true}
+                draggable={true}
+                swipeable={true}
+                responsive={responsive}
+              >
+                <NewsCarouselCard data={1}></NewsCarouselCard>
+                <NewsCarouselCard data={2}></NewsCarouselCard>
+                <NewsCarouselCard data={3}></NewsCarouselCard>
+                <NewsCarouselCard data={4}></NewsCarouselCard>
+                <NewsCarouselCard data={5}></NewsCarouselCard>
+                <NewsCarouselCard data={6}></NewsCarouselCard>
+              </Carousel>
+              <div
+                className={styles.carouselCardsContainer}
+              >
                 <NewsCarouselCard data={1}></NewsCarouselCard>
                 <NewsCarouselCard data={2}></NewsCarouselCard>
                 <NewsCarouselCard data={3}></NewsCarouselCard>
