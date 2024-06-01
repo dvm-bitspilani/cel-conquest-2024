@@ -41,6 +41,11 @@
   .slotTimingContainer {
     display: flex;
     justify-content: space-between;
+    &>div {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
   }
   .bottomSection {
     display: flex;
