@@ -109,10 +109,13 @@ h6 {
   padding-right: 0 !important;
 }
 
+.ant-dropdown-menu-item {
+  border-left: 2px solid white !important;
+}
+
 .ant-dropdown-menu-item:hover {
   border-left: 2px solid #FB723D !important;
   color: #FB723D !important;
   background: #FFECE5 !important;
   border-radius: 0 !important;
-  transition: border 0s !important;
 }
