@@ -13,7 +13,7 @@ export default function WebContextProvider({ children }) {
 
     const glogout = () => {
         googleLogout();
-        axios.post('http://127.0.0.1:8000/api/users/logout/', {
+        axios.post('https://conquest-api.bits-dvm.org/api/users/logout/', {
             refresh_token: localStorage.getItem("userData")
         })
         localStorage.removeItem("userData");
@@ -24,10 +24,11 @@ export default function WebContextProvider({ children }) {
         onSuccess: response => {
             console.log(response)
             // Send access token
-            axios.post('http://127.0.0.1:8000/api/users/login/google/', {
+            axios.post('https://conquest-api.bits-dvm.org/api/users/login/google/', {
                 access_token: response.access_token
             }).then((res) => {
                 try {
+                    console.log(res)
                     setUser(res.user_profile_obj)
                     localStorage.setItem("userData", JSON.stringify(res))
                 }
@@ -35,7 +36,10 @@ export default function WebContextProvider({ children }) {
                     console.log(err)
                     console.log("User not found")
                 }
-            }).catch(err => console.log(err))
+            }).catch(err => {
+                console.log(err)
+                console.log("User not found or Invalid token")
+            })
         }
     })
 
