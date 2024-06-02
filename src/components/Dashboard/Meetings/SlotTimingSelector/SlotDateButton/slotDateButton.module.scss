@@ -1,0 +1,21 @@
+.container {
+  color: #646464;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-radius: 8px;
+  background: #ffece5;
+  padding: 7px 15px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  &:hover{
+    cursor: pointer;
+  }
+}
