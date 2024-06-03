@@ -2,7 +2,7 @@ import { Input, ConfigProvider } from "antd"
 
 import * as styles from './input.module.scss'
 
-export default function TextInput({ name, heading, changeFn, blurFn, value, error }) {
+export default function TextInput({ name, heading, changeFn, blurFn, value, error, ...props }) {
     return (
         <div className={styles.inputGrp}>
             <label htmlFor={name}>{heading}</label>
@@ -23,6 +23,7 @@ export default function TextInput({ name, heading, changeFn, blurFn, value, erro
                     value={value}
                     status={error ? 'error' : ''}
                     style={error ? { backgroundColor: '#FFE6E6', width: '100%' } : { width: '100%' }}
+                    {...props}
                 />
             </ConfigProvider>
             <span className={styles.errMsg} style={error ? { visibility: 'visible' } : { visibility: 'hidden' }}>*{error}</span>

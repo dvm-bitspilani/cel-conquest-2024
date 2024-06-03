@@ -95,6 +95,29 @@
                 //     font-size: 1em;
                 // }
             }
+
+            .login {
+                width: 80%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                .submitBtn {
+                    border: none;
+                    border-radius: 0.625rem;
+                    background: #FB723D;
+                    display: flex;
+                    width: 354px;
+                    height: 55px;
+                    padding: 12px 24px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    color: white;
+                    font-weight: 600;
+                }
+            }
         }
     }
 

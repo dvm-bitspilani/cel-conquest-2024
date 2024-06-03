@@ -1,11 +1,15 @@
 import { useContext } from 'react';
+import { useFormik } from 'formik';
+
 import { WebContext } from '../../store/website-context';
+import { loginSchemas } from './schemas/loginSchema';
 
 import { Divider } from 'antd';
 
 import GoogleSignOut from '../../components/Login/GoogleSignOut/GoogleSignOut';
 import RegistrationForm from '../../components/Login/RegistrationForm/RegistrationForm';
 import GoogleSignIn from '../../components/GoogleSignIn/GoogleSignIn';
+import TextInput from '../../components/TextInput/TextInput';
 
 import logoImage from '../../assets/loginPageLogo.png'
 
@@ -13,6 +17,18 @@ import * as styles from './login.module.scss'
 
 export default function Login() {
     const { user } = useContext(WebContext);
+
+    const { values, errors, handleBlur, handleSubmit, handleChange } = useFormik({
+        initialValues: {
+            username: '',
+            password: ''
+        },
+        validationSchema: loginSchemas,
+        onSubmit: (values, action) => {
+            console.log(values)
+        },
+        // validateOnChange: false
+    })
     return (
         <main className={styles.container}>
             <GoogleSignOut />
@@ -32,6 +48,26 @@ export default function Login() {
                         <br />
                         Tell us about your startup and yourself through our application form.
                         We're excited to learn more about your venture and you.</p>
+                    <form className={styles.login} onSubmit={handleSubmit}>
+                        <TextInput
+                            name='username'
+                            heading="Username"
+                            changeFn={handleChange}
+                            blurFn={handleBlur}
+                            value={values.username}
+                            error={errors.username}
+                        />
+                        <TextInput
+                            name='password'
+                            heading="Password"
+                            changeFn={handleChange}
+                            blurFn={handleBlur}
+                            value={values.password}
+                            error={errors.password}
+                            type='password'
+                        />
+                        <input type="submit" value="Log In" className={styles.submitBtn} />
+                    </form>
                     <GoogleSignIn />
                 </section>
             </div>
