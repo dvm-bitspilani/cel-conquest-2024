@@ -19,7 +19,11 @@ export default function Login() {
             <img src={logoImage} alt="" className={styles.logo} />
             <div className={styles.loginContainer}>
                 <section className={styles.orangeSection}>
-
+                    <div className={styles.logoContainer}>
+                        <svg width="247" height="247" viewBox="0 0 247 247" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fillRule="evenodd" clipRule="evenodd" d="M123.5 0C55.2926 0 0 55.2928 0 123.5C0 191.707 55.2926 247 123.5 247C191.707 247 247 191.707 247 123.5C247 55.2928 191.707 0 123.5 0ZM225.442 123.5C225.442 125.533 225.383 127.553 225.266 129.556L185.935 69.8837L145.723 141.137L120.326 105.863L80.8188 162.654L62.8289 140.079L34.6589 173.531C26.3177 158.751 21.5581 141.681 21.5581 123.5C21.5581 67.1989 67.1992 21.5581 123.5 21.5581C179.801 21.5581 225.442 67.1989 225.442 123.5Z" fill="#FFB16B" />
+                        </svg>
+                    </div>
                 </section>
                 <section className={styles.whiteSection}>
                     <h1>Conquest Registration Portal</h1>

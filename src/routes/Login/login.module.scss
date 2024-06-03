@@ -69,7 +69,12 @@
             border-radius: 63px 0px 0px 63px;
             color: #FFFFFF;
             @include loginSectionsCommonStyles();
-            justify-content: flex-start;
+            justify-content: flex-end;
+
+            .logoContainer {
+                aspect-ratio: 1 / 1;
+                width: 95%;
+            }
         }
 
         .whiteSection {
