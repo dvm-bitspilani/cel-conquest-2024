@@ -1,3 +1,25 @@
+@mixin scrollHeight($scrollMargin) {
+  margin-top: $scrollMargin;
+  margin-bottom: $scrollMargin;
+}
+
+@mixin scrollbarStyles() {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #fb723d;
+    border-radius: calc(8px / 2);
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: calc(8px / 2);
+    background-color: #eaeaea;
+    @include scrollHeight(2rem);
+  }
+}
+
 .startups {
   padding: 2rem 2.5rem;
   width: 100%;
@@ -10,7 +32,7 @@
     }
   }
   .searchContainer {
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     width: 100%;
     display: flex;
     gap: 5%;
@@ -30,13 +52,17 @@
     font-weight: 500;
     font-size: 20px;
     color: #969696;
-    margin: 1.25rem 0;
+    margin: 1rem 0;
     padding-left: 1rem;
   }
 
   .startupList {
+    max-height: 55vh;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    overflow-y: scroll;
+
+    @include scrollbarStyles();
   }
 }

@@ -8,7 +8,7 @@ const exampleData = [
     id: 1,
     img: "img",
     name: "Startup Name Startup Name",
-    tags: ["tagA", "tagB", "tagC", "tagA", "tagB", "tagC"],
+    tags: ["Climate Tech", "EV", "Fin-Tech", "Climate Tech", "EV", "tagC"],
   },
   {
     id: 2,
@@ -18,6 +18,18 @@ const exampleData = [
   },
   {
     id: 3,
+    img: "img",
+    name: "name3",
+    tags: ["tagA", "tagB", "tagC"],
+  },
+  {
+    id: 4,
+    img: "img",
+    name: "name3",
+    tags: ["tagA", "tagB", "tagC"],
+  },
+  {
+    id: 5,
     img: "img",
     name: "name3",
     tags: ["tagA", "tagB", "tagC"],
@@ -64,12 +76,10 @@ const Startups = () => {
         </div>
       </div>
       <h2>Showing results for {value ? value : ".."}</h2>
-      <div className={styles.listContainer}>
-        <div className={styles.startupList}>
-          {exampleData.map((startup) => (
-            <StartupCard key={startup.id} {...startup} />
-          ))}
-        </div>
+      <div className={styles.startupList}>
+        {exampleData.map((startup) => (
+          <StartupCard key={startup.id} {...startup} />
+        ))}
       </div>
     </div>
   );
