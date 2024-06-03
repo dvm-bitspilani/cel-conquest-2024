@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 2em;
+    gap: 2rem;
 
     @media screen and (max-height: 710px),
     screen and (max-width: 1075px) {
@@ -68,8 +68,10 @@
             background-color: #FB723D;
             border-radius: 63px 0px 0px 63px;
             color: #FFFFFF;
-            @include loginSectionsCommonStyles();
+            display: inline-flex;
+            flex-direction: column;
             justify-content: flex-end;
+            align-items: center;
 
             .logoContainer {
                 aspect-ratio: 1 / 1;
@@ -97,26 +99,31 @@
             }
 
             .login {
-                width: 80%;
+                width: 60%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
 
                 .submitBtn {
+                    aspect-ratio: 354 / 55;
                     border: none;
                     border-radius: 0.625rem;
                     background: #FB723D;
                     display: flex;
-                    width: 354px;
-                    height: 55px;
+                    width: 30%;
                     padding: 12px 24px;
                     justify-content: center;
                     align-items: center;
                     gap: 10px;
                     color: white;
                     font-weight: 600;
+                    cursor: pointer;
                 }
+            }
+
+            .dividerContainer {
+                width: 80%;
             }
         }
     }

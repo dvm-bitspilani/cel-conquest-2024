@@ -120,3 +120,9 @@ h6 {
   background: #FFECE5 !important;
   border-radius: 0 !important;
 }
+
+.ant-divider.ant-divider-horizontal.ant-divider-with-text-center::after,
+.ant-divider.ant-divider-horizontal.ant-divider-with-text-center::before {
+  border-block-start: 1px dashed transparent !important;
+  border-block-start-color: #A0A0A0 !important;
+}

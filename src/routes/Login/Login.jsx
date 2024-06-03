@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import { WebContext } from '../../store/website-context';
 import { loginSchemas } from './schemas/loginSchema';
 
-import { Divider } from 'antd';
+import { Divider, ConfigProvider } from 'antd';
 
 import GoogleSignOut from '../../components/Login/GoogleSignOut/GoogleSignOut';
 import RegistrationForm from '../../components/Login/RegistrationForm/RegistrationForm';
@@ -68,6 +68,17 @@ export default function Login() {
                         />
                         <input type="submit" value="Log In" className={styles.submitBtn} />
                     </form>
+                    <div className={styles.dividerContainer}>
+                        <ConfigProvider
+                            theme={{
+                                token: {
+                                    colorTextHeading: '#A0A0A0'
+                                }
+                            }}
+                        >
+                            <Divider>OR</Divider>
+                        </ConfigProvider>
+                    </div>
                     <GoogleSignIn />
                 </section>
             </div>
