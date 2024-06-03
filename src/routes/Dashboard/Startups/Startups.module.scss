@@ -33,4 +33,10 @@
     margin: 1.25rem 0;
     padding-left: 1rem;
   }
+
+  .startupList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 }

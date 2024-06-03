@@ -1,6 +1,28 @@
 import React, { useState } from "react";
 import { Input, Button } from "antd";
 import * as styles from "./Startups.module.scss";
+import StartupCard from "../../../components/Startups/StartupCard/StartupCard";
+
+const exampleData = [
+  {
+    id: 1,
+    img: "img",
+    name: "Startup Name Startup Name",
+    tags: ["tagA", "tagB", "tagC", "tagA", "tagB", "tagC"],
+  },
+  {
+    id: 2,
+    img: "img",
+    name: "name2",
+    tags: ["tagA", "tagB", "tagC"],
+  },
+  {
+    id: 3,
+    img: "img",
+    name: "name3",
+    tags: ["tagA", "tagB", "tagC"],
+  },
+];
 
 const Startups = () => {
   const [value, setValue] = useState("");
@@ -42,6 +64,13 @@ const Startups = () => {
         </div>
       </div>
       <h2>Showing results for {value ? value : ".."}</h2>
+      <div className={styles.listContainer}>
+        <div className={styles.startupList}>
+          {exampleData.map((startup) => (
+            <StartupCard key={startup.id} {...startup} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
