@@ -8,7 +8,7 @@
 .container {
     width: 100vw;
     min-height: clamp(25rem, calc((1024 - 55 - 55) / 1024 * 100dvh), 1000rem);
-    margin: calc(55 / 1024 * 100dvh) 0px (116 / 1024 * 100dvh) 0px;
+    margin: calc(55 / 1024 * 100dvh) 0px calc(116 / 1024 * 100dvh) 0px;
     display: flex;
     font-size: 1rem;
     flex-direction: column;

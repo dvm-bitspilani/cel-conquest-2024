@@ -5,11 +5,24 @@ import axios from "axios";
 export const WebContext = createContext({
     user: {},
     glogin: () => { },
-    glogout: () => { }
+    glogout: () => { },
+    usernameLogin: () => { }
 });
 
 export default function WebContextProvider({ children }) {
     const [user, setUser] = useState(null);
+
+    const usernameLogin = (credentials) => {
+        axios.post('https://conquest-api.bits-dvm.org/api/users/login/username/', credentials)
+            .then((res) => {
+                console.log("In context")
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log("In context err")
+                console.log(err)
+            })
+    }
 
     const glogout = () => {
         const refresh_token = JSON.parse(localStorage.getItem("userData")).tokens.refresh
@@ -57,7 +70,8 @@ export default function WebContextProvider({ children }) {
     const ctxValue = {
         user,
         glogin,
-        glogout
+        glogout,
+        usernameLogin
     };
 
     return (

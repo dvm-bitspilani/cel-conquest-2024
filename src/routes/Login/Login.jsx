@@ -15,7 +15,7 @@ import logoImage from '../../assets/loginPageLogo.png'
 import * as styles from './login.module.scss'
 
 export default function Login() {
-    const { user } = useContext(WebContext);
+    const { user, usernameLogin } = useContext(WebContext);
 
     const { values, errors, handleBlur, handleSubmit, handleChange } = useFormik({
         initialValues: {
@@ -24,7 +24,9 @@ export default function Login() {
         },
         validationSchema: loginSchemas,
         onSubmit: (values, action) => {
+            console.log("In login.jsx")
             console.log(values)
+            usernameLogin(values)
         },
         // validateOnChange: false
     })
