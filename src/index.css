@@ -111,6 +111,7 @@ h6 {
 
 .ant-dropdown-menu-item {
   border-left: 2px solid white !important;
+  font-weight: 600 !important;
 }
 
 .ant-dropdown-menu-item:hover {
@@ -118,4 +119,14 @@ h6 {
   color: #FB723D !important;
   background: #FFECE5 !important;
   border-radius: 0 !important;
+}
+
+.ant-divider.ant-divider-horizontal.ant-divider-with-text-center::after,
+.ant-divider.ant-divider-horizontal.ant-divider-with-text-center::before {
+  border-block-start: 1px dashed transparent !important;
+  border-block-start-color: #A0A0A0 !important;
+}
+
+.ant-divider {
+  margin: 0 !important;
 }
