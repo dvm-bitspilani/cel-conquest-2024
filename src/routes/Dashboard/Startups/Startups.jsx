@@ -1,5 +1,5 @@
 import React from "react";
-import { Input } from "antd";
+import { Input, Button } from "antd";
 import * as styles from "./Startups.module.scss";
 
 const Startups = () => {
@@ -33,9 +33,11 @@ const Startups = () => {
           ></Input>
         </div>
         <div className={styles.filter}>
-          <button>Filter</button>
+          <Button>Filter</Button>
         </div>
-        <div className={styles.tags}></div>
+        <div className={styles.tags}>
+          <Button>Tags</Button>
+        </div>
       </div>
     </div>
   );
