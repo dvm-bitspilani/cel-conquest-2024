@@ -126,3 +126,7 @@ h6 {
   border-block-start: 1px dashed transparent !important;
   border-block-start-color: #A0A0A0 !important;
 }
+
+.ant-divider {
+  margin: 0 !important;
+}

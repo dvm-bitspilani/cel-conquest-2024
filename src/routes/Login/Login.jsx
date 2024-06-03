@@ -7,7 +7,6 @@ import { loginSchemas } from './schemas/loginSchema';
 import { Divider, ConfigProvider } from 'antd';
 
 import GoogleSignOut from '../../components/Login/GoogleSignOut/GoogleSignOut';
-import RegistrationForm from '../../components/Login/RegistrationForm/RegistrationForm';
 import GoogleSignIn from '../../components/GoogleSignIn/GoogleSignIn';
 import TextInput from '../../components/TextInput/TextInput';
 
@@ -43,11 +42,7 @@ export default function Login() {
                 </section>
                 <section className={styles.whiteSection}>
                     <h1>Conquest Registration Portal</h1>
-                    <p>Elevate your startup's growth with our tailored program. Gain access to valuable resource pools, mentorship from CXOs, and fundraising opportunities.
-                        <br />
-                        <br />
-                        Tell us about your startup and yourself through our application form.
-                        We're excited to learn more about your venture and you.</p>
+                    <p>Elevate your startup's growth with our tailored program. Gain access to valuable resource pools, mentorship from CXOs, and fundraising opportunities.</p>
                     <form className={styles.login} onSubmit={handleSubmit}>
                         <TextInput
                             name='username'
