@@ -17,7 +17,8 @@
     gap: 1rem;
     padding: 0 0.5rem;
 
-    @media screen and (max-width: 755px) {
+    @media screen and (max-width: 765px),
+    screen and (max-height: 600px) {
         font-size: 1rem;
         gap: 0.5rem;
     }
