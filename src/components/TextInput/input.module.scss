@@ -1,12 +1,26 @@
 .inputGrp {
+    width: 100%;
+
     label {
         font-weight: 500;
-        font-size: 20px;
+        font-size: 1.25em;
     }
 
     .errMsg {
         font-weight: 400;
-        font-size: 12px;
+        font-size: 0.75em;
         color: #EB0E00;
+    }
+
+    .inputField {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .invalidInpIcon {
+            aspect-ratio: 1 / 1;
+            width: 1.3rem;
+        }
     }
 }
