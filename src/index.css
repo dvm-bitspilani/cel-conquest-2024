@@ -111,6 +111,7 @@ h6 {
 
 .ant-dropdown-menu-item {
   border-left: 2px solid white !important;
+  font-weight: 600 !important;
 }
 
 .ant-dropdown-menu-item:hover {
