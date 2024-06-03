@@ -15,14 +15,23 @@ export default function StartupCard({ img, name, tags }) {
       </div>
       <div className={styles.cardSecondary}>
         <div className={styles.tagContainer}>
-          {tags.length < 7 ? (
+          {tags.length < 6 ? (
             tags.map((tag, index) => (
               <div key={index} className={styles.cardTag}>
                 <p>{tag}</p>
               </div>
             ))
           ) : (
-            <div />
+            <>
+              {tags.slice(0, 5).map((tag, index) => (
+                <div key={index} className={styles.cardTag}>
+                  <p>{tag}</p>
+                </div>
+              ))}
+              <div className={styles.moreTag}>
+                <p>View More</p>
+              </div>
+            </>
           )}
         </div>
       </div>
