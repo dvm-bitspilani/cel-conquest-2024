@@ -7,7 +7,8 @@
 
 .container {
     width: 100vw;
-    height: 100dvh;
+    height: clamp(25rem, calc(853 / 1024 * 100dvh), 100rem);
+    margin: calc(55 / 1024 * 100dvh) 0px (116 / 1024 * 100dvh) 0px;
     display: flex;
     font-size: 16px;
     flex-direction: column;
@@ -29,12 +30,12 @@
         width: clamp(12.5em, 50vw, 23.563em);
         display: inline;
         object-fit: contain;
-        margin-top: clamp(1em, 5dvh, 2em);
+        // margin-top: clamp(1em, 5dvh, 2em);
     }
 
     .loginContainer {
-        width: clamp(20em, 80vw, 78.875em);
-        height: clamp(20em, 100%, 45.125em);
+        width: clamp(20rem, 80vw, 62rem);
+        height: 100%;
         filter: drop-shadow(0px 6px 10.5px rgba(0, 0, 0, 0.15));
         font-family: "Montserrat";
         display: flex;
@@ -63,7 +64,7 @@
         }
 
         .orangeSection {
-            width: 40%;
+            width: calc(261 / 1144 * 100%);
             background-color: #FB723D;
             border-radius: 63px 0px 0px 63px;
             color: #FFFFFF;
@@ -72,7 +73,7 @@
         }
 
         .whiteSection {
-            width: 60%;
+            width: calc(883 / 1144 * 100%);
             background-color: #FEFAF9;
             border-radius: 0px 63px 63px 0px;
             @include loginSectionsCommonStyles();
