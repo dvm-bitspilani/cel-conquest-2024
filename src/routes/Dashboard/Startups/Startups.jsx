@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Input, Button } from "antd";
 import * as styles from "./Startups.module.scss";
 
 const Startups = () => {
+  const [value, setValue] = useState("");
   return (
     <div className={styles.startups}>
       <div className={styles.heading}>
@@ -13,6 +14,7 @@ const Startups = () => {
           <Input
             className={styles.searchBarInput}
             placeholder="Placeholder Text..."
+            onChange={(e) => setValue(e.target.value)}
             prefix={
               <svg
                 style={{ margin: "0.5rem" }}
@@ -39,6 +41,7 @@ const Startups = () => {
           <Button>Tags</Button>
         </div>
       </div>
+      <h2>Showing results for {value ? value : ".."}</h2>
     </div>
   );
 };
