@@ -16,6 +16,7 @@ import * as styles from './login.module.scss'
 
 export default function Login() {
     const { user, usernameLogin } = useContext(WebContext);
+    console.log(user)
 
     const { values, errors, handleBlur, handleSubmit, handleChange } = useFormik({
         initialValues: {

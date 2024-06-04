@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 
+import RequireAuth from "./routes/RequireAuth/RequireAuth";
+
 import Login from "./routes/Login/Login";
 import LandingPage from "./routes/Landing/LandingPage";
 import ErrorPage from "./routes/ErrorPage/ErrorPage";
@@ -35,9 +37,11 @@ function App() {
           errorElement={<ErrorPage />}
         />
         <Route path="login" element={<Login />} />
-        <Route path="dashboard" element={<Dashboard />}>
-          <Route index element={<Home />}></Route>
-          <Route path="meetings" element={<Meetings />}></Route>
+        <Route element={<RequireAuth />}>
+          <Route path="dashboard" element={<Dashboard />}>
+            <Route index element={<Home />}></Route>
+            <Route path="meetings" element={<Meetings />}></Route>
+          </Route>
         </Route>
       </Routes>
     </WebContextProvider>

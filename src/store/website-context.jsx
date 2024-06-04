@@ -4,9 +4,11 @@ import axios from "axios";
 
 export const WebContext = createContext({
     user: {},
+    setUser: () => { },
     glogin: () => { },
     glogout: () => { },
-    usernameLogin: () => { }
+    usernameLogin: () => { },
+    getUserData: () => { }
 });
 
 export default function WebContextProvider({ children }) {
@@ -62,6 +64,13 @@ export default function WebContextProvider({ children }) {
         }
     })
 
+    const getUserData = () => {
+        if (localStorage.getItem("userData")) {
+            return JSON.parse(localStorage.getItem("userData")).user_profile_obj
+        }
+        return null;
+    }
+
     useEffect(() => {
         const userData = localStorage.getItem("userData");
         setUser(JSON.parse(userData))
@@ -69,9 +78,11 @@ export default function WebContextProvider({ children }) {
 
     const ctxValue = {
         user,
+        setUser,
         glogin,
         glogout,
-        usernameLogin
+        usernameLogin,
+        getUserData
     };
 
     return (
