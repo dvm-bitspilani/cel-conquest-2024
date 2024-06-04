@@ -8,13 +8,13 @@
 .container {
     width: 100vw;
     min-height: clamp(25rem, calc((1024 - 55 - 55) / 1024 * 100dvh), 1000rem);
-    margin: calc(55 / 1024 * 100dvh) 0px calc(116 / 1024 * 100dvh) 0px;
+    margin: calc(40 / 1024 * 100dvh) 0px 20px 0px;
     display: flex;
     font-size: 1rem;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 0.5;
+    gap: 0.5rem;
     position: relative;
 
     @media screen and (max-height: 545px) {
@@ -47,7 +47,7 @@
 
     .loginContainer {
         width: clamp(20rem, 80vw, 62rem);
-        height: clamp(1.6578rem, 90%, 39rem);
+        height: clamp(50dvh, 90%, 100dvh);
         position: absolute;
         bottom: 0;
         filter: drop-shadow(0px 6px 10.5px rgba(0, 0, 0, 0.15));
