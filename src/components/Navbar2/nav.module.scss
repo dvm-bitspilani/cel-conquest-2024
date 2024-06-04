@@ -16,7 +16,6 @@
     padding: 0;
     margin: 0;
     justify-content: space-between;
-    align-items: flex-end;
     text-align: center;
     width: 35%;
     gap: 1rem;
@@ -37,21 +36,12 @@
         font-weight: 500;
         position: relative;
 
-        .space {
-          display: flex;
-          gap: 0.25rem;
-          height: 100%;
-          align-items: flex-end;
+        svg {
+          aspect-ratio: 10 / 6;
+          width: 0.75rem;
 
-          svg {
-            aspect-ratio: 10 / 6;
-            width: 0.75rem;
-            // align-self: center;
-            transform: translateY(-50%);
-
-            @media screen and (max-width: 840px) {
-              width: 0.5rem;
-            }
+          @media screen and (max-width: 840px) {
+            width: 0.5rem;
           }
         }
 
@@ -61,7 +51,7 @@
           height: 2px;
           background: #fb723d;
           position: absolute;
-          left: 0;
+          left: 0 !important;
           bottom: -2px;
           transition: width 100ms linear;
         }

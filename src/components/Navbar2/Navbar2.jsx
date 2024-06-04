@@ -1,4 +1,4 @@
-import { Dropdown, Drawer, ConfigProvider } from 'antd';
+import { Dropdown, Drawer, ConfigProvider, Space } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
 
@@ -77,12 +77,12 @@ export default function Navbar2() {
                             }
                             className={styles.mainLink}
                         >
-                            <div className={styles.space}>
+                            <Space size={2}>
                                 Network
                                 <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 1L5 5L9 1" stroke="#111213" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
-                            </div>
+                            </Space>
                         </a>
                     </Dropdown>
                 </li>
@@ -128,12 +128,12 @@ export default function Navbar2() {
                             }
                             className={styles.mainLink}
                         >
-                            <div className={styles.space}>
+                            <Space>
                                 About Us
                                 <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 1L5 5L9 1" stroke="#111213" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
-                            </div>
+                            </Space>
                         </a>
                     </Dropdown>
                 </li>
