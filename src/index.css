@@ -132,3 +132,21 @@ h6 {
 .ant-divider {
   margin: 0 !important;
 }
+
+.ant-menu-light {
+  border-inline-end: none !important;
+}
+
+.ant-menu-submenu-open .ant-menu-submenu-title {
+  background-color: #FFECE5 !important;
+  outline: 0.75px solid #FB723D;
+}
+
+.ant-menu.ant-menu-sub.ant-menu-inline {
+  border-radius: 4px;
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.12);
+}
+
+.ant-menu.ant-menu-sub.ant-menu-inline .ant-menu-item.ant-menu-item-only-child {
+  padding: 0 1rem !important;
+}
