@@ -25,8 +25,8 @@ export default function Login() {
         },
         validationSchema: loginSchemas,
         onSubmit: (values, action) => {
-            console.log("In login.jsx")
-            console.log(values)
+            // console.log("In login.jsx")
+            // console.log(values)
             usernameLogin(values)
         },
         // validateOnChange: false
@@ -44,7 +44,7 @@ export default function Login() {
                     </div>
                 </section>
                 <section className={styles.whiteSection}>
-                    <h1>Conquest Registration Portal</h1>
+                    <h1>Conquest Login Portal</h1>
                     <p>Elevate your startup's growth with our tailored program. Gain access to valuable resource pools, mentorship from CXOs, and fundraising opportunities.</p>
                     <form className={styles.login} onSubmit={handleSubmit}>
                         <TextInput
@@ -64,7 +64,8 @@ export default function Login() {
                             error={errors.password}
                             type='password'
                         />
-                        <input type="submit" value="Log In" className={styles.submitBtn} />
+                        {/* <input type="submit" value="Log In" className={styles.submitBtn} /> */}
+                        <button className={styles.submitBtn}>Log In</button>
                     </form>
                     <div className={styles.dividerContainer}>
                         <ConfigProvider

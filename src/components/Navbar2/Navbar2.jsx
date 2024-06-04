@@ -77,7 +77,7 @@ export default function Navbar2() {
                             }
                             className={styles.mainLink}
                         >
-                            <Space size={2}>
+                            <Space size={3}>
                                 Network
                                 <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 1L5 5L9 1" stroke="#111213" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -128,7 +128,7 @@ export default function Navbar2() {
                             }
                             className={styles.mainLink}
                         >
-                            <Space>
+                            <Space size={3}>
                                 About Us
                                 <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 1L5 5L9 1" stroke="#111213" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

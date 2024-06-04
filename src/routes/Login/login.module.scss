@@ -47,7 +47,7 @@
 
     .loginContainer {
         width: clamp(20rem, 80vw, 62rem);
-        height: clamp(1.6578rem, 90%, 45rem);
+        height: clamp(50dvh, 90%, 100dvh);
         position: absolute;
         bottom: 0;
         filter: drop-shadow(0px 6px 10.5px rgba(0, 0, 0, 0.15));
