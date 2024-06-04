@@ -63,7 +63,8 @@ export default function Login() {
                             error={errors.password}
                             type='password'
                         />
-                        <input type="submit" value="Log In" className={styles.submitBtn} />
+                        {/* <input type="submit" value="Log In" className={styles.submitBtn} /> */}
+                        <button className={styles.submitBtn}>Log In</button>
                     </form>
                     <div className={styles.dividerContainer}>
                         <ConfigProvider
