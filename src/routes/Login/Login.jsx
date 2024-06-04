@@ -24,8 +24,8 @@ export default function Login() {
         },
         validationSchema: loginSchemas,
         onSubmit: (values, action) => {
-            console.log("In login.jsx")
-            console.log(values)
+            // console.log("In login.jsx")
+            // console.log(values)
             usernameLogin(values)
         },
         // validateOnChange: false
