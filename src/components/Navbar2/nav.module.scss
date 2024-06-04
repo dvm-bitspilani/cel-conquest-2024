@@ -6,7 +6,7 @@
   width: 98vw;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 70px;
+  padding: 0 clamp(10px, 2%, 70px);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,8 +16,18 @@
     padding: 0;
     margin: 0;
     justify-content: space-between;
+    align-items: flex-end;
+    text-align: center;
     width: 35%;
     gap: 1rem;
+
+    @media screen and (max-width: 900px) {
+      width: 37%;
+    }
+
+    @media screen and (max-width: 820px) {
+      display: none;
+    }
 
     li {
       list-style: none;
@@ -26,6 +36,24 @@
         cursor: pointer;
         font-weight: 500;
         position: relative;
+
+        .space {
+          display: flex;
+          gap: 0.25rem;
+          height: 100%;
+          align-items: flex-end;
+
+          svg {
+            aspect-ratio: 10 / 6;
+            width: 0.75rem;
+            // align-self: center;
+            transform: translateY(-50%);
+
+            @media screen and (max-width: 840px) {
+              width: 0.5rem;
+            }
+          }
+        }
 
         &::after {
           content: "";
@@ -42,11 +70,11 @@
           width: 44%;
         }
 
-        @media screen and (max-width: 1200px) {
+        @media screen and (max-width: 1285px) {
           font-size: 12px;
         }
 
-        @media screen and (max-width: 960px) {
+        @media screen and (max-width: 1026px) {
           font-size: 10px;
         }
       }
@@ -73,5 +101,62 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media screen and (max-width: 820px) {
+      display: none;
+    }
+  }
+
+  .hamMenu {
+    display: none;
+
+    .hamIcon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+
+      .line {
+        width: 18px;
+        height: 2px;
+        background-color: black;
+        border-radius: 10px;
+      }
+    }
+
+    @media screen and (max-width: 820px) {
+      display: block;
+      // width: 10px;
+      height: 12px;
+      // background-color: black;
+    }
+  }
+
+  @media screen and (max-width: 820px) {
+    justify-content: flex-end;
+    padding: 0 clamp(10px, 5%, 70px);
+  }
+}
+
+.cross {
+  display: flex;
+  width: 100%;
+  position: relative;
+  justify-content: flex-end;
+
+  .line {
+    width: 18px;
+    height: 2px;
+    background-color: black;
+    border-radius: 10px;
+    position: absolute;
+
+    &:first-of-type {
+      transform: rotateZ(45deg);
+    }
+
+    &:last-of-type {
+      transform: rotateZ(-45deg);
+    }
   }
 }

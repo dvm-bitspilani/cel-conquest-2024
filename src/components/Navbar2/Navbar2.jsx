@@ -1,12 +1,20 @@
-import { Dropdown, Space } from 'antd';
+import gsap from 'gsap';
+
+import { Dropdown, Drawer, ConfigProvider } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 import * as styles from './nav.module.scss';
 
 import logo from "../../assets/images/Navbar/conquest-logo.png";
+import { useRef, useState } from 'react';
 
 export default function Navbar2() {
+    const [isHamOpen, setIsHamOpen] = useState(false)
+
+    const hamMenuIcon = useRef(null)
+
     const navigate = useNavigate()
+
     const items = [
         {
             label: 'Sponsors',
@@ -25,6 +33,7 @@ export default function Navbar2() {
             key: '/mentors',
         },
     ];
+
     const items2 = [
         {
             label: 'Team',
@@ -35,9 +44,19 @@ export default function Navbar2() {
             key: '/faq',
         }
     ];
+
     const onClick = ({ key }) => {
         navigate(key)
     };
+
+    function hamOpenHandler() {
+        setIsHamOpen(true)
+    }
+
+    function hamCloseHandler() {
+        setIsHamOpen(false)
+    }
+
     return (
         <nav className={styles.navbar}>
             <ul className={styles.navLinks}>
@@ -58,12 +77,12 @@ export default function Navbar2() {
                             }
                             className={styles.mainLink}
                         >
-                            <Space size={2}>
+                            <div className={styles.space}>
                                 Network
-                                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 1L5 5L9 1" stroke="#111213" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
-                            </Space>
+                            </div>
                         </a>
                     </Dropdown>
                 </li>
@@ -109,18 +128,38 @@ export default function Navbar2() {
                             }
                             className={styles.mainLink}
                         >
-                            <Space>
+                            <div className={styles.space}>
                                 About Us
-                                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 1L5 5L9 1" stroke="#111213" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
-                            </Space>
+                            </div>
                         </a>
                     </Dropdown>
                 </li>
             </ul>
             <img src={logo} className={styles.logo} />
             <div className={styles.register} onClick={() => navigate('/login')}>Register</div>
+            <section className={styles.hamMenu}>
+                <div className={styles.hamIcon} ref={hamMenuIcon} onClick={hamOpenHandler}>
+                    <div className={styles.line}></div>
+                    <div className={styles.line}></div>
+                    <div className={styles.line}></div>
+                </div>
+                <ConfigProvider>
+                    <Drawer
+                        placement='right'
+                        open={isHamOpen}
+                        onClose={hamCloseHandler}
+                        closable={false}
+                    >
+                        <div className={styles.cross} onClick={hamCloseHandler}>
+                            <div className={styles.line}></div>
+                            <div className={styles.line}></div>
+                        </div>
+                    </Drawer>
+                </ConfigProvider>
+            </section>
         </nav>
     )
 }
