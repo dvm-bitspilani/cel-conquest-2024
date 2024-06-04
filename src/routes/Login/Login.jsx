@@ -43,7 +43,7 @@ export default function Login() {
                     </div>
                 </section>
                 <section className={styles.whiteSection}>
-                    <h1>Conquest Registration Portal</h1>
+                    <h1>Conquest Login Portal</h1>
                     <p>Elevate your startup's growth with our tailored program. Gain access to valuable resource pools, mentorship from CXOs, and fundraising opportunities.</p>
                     <form className={styles.login} onSubmit={handleSubmit}>
                         <TextInput
