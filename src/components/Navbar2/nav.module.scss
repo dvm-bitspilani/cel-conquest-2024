@@ -6,7 +6,7 @@
   width: 98vw;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 clamp(10px, 2%, 70px);
+  padding: 0 clamp(10px, 4%, 70px);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,12 +60,16 @@
           width: 44%;
         }
 
-        @media screen and (max-width: 1285px) {
+        @media screen and (max-width: 1320px) {
           font-size: 12px;
         }
 
-        @media screen and (max-width: 1026px) {
+        @media screen and (max-width: 1055px) {
           font-size: 10px;
+        }
+
+        @media screen and (max-width: 873px) {
+          font-size: 8px;
         }
       }
     }
