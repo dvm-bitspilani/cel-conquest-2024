@@ -1,12 +1,12 @@
-import gsap from 'gsap';
-
 import { Dropdown, Drawer, ConfigProvider } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { useRef, useState } from 'react';
 
 import * as styles from './nav.module.scss';
 
 import logo from "../../assets/images/Navbar/conquest-logo.png";
-import { useRef, useState } from 'react';
+
+import HamMenu from './HamMenu/HamMenu';
 
 export default function Navbar2() {
     const [isHamOpen, setIsHamOpen] = useState(false)
@@ -157,6 +157,7 @@ export default function Navbar2() {
                             <div className={styles.line}></div>
                             <div className={styles.line}></div>
                         </div>
+                        <HamMenu />
                     </Drawer>
                 </ConfigProvider>
             </section>
