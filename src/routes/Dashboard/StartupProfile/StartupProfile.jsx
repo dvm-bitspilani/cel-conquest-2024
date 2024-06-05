@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "antd";
 import * as styles from "./StartupProfile.module.scss";
 import StartupProfileHeader from "../../../components/Startups/StartupProfileHeader/StartupProfileHeader";
 import logo from "../../../assets/images/Dashboard/demoAvatar.jpeg";

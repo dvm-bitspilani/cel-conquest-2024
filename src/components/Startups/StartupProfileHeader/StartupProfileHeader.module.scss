@@ -1,75 +1,128 @@
 .container {
-    display: flex;
+    width: 77vw;
     height: 85vh;
-}
-
-.contentContainer {
-    display: flex;
-    height: 100%;
-    // background-color: lightblue;
-    width: 56vw;
-}
-
-.logoContainer {
-    position: relative;
-    top: -40px;
-    height: 187px;
-    width: 187px;
-    background-color: white;
-    border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: center;
 
-    img {
-        height: 163px;
-        width: 163px;
-        object-fit: cover;
-        border-radius: 50%;
+    .profile {
+        width: 70%;
+        height: 100%;
+
+        .contentContainer {
+            display: grid;
+            grid-template-columns: 187px 1fr;
+
+            .logoContainer {
+                position: relative;
+                top: -40px;
+                height: 187px;
+                width: 187px;
+                background-color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                div {
+                    height: 163px;
+                    width: 163px;
+                    border-radius: 50%;
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
+                }
+            }
+
+            .headerContainer {
+                display: flex;
+                gap: 7px;
+                flex-direction: column;
+                margin: 15px 0 0 5px;
+
+                .name {
+                    color: #000;
+                    font-family: Montserrat;
+                    font-size: 28px;
+                    font-weight: 700;
+                }
+
+                .desc {
+                    color: #4C4C4C;
+                    font-family: Montserrat;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+
+                .location {
+                    color: #4C4C4C;
+                    font-family: Montserrat;
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+            }
+        }
     }
-}
 
-.headerContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    top: 15px;
-    left: 10px;
-    gap: 10px;
-    height: auto;
-    max-height: 115px;
-    
+    .contact {
+        width: 30%;
+        height: 100%;
+        overflow: hidden;
 
-    .name {
-        color: #000;
-        font-family: Montserrat;
-        font-size: 28px;
-        font-weight: 700;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 30%;
+            width: 0;
+            height: 65%;
+            border-left: #A0A0A0 dashed 1px;
+        }
+
+        .buttonContainer {
+            display: inline-flex;
+            position: relative;
+            gap: 14px;
+            top: 15px;
+            left: 14%;
+            z-index: 2;
+
+            .btn {
+                border-radius: 10px;
+                border: 1px solid #000;
+                background: #FFF;
+                color: #000;
+                font-family: Montserrat;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                padding: 11px 18px;
+                filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+                cursor: pointer;
+            }
+
+            .schedule {
+                border-radius: 10px;
+                background: #FB723D;
+                border: none;
+                color: #FFF;
+                font-weight: 600;
+                line-height: 18px;
+            }
+
+            .dropdown {
+                position: relative;
+
+                .dots {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate3d(-50%, -50%, 0);
+                }
+            }
+        }
     }
-
-    .desc {
-        color: #4C4C4C;
-        font-family: Montserrat;
-        font-size: 16px;
-        font-weight: 500;
-    }
-
-    .location {
-        color: #4C4C4C;
-        font-family: Montserrat;
-        font-size: 16px;
-        font-weight: 700;
-    }
-}
-
-.divider{
-    border-left: dashed #a0a0a0 1px;
-    height: 70%;
-    position: relative;
-    top: 20%;
-}
-
-.contactContainer{
-    width: 21vw;
 }
