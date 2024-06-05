@@ -41,9 +41,22 @@
         border-radius: 23.5px;
         box-shadow: 0px 1px 5.3px 0px #0000001f;
         height: 3.5rem;
-        width: 37.5625rem;
+        width: 41vw;
         font-weight: 500;
         font-size: 17px;
+      }
+    }
+    .filter,
+    .tags {
+      width: 20%;
+      button {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 23.5px;
+        gap: 1rem;
+        width: 100%;
       }
     }
   }
