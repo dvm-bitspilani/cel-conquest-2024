@@ -1,8 +1,75 @@
-.logoContainer{
+.container {
+    display: flex;
+    height: 85vh;
+}
+
+.contentContainer {
+    display: flex;
+    height: 100%;
+    // background-color: lightblue;
+    width: 56vw;
+}
+
+.logoContainer {
     position: relative;
     top: -40px;
     height: 187px;
     width: 187px;
     background-color: white;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        height: 163px;
+        width: 163px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+}
+
+.headerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    top: 15px;
+    left: 10px;
+    gap: 10px;
+    height: auto;
+    max-height: 115px;
+    
+
+    .name {
+        color: #000;
+        font-family: Montserrat;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .desc {
+        color: #4C4C4C;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .location {
+        color: #4C4C4C;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 700;
+    }
+}
+
+.divider{
+    border-left: dashed #a0a0a0 1px;
+    height: 70%;
+    position: relative;
+    top: 20%;
+}
+
+.contactContainer{
+    width: 21vw;
 }
