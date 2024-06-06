@@ -7,96 +7,155 @@
 
 .container {
     width: 100vw;
-    height: 100dvh;
+    min-height: clamp(25rem, calc((1024 - 55 - 55) / 1024 * 100dvh), 1000rem);
+    margin: calc(40 / 1024 * 100dvh) 0px 20px 0px;
     display: flex;
-    font-size: 16px;
+    font-size: 1rem;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 2em;
+    gap: 0.5rem;
+    position: relative;
 
-    @media screen and (max-height: 710px),
-    screen and (max-width: 1075px) {
-        font-size: 12px;
+    @media screen and (max-height: 545px) {
+        min-height: clamp(25rem, 120dvh, 1000rem);
     }
 
-    @media screen and (max-height: 530px) {
-        font-size: 10px;
+    @media screen and (max-height: 450px) {
+        min-height: clamp(25rem, 150dvh, 1000rem);
     }
+
+    // @media screen and (max-height: 710px),
+    // screen and (max-width: 1075px) {
+    //     font-size: 12px;
+    // }
+
+    // @media screen and (max-height: 530px) {
+    //     font-size: 10px;
+    // }
 
     .logo {
         aspect-ratio: 377 / 50 !important;
-        width: clamp(12.5em, 50vw, 23.563em);
+        // width: clamp(12.5rem, 50vw, 23.563rem);
+        height: clamp(1.6578rem, 8%, 3.125rem);
         display: inline;
         object-fit: contain;
-        margin-top: clamp(1em, 5dvh, 2em);
+        position: absolute;
+        top: 0;
+        // margin-top: clamp(1rem, 5dvh, 2rem);
     }
 
     .loginContainer {
-        width: clamp(20em, 80vw, 78.875em);
-        height: clamp(20em, 100%, 45.125em);
+        width: clamp(20rem, 80vw, 62rem);
+        height: clamp(50dvh, 90%, 100dvh);
+        position: absolute;
+        bottom: 0;
         filter: drop-shadow(0px 6px 10.5px rgba(0, 0, 0, 0.15));
         font-family: "Montserrat";
         display: flex;
 
-        @media screen and (max-width: 800px) {
-            width: clamp(20em, 95vw, 78.875em);
+        // @media screen and (max-width: 800px) {
+        //     width: clamp(20rem, 95vw, 78.875rem);
+        // }
+
+        .orangeSection {
+            width: calc(261 / 1144 * 100%);
+            background-color: #FB723D;
+            border-radius: 63px 0px 0px 63px;
+            color: #FFFFFF;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+
+            .logoContainer {
+                aspect-ratio: 1 / 1;
+                width: 95%;
+            }
         }
 
-        @mixin loginSectionsCommonStyles {
+        .whiteSection {
+            width: calc(883 / 1144 * 100%);
+            background-color: #FEFAF9;
+            border-radius: 0px 63px 63px 0px;
             display: inline-flex;
-            height: 100%;
+            // height: 100%;
             justify-content: space-between;
             align-items: center;
             flex-direction: column;
 
             h1 {
-                font-size: 2.5em;
+                font-size: 2.5rem;
                 width: 90%;
                 text-align: center;
-                margin-top: 6%;
+                // margin-top: 6%;
+                margin-top: 4%;
+                font-weight: 600;
 
                 @media screen and (max-width: 1075px) {
-                    font-size: 2em;
+                    font-size: 2rem;
                 }
             }
-        }
-
-        .orangeSection {
-            width: 40%;
-            background-color: #FB723D;
-            border-radius: 63px 0px 0px 63px;
-            color: #FFFFFF;
-            @include loginSectionsCommonStyles();
-            justify-content: flex-start;
-        }
-
-        .whiteSection {
-            width: 60%;
-            background-color: #FEFAF9;
-            border-radius: 0px 63px 63px 0px;
-            @include loginSectionsCommonStyles();
 
             button {
-                margin-bottom: 6%;
+                margin-bottom: 4%;
             }
 
             p {
                 width: 80%;
-                font-size: 1.405em;
+                font-size: 1.405rem;
+                font-weight: 400;
+                text-align: center;
+                color: #606060;
 
-                // @media screen and (max-width: 1000px) {
-                //     font-size: 1em;
-                // }
+                @media screen and (max-width: 765px),
+                screen and (max-height: 600px) {
+                    font-size: 1.125rem;
+                }
+            }
+
+            .login {
+                width: 60%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+
+                .submitBtn {
+                    aspect-ratio: 354 / 55;
+                    border: none;
+                    border-radius: 0.625rem;
+                    background: #FB723D;
+                    display: flex;
+                    width: 30%;
+                    padding: 0.75rem 1.5rem;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0.625rem;
+                    color: white;
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+
+                @media screen and (max-width: 765px),
+                screen and (max-height: 600px) {
+                    font-size: 0.75rem;
+                    gap: 0.5rem;
+                }
+            }
+
+            .dividerContainer {
+                width: 80%;
             }
         }
     }
 
     .countdownContainer {
-        font-size: 1.75em;
+        font-size: 1.75rem;
         font-family: "Montserrat";
         font-weight: 400;
-        margin-bottom: clamp(1em, 5dvh, 2em);
+        margin-bottom: clamp(1rem, 5dvh, 2rem);
 
         .countdown {
             display: inline;
