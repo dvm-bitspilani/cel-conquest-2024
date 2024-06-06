@@ -11,8 +11,7 @@ const FooterBody = () => {
           </div>
           <div className={styles.subscribe}>
             <svg
-              width="24"
-              height="24"
+              className={styles.mailIcon}
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +31,7 @@ const FooterBody = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            <input type="text" placeholder="Enter your email" />
+            <input type="text" placeholder="Enter your email" className={styles.emailInp} />
             <div className={styles.subscribeButton}>Subscribe</div>
           </div>
           <div className={styles.contactUs}>

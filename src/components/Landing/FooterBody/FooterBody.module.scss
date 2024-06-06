@@ -78,21 +78,32 @@
       justify-content: center;
       align-items: center;
       border-radius: 10px;
-      gap: 10px;
       background-color: #fff;
+      gap: 0.5rem;
+      // padding: 8px 8px 8px 24px;
       padding: 8px 8px 8px 24px;
       margin-top: 2rem;
 
-      @media screen and (max-width: 850px) {
-        margin-top: 0;
-        font-size: 12px;
+      .mailIcon {
+        aspect-ratio: 1 / 1;
+        min-width: 1.5rem;
+        max-width: 1.5rem;
+
+        @media screen and (max-width: 750px) {
+          min-width: 1rem;
+          max-width: 1rem;
+        }
       }
 
-      input {
+      .emailInp {
         border: none;
         outline: none;
         font-weight: 600;
         color: #a0a0a0;
+
+        @media screen and (max-width: 850px) {
+          width: 50%;
+        }
       }
 
       .subscribeButton {
@@ -102,6 +113,17 @@
         color: #fff;
         font-weight: 600;
         cursor: pointer;
+        text-overflow: ellipsis;
+      }
+
+      @media screen and (max-width: 850px) {
+        margin-top: 0;
+        width: 60%;
+      }
+
+      @media screen and (max-width: 750px) {
+        font-size: 15px;
+        padding: 3px 3px 3px 15px;
       }
     }
 
