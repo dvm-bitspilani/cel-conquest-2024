@@ -7,7 +7,6 @@ import * as styles from "./LandingPage.module.scss";
 import Footer from "../../components/Landing/FooterBody/Footer";
 
 import nasscom from "../../assets/images/Landing Page/nasscom_logo.svg.png";
-import Navbar from "../../components/Navbar/Navbar";
 import Navbar2 from "../../components/Navbar2/Navbar2";
 
 import { heroSectionCardsData, timelineData } from "./data/landingPageData";
