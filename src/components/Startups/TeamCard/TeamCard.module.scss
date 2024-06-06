@@ -1,0 +1,51 @@
+.teamMemberContainer {
+    border-radius: 7.711px;
+    background: #FFF;
+    box-shadow: 0px 3.085px 12.338px 0px rgba(0, 0, 0, 0.16);
+    display: inline-flex;
+    flex-direction: column;
+    gap: 13px;
+    align-items: center;
+    padding-top: 13px;
+    padding-bottom: 20px;
+    width: 145px;
+
+    .avatarContainer {
+        width: 49.353px;
+        height: 49.353px;
+        border-radius: 50%;
+
+        img {
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+
+        .name {
+            color: #000;
+            text-align: center;
+            font-family: Montserrat;
+            font-size: 13.881px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .position {
+            color: #777;
+            text-align: center;
+            font-family: Montserrat;
+            font-size: 10.887px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+    }
+}

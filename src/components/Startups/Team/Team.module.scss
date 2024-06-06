@@ -1,0 +1,32 @@
+@mixin scrollHeight($scrollMargin) {
+    margin-top: $scrollMargin;
+    margin-bottom: $scrollMargin;
+}
+
+@mixin scrollbarStyles() {
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #fb723d;
+        border-radius: calc(8px / 2);
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: calc(8px / 2);
+        background-color: #eaeaea;
+        @include scrollHeight(2rem);
+    }
+}
+
+.teamContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px;
+    width: fit-content;
+    padding-right: 150px;
+    height: 515px;
+    overflow-y: scroll;
+    @include scrollbarStyles();
+}
