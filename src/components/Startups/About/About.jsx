@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./about.module.scss";
+import styles from "./About.module.scss";
 
 const DummyAbout = {
     description:"Lorem ipsum dolor sit amet consectetur. Adipiscing quisque massa scelerisque dolor est quis sit etiam augue. Risus risus etiam phasellus suspendisse augue placerat nisi arcu.",
@@ -8,7 +8,7 @@ const DummyAbout = {
 }
 
 
-export default function About({ description}) {
+export default function About({ description }) {
 
     return (
         <div className={styles.about}>
