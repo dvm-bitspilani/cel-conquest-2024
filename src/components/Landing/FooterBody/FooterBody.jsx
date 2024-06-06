@@ -5,8 +5,10 @@ const FooterBody = () => {
     <div className={styles.footerBody}>
       <div className={styles.footerPrimary}>
         <div className={styles.newsLetter}>
-          <h2>Subscribe</h2>
-          <h4>Join our newsletter!</h4>
+          <div className={styles.subscribeTextWrapper}>
+            <h2>Subscribe</h2>
+            <h4>Join our newsletter!</h4>
+          </div>
           <div className={styles.subscribe}>
             <svg
               width="24"
@@ -33,49 +35,52 @@ const FooterBody = () => {
             <input type="text" placeholder="Enter your email" />
             <div className={styles.subscribeButton}>Subscribe</div>
           </div>
-          <h3>Contact Us</h3>
-          <p>
-            +91 98110 83948 <br /> contact@conquest.org.in
-          </p>
+          <div className={styles.contactUs}>
+            <h3>Contact Us</h3>
+            <p>
+              +91 98110 83948 <br /> contact@conquest.org.in
+            </p>
+          </div>
         </div>
-        <div></div>
-        <div className={styles.quickLinks}>
-          <ul>
-            <li>
-              <span>Quick Links</span>
-            </li>
-            <li>
-              <a href="">Alumni</a>
-            </li>
-            <li>
-              <a href="">Sponsors</a>
-            </li>
-            <li>
-              <a href="">Resource partners</a>
-            </li>
-            <li>
-              <a href="">Mentors</a>
-            </li>
-          </ul>
-        </div>
-        <div className={styles.learnMore}>
-          <ul>
-            <li>
-              <span>Learn more</span>
-            </li>
-            <li>
-              <a href="">About us</a>
-            </li>
-            <li>
-              <a href="">Our progress</a>
-            </li>
-            <li>
-              <a href="">register</a>
-            </li>
-            <li>
-              <a href="">Privacy Policy</a>
-            </li>
-          </ul>
+        <div className={styles.links}>
+          <div className={styles.quickLinks}>
+            <ul>
+              <li>
+                <span>Quick Links</span>
+              </li>
+              <li>
+                <a href="">Alumni</a>
+              </li>
+              <li>
+                <a href="">Sponsors</a>
+              </li>
+              <li>
+                <a href="">Resource partners</a>
+              </li>
+              <li>
+                <a href="">Mentors</a>
+              </li>
+            </ul>
+          </div>
+          <div className={styles.learnMore}>
+            <ul>
+              <li>
+                <span>Learn more</span>
+              </li>
+              <li>
+                <a href="">About us</a>
+              </li>
+              <li>
+                <a href="">Our progress</a>
+              </li>
+              <li>
+                <a href="">Register</a>
+              </li>
+              <li>
+                <a href="">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       <div className={styles.footerDivider} />
