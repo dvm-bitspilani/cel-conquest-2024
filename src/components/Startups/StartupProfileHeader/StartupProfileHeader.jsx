@@ -15,9 +15,17 @@ const dummyContact = {
     linkedin: "https://linkedin.com",
 }
 
+const dummyDetails = {
+    founder: "A very very very long name",
+    cofounder1: "A very very very long name",
+    cofounder2: "A very very very long name",
+    location: "Pilani, Rajasthan",
+    stage: "Early Stage",
+}
+
 const profileInfo = {
     about: <About />,
-    details: <Details />,
+    details: <Details {...dummyDetails}/>,
     pitch: <Pitch />,
     team: <Team />,
 }
