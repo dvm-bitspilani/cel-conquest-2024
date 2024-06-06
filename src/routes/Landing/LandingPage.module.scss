@@ -89,6 +89,12 @@
           justify-content: center;
         }
 
+        @mixin commonResponsive() {
+          @media screen and (max-width: 480px) {
+            padding: 9px 16px;
+          }
+        }
+
         .register {
           width: 140px;
           border: none;
@@ -104,6 +110,8 @@
           &:hover {
             cursor: pointer;
           }
+
+          @include commonResponsive();
         }
 
         .signUp {
@@ -117,6 +125,8 @@
           &:hover {
             cursor: pointer;
           }
+
+          @include commonResponsive();
         }
       }
     }

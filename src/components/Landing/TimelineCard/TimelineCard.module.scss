@@ -2,6 +2,7 @@
 
 .Timelinecard {
   min-height: 270px;
+
   .srno {
     position: absolute;
     z-index: -1;
@@ -11,6 +12,7 @@
     font-weight: 700;
     line-height: 0.75;
   }
+
   .cardContent {
     width: calc(100% - 80px);
     position: relative;
@@ -19,28 +21,63 @@
     margin: 50px 0px;
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: 820px) {
+      flex-direction: column;
+    }
+
     .leftPart {
       width: 40%;
+
       .date {
         font-size: 20px;
         font-weight: 700;
         color: #FB723D;
-;
+        ;
       }
+
       .title {
         margin-top: 10px;
         color: #000;
         font-size: 48px;
         font-weight: 700;
+
+        @media screen and (max-width: 991px) {
+          font-size: 46px;
+        }
+      }
+
+      @media screen and (max-width: 991px) {
+        width: 50%;
+      }
+
+      @media screen and (max-width: 820px) {
+        width: 60%;
+      }
+
+      @media screen and (max-width: 713px) {
+        width: 80%;
+      }
+
+      @media screen and (max-width: 590px) {
+        width: 100%;
       }
     }
+
     .para {
       width: 45%;
       color: #9c9c9c;
       font-size: 17px;
       font-weight: 600;
-      line-height: 21px
-;
+      line-height: 21px;
+
+      @media screen and (max-width: 991px) {
+        font-size: 16px;
+      }
+
+      @media screen and (max-width: 820px) {
+        width: 100%;
+      }
     }
   }
 }
