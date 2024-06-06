@@ -19,6 +19,8 @@ export default function WebContextProvider({ children }) {
             .then((res) => {
                 console.log("In context")
                 console.log(res)
+                setUser(res.data.user_profile_obj)
+                localStorage.setItem("userData", JSON.stringify(res.data))
             })
             .catch((err) => {
                 console.log("In context err")
