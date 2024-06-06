@@ -8,6 +8,9 @@ import bell from "../../../assets/images/Dashboard/bell.svg";
 import back_arrow from "../../../assets/images/Dashboard/arrow-left.svg";
 
 const Sidebar = () => {
+  connst [activeButton, setActiveButton] = useState("Home");
+
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.headerButtons}>
@@ -22,19 +25,19 @@ const Sidebar = () => {
         <p>Madhur Jain</p>
       </div>
       <div className={styles.topButtons}>
-        <Button text="Home"></Button>
-        <Button text="Meetings" active={true}></Button>
-        <Button text="Cohort of 2024"></Button>
-        <Button text="Mentors"></Button>
-        <Button text="Experts"></Button>
-        <Button text="Investment Partners"></Button>
+        <Button text="Home" active={activeButton==="Home"}></Button>
+        <Button text="Meetings" active={activeButton==="Meetings"}></Button>
+        <Button text="Cohort of 2024" active ={activeButton==="Cohort of 2024"}></Button>
+        <Button text="Mentors" active ={activeButton==="Mentors"}></Button>
+        <Button text="Experts" active ={activeButton==="Experts"}></Button>
+        <Button text="Investment Partners" active ={activeButton==="Investment Partners"}></Button>
       </div>
       <div className={styles.bottomButtons}>
-        <Button text="Contact Us"></Button>
-        <Button text="Forms"></Button>
-        <Button text="Resources"></Button>
-        <Button text="Conquest Info"></Button>
-        <Button text="Developers"></Button>
+        <Button text="Contact Us" active ={activeButton==="Contact Us"}></Button>
+        <Button text="Forms" active ={activeButton==="Forms"}></Button>
+        <Button text="Resources" active ={activeButton==="Resources"}></Button>
+        <Button text="Conquest Info" active ={activeButton==="Conquest Info"}></Button>
+        <Button text="Developers" active ={activeButton==="Developers"}></Button>
       </div>
       <div className={styles.conquestLogo}>
         <img height={50} width={50} src={dashboard_mountain_circle} />
