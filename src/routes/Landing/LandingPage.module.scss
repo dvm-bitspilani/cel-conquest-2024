@@ -1,6 +1,9 @@
 .pageContainer {
   margin: 0px 70px;
   height: 100vh;
+  @media screen and (max-width: 1000px){
+    margin: 0px 20px;
+  }
 }
 
 .backgroundGrid {
@@ -87,6 +90,9 @@
     font-weight: 800;
     margin-bottom: 80px;
     margin-top: 120px;
+    @media screen and (max-width: 1000px){
+      font-size: 30px;
+    }
     span {
       color: #fb723d;
     }
