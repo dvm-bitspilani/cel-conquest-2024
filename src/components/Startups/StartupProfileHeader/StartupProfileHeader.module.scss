@@ -65,6 +65,40 @@
                 }
             }
         }
+
+        .tabsContainer {
+            display: inline-flex;
+            gap: 36px;
+            position: relative;
+            left: 6%;
+
+            .profileButton {
+                color: #000;
+                font-family: Montserrat;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+
+                a {
+                    position: relative;
+                    cursor: pointer;
+                    &::after {
+                        content: "";
+                        width: 0px;
+                        height: 2px;
+                        background: #fb723d;
+                        position: absolute;
+                        left: 0;
+                        bottom: -2px;
+                        transition: width 100ms linear;
+                    }
+                    &:hover::after{
+                        width: 50%;
+                    }
+                }
+            }
+        }
     }
 
     .contact {
@@ -75,9 +109,9 @@
         &::after {
             content: "";
             position: absolute;
-            top: 30%;
+            top: 33%;
             width: 0;
-            height: 65%;
+            height: 62%;
             border-left: #A0A0A0 dashed 1px;
         }
 

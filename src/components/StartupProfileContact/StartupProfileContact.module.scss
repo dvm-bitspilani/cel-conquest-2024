@@ -4,6 +4,7 @@
     position: relative;
     top: 20%;
     left: 14%;
+    padding-left: 9px;
 
     .contactContainer {
         display: flex;
@@ -78,8 +79,8 @@
 
             .connectButtonsContainer {
                 display: flex;
-                padding-left: 3px;
                 gap: 20px;
+                padding: 16px 0 0 3px;
             }
         }
     }

@@ -25,6 +25,12 @@ export default function StartupProfileHeader({ img, name, desc, location }) {
                             <div><span className={styles.location}>Location HQ : </span>{location}</div>
                         </div>
                     </div>
+                    <div className={styles.tabsContainer}>
+                        <div className={styles.profileButton}><a>About</a></div>
+                        <div className={styles.profileButton}><a>Details</a></div>
+                        <div className={styles.profileButton}><a>Pitch</a></div>
+                        <div className={styles.profileButton}><a>Team</a></div>
+                    </div>
                 </div>
                 <div className={styles.contact}>
                     <div className={styles.buttonContainer}>
