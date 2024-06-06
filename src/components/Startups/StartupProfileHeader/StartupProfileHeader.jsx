@@ -2,6 +2,10 @@ import { useState } from "react";
 import * as styles from "./StartupProfileHeader.module.scss";
 import StartupProfileContact from "../StartupProfileContact/StartupProfileContact"
 import ProfileButton from "../ProfileButton/ProfileButton";
+import About from "../About/About";
+import Team from "../Team/Team";
+import Details from "../Details/Details";
+import Pitch from "../Pitch/Pitch";
 
 const dummyContact = {
     phone: "+91 00001 73314",
@@ -9,6 +13,13 @@ const dummyContact = {
     website: "bits-dvm.org",
     twitter: "https://x.com",
     linkedin: "https://linkedin.com",
+}
+
+const profileInfo = {
+    about: <About />,
+    details: <Details />,
+    pitch: <Pitch />,
+    team: <Team />,
 }
 
 export default function StartupProfileHeader({ img, name, desc, location }) {
@@ -43,6 +54,9 @@ export default function StartupProfileHeader({ img, name, desc, location }) {
                         <ProfileButton isSelected={selectedTopic === 'team'}
                             onSelect={() => handleSelect('team')}>Team</ProfileButton>
                     </div>
+                    <div className={styles.profileInfoContainer}>
+                        {profileInfo[selectedTopic]}
+                    </div>
                 </div>
                 <div className={styles.contact}>
                     <div className={styles.buttonContainer}>
@@ -55,7 +69,7 @@ export default function StartupProfileHeader({ img, name, desc, location }) {
                                     <circle cx="20" cy="20" r="14.5" stroke="black" />
                                 </g>
                                 <defs>
-                                    <filter id="filter0_d_1266_2323" x="0" y="0" width="40" height="40" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <filter id="filter0_d_1266_2323" x="0" y="0" width="40" height="40" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                                         <feFlood floodOpacity="0" result="BackgroundImageFix" />
                                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                                         <feOffset />
