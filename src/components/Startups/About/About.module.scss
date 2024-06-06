@@ -1,0 +1,100 @@
+.about {
+    display: flex;
+    flex-direction: column;
+    font-family: Montserrat;
+    
+
+    .desc {
+        display: flex;
+        flex-direction: column;
+        width: 556px;
+        gap: 3vh;
+        padding-bottom: 40px;
+    
+
+        h5 {
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 29px;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 500;
+            color: #4C4C4C;
+
+        }
+    }
+
+    .indust {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        width: 556px;
+        gap: 20px;
+
+        h5 {
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 29px;
+        }
+
+        .incontainer {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding-bottom: 40px;
+
+            .industries {
+                border: 1.35px solid #FB723D;
+                box-shadow: 0px 4px 4px 0px #00000040;
+                border-radius: 10px;
+                width: 130px;
+                height: 30px;
+                text-align: center;
+                font-size: 13px;
+                font-weight: 400;
+                padding-top: 5.5px;
+                cursor: pointer;
+
+            }
+        }
+    }
+    .areas {
+        display: flex;
+        flex-direction: column;
+        width: 556px;
+        gap: 20px;
+
+        h5 {
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 29px;
+        }
+
+        .areacontainer {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding-bottom: 6.2vh;
+
+            .area {
+                border: 1.35px solid #FB723D;
+                background-color:#FB723D;
+                color: #fff;
+                border-radius: 10px;
+                width: 130px;
+                height: 30px;
+                text-align: center;
+                font-size: 13px;
+                font-weight: 400;
+                padding-top: 5.5px;
+                cursor: pointer;
+
+
+            }
+        }
+    }
+}
