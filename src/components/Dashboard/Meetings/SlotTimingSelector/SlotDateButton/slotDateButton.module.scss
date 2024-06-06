@@ -10,12 +10,17 @@
   flex-direction: column;
   gap: 3px;
   border-radius: 8px;
-  background: #ffece5;
   padding: 7px 15px;
   justify-content: center;
   align-items: center;
   border: none;
-  &:hover{
+  background-color: white;
+  &:hover {
     cursor: pointer;
   }
+}
+
+.active {
+  background: #ffece5;
+  color: #fb723d;
 }
