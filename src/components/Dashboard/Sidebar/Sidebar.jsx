@@ -33,11 +33,13 @@ const Sidebar = () => {
           text="Home"
           active={activeButton === "Home"}
           handleButtonClick={handleButtonClick}
+          link="/dashboard"
         ></Button>
         <Button
           text="Meetings"
           active={activeButton === "Meetings"}
           handleButtonClick={handleButtonClick}
+          link="/dashboard/meetings"
         ></Button>
         <Button
           text="Cohort of 2024"
