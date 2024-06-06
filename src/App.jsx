@@ -14,6 +14,7 @@ import Dashboard from "./routes/Dashboard/Dashboard";
 import Home from "./routes/Dashboard/Home/Home";
 import Meetings from "./routes/Dashboard/Meetings/Meetings";
 import Startups from "./routes/Dashboard/Startups/Startups";
+import Unauthorised from "./routes/Unauthorised/Unauthorised";
 ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment variables -> will do later
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         element={<LandingPage />}
         errorElement={<ErrorPage />}
       />
+      <Route path="unauthorised" element={<Unauthorised />} />
       <Route path="login" element={<Login />} />
       <Route element={<RequireAuth />}>
         <Route path="dashboard" element={<Dashboard />}>
