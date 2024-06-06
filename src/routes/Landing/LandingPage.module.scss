@@ -21,7 +21,7 @@
   .heroSectionUpperPart {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 150px;
+    margin-bottom: 50px;
     gap: 50px;
 
     @media screen and (max-width: 820px) {
@@ -126,11 +126,15 @@
     display: flex;
     justify-content: space-between;
     gap: 30px;
+
+    @media screen and (max-width: 820px) {
+      aspect-ratio: 346 / 236;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
   }
 }
-
-// .timeline {
-// }
 
 .investors {
   h2 {
