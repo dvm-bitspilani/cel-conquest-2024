@@ -15,6 +15,12 @@ const dummyContact = {
     linkedin: "https://linkedin.com",
 }
 
+const DummyAbout = {
+    description: "Lorem ipsum dolor sit amet consectetur. Adipiscing quisque massa scelerisque dolor est quis sit etiam augue. Risus risus etiam phasellus suspendisse augue placerat nisi arcu.",
+    industries: ["Climate Tech", "EV", "Fin-Tech","Climate Tech", "Lorem Ipsum", "Lorem Ipsum"],
+    areas: ["Climate Tech", "EV", "Fin-Tech"]
+}
+
 const dummyDetails = {
     founder: "A very very very long name",
     cofounder1: "A very very very long name",
@@ -24,7 +30,7 @@ const dummyDetails = {
 }
 
 const profileInfo = {
-    about: <About />,
+    about: <About {...DummyAbout} />,
     details: <Details {...dummyDetails}/>,
     pitch: <Pitch />,
     team: <Team />,
