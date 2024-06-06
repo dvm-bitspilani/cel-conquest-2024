@@ -16,6 +16,7 @@
 
   @media screen and (max-width: 820px) {
     margin-top: 50px;
+    margin-bottom: 50px;
   }
 
   .heroSectionUpperPart {
@@ -144,6 +145,13 @@
       grid-template-rows: 1fr 1fr;
     }
   }
+}
+
+.timeline {
+  width: 100vw;
+  position: relative;
+  left: -70px;
+  overflow: hidden;
 }
 
 .investors {

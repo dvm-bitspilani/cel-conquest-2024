@@ -2,6 +2,8 @@
 
 .Timelinecard {
   min-height: 270px;
+  margin-bottom: 60px;
+  position: relative;
 
   .srno {
     position: absolute;
@@ -14,16 +16,17 @@
   }
 
   .cardContent {
+    position: absolute;
     width: calc(100% - 80px);
-    position: relative;
     top: 60px;
     left: 80px;
-    margin: 50px 0px;
+    // margin: 50px 0px;
     display: flex;
     justify-content: space-between;
 
     @media screen and (max-width: 820px) {
       flex-direction: column;
+      width: calc(100% - 150px);
     }
 
     .leftPart {
