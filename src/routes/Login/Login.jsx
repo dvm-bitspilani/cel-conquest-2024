@@ -46,11 +46,16 @@ export default function Login() {
                         </svg>
                     </div>
                 </section>
-                <section className={styles.whiteSection}>
-                    <h1>Conquest Login Portal</h1>
-                    <p>Elevate your startup's growth with our tailored program. Gain access to valuable resource pools, mentorship from CXOs, and fundraising opportunities.</p>
-                    {user && <h1>You are already logged in</h1>}
+                <section
+                    style={user && {
+                        justifyContent: 'space-evenly',
+                    }}
+                    className={styles.whiteSection}
+                >
+                    {user && <h1 className={styles.alrLoggedIn}>You are already logged in</h1>}
                     {user && <GoogleSignOut />}
+                    {!user && <h1>Conquest Login Portal</h1>}
+                    {!user && <p>Elevate your startup's growth with our tailored program. Gain access to valuable resource pools, mentorship from CXOs, and fundraising opportunities.</p>}
                     {!user && <form className={styles.login} onSubmit={handleSubmit}>
                         <TextInput
                             name='username'
