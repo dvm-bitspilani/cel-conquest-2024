@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { useFormik } from 'formik';
+import { Link } from 'react-router-dom';
 
 import { WebContext } from '../../store/website-context';
 import { loginSchemas } from './schemas/loginSchema';
@@ -32,6 +33,10 @@ export default function Login() {
     })
     return (
         <main className={styles.container}>
+            <Link to='/' className={styles.backBtn}><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.0625 31.25L7.8125 20L19.0625 8.75M9.375 20H32.1875" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            </Link>
             <img src={logoImage} alt="" className={styles.logo} />
             <div className={styles.loginContainer}>
                 <section className={styles.orangeSection}>

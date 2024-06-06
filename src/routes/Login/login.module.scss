@@ -25,14 +25,11 @@
         min-height: clamp(25rem, 150dvh, 1000rem);
     }
 
-    // @media screen and (max-height: 710px),
-    // screen and (max-width: 1075px) {
-    //     font-size: 12px;
-    // }
-
-    // @media screen and (max-height: 530px) {
-    //     font-size: 10px;
-    // }
+    .backBtn {
+        position: absolute;
+        left: calc(40 / 1024 * 100dvh);
+        top: 0;
+    }
 
     .logo {
         aspect-ratio: 377 / 50 !important;
