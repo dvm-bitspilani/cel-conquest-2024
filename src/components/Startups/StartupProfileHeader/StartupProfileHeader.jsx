@@ -1,5 +1,7 @@
+import { useState } from "react";
 import * as styles from "./StartupProfileHeader.module.scss";
-import StartupProfileContact from "../../StartupProfileContact/StartupProfileContact";
+import StartupProfileContact from "../StartupProfileContact/StartupProfileContact"
+import ProfileButton from "../ProfileButton/ProfileButton";
 
 const dummyContact = {
     phone: "+91 00001 73314",
@@ -10,6 +12,12 @@ const dummyContact = {
 }
 
 export default function StartupProfileHeader({ img, name, desc, location }) {
+    const [selectedTopic, setSelectedTopic] = useState('about');
+
+    function handleSelect(selectedButton) {
+        setSelectedTopic(selectedButton);
+        console.log(selectedTopic)
+    }
     return (
         <>
             <div className={styles.container}>
@@ -26,10 +34,14 @@ export default function StartupProfileHeader({ img, name, desc, location }) {
                         </div>
                     </div>
                     <div className={styles.tabsContainer}>
-                        <div className={styles.profileButton}><a>About</a></div>
-                        <div className={styles.profileButton}><a>Details</a></div>
-                        <div className={styles.profileButton}><a>Pitch</a></div>
-                        <div className={styles.profileButton}><a>Team</a></div>
+                        <ProfileButton isSelected={selectedTopic === 'about'}
+                            onSelect={() => handleSelect('about')}>About</ProfileButton>
+                        <ProfileButton isSelected={selectedTopic === 'details'}
+                            onSelect={() => handleSelect('details')}>Details</ProfileButton>
+                        <ProfileButton isSelected={selectedTopic === 'pitch'}
+                            onSelect={() => handleSelect('pitch')}>Pitch</ProfileButton>
+                        <ProfileButton isSelected={selectedTopic === 'team'}
+                            onSelect={() => handleSelect('team')}>Team</ProfileButton>
                     </div>
                 </div>
                 <div className={styles.contact}>
@@ -61,7 +73,7 @@ export default function StartupProfileHeader({ img, name, desc, location }) {
                         </div>
                     </div>
                     <StartupProfileContact {...dummyContact} />
-                    
+
                 </div>
             </div >
         </>
