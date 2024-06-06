@@ -1,12 +1,51 @@
-.title {
-    color: #000;
-    font-family: Montserrat;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+.container {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 47px;
 
-    span {
-        color: #FB723D;
+    .contentContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .title {
+            color: #000;
+            font-family: Montserrat;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+
+            span {
+                color: #FB723D;
+            }
+        }
+
+        .video {
+            border-radius: 16.16px;
+            width: 386px;
+            height: 217px;
+            position: relative;
+            transition: height,width 0.3s ease-out;
+            video{
+                height: 100%;
+                width: 100%;
+                border-radius: 16.16px;
+                object-fit: cover;
+            }
+            svg{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+        }
+
+        .video.large{
+            height: auto;
+            width: 90%;
+            position: absolute;
+            top: 0;
+        }
     }
 }
