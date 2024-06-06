@@ -62,7 +62,9 @@ const Meetings = () => {
             <div className={styles.meetingsListOptions}>Pending</div>
             <div className={styles.meetingsListOptions}>Past</div>
           </div>
-          <MeetingList listItms={listItms} />
+          <div className={styles.meetingWrapper}>
+            <MeetingList listItms={listItms} />
+          </div>
         </div>
         <div className={styles.divider}></div>
         <div className={styles.rightPart}>
@@ -79,9 +81,8 @@ const Meetings = () => {
             ></SelectSlots>
           ) : null}
           <div
-            className={`${styles.meetingsDetails} ${
-              selectSlots ? styles.blur : null
-            }`}
+            className={`${styles.meetingsDetails} ${selectSlots ? styles.blur : null
+              }`}
           >
             <MeetingDetails></MeetingDetails>
           </div>
