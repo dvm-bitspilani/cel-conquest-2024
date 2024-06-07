@@ -6,44 +6,45 @@ import FilterBtn from "../../../components/Startups/FilterBtn/FilterBtn";
 import TagsBtn from "../../../components/Startups/TagsBtn/TagsBtn";
 import axios from "axios";
 
-const exampleData = [
-  {
-    id: 1,
-    img: "img",
-    name: "Startup Name Startup Name",
-    tags: ["Climate Tech", "EV", "Fin-Tech", "Climate Tech", "EV", "tagC"],
-  },
-  {
-    id: 2,
-    img: "img",
-    name: "name2",
-    tags: ["tagA", "tagB", "tagC"],
-  },
-  {
-    id: 3,
-    img: "img",
-    name: "name3",
-    tags: ["tagA", "tagB", "tagC"],
-  },
-  {
-    id: 4,
-    img: "img",
-    name: "name3",
-    tags: ["tagA", "tagB", "tagC"],
-  },
-  {
-    id: 5,
-    img: "img",
-    name: "name3",
-    tags: ["tagA", "tagB", "tagC"],
-  },
-];
+// const exampleData = [
+//   {
+//     id: 1,
+//     img: "img",
+//     name: "Startup Name Startup Name",
+//     tags: ["Climate Tech", "EV", "Fin-Tech", "Climate Tech", "EV", "tagC"],
+//   },
+//   {
+//     id: 2,
+//     img: "img",
+//     name: "name2",
+//     tags: ["tagA", "tagB", "tagC"],
+//   },
+//   {
+//     id: 3,
+//     img: "img",
+//     name: "name3",
+//     tags: ["tagA", "tagB", "tagC"],
+//   },
+//   {
+//     id: 4,
+//     img: "img",
+//     name: "name3",
+//     tags: ["tagA", "tagB", "tagC"],
+//   },
+//   {
+//     id: 5,
+//     img: "img",
+//     name: "name3",
+//     tags: ["tagA", "tagB", "tagC"],
+//   },
+// ];
 
 const Startups = () => {
   const [value, setValue] = useState("");
   const [isFilterBtnActive, setIsFilterBtnActive] = useState(false);
   const [isTagsBtnActive, setIsTagsBtnActive] = useState(false);
   const [listItems, setListItems] = useState([]);
+  const [selectedStage, setSelectedStage] = useState("");
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
@@ -56,21 +57,23 @@ const Startups = () => {
           },
         })
         .then((res) => {
-          console.log(res.data.startup_list);
-          const newArr = res.data.startup_list.map((i) => {
-            return (
-              <StartupCard
-                img={i.profile_logo}
-                name={i.startup_name}
-                tags={i.industry}
-                key={i.id}
-              />
-            );
-          });
-
-          setListItems(newArr);
-          // console.log(newArr);
+          setListItems(res.data.startup_list);
         })
+        // .then((res) => {
+        //   // console.log(res.data.startup_list);
+        //   const newArr = res.data.startup_list.map((i) => {
+        //     return (
+        //       <StartupCard
+        //         img={i.profile_logo}
+        //         name={i.startup_name}
+        //         tags={i.industry}
+        //         key={i.id}
+        //       />
+        //     );
+        //   });
+        //   // setListItems(newArr);
+        //   // console.log(listItems);
+        // })
         .catch((err) => {
           console.log(err);
         });
@@ -122,20 +125,32 @@ const Startups = () => {
           onClick={handleClickFilter}
           isFilterBtnActive={isFilterBtnActive}
           setIsFilterBtnActive={setIsFilterBtnActive}
+          setSelectedStage={setSelectedStage}
+          selectedStage={selectedStage}
         />
         <TagsBtn onClick={handleClickTags} isTagsBtnActive={isTagsBtnActive} />
       </div>
       <h2>Showing results for {value ? value : ".."}</h2>
       <div className={styles.startupList}>
-        {/* {exampleData
+        {listItems
           .filter((item) => {
-            if (item.name.toLowerCase().includes(value.toLowerCase().trim()))
-              return true;
+            if (
+              item.startup_name
+                .toLowerCase()
+                .includes(value.toLowerCase().trim())
+            ) {
+              if (!selectedStage || item.stage == selectedStage) return true;
+            }
+            return false;
           })
           .map((startup) => (
-            <StartupCard key={startup.id} {...startup} />
-          ))} */}
-        {listItems}
+            <StartupCard
+              key={startup.id}
+              img={startup.profile_logo}
+              name={startup.startup_name}
+              tags={startup.industry}
+            />
+          ))}
       </div>
     </div>
   );

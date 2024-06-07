@@ -64,7 +64,7 @@ export default function TagsBtn({ onClick, isTagsBtnActive }) {
   return (
     <div className={styles.tags}>
       <Button onClick={onClick} icon={<TagsSVG />}>
-        Tags
+        <span className={styles.tagsSpan}>Tags</span>
       </Button>
       {isTagsBtnActive && (
         <div className={styles.tagsMenu}>
