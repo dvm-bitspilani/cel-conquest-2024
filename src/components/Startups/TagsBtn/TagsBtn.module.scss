@@ -108,4 +108,21 @@
     display: none !important;
     content: "";
   }
+  .tagsMenu {
+    width: 645%;
+    left: -545%;
+    z-index: 1;
+
+    h2 {
+      font-size: 13.39px;
+    }
+
+    .tagsContainer {
+      max-height: 23.56vh;
+
+      .tag {
+        height: 1.582rem;
+      }
+    }
+  }
 }

@@ -18,6 +18,12 @@
     background-color: #eaeaea;
     @include scrollHeight(2rem);
   }
+
+  @media screen and (max-width: 820px) {
+    &::-webkit-scrollbar-track {
+      background-color: #fff;
+    }
+  }
 }
 
 .startups {
@@ -69,11 +75,12 @@
 
 @media screen and (max-width: 820px) {
   .startups {
-    padding: 2rem 1.5rem;
+    padding: 2rem 0 2rem 1.5rem;
     .heading {
       font-size: 24px;
     }
     .searchContainer {
+      padding-right: 1.5rem;
       gap: 2.5%;
       justify-content: space-between;
       .searchBar {
@@ -94,6 +101,15 @@
     h2 {
       font-size: 12.35px;
       font-weight: 500;
+    }
+  }
+  .startupList {
+    max-height: 75vh !important;
+    // overflow-y: unset !important;
+    padding-right: 2rem;
+
+    &::-webkit-scrollbar-track {
+      background-color: #fff;
     }
   }
 }

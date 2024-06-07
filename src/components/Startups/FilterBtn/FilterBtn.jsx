@@ -112,8 +112,10 @@ export default function FilterBtn({
   isFilterBtnActive,
   setIsFilterBtnActive,
   setSelectedStage,
+  selectedStage,
 }) {
   const [stateOpenKeys, setStateOpenKeys] = useState([]);
+  const [selectedKeys, setSelectedKeys] = useState([]);
   const menuRef = useRef();
   const btnRef = useRef();
 
@@ -153,10 +155,11 @@ export default function FilterBtn({
 
   const handleMenuClick = (e) => {
     let selectedLabel = getLabelByKey(e.key, items);
-    // console.log(selectedLabel);
-    if (selectedLabel == "Exit Stage") selectedLabel = "";
+    if (selectedStage == selectedLabel) selectedLabel = "";
     setSelectedStage(selectedLabel);
     setIsFilterBtnActive(false);
+    // console.log(selectedKeys);
+    selectedKeys == e.key ? setSelectedKeys([]) : setSelectedKeys(e.key);
   };
 
   return (
@@ -178,6 +181,7 @@ export default function FilterBtn({
             expandIcon={null}
             className={styles.menu}
             onClick={handleMenuClick}
+            selectedKeys={selectedKeys}
           ></Menu>
         </div>
       </div>

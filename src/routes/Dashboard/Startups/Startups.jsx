@@ -126,6 +126,7 @@ const Startups = () => {
           isFilterBtnActive={isFilterBtnActive}
           setIsFilterBtnActive={setIsFilterBtnActive}
           setSelectedStage={setSelectedStage}
+          selectedStage={selectedStage}
         />
         <TagsBtn onClick={handleClickTags} isTagsBtnActive={isTagsBtnActive} />
       </div>

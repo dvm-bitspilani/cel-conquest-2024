@@ -85,11 +85,15 @@
 }
 
 @media screen and (max-width: 820px) {
+  .imgContainer {
+    width: 4.5rem !important;
+    height: 4.5rem !important;
+  }
   .cardContainer {
     position: relative;
     // width: calc(100vw - 4rem);
     width: 100%;
-    padding: 1rem;
+    padding: 1.5rem 1rem;
     // flex-direction: column;
     .cardPrimary {
       width: fit-content;
@@ -106,7 +110,7 @@
       position: absolute;
       right: 0;
       width: 70%;
-      top: 0.5rem;
+      top: 1rem;
       .textContainerSecondary {
         display: flex;
         justify-content: center;
