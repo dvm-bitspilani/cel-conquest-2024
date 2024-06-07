@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -16,6 +16,8 @@ import logoImage from '../../assets/loginPageLogo.png'
 import * as styles from './login.module.scss'
 
 export default function Login() {
+    const [firstSubmit, setFirstSubmit] = useState(false)
+
     const navigate = useNavigate();
 
     const { user, usernameLogin } = useContext(WebContext);
@@ -73,6 +75,7 @@ export default function Login() {
                             blurFn={handleBlur}
                             value={values.username}
                             error={errors.username}
+                            firstSubmit={firstSubmit}
                         />
                         <TextInput
                             name='password'
@@ -81,10 +84,13 @@ export default function Login() {
                             blurFn={handleBlur}
                             value={values.password}
                             error={errors.password}
+                            firstSubmit={firstSubmit}
                             type='password'
                         />
                         {/* <input type="submit" value="Log In" className={styles.submitBtn} /> */}
-                        <button className={styles.submitBtn}>Log In</button>
+                        <button className={styles.submitBtn} onClick={() => {
+                            setFirstSubmit(true)
+                        }}>Log In</button>
                     </form>}
                     {!user && <div className={styles.dividerContainer}>
                         <ConfigProvider
