@@ -6,15 +6,15 @@ export default function StartupProfileContact({ phone, email, website, twitter, 
             <div className={styles.contactUsWrapper}>
                 <div className={styles.contactContainer}>
                     <div className={styles.title}>Contact <span>Us</span></div>
-                    <div>
+                    <div className={styles.mobile}>
                         <div className={styles.type}>Phone :</div>
                         <div className={styles.details}>{phone}</div>
                     </div>
-                    <div>
+                    <div className={styles.mobile}>
                         <div className={styles.type}>Email :</div>
                         <div className={styles.details}>{email}</div>
                     </div>
-                    <div>
+                    <div className={styles.mobile}>
                         <div className={styles.type}>Website :</div>
                         <span className={styles.website}>{website}</span>
                         <svg className={styles.link} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
