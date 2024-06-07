@@ -305,7 +305,7 @@ const SlotTimingSelector = ({ selectSlotTiming }) => {
           </div>
           <div>
             <TimeSelectButtonHeader svg={eveningSvg} header="Evening" />
-            <TimeSelectButton />
+            <TimeSelectButton active={true}/>
             <TimeSelectButton />
             <TimeSelectButton />
             <TimeSelectButton />
