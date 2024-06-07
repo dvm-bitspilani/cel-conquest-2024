@@ -21,55 +21,60 @@ export default function Home() {
   }
 
   useEffect(() => {
-    axios.get('https://conquest-api.bits-dvm.org/api/meetings/all_meetings/', {
-      headers: {
-        Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
-      }
-    })
-      .then((res) => {
-        // console.log(res.data)
+    if (JSON.parse(localStorage.getItem('userData')).tokens) {
+      axios.get('https://conquest-api.bits-dvm.org/api/meetings/all_meetings/', {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
+        }
+      })
+        .then((res) => {
+          // console.log(res.data)
 
-        const newArr = res.data.map(newItm => {
-          return (
-            <MeetingItem
-              date={newItm.slot_start_time}
-              avatar={newItm.requested_logo}
-              mentorName={newItm.requested_name}
-              duration={45}
-              key={newItm.id}
-              // data={newItm}
-              handleClick={handleClick}
-              dataRef={dataRef}
-            />
-          )
+          const newArr = res.data.map(newItm => {
+            return (
+              <MeetingItem
+                date={newItm.slot_start_time}
+                avatar={newItm.requested_logo}
+                mentorName={newItm.requested_name}
+                duration={45}
+                key={newItm.id}
+                // data={newItm}
+                handleClick={handleClick}
+                dataRef={dataRef}
+              />
+            )
+          })
+
+          setListItms(newArr)
+
+          // for (let i = 0; i < 6; i++) {
+          //   const newItm = (
+          //     <MeetingItem
+          //       date="May 24, 2024, 00:30:00"
+          //       avatar={avatar}
+          //       mentorName="Bhavesh"
+          //       duration={30}
+          //       // isGrayLink={true}
+          //       key={Math.random()}
+          //       data={{ test: 'hello', id: i }}
+          //       handleClick={handleClick}
+          //       dataRef={dataRef}
+          //     />
+          //   )
+
+          //   setListItms(prev => {
+          //     return [...prev, newItm]
+          //   })
+          // }
+
         })
-
-        setListItms(newArr)
-
-        // for (let i = 0; i < 6; i++) {
-        //   const newItm = (
-        //     <MeetingItem
-        //       date="May 24, 2024, 00:30:00"
-        //       avatar={avatar}
-        //       mentorName="Bhavesh"
-        //       duration={30}
-        //       // isGrayLink={true}
-        //       key={Math.random()}
-        //       data={{ test: 'hello', id: i }}
-        //       handleClick={handleClick}
-        //       dataRef={dataRef}
-        //     />
-        //   )
-
-        //   setListItms(prev => {
-        //     return [...prev, newItm]
-        //   })
-        // }
-
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+    else {
+      console.log("error in fetching data")
+    }
   }, [JSON.parse(localStorage.getItem('userData')).tokens.access])
 
 

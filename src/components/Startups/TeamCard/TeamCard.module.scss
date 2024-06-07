@@ -1,0 +1,122 @@
+.teamMemberContainer {
+    border-radius: 7.711px;
+    background: #FFF;
+    box-shadow: 0px 3.085px 12.338px 0px rgba(0, 0, 0, 0.16);
+    display: inline-flex;
+    flex-direction: column;
+    gap: 13px;
+    align-items: center;
+    padding-top: 13px;
+    padding-bottom: 20px;
+    width: 145px;
+
+    .avatarContainer {
+        width: 49.353px;
+        height: 49.353px;
+        border-radius: 50%;
+
+        img {
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+
+        .name {
+            color: #000;
+            text-align: center;
+            font-family: Montserrat;
+            font-size: 13.881px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .position {
+            color: #777;
+            text-align: center;
+            font-family: Montserrat;
+            font-size: 10.887px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+    }
+}
+
+@media(max-width:500px) {
+    
+    .teamMemberContainer {
+        margin: 1px;
+        border-radius: 10px;
+        height: 64px;
+        box-shadow: 0px 1px 4.34px 0px #00000029;
+        display:flex;
+        flex-direction: row;
+        gap: 25px;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 15px;
+        padding-right: 20px;
+        width: 84vw;
+    
+        .avatarContainer {
+            width: 45px;
+            height: 45px;
+        }
+    
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2px;
+    
+            .name {
+                font-size: 16px;
+                font-weight: 500;
+                line-height: normal;
+            }
+    
+            .position{
+                font-size: 12px;
+                font-weight: 600;
+            }
+        }
+        svg {
+            margin-left: auto;
+            height: 26px;
+            width: 26px;
+        }
+    }
+}
+
+@media(max-width:400px) {
+
+    .teamMemberContainer {
+        width: 81vw;
+    }
+}
+
+@media(max-width:350px) {
+
+    .teamMemberContainer {
+        width: 78vw;
+    }
+}
+
+@media(max-width:260px) {
+
+    .teamMemberContainer {
+        gap: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 72vw;
+    }
+}
