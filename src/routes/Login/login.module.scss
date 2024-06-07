@@ -25,10 +25,15 @@
         min-height: clamp(25rem, 150dvh, 1000rem);
     }
 
+    // @media screen and (max-width: 670px) {
+    //     min-height: 645px;
+    // }
+
     .backBtn {
         position: absolute;
         left: calc(40 / 1024 * 100dvh);
         top: 0;
+        width: 3rem;
 
         @media screen and (max-width: 530px) {
             margin-top: 0.25rem;
@@ -58,6 +63,10 @@
         font-family: "Montserrat";
         display: flex;
 
+        @media screen and (max-width: 670px) {
+            flex-direction: column;
+        }
+
         .orangeSection {
             width: calc(261 / 1144 * 100%);
             background-color: #FB723D;
@@ -70,7 +79,27 @@
 
             .logoContainer {
                 aspect-ratio: 1 / 1;
-                width: 95%;
+
+                @media screen and (min-width: 670px) {
+                    width: 95%;
+                }
+
+                @media screen and (max-width: 670px) {
+                    height: 150%;
+                    margin-right: 27px;
+
+                    svg {
+                        height: 100%;
+                    }
+                }
+            }
+
+            @media screen and (max-width: 670px) {
+                width: 100%;
+                height: calc(89 / 645 * 100%);
+                border-radius: 25px 25px 0px 0px;
+                flex-direction: row;
+                overflow: hidden;
             }
         }
 
@@ -82,6 +111,13 @@
             justify-content: space-between;
             align-items: center;
             flex-direction: column;
+
+            @media screen and (max-width: 670px) {
+                width: 100%;
+                height: calc(556 / 645 * 100%);
+                box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
+                border-radius: 0px 0px 25px 25px;
+            }
 
             h1 {
                 font-size: 2.5rem;
@@ -122,6 +158,10 @@
                 justify-content: center;
                 gap: 0.75rem;
 
+                @media screen and (max-width: 670px) {
+                    width: 80%;
+                }
+
                 .submitBtn {
                     aspect-ratio: 354 / 55;
                     border: none;
@@ -143,8 +183,8 @@
                         width: 40%;
                     }
 
-                    @media screen and (max-width: 671px) {
-                        width: 70%;
+                    @media screen and (max-width: 670px) {
+                        width: 50%;
                     }
                 }
 
