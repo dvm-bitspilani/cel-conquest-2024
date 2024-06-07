@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import Dashboard from "./routes/Dashboard/Dashboard";
 import Home from "./routes/Dashboard/Home/Home";
 import Meetings from "./routes/Dashboard/Meetings/Meetings";
+import Startups from "./routes/Dashboard/Startups/Startups";
 ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment variables -> will do later
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Route path="dashboard" element={<Dashboard />}>
           <Route index element={<Home />}></Route>
           <Route path="meetings" element={<Meetings />}></Route>
+          <Route path="startups" element={<Startups />}></Route>
         </Route>
       </Routes>
     </WebContextProvider>

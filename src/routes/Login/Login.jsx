@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { useFormik } from 'formik';
+import { Link } from 'react-router-dom';
 
 import { WebContext } from '../../store/website-context';
 import { loginSchemas } from './schemas/loginSchema';
@@ -32,7 +33,10 @@ export default function Login() {
     })
     return (
         <main className={styles.container}>
-            <GoogleSignOut />
+            <Link to='/' className={styles.backBtn}><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.0625 31.25L7.8125 20L19.0625 8.75M9.375 20H32.1875" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            </Link>
             <img src={logoImage} alt="" className={styles.logo} />
             <div className={styles.loginContainer}>
                 <section className={styles.orangeSection}>
@@ -42,10 +46,17 @@ export default function Login() {
                         </svg>
                     </div>
                 </section>
-                <section className={styles.whiteSection}>
-                    <h1>Conquest Login Portal</h1>
-                    <p>Elevate your startup's growth with our tailored program. Gain access to valuable resource pools, mentorship from CXOs, and fundraising opportunities.</p>
-                    <form className={styles.login} onSubmit={handleSubmit}>
+                <section
+                    style={user && {
+                        justifyContent: 'space-evenly',
+                    }}
+                    className={styles.whiteSection}
+                >
+                    {user && <h1 className={styles.alrLoggedIn}>You are already logged in</h1>}
+                    {user && <GoogleSignOut />}
+                    {!user && <h1>Conquest Login Portal</h1>}
+                    {!user && <p>Elevate your startup's growth with our tailored program. Gain access to valuable resource pools, mentorship from CXOs, and fundraising opportunities.</p>}
+                    {!user && <form className={styles.login} onSubmit={handleSubmit}>
                         <TextInput
                             name='username'
                             heading="Username"
@@ -65,8 +76,8 @@ export default function Login() {
                         />
                         {/* <input type="submit" value="Log In" className={styles.submitBtn} /> */}
                         <button className={styles.submitBtn}>Log In</button>
-                    </form>
-                    <div className={styles.dividerContainer}>
+                    </form>}
+                    {!user && <div className={styles.dividerContainer}>
                         <ConfigProvider
                             theme={{
                                 token: {
@@ -76,8 +87,8 @@ export default function Login() {
                         >
                             <Divider>OR</Divider>
                         </ConfigProvider>
-                    </div>
-                    <GoogleSignIn />
+                    </div>}
+                    {!user && <GoogleSignIn />}
                 </section>
             </div>
         </main>
