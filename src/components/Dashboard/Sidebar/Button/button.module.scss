@@ -13,6 +13,10 @@
     border: 1px solid #fb723d;
     padding: 11px 23px;
   }
+  @media screen and (max-width: 1500px) {
+    font-size: 12px;
+    line-height: 140%;
+  }
 }
 
 .active {
@@ -24,5 +28,10 @@
   font-size: 17px;
   font-style: normal;
   font-weight: 500;
-  line-height: 100%; /* 17px */
+  line-height: 100%; 
+  @media screen and (max-width: 1500px) {
+    font-size: 12px;
+    line-height: 140%;
+
+  }
 }
