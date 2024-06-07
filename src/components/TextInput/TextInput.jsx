@@ -23,6 +23,7 @@ export default function TextInput({ name, heading, changeFn, blurFn, value, erro
                         onBlur={blurFn}
                         value={value}
                         status={error ? 'error' : ''}
+                        className={styles.input}
                         style={error ? { backgroundColor: '#FFE6E6', width: '100%', height: '100%' } : { width: '100%', height: '100%' }}
                         {...props}
                     />
