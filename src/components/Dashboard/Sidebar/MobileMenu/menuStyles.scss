@@ -3,6 +3,15 @@
 
     .ant-menu-item {
         border-radius: 8px !important;
+        font-size: 17px !important;
+        font-weight: 500 !important;
+
+        &#selected {
+            outline: 0.5px solid #FB723D !important;
+            background: #FFECE5 !important;
+            color: #FB723D !important;
+            border: none !important;
+        }
     }
 
     .ant-menu-item-selected {

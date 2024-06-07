@@ -1,11 +1,27 @@
 import { Menu, ConfigProvider } from 'antd'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 
 import * as styles from './menu.module.scss'
 import './menuStyles.scss'
-import { useNavigate } from 'react-router-dom'
 
 export default function MobileMenu() {
     const navigate = useNavigate()
+    const location = useLocation()
+
+    useEffect(() => {
+        if (document.querySelector('#dashboardMenu .ant-menu .ant-menu-item#selected')) {
+            document.querySelector('#dashboardMenu .ant-menu .ant-menu-item#selected').id = ''
+        }
+        switch (location.pathname) {
+            case '/dashboard':
+                document.querySelector('#dashboardMenu .ant-menu .ant-menu-item:nth-of-type(1)').id = 'selected'
+                break;
+            case '/dashboard/meetings':
+                document.querySelector('#dashboardMenu .ant-menu .ant-menu-item:nth-of-type(2)').id = 'selected'
+                break;
+        }
+    }, [location.pathname])
 
     const items = [
         {
