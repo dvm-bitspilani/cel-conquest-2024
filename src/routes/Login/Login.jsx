@@ -19,7 +19,7 @@ export default function Login() {
 
     const navigate = useNavigate();
 
-    const { user, isUserLoginBtnDisabled, loginErrorMessage, usernameLogin } = useContext(WebContext);
+    const { user, isUserLoginBtnDisabled, loginErrorMessage, usernameLogin, setLoginErrorMessage } = useContext(WebContext);
 
     const { values, errors, handleBlur, handleSubmit, handleChange } = useFormik({
         initialValues: {
@@ -58,6 +58,10 @@ export default function Login() {
                     content: loginErrorMessage
                 })
             }
+        }
+
+        return () => {
+            setLoginErrorMessage(null)
         }
     }, [loginErrorMessage])
 
