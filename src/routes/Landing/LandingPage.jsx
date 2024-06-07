@@ -87,8 +87,13 @@ const LandingPage = () => {
           </div>
         </div>
         <div className={styles.timeline}>
-          {timelineData.map((data) => {
-            return <TimelineCard key={data.srno} {...data}></TimelineCard>;
+          {timelineData.map((data, index) => {
+            if (window.innerWidth > 820) {
+              return <TimelineCard key={data.srno} {...data}></TimelineCard>;
+            }
+            else {
+              return <TimelineCard key={data.srno} {...data} index={index}></TimelineCard>;
+            }
           })}
         </div>
         <div className={styles.investors}>

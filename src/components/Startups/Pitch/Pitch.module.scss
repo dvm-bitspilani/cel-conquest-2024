@@ -1,0 +1,145 @@
+.container {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 47px;
+
+    .contentContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .title {
+            color: #000;
+            font-family: Montserrat;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+
+            span {
+                color: #FB723D;
+            }
+        }
+
+        .video {
+            border-radius: 16.16px;
+            width: 386px;
+            height: 217px;
+            position: relative;
+            transition: height, width 0.3s ease-out;
+
+            video {
+                height: 100%;
+                width: 100%;
+                border-radius: 16.16px;
+                object-fit: cover;
+            }
+
+            .button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                .hide {
+                    display: none;
+                }
+
+                .pause {
+                    position: relative;
+                    display: none;
+
+                    .icon {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+            }
+        }
+
+        .video.large {
+            height: auto;
+            width: 90%;
+            position: absolute;
+            top: 0;
+
+            &:hover .pause {
+                transition: display 0.3s ease;
+                display: block;
+            }
+        }
+    }
+}
+
+@media(min-width: 820px) and (max-width: 900px) {
+
+    .container{
+        .contentContainer{
+            .title{
+                font-size: 20px;
+            }
+            .video {
+                width: 90%;
+            }
+        }
+    }
+}
+
+@media(max-width: 750px) {
+
+    .container{
+        .contentContainer{
+            .title{
+                font-size: 20px;
+            }
+            .video {
+                width: 90%;
+            }
+        }
+    }
+}
+
+@media(max-width:500px) {
+
+    .container {
+        .contentContainer {
+            .title {
+                font-size: 18px;
+                font-weight: 500;
+            }
+
+            .video {
+                width: 84vw;
+
+            }
+
+            .video.large {
+                height: 217px;
+                width: 84vw;
+                position: static;
+
+                .button {
+                    position: fixed;
+                    top: 20%;
+                    left: 90%;
+                    transform: translate(-50%, -20%);
+                }
+
+            }
+        }
+
+    }
+}
+
+@media(max-width:460px) {
+
+    .container .contentContainer .video {
+        width: 100%;
+    }
+
+    .container .contentContainer .video.large {
+        width: 100%;
+    }
+}

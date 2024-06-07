@@ -13,10 +13,27 @@
     flex-direction: row;
     justify-content: space-between;
 
+    @media screen and (max-width: 850px) {
+      flex-direction: column;
+      padding-bottom: 4rem;
+    }
+
+    .links {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+
+      @media screen and (max-width: 850px) {
+        justify-content: flex-start;
+        gap: 5vw;
+      }
+    }
+
     .quickLinks,
     .learnMore {
       display: flex;
       flex-direction: column;
+
       ul {
         li {
           list-style: none;
@@ -24,11 +41,13 @@
           font-size: 17px;
           margin-top: 1rem;
           font-weight: 700;
+
           a {
             color: #a0a0a0;
             text-decoration: none;
             font-weight: 500;
           }
+
           a:hover {
             color: #fff;
             text-decoration: underline;
@@ -37,12 +56,14 @@
       }
     }
   }
+
   .newsLetter {
     h2 {
       color: #fff;
       font-weight: 700;
       font-size: 28px;
     }
+
     h4 {
       color: #a0a0a0;
       font-weight: 600;
@@ -57,17 +78,34 @@
       justify-content: center;
       align-items: center;
       border-radius: 10px;
-      gap: 10px;
       background-color: #fff;
+      gap: 0.5rem;
+      // padding: 8px 8px 8px 24px;
       padding: 8px 8px 8px 24px;
       margin-top: 2rem;
 
-      input {
+      .mailIcon {
+        aspect-ratio: 1 / 1;
+        min-width: 1.5rem;
+        max-width: 1.5rem;
+
+        @media screen and (max-width: 750px) {
+          min-width: 1rem;
+          max-width: 1rem;
+        }
+      }
+
+      .emailInp {
         border: none;
         outline: none;
         font-weight: 600;
         color: #a0a0a0;
+
+        @media screen and (max-width: 850px) {
+          width: 50%;
+        }
       }
+
       .subscribeButton {
         background-color: #fb723d;
         padding: 6px 24px;
@@ -75,21 +113,42 @@
         color: #fff;
         font-weight: 600;
         cursor: pointer;
+        text-overflow: ellipsis;
+      }
+
+      @media screen and (max-width: 850px) {
+        margin-top: 0;
+        width: 60%;
+      }
+
+      @media screen and (max-width: 750px) {
+        font-size: 15px;
+        padding: 3px 3px 3px 15px;
       }
     }
+
     h3 {
       color: #fff;
       font-weight: 700;
       font-size: 17px;
       margin-top: 2rem;
     }
+
     p {
       margin-top: 2rem;
       font-weight: 500;
       font-size: 17px;
       color: #a0a0a0;
     }
+
     margin-bottom: 5rem;
+
+    @media screen and (max-width: 850px) {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
   }
 }
 
@@ -116,11 +175,13 @@
   justify-content: space-between;
   margin-bottom: 5rem;
   font-size: 17px;
+
   .copyright {
     color: #a0a0a0;
     font-size: 17px;
     font-weight: 600;
   }
+
   .socials {
     display: flex;
     gap: 1rem;
