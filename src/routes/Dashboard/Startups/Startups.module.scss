@@ -57,6 +57,7 @@
 
   .startupList {
     max-height: 55vh;
+    min-width: 65vw;
     display: flex;
     flex-direction: column;
     gap: 1rem;

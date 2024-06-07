@@ -47,10 +47,6 @@ const Startups = () => {
   const [selectedStage, setSelectedStage] = useState("");
 
   useEffect(() => {
-    console.log(selectedStage);
-  }, [selectedStage]);
-
-  useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
         .get("https://conquest-api.bits-dvm.org/api/users/startup_list/", {

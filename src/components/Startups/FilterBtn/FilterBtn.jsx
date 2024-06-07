@@ -178,27 +178,7 @@ export default function FilterBtn({
             expandIcon={null}
             className={styles.menu}
             onClick={handleMenuClick}
-          >
-            {items.map((item) => (
-              <Menu.SubMenu
-                key={item.key}
-                title={item.label}
-                icon={item.icon}
-                onClick={handleMenuClick}
-              >
-                {item.children.map((child) => (
-                  <Menu.Item
-                    key={child.key}
-                    className={
-                      stateOpenKeys === child.key ? styles.activeMenuItem : ""
-                    }
-                  >
-                    {child.label}
-                  </Menu.Item>
-                ))}
-              </Menu.SubMenu>
-            ))}
-          </Menu>
+          ></Menu>
         </div>
       </div>
     </>
