@@ -4,9 +4,11 @@ import axios from "axios";
 
 export const WebContext = createContext({
     user: {},
+    setUser: () => { },
     glogin: () => { },
     glogout: () => { },
-    usernameLogin: () => { }
+    usernameLogin: () => { },
+    getUserData: () => { }
 });
 
 export default function WebContextProvider({ children }) {
@@ -16,11 +18,13 @@ export default function WebContextProvider({ children }) {
         axios.post('https://conquest-api.bits-dvm.org/api/users/login/username/', credentials)
             .then((res) => {
                 console.log("In context")
-                // console.log(res)
+                console.log(res)
+                setUser(res.data.user_profile_obj)
+                localStorage.setItem("userData", JSON.stringify(res.data))
             })
             .catch((err) => {
                 console.log("In context err")
-                // console.log(err)
+                console.log(err)
             })
     }
 
@@ -47,7 +51,7 @@ export default function WebContextProvider({ children }) {
                 access_token: response.access_token
             }).then((res) => {
                 try {
-                    // console.log(res.data)
+                    console.log(res.data)
                     setUser(res.data.user_profile_obj)
                     localStorage.setItem("userData", JSON.stringify(res.data))
                 }
@@ -62,6 +66,13 @@ export default function WebContextProvider({ children }) {
         }
     })
 
+    const getUserData = () => {
+        if (localStorage.getItem("userData")) {
+            return JSON.parse(localStorage.getItem("userData")).user_profile_obj
+        }
+        return null;
+    }
+
     useEffect(() => {
         const userData = localStorage.getItem("userData");
         setUser(JSON.parse(userData))
@@ -69,9 +80,11 @@ export default function WebContextProvider({ children }) {
 
     const ctxValue = {
         user,
+        setUser,
         glogin,
         glogout,
-        usernameLogin
+        usernameLogin,
+        getUserData
     };
 
     return (

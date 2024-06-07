@@ -1,6 +1,6 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useFormik } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { WebContext } from '../../store/website-context';
 import { loginSchemas } from './schemas/loginSchema';
@@ -16,6 +16,8 @@ import logoImage from '../../assets/loginPageLogo.png'
 import * as styles from './login.module.scss'
 
 export default function Login() {
+    const navigate = useNavigate();
+
     const { user, usernameLogin } = useContext(WebContext);
 
     const { values, errors, handleBlur, handleSubmit, handleChange } = useFormik({
@@ -31,6 +33,13 @@ export default function Login() {
         },
         // validateOnChange: false
     })
+
+    useEffect(() => {
+        if (user) {
+            // navigate('/dashboard')
+        }
+    }, [user])
+
     return (
         <main className={styles.container}>
             <Link to='/' className={styles.backBtn}><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
