@@ -45,9 +45,11 @@ const Startups = () => {
 
   const handleClickTags = () => {
     setIsTagsBtnActive((e) => !e);
+    setIsFilterBtnActive(false);
   };
   const handleClickFilter = () => {
     setIsFilterBtnActive((e) => !e);
+    setIsTagsBtnActive(false);
   };
 
   return (
