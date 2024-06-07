@@ -1,0 +1,14 @@
+#dashboardMenu {
+    width: 100%;
+
+    .ant-menu-item {
+        border-radius: 8px !important;
+    }
+
+    .ant-menu-item-selected {
+        outline: 0.5px solid #FB723D !important;
+        background: #FFECE5 !important;
+        color: #FB723D !important;
+        border: none !important;
+    }
+}
