@@ -91,6 +91,7 @@ const Meetings = () => {
     <>
       <SlotTimingSelector
         selectSlotTiming={selectSlotTiming}
+        removeModal={showHideSelectSlotTiming}
       ></SlotTimingSelector>
       <div className={styles.meetingsContainer}>
         <div className={styles.meetingsList}>

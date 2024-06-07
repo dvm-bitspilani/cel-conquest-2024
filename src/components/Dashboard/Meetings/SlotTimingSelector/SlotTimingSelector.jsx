@@ -247,7 +247,7 @@ const eveningSvg = (
   </svg>
 );
 
-const SlotTimingSelector = ({ selectSlotTiming }) => {
+const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
   return (
     <>
       <div
@@ -256,6 +256,8 @@ const SlotTimingSelector = ({ selectSlotTiming }) => {
       >
         <div className={styles.header}>
           <svg
+            onClick={() => removeModal()}
+
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
