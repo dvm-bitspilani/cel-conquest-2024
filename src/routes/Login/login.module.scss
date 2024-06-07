@@ -51,7 +51,8 @@
         display: flex;
 
         @media screen and (max-width: 670px) {
-            flex-direction: column;
+            display: grid;
+            grid-template-rows: 1fr calc(556 / 89 * 1fr);
         }
 
         .orangeSection {
@@ -74,6 +75,7 @@
 
                 @media screen and (max-width: 670px) {
                     height: 130%;
+                    position: absolute;
                     margin-right: 27px;
 
                     svg {
@@ -84,8 +86,8 @@
 
             @media screen and (max-width: 670px) {
                 width: 100%;
-                height: calc(89 / 645 * 100%);
-                position: absolute;
+                height: 100%;
+                position: relative;
                 border-radius: 25px 25px 0px 0px;
                 flex-direction: row;
             }
@@ -102,7 +104,6 @@
 
             @media screen and (max-width: 670px) {
                 width: 100%;
-                margin-top: calc(149 / 645 * 100%);
                 box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
                 border-radius: 0px 0px 25px 25px;
             }
