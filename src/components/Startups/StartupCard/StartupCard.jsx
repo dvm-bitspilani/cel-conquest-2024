@@ -15,8 +15,11 @@ export default function StartupCard({ img, name, tags }) {
         </div>
       </div>
       <div className={styles.cardSecondary}>
+        <div className={styles.textContainerSecondary}>
+          <h6>{name}</h6>
+        </div>
         <div className={styles.tagContainer}>
-          {tagsArray.length < 6 ? (
+          {tagsArray.length < (window.innerWidth > 820 ? 6 : 4) ? (
             tagsArray.map((tag, index) => (
               <div key={index} className={styles.cardTag}>
                 <p>{tag}</p>
