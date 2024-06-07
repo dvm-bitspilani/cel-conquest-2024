@@ -35,8 +35,9 @@
   }
 
   .dashboardContent {
-    padding-top: 15vh;
+    width: 77vw;
 
+    padding-top: 15vh;
     @media screen and (max-width: 820px) {
       padding-top: 0;
       width: 100vw;
