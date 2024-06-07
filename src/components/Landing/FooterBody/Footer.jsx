@@ -5,7 +5,7 @@ import footerImg from "../../../assets/images/Landing Page/footer-conquest-logo.
 function Footer() {
   return (
     <div className={styles.footer}>
-      <img src={footerImg} alt="footer image" className={styles.footerImg} />
+      {/* <img src={footerImg} alt="footer image" className={styles.footerImg} /> */}
       <FooterBody />
     </div>
   );
