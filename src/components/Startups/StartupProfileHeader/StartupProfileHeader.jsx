@@ -71,7 +71,7 @@ export default function StartupProfileHeader({ img, name, desc, location }) {
                     <div className={styles.profileInfoContainer}>
                         {profileInfo[selectedTopic]}
                     </div>
-                                        <div className={styles.mobile}>
+                    <div className={styles.mobile}>
                         <div className={styles.button}>
                             <button className={styles.btn_m}>Message</button>
                             <button className={`${styles.btn_m} ${styles.schedule_m}`}>Schedule</button>
