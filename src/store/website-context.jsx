@@ -5,6 +5,7 @@ import axios from "axios";
 export const WebContext = createContext({
     user: {},
     isUserLoginBtnDisabled: false,
+    loginErrorMessage: null,
     setUser: () => { },
     glogin: () => { },
     glogout: () => { },
@@ -15,6 +16,7 @@ export const WebContext = createContext({
 export default function WebContextProvider({ children }) {
     const [user, setUser] = useState(null);
     const [isUserLoginBtnDisabled, setIsUserLoginBtnDisabled] = useState(false);
+    const [loginErrorMessage, setLoginErrorMessage] = useState(null);
 
     const usernameLogin = (credentials) => {
         setIsUserLoginBtnDisabled(true)
@@ -86,6 +88,7 @@ export default function WebContextProvider({ children }) {
     const ctxValue = {
         user,
         isUserLoginBtnDisabled,
+        loginErrorMessage,
         setUser,
         glogin,
         glogout,
