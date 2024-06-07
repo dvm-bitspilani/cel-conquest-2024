@@ -44,6 +44,23 @@ export default function Login() {
 
     const [messageApi, contextHolder] = message.useMessage();
 
+    useEffect(() => {
+        if (loginErrorMessage) {
+            if (loginErrorMessage === 'Log In Successful!') {
+                messageApi.open({
+                    type: 'success',
+                    content: loginErrorMessage
+                })
+            }
+            if (loginErrorMessage === 'User does not exist!' || loginErrorMessage === 'Incorrect Credentials!') {
+                messageApi.open({
+                    type: 'error',
+                    content: loginErrorMessage
+                })
+            }
+        }
+    }, [loginErrorMessage])
+
     return (
         <>
             {contextHolder}

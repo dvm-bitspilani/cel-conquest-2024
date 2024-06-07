@@ -31,11 +31,18 @@ export default function WebContextProvider({ children }) {
                 localStorage.setItem("userData", JSON.stringify(res.data))
                 setIsUserLoginBtnDisabled(false)
                 navigate('/dashboard')
+                setLoginErrorMessage('Log In Successful!')
             })
             .catch((err) => {
                 console.log("In context err")
                 console.log(err)
                 setIsUserLoginBtnDisabled(false)
+                if (err.response.status === 401) {
+                    setLoginErrorMessage('User does not exist!')
+                }
+                if (err.response.status === 404) {
+                    setLoginErrorMessage('Incorrect Credentials!')
+                }
             })
     }
 
