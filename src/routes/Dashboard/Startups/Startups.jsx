@@ -4,6 +4,7 @@ import * as styles from "./Startups.module.scss";
 import StartupCard from "../../../components/Startups/StartupCard/StartupCard";
 import FilterBtn from "../../../components/Startups/FilterBtn/FilterBtn";
 import TagsBtn from "../../../components/Startups/TagsBtn/TagsBtn";
+import axios from "axios";
 
 const exampleData = [
   {
@@ -42,6 +43,41 @@ const Startups = () => {
   const [value, setValue] = useState("");
   const [isFilterBtnActive, setIsFilterBtnActive] = useState(false);
   const [isTagsBtnActive, setIsTagsBtnActive] = useState(false);
+  const [listItems, setListItems] = useState([]);
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("userData")).tokens) {
+      axios
+        .get("https://conquest-api.bits-dvm.org/api/users/startup_list/", {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
+          },
+        })
+        .then((res) => {
+          console.log(res.data.startup_list);
+          const newArr = res.data.startup_list.map((i) => {
+            return (
+              <StartupCard
+                img={i.profile_logo}
+                name={i.startup_name}
+                tags={i.industry}
+                key={i.id}
+              />
+            );
+          });
+
+          setListItems(newArr);
+          // console.log(newArr);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("error in fetching data");
+    }
+  }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
 
   const handleClickTags = () => {
     setIsTagsBtnActive((e) => !e);
@@ -85,19 +121,21 @@ const Startups = () => {
         <FilterBtn
           onClick={handleClickFilter}
           isFilterBtnActive={isFilterBtnActive}
+          setIsFilterBtnActive={setIsFilterBtnActive}
         />
         <TagsBtn onClick={handleClickTags} isTagsBtnActive={isTagsBtnActive} />
       </div>
       <h2>Showing results for {value ? value : ".."}</h2>
       <div className={styles.startupList}>
-        {exampleData
+        {/* {exampleData
           .filter((item) => {
             if (item.name.toLowerCase().includes(value.toLowerCase().trim()))
               return true;
           })
           .map((startup) => (
             <StartupCard key={startup.id} {...startup} />
-          ))}
+          ))} */}
+        {listItems}
       </div>
     </div>
   );
