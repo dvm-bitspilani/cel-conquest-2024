@@ -4,6 +4,7 @@ import axios from "axios";
 
 export const WebContext = createContext({
     user: {},
+    isUserLoginBtnDisabled: false,
     setUser: () => { },
     glogin: () => { },
     glogout: () => { },
@@ -13,18 +14,22 @@ export const WebContext = createContext({
 
 export default function WebContextProvider({ children }) {
     const [user, setUser] = useState(null);
+    const [isUserLoginBtnDisabled, setIsUserLoginBtnDisabled] = useState(false);
 
     const usernameLogin = (credentials) => {
+        setIsUserLoginBtnDisabled(true)
         axios.post('https://conquest-api.bits-dvm.org/api/users/login/username/', credentials)
             .then((res) => {
                 console.log("In context")
                 console.log(res)
                 setUser(res.data.user_profile_obj)
                 localStorage.setItem("userData", JSON.stringify(res.data))
+                setIsUserLoginBtnDisabled(false)
             })
             .catch((err) => {
                 console.log("In context err")
                 console.log(err)
+                setIsUserLoginBtnDisabled(false)
             })
     }
 
@@ -80,6 +85,7 @@ export default function WebContextProvider({ children }) {
 
     const ctxValue = {
         user,
+        isUserLoginBtnDisabled,
         setUser,
         glogin,
         glogout,
