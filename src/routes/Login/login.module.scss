@@ -151,16 +151,12 @@
             }
 
             .login {
-                width: 60%;
+                width: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 gap: 0.75rem;
-
-                @media screen and (max-width: 670px) {
-                    width: 80%;
-                }
 
                 .submitBtn {
                     aspect-ratio: 354 / 55;
@@ -168,7 +164,7 @@
                     border-radius: 0.625rem;
                     background: #FB723D;
                     display: flex;
-                    width: 30%;
+                    // width: 30%;
                     padding: 0.75rem 1.5rem;
                     justify-content: center;
                     align-items: center;
@@ -178,14 +174,8 @@
                     margin-bottom: 0;
                     cursor: pointer;
                     font-size: 1rem;
-
-                    @media screen and (max-width: 900px) {
-                        width: 40%;
-                    }
-
-                    @media screen and (max-width: 670px) {
-                        width: 50%;
-                    }
+                    width: clamp(11.3rem, 60%, 22rem);
+                    height: 3rem;
                 }
 
                 @media screen and (max-width: 935px),
