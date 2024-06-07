@@ -19,6 +19,7 @@
 
   @media screen and (max-width: 820px) {
     margin-top: 50px;
+    margin-bottom: 50px;
   }
 
   .heroSectionUpperPart {
@@ -92,6 +93,12 @@
           justify-content: center;
         }
 
+        @mixin commonResponsive() {
+          @media screen and (max-width: 480px) {
+            padding: 9px 16px;
+          }
+        }
+
         .register {
           width: 140px;
           border: none;
@@ -107,6 +114,8 @@
           &:hover {
             cursor: pointer;
           }
+
+          @include commonResponsive();
         }
 
         .signUp {
@@ -120,6 +129,8 @@
           &:hover {
             cursor: pointer;
           }
+
+          @include commonResponsive();
         }
       }
     }
@@ -136,6 +147,17 @@
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
     }
+  }
+}
+
+.timeline {
+  width: 85vw;
+  position: relative;
+  overflow: hidden;
+
+  @media screen and (max-width: 820px) {
+    width: 100vw;
+    left: -70px;
   }
 }
 
