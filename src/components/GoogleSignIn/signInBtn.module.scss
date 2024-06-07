@@ -2,8 +2,9 @@
 
 .btn {
     // width: clamp(12.5rem, 60%, 22.125rem);
+    aspect-ratio: 354 / 55;
     width: clamp(11.3rem, 60%, 22rem);
-    height: 3rem;
+    // height: 3rem;
     border-radius: 10px;
     border: 1px solid #000;
     background: #FFF;
@@ -22,18 +23,24 @@
         aspect-ratio: 1 / 1;
         width: 30px;
 
-        @media screen and (max-width: 580px) {
-            width: 20px;
+        @media screen and (max-width: 670px) {
+            width: 21px;
         }
     }
 
-    @media screen and (max-width: 935px),
-    screen and (max-height: 620px) {
+    @media screen and (max-width: 935px) {
         font-size: 1rem;
         gap: 0.5rem;
     }
 
     @media screen and (max-width: 580px) {
         font-size: 0.85rem;
+    }
+
+    @media screen and (max-width: 670px) {
+        aspect-ratio: 215 / 41;
+        font-size: 0.875rem;
+        width: clamp(11.3rem, 60%, 13.438rem);
+        gap: 1.25rem;
     }
 }

@@ -1,9 +1,29 @@
 .inputGrp {
-    width: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.563rem;
+
+    @media screen and (max-width: 1030px) {
+        width: 70%;
+    }
+
+    @media screen and (max-width: 670px) {
+        width: 70%;
+    }
 
     label {
         font-weight: 500;
         font-size: 1.25em;
+        margin-bottom: 0.437rem;
+
+        @media screen and (max-width: 860px) {
+            margin-bottom: 0;
+        }
+
+        @media screen and (max-width: 670px) {
+            font-size: 0.875em;
+        }
     }
 
     .errMsg {
@@ -13,13 +33,24 @@
     }
 
     .inputField {
+        aspect-ratio: 556 / 49;
         width: 100%;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        position: relative;
+
+        .input {
+            border-radius: 9.077px;
+
+            @media screen and (max-width: 670px) {
+                border-radius: 5px;
+            }
+        }
 
         .invalidInpIcon {
             aspect-ratio: 1 / 1;
+            position: absolute;
+            right: -1.8rem;
             width: 1.3rem;
         }
     }

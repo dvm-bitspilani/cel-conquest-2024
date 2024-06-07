@@ -7,8 +7,8 @@
 
 .container {
     width: 100vw;
-    min-height: clamp(25rem, calc((1024 - 55 - 55) / 1024 * 100dvh), 1000rem);
-    margin: calc(40 / 1024 * 100dvh) 0px 20px 0px;
+    // min-height: clamp(25rem, calc((1024 - 55 - 55) / 1024 * 100dvh), 1000rem);
+    // margin: calc(40 / 1024 * 100dvh) 0px 20px 0px;
     display: flex;
     font-size: 1rem;
     flex-direction: column;
@@ -17,13 +17,13 @@
     gap: 0.5rem;
     position: relative;
 
-    @media screen and (max-height: 545px) {
-        min-height: clamp(25rem, 120dvh, 1000rem);
-    }
+    // @media screen and (max-height: 545px) {
+    //     min-height: clamp(25rem, 120dvh, 1000rem);
+    // }
 
-    @media screen and (max-height: 450px) {
-        min-height: clamp(25rem, 150dvh, 1000rem);
-    }
+    // @media screen and (max-height: 450px) {
+    //     min-height: clamp(25rem, 150dvh, 1000rem);
+    // }
 
     // @media screen and (max-width: 670px) {
     //     min-height: 645px;
@@ -31,11 +31,12 @@
 
     .backBtn {
         position: absolute;
-        left: calc(40 / 1024 * 100dvh);
-        top: 0;
+        // left: calc(40 / 1024 * 100dvh);
+        left: 80px;
+        top: 47px;
         width: 3rem;
 
-        @media screen and (max-width: 530px) {
+        @media screen and (max-width: 640px) {
             margin-top: 0.25rem;
             left: calc(20 / 1024 * 100dvh);
         }
@@ -43,22 +44,27 @@
 
     .logo {
         aspect-ratio: 377 / 50 !important;
-        height: clamp(1.6578rem, 8%, 3.125rem);
+        // height: clamp(1.6578rem, 8%, 3.125rem);
+        height: 50px;
+        margin-top: 55px;
         display: inline;
         object-fit: contain;
         position: absolute;
         top: 0;
 
-        @media screen and (max-width: 530px) {
+        @media screen and (max-width: 640px) {
             width: 60%;
         }
     }
 
     .loginContainer {
-        width: clamp(20rem, 80vw, 62rem);
-        height: clamp(50dvh, 90%, 100dvh);
-        position: absolute;
-        bottom: 0;
+        width: 90vw;
+        // height: clamp(50dvh, 90%, 100dvh);
+        // position: absolute;
+        position: relative;
+        padding-bottom: 50px;
+        // bottom: 0;
+        top: calc(55px + 50px + 46px);
         filter: drop-shadow(0px 6px 10.5px rgba(0, 0, 0, 0.15));
         font-family: "Montserrat";
         display: flex;
@@ -76,16 +82,17 @@
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
+            overflow: hidden;
 
             .logoContainer {
                 aspect-ratio: 1 / 1;
 
-                @media screen and (min-width: 670px) {
+                @media screen and (min-width: 671px) {
                     width: 95%;
                 }
 
                 @media screen and (max-width: 670px) {
-                    height: 150%;
+                    height: 130%;
                     margin-right: 27px;
 
                     svg {
@@ -97,9 +104,11 @@
             @media screen and (max-width: 670px) {
                 width: 100%;
                 height: calc(89 / 645 * 100%);
+                position: absolute;
+                // height: 89px;
                 border-radius: 25px 25px 0px 0px;
                 flex-direction: row;
-                overflow: hidden;
+                // overflow: hidden;
             }
         }
 
@@ -114,7 +123,7 @@
 
             @media screen and (max-width: 670px) {
                 width: 100%;
-                height: calc(556 / 645 * 100%);
+                margin-top: calc(149 / 645 * 100%);
                 box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
                 border-radius: 0px 0px 25px 25px;
             }
@@ -124,16 +133,21 @@
                 width: 90%;
                 text-align: center;
                 // margin-top: 6%;
-                margin-top: 4%;
+                margin-top: 69px;
                 font-weight: 600;
 
                 @media screen and (max-width: 1075px) {
                     font-size: 2rem;
                 }
+
+                @media screen and (max-width: 670px) {
+                    margin-top: 42px;
+                    font-size: 2rem;
+                }
             }
 
             button {
-                margin-bottom: 4%;
+                margin-bottom: 55px;
             }
 
             p {
@@ -142,25 +156,26 @@
                 font-weight: 400;
                 text-align: center;
                 color: #606060;
-                margin: 0.25rem 0;
+                margin-top: 59px;
 
-                @media screen and (max-width: 935px),
-                screen and (max-height: 620px) {
+                @media screen and (max-width: 935px) {
                     font-size: 1.125rem;
+                }
+
+                @media screen and (max-width: 670px) {
+                    margin-top: 29px;
+                    font-size: 0.75rem;
                 }
             }
 
             .login {
-                width: 60%;
+                width: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                margin-top: 52px;
                 gap: 0.75rem;
-
-                @media screen and (max-width: 670px) {
-                    width: 80%;
-                }
 
                 .submitBtn {
                     aspect-ratio: 354 / 55;
@@ -168,35 +183,52 @@
                     border-radius: 0.625rem;
                     background: #FB723D;
                     display: flex;
-                    width: 30%;
+                    // width: 30%;
                     padding: 0.75rem 1.5rem;
                     justify-content: center;
                     align-items: center;
-                    gap: 0.625rem;
                     color: white;
                     font-weight: 600;
                     margin-bottom: 0;
                     cursor: pointer;
-                    font-size: 1rem;
+                    font-size: 1.28rem;
+                    width: clamp(11.3rem, 60%, 22rem);
+                    margin-top: 34px;
 
-                    @media screen and (max-width: 900px) {
-                        width: 40%;
+                    @media screen and (max-width: 935px) {
+                        font-size: 1rem;
+                    }
+
+                    @media screen and (max-width: 580px) {
+                        font-size: 0.85rem;
                     }
 
                     @media screen and (max-width: 670px) {
-                        width: 50%;
+                        aspect-ratio: 215 / 41;
+                        margin-top: 1rem;
+                        font-size: 0.875rem;
+                        width: clamp(11.3rem, 60%, 13.438rem);
                     }
                 }
 
-                @media screen and (max-width: 935px),
-                screen and (max-height: 620px) {
-                    font-size: 0.75rem;
+                @media screen and (max-width: 935px) {
+                    // font-size: 0.75rem;
                     gap: 0.5rem;
+                }
+
+                @media screen and (max-width: 670px) {
+                    margin-top: 2rem;
                 }
             }
 
             .dividerContainer {
                 width: 80%;
+                margin: 31px 0;
+
+                @media screen and (max-width: 670px) {
+                    font-size: 0.75rem;
+
+                }
             }
         }
     }
