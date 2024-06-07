@@ -29,42 +29,42 @@ export default function Home() {
       .then((res) => {
         console.log(res.data)
 
-        const newArr = res.data.map(newItm => {
-          return (
-            <MeetingItem
-              date={newItm.start_time}
-              avatar={avatar}
-              mentorName={newItm.mentor_name}
-              duration={newItm.duration}
-              key={newItm.id}
-              data={newItm}
-              handleClick={handleClick}
-              dataRef={dataRef}
-            />
-          )
-        })
-
-        setListItms(newArr)
-
-        // for (let i = 0; i < 6; i++) {
-        //   const newItm = (
+        // const newArr = res.data.map(newItm => {
+        //   return (
         //     <MeetingItem
-        //       date="May 24, 2024, 00:30:00"
+        //       date={newItm.start_time}
         //       avatar={avatar}
-        //       mentorName="Bhavesh"
-        //       duration={30}
-        //       // isGrayLink={true}
-        //       key={Math.random()}
-        //       data={{ test: 'hello', id: i }}
+        //       mentorName={newItm.mentor_name}
+        //       duration={newItm.duration}
+        //       key={newItm.id}
+        //       data={newItm}
         //       handleClick={handleClick}
         //       dataRef={dataRef}
         //     />
         //   )
+        // })
 
-        //   setListItms(prev => {
-        //     return [...prev, newItm]
-        //   })
-        // }
+        // setListItms(newArr)
+
+        for (let i = 0; i < 6; i++) {
+          const newItm = (
+            <MeetingItem
+              date="May 24, 2024, 00:30:00"
+              avatar={avatar}
+              mentorName="Bhavesh"
+              duration={30}
+              // isGrayLink={true}
+              key={Math.random()}
+              data={{ test: 'hello', id: i }}
+              handleClick={handleClick}
+              dataRef={dataRef}
+            />
+          )
+
+          setListItms(prev => {
+            return [...prev, newItm]
+          })
+        }
 
       })
       .catch((err) => {
