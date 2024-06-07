@@ -56,21 +56,23 @@ const Startups = () => {
           },
         })
         .then((res) => {
-          console.log(res.data.startup_list);
-          const newArr = res.data.startup_list.map((i) => {
-            return (
-              <StartupCard
-                img={i.profile_logo}
-                name={i.startup_name}
-                tags={i.industry}
-                key={i.id}
-              />
-            );
-          });
-
-          setListItems(newArr);
-          // console.log(newArr);
+          setListItems(res.data.startup_list);
         })
+        // .then((res) => {
+        //   // console.log(res.data.startup_list);
+        //   const newArr = res.data.startup_list.map((i) => {
+        //     return (
+        //       <StartupCard
+        //         img={i.profile_logo}
+        //         name={i.startup_name}
+        //         tags={i.industry}
+        //         key={i.id}
+        //       />
+        //     );
+        //   });
+        //   // setListItems(newArr);
+        //   // console.log(listItems);
+        // })
         .catch((err) => {
           console.log(err);
         });
@@ -127,15 +129,35 @@ const Startups = () => {
       </div>
       <h2>Showing results for {value ? value : ".."}</h2>
       <div className={styles.startupList}>
-        {/* {exampleData
+        {/* {listItems
           .filter((item) => {
-            if (item.name.toLowerCase().includes(value.toLowerCase().trim()))
+            if (
+              item.props.name.toLowerCase().includes(value.toLowerCase().trim())
+            )
               return true;
           })
           .map((startup) => (
             <StartupCard key={startup.id} {...startup} />
-          ))} */}
-        {listItems}
+          ))}
+        {listItems} */}
+        {listItems
+          .filter((item) => {
+            if (
+              item.startup_name
+                .toLowerCase()
+                .includes(value.toLowerCase().trim())
+            )
+              return true;
+            return false;
+          })
+          .map((startup) => (
+            <StartupCard
+              key={startup.id}
+              img={startup.profile_logo}
+              name={startup.startup_name}
+              tags={startup.industry}
+            />
+          ))}
       </div>
     </div>
   );
