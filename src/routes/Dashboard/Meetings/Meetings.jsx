@@ -76,7 +76,6 @@ const Meetings = () => {
               return [...prev, newItm]
             })
           }
-
         })
         .catch((err) => {
           console.log(err)
