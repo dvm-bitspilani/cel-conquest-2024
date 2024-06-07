@@ -20,7 +20,7 @@
     width: 35%;
     gap: 1rem;
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 910px) {
       width: 37%;
     }
 
@@ -76,7 +76,6 @@
   }
 
   .logo {
-    aspect-ratio: 161.23px / 26.264px;
     height: 26px;
     position: absolute;
     left: 50%;

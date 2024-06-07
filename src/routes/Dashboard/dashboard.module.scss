@@ -9,8 +9,13 @@
   display: flex;
   justify-content: end;
   align-items: center;
+
   img {
     height: 175%;
+  }
+
+  @media screen and (max-width: 820px) {
+    display: none;
   }
 }
 
@@ -18,38 +23,23 @@
   display: flex;
   width: 100vw;
   height: 100vh;
+
   .sidebar {
     width: 23vw;
+    min-width: 240px;
     padding: 25px;
+
+    @media screen and (max-width: 820px) {
+      display: none;
+    }
   }
+
   .dashboardContent {
     padding-top: 15vh;
+
+    @media screen and (max-width: 820px) {
+      padding-top: 0;
+      width: 100vw;
+    }
   }
 }
-
-@media(max-width:820px) {
-
-  .orangeHeader {
-    width: 105%;
-  }
-  .dashboardElementContainer .sidebar {
-    display: none;
-  }
-}
-
-@media(max-width:750px){
-  .orangeHeader{
-    width: 106%;
-  }
-}
-
-@media(max-width:500px){
-  .orangeHeader{
-    display: none;
-  }
-
-  .dashboardElementContainer .sidebar{
-    display: none;
-  }
-}
-

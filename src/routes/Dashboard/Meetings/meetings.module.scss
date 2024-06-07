@@ -11,15 +11,24 @@
   height: 85vh;
   display: flex;
   align-items: center;
+
   .meetingsList {
-    width: 60%;
+    width: 50%;
     height: 100%;
+    overflow: auto;
+
+    .meetingWrapper {
+      padding-top: 20px;
+      overflow-y: auto;
+    }
+
     .meetingsListOptionsContainer {
       padding-top: 30px;
-      padding-left: 15px;
+      padding-left: 9px;
       padding-right: 50px;
       display: flex;
       gap: 20px;
+
       .meetingsListOptions {
         display: inline-flex;
         padding: 10px 24px;
@@ -33,12 +42,20 @@
         font-size: 17px;
         font-weight: 600;
         line-height: normal;
+
+        @media screen and (max-width: 1200px) {
+          font-size: 12px;
+          line-height: 140%;
+          padding: 5px 12px;
+        }
+
         &:hover {
           border: 0.5px solid #fb723d;
           color: #fb723d;
           cursor: pointer;
         }
       }
+
       .active {
         color: #fb723d;
         border: 0.5px solid #fb723d;
@@ -46,6 +63,7 @@
       }
     }
   }
+
   .divider {
     height: 95%;
     border-left: #A0A0A0 dashed 1px;
@@ -53,8 +71,9 @@
 
   .rightPart {
     height: 100%;
-    width: 40%;
+    width: 50%;
     overflow: hidden;
+
     .selectSlots {
       position: absolute;
       right: 20px;
@@ -78,6 +97,7 @@
         cursor: pointer;
       }
     }
+
     .meetingsDetails {
       z-index: -1;
       transition: filter 0.1s;
