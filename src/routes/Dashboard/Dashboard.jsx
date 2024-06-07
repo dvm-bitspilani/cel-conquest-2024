@@ -13,7 +13,7 @@ const Dashboard = () => {
         <div className={styles.sidebar}>
           <Sidebar></Sidebar>
         </div>
-        <div className={styles.dashboardContent}>{<Outlet/>}</div>
+        <div className={styles.dashboardContent}>{<Outlet />}</div>
       </div>
     </>
   );
