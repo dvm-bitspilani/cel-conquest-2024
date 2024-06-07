@@ -117,6 +117,7 @@ const Meetings = () => {
           {selectSlots ? (
             <SelectSlots
               showHideSelectSlotTiming={showHideSelectSlotTiming}
+              showHideSelectSlots={showHideSelectSlots}
             ></SelectSlots>
           ) : null}
           <div
