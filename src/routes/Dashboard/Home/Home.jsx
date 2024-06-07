@@ -1,3 +1,6 @@
+import { useEffect, useRef, useState } from "react";
+import axios from "axios";
+
 import { Avatar, ConfigProvider } from "antd";
 
 import MeetingList from "../../../components/MeetingList/MeetingList"
@@ -6,9 +9,10 @@ import UserPill from "../../../components/UserPill/UserPill";
 import avatar from '../../../assets/images/Dashboard/demoAvatar.jpeg'
 
 import * as styles from './home.module.scss'
-import { useRef } from "react";
 
 export default function Home() {
+  const [listItms, setListItms] = useState([])
+
   // GETTING MEETING DATA FROM CLICK
   const dataRef = useRef(null)
 
@@ -16,23 +20,58 @@ export default function Home() {
     console.log(dataRef.current)
   }
 
-  const listItms = [];
-  for (let i = 0; i < 6; i++) {
-    const newItm = (
-      <MeetingItem
-        date="May 24, 2024, 00:30:00"
-        avatar={avatar}
-        mentorName="Bhavesh"
-        duration={30}
-        // isGrayLink={true}
-        key={Math.random()}
-        data={{ test: 'hello', id: i }}
-        handleClick={handleClick}
-        dataRef={dataRef}
-      />
-    );
-    listItms.push(newItm);
-  }
+  useEffect(() => {
+    axios.get('https://conquest-api.bits-dvm.org/api/meetings/all_meetings/', {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
+      }
+    })
+      .then((res) => {
+        console.log(res.data)
+
+        const newArr = res.data.map(newItm => {
+          return (
+            <MeetingItem
+              date={newItm.start_time}
+              avatar={avatar}
+              mentorName={newItm.mentor_name}
+              duration={newItm.duration}
+              key={newItm.id}
+              data={newItm}
+              handleClick={handleClick}
+              dataRef={dataRef}
+            />
+          )
+        })
+
+        setListItms(newArr)
+
+        // for (let i = 0; i < 6; i++) {
+        //   const newItm = (
+        //     <MeetingItem
+        //       date="May 24, 2024, 00:30:00"
+        //       avatar={avatar}
+        //       mentorName="Bhavesh"
+        //       duration={30}
+        //       // isGrayLink={true}
+        //       key={Math.random()}
+        //       data={{ test: 'hello', id: i }}
+        //       handleClick={handleClick}
+        //       dataRef={dataRef}
+        //     />
+        //   )
+
+        //   setListItms(prev => {
+        //     return [...prev, newItm]
+        //   })
+        // }
+
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [JSON.parse(localStorage.getItem('userData')).tokens.access])
+
 
   const coach = [];
   const mentors = [];
