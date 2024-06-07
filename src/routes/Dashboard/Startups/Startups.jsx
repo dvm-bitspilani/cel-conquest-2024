@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input, Button } from "antd";
 import * as styles from "./Startups.module.scss";
 import StartupCard from "../../../components/Startups/StartupCard/StartupCard";
@@ -40,6 +40,16 @@ const exampleData = [
 
 const Startups = () => {
   const [value, setValue] = useState("");
+  const [isFilterBtnActive, setIsFilterBtnActive] = useState(false);
+  const [isTagsBtnActive, setIsTagsBtnActive] = useState(false);
+
+  const handleClickTags = () => {
+    setIsTagsBtnActive((e) => !e);
+  };
+  const handleClickFilter = () => {
+    setIsFilterBtnActive((e) => !e);
+  };
+
   return (
     <div className={styles.startups}>
       <div className={styles.heading}>
@@ -70,8 +80,11 @@ const Startups = () => {
             }
           ></Input>
         </div>
-        <FilterBtn />
-        <TagsBtn />
+        <FilterBtn
+          onClick={handleClickFilter}
+          isFilterBtnActive={isFilterBtnActive}
+        />
+        <TagsBtn onClick={handleClickTags} isTagsBtnActive={isTagsBtnActive} />
       </div>
       <h2>Showing results for {value ? value : ".."}</h2>
       <div className={styles.startupList}>

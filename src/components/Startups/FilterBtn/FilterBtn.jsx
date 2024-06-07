@@ -1,5 +1,5 @@
-import React from "react";
-import { Button } from "antd";
+import React, { useState } from "react";
+import { Button, Menu, Dropdown } from "antd";
 import * as styles from "./FilterBtn.module.scss";
 
 const FilterSVG = () => {
@@ -20,10 +20,154 @@ const FilterSVG = () => {
   );
 };
 
-export default function FilterBtn() {
+const MenuSVG = () => {
   return (
-    <div className={styles.filter}>
-      <Button icon={<FilterSVG />}>Filter</Button>
-    </div>
+    <svg
+      width="7"
+      height="12"
+      viewBox="0 0 7 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ marginRight: "1rem" }}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0.568189 7.27729C0.352111 7.06095 0.230742 6.76768 0.230742 6.46191C0.230742 6.15614 0.352111 5.86287 0.568189 5.64652L4.91896 1.29421C5.13541 1.07786 5.42895 0.956352 5.735 0.956425C6.04104 0.956496 6.33453 1.07814 6.55088 1.2946C6.76724 1.51106 6.88874 1.80459 6.88867 2.11064C6.8886 2.41669 6.76695 2.71017 6.5505 2.92652L3.01511 6.46191L6.5505 9.99729C6.76078 10.2148 6.87722 10.5062 6.87474 10.8088C6.87225 11.1113 6.75104 11.4008 6.53721 11.6148C6.32338 11.8288 6.03403 11.9503 5.7315 11.9531C5.42896 11.9558 5.13744 11.8397 4.91973 11.6296L0.567419 7.27806L0.568189 7.27729Z"
+        fill="#5A5A5A"
+      />
+    </svg>
+  );
+};
+
+const items = [
+  {
+    key: "1",
+    icon: <MenuSVG />,
+    label: "By Stage",
+    children: [
+      {
+        key: "11",
+        label: "Pre-Seed Stage",
+      },
+      {
+        key: "12",
+        label: "Seed Stage",
+      },
+      {
+        key: "13",
+        label: "Early Stage",
+      },
+      {
+        key: "14",
+        label: "Growth Stage",
+      },
+      {
+        key: "15",
+        label: "Expansion Stage",
+      },
+    ],
+  },
+  {
+    key: "2",
+    icon: <MenuSVG />,
+    label: "By smth",
+    children: [
+      {
+        key: "21",
+        label: "Pre-Seed Stage",
+      },
+      {
+        key: "22",
+        label: "Seed Stage",
+      },
+      {
+        key: "23",
+        label: "Early Stage",
+      },
+      {
+        key: "24",
+        label: "Growth Stage",
+      },
+      {
+        key: "25",
+        label: "Expansion Stage",
+      },
+    ],
+  },
+];
+
+const getLevelKeys = (items1) => {
+  const key = {};
+  const func = (items2, level = 1) => {
+    items2.forEach((item) => {
+      if (item.key) {
+        key[item.key] = level;
+      }
+      if (item.children) {
+        func(item.children, level + 1);
+      }
+    });
+  };
+  func(items1);
+  return key;
+};
+const levelKeys = getLevelKeys(items);
+
+export default function FilterBtn({ onClick, isFilterBtnActive }) {
+  const [stateOpenKeys, setStateOpenKeys] = useState([]);
+  const onOpenChange = (openKeys) => {
+    const currentOpenKey = openKeys.find(
+      (key) => stateOpenKeys.indexOf(key) === -1
+    );
+    if (currentOpenKey !== undefined) {
+      const repeatIndex = openKeys
+        .filter((key) => key !== currentOpenKey)
+        .findIndex((key) => levelKeys[key] === levelKeys[currentOpenKey]);
+      setStateOpenKeys(
+        openKeys
+          .filter((_, index) => index !== repeatIndex)
+          .filter((key) => levelKeys[key] <= levelKeys[currentOpenKey])
+      );
+    } else {
+      setStateOpenKeys(openKeys);
+    }
+  };
+  return (
+    <>
+      <div className={styles.filter}>
+        <Button onClick={onClick} icon={<FilterSVG />}>
+          Filter
+        </Button>
+        <div
+          className={styles.filterMenu}
+          style={{ display: isFilterBtnActive ? "" : "none" }}
+        >
+          <Menu
+            mode="inline"
+            items={items}
+            openKeys={stateOpenKeys}
+            onOpenChange={onOpenChange}
+            expandIcon={null}
+            className={styles.menu}
+          >
+            {items.map((item) => (
+              <Menu.SubMenu key={item.key} title={item.label} icon={item.icon}>
+                {item.children.map((child) => (
+                  <Menu.Item
+                    key={child.key}
+                    className={
+                      stateOpenKeys === child.key ? styles.activeMenuItem : ""
+                    }
+                  >
+                    {child.label}
+                  </Menu.Item>
+                ))}
+              </Menu.SubMenu>
+            ))}
+          </Menu>
+        </div>
+      </div>
+    </>
   );
 }

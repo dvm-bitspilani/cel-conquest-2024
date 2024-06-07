@@ -1,5 +1,5 @@
-import React from "react";
-import { Button } from "antd";
+import React, { Children } from "react";
+import { Button, Menu } from "antd";
 import * as styles from "./TagsBtn.module.scss";
 
 const TagsSVG = () => {
@@ -21,10 +21,66 @@ const TagsSVG = () => {
   );
 };
 
-export default function TagsBtn() {
+const MenuSVG = () => {
+  return (
+    <svg
+      width="7"
+      height="12"
+      viewBox="0 0 7 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ marginRight: "1rem" }}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0.568189 7.27729C0.352111 7.06095 0.230742 6.76768 0.230742 6.46191C0.230742 6.15614 0.352111 5.86287 0.568189 5.64652L4.91896 1.29421C5.13541 1.07786 5.42895 0.956352 5.735 0.956425C6.04104 0.956496 6.33453 1.07814 6.55088 1.2946C6.76724 1.51106 6.88874 1.80459 6.88867 2.11064C6.8886 2.41669 6.76695 2.71017 6.5505 2.92652L3.01511 6.46191L6.5505 9.99729C6.76078 10.2148 6.87722 10.5062 6.87474 10.8088C6.87225 11.1113 6.75104 11.4008 6.53721 11.6148C6.32338 11.8288 6.03403 11.9503 5.7315 11.9531C5.42896 11.9558 5.13744 11.8397 4.91973 11.6296L0.567419 7.27806L0.568189 7.27729Z"
+        fill="#5A5A5A"
+      />
+    </svg>
+  );
+};
+
+const TagsData = [
+  "tag1",
+  "tag7",
+  "tag6",
+  "tag5",
+  "tag4",
+  "tag3",
+  "tag2",
+  "tag8",
+  "tag1",
+  "tag7",
+  "tag6",
+  "tag5",
+  "tag4",
+  "tag3",
+  "tag2",
+  "tag8",
+];
+
+export default function TagsBtn({ onClick, isTagsBtnActive }) {
   return (
     <div className={styles.tags}>
-      <Button icon={<TagsSVG />}>Tags</Button>
+      <Button onClick={onClick} icon={<TagsSVG />}>
+        Tags
+      </Button>
+      {isTagsBtnActive && (
+        <div className={styles.tagsMenu}>
+          <h2>
+            <MenuSVG />
+            Industries
+          </h2>
+          <div className={styles.tagsContainer}>
+            {TagsData.map((tag, index) => (
+              <div key={index} className={styles.tag}>
+                <p>{tag}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
