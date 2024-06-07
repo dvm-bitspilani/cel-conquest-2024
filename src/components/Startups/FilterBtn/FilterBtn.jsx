@@ -66,32 +66,9 @@ const items = [
         key: "15",
         label: "Expansion Stage",
       },
-    ],
-  },
-  {
-    key: "2",
-    icon: <MenuSVG />,
-    label: "By smth",
-    children: [
       {
-        key: "21",
-        label: "Pre-Seed Stage",
-      },
-      {
-        key: "22",
-        label: "Seed Stage",
-      },
-      {
-        key: "23",
-        label: "Early Stage",
-      },
-      {
-        key: "24",
-        label: "Growth Stage",
-      },
-      {
-        key: "25",
-        label: "Expansion Stage",
+        key: "16",
+        label: "Exit Stage",
       },
     ],
   },
@@ -112,12 +89,29 @@ const getLevelKeys = (items1) => {
   func(items1);
   return key;
 };
+
+const getLabelByKey = (key, items) => {
+  for (const item of items) {
+    if (item.key === key) {
+      return item.label;
+    }
+    if (item.children) {
+      const childLabel = getLabelByKey(key, item.children);
+      if (childLabel) {
+        return childLabel;
+      }
+    }
+  }
+  return null;
+};
+
 const levelKeys = getLevelKeys(items);
 
 export default function FilterBtn({
   onClick,
   isFilterBtnActive,
   setIsFilterBtnActive,
+  setSelectedStage,
 }) {
   const [stateOpenKeys, setStateOpenKeys] = useState([]);
   const menuRef = useRef();
@@ -156,6 +150,15 @@ export default function FilterBtn({
       setStateOpenKeys(openKeys);
     }
   };
+
+  const handleMenuClick = (e) => {
+    let selectedLabel = getLabelByKey(e.key, items);
+    // console.log(selectedLabel);
+    if (selectedLabel == "Exit Stage") selectedLabel = "";
+    setSelectedStage(selectedLabel);
+    setIsFilterBtnActive(false);
+  };
+
   return (
     <>
       <div className={styles.filter}>
@@ -174,9 +177,15 @@ export default function FilterBtn({
             onOpenChange={onOpenChange}
             expandIcon={null}
             className={styles.menu}
+            onClick={handleMenuClick}
           >
             {items.map((item) => (
-              <Menu.SubMenu key={item.key} title={item.label} icon={item.icon}>
+              <Menu.SubMenu
+                key={item.key}
+                title={item.label}
+                icon={item.icon}
+                onClick={handleMenuClick}
+              >
                 {item.children.map((child) => (
                   <Menu.Item
                     key={child.key}
