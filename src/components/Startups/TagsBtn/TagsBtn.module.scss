@@ -81,3 +81,31 @@
     }
   }
 }
+
+@media screen and (max-width: 820px) {
+  .tags {
+    // position: unset;
+    width: 11vw;
+    width: 11vw;
+    button {
+      padding: 0 !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10.5px;
+      span {
+        margin-inline-end: unset !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          width: 85%;
+        }
+      }
+    }
+  }
+  .tagsSpan {
+    display: none !important;
+    content: "";
+  }
+}

@@ -57,12 +57,43 @@
 
   .startupList {
     max-height: 55vh;
-    min-width: 65vw;
+    min-width: 70vw;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     overflow-y: scroll;
 
     @include scrollbarStyles();
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .startups {
+    padding: 2rem 1.5rem;
+    .heading {
+      font-size: 24px;
+    }
+    .searchContainer {
+      gap: 2.5%;
+      justify-content: space-between;
+      .searchBar {
+        .searchBarInput {
+          height: 2.625rem;
+          width: 60vw;
+          font-size: 12.35px;
+          border-radius: 7px;
+
+          svg {
+            margin: 0 0.5rem 0 0 !important;
+            height: 14px;
+            width: 14px;
+          }
+        }
+      }
+    }
+    h2 {
+      font-size: 12.35px;
+      font-weight: 500;
+    }
   }
 }

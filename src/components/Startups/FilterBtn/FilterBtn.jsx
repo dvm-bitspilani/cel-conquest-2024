@@ -163,7 +163,7 @@ export default function FilterBtn({
     <>
       <div className={styles.filter}>
         <Button onClick={onClick} icon={<FilterSVG />} ref={btnRef}>
-          Filter
+          <span className={styles.filterSpan}>Filter</span>
         </Button>
         <div
           ref={menuRef}
