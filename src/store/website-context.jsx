@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useGoogleLogin, googleLogout } from "@react-oauth/google";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const WebContext = createContext({
     user: {},
@@ -14,6 +15,8 @@ export const WebContext = createContext({
 });
 
 export default function WebContextProvider({ children }) {
+    const navigate = useNavigate()
+
     const [user, setUser] = useState(null);
     const [isUserLoginBtnDisabled, setIsUserLoginBtnDisabled] = useState(false);
     const [loginErrorMessage, setLoginErrorMessage] = useState(null);
@@ -27,6 +30,7 @@ export default function WebContextProvider({ children }) {
                 setUser(res.data.user_profile_obj)
                 localStorage.setItem("userData", JSON.stringify(res.data))
                 setIsUserLoginBtnDisabled(false)
+                navigate('/dashboard')
             })
             .catch((err) => {
                 console.log("In context err")
