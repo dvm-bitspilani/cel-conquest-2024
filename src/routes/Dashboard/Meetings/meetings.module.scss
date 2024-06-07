@@ -11,9 +11,15 @@
   height: 85vh;
   display: flex;
   align-items: center;
+  @media screen and (max-width: 1160px){
+    padding-left: 20px;
+  }
+  @media screen and (max-width: 1100px){
+    padding-left: 30px;
+  }
 
   .meetingsList {
-    width: 60%;
+    width: 50%;
     height: 100%;
     overflow: auto;
 
@@ -43,6 +49,12 @@
         font-weight: 600;
         line-height: normal;
 
+        @media screen and (max-width: 1200px) {
+          font-size: 12px;
+          line-height: 140%;
+          padding: 5px 12px;
+        }
+
         &:hover {
           border: 0.5px solid #fb723d;
           color: #fb723d;
@@ -65,7 +77,7 @@
 
   .rightPart {
     height: 100%;
-    width: 40%;
+    width: 50%;
     overflow: hidden;
 
     .selectSlots {

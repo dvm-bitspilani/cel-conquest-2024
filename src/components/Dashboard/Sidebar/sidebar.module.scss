@@ -10,6 +10,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
+  @media screen and (max-width: 1100px) {
+    padding: 20px 10px;
+    
+  }
 border: 0.75px solid #FB723D;
   .profileSection {
     display: flex;
