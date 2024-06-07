@@ -6,6 +6,7 @@ const dummyTeamData = {
     img: avatar,
     name: "Short Name",
     position: "Co-Founder",
+    linkedin: "https://www.linkedin.com"
 }
 
 const arrayofData = Array.from({ length: 18 }, () => ({ ...dummyTeamData }));

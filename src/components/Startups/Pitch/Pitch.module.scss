@@ -26,26 +26,49 @@
             width: 386px;
             height: 217px;
             position: relative;
-            transition: height,width 0.3s ease-out;
-            video{
+            transition: height, width 0.3s ease-out;
+
+            video {
                 height: 100%;
                 width: 100%;
                 border-radius: 16.16px;
                 object-fit: cover;
             }
-            svg{
+
+            .button {
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                transform: translate(-50%,-50%);
+                transform: translate(-50%, -50%);
+
+                .hide {
+                    display: none;
+                }
+
+                .pause {
+                    position: relative;
+                    display: none;
+
+                    .icon {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
             }
         }
 
-        .video.large{
+        .video.large {
             height: auto;
             width: 90%;
             position: absolute;
             top: 0;
+
+            &:hover .pause {
+                transition: display 0.3s ease;
+                display: block;
+            }
         }
     }
 }

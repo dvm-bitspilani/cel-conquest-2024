@@ -1,7 +1,7 @@
 import * as styles from "./TeamCard.module.scss";
 import avatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
 
-export default function TeamCard({ img, name, position }) {
+export default function TeamCard({ img, name, position, linkedin }) {
     return (
         <>
             <div className={styles.teamMemberContainer}>
@@ -12,6 +12,7 @@ export default function TeamCard({ img, name, position }) {
                     <div className={styles.name}>{name}</div>
                     <div className={styles.position}>{position}</div>
                 </div>
+                <a href={linkedin} target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
                     <g clip-path="url(#clip0_1266_2615)">
                         <path d="M18.0888 0.98518H1.65461C1.28173 0.981386 0.922575 1.12567 0.655949 1.38637C0.389323 1.64707 0.237006 2.0029 0.232422 2.37577V18.8764C0.237835 19.2487 0.390516 19.6037 0.657052 19.8637C0.923588 20.1237 1.28227 20.2676 1.65461 20.2638H18.0888C18.4617 20.2667 18.8207 20.122 19.0871 19.8611C19.3536 19.6002 19.506 19.2445 19.511 18.8716V2.37103C19.5044 1.99925 19.3513 1.64512 19.0849 1.38562C18.8186 1.12611 18.4607 0.982206 18.0888 0.98518Z" fill="#FB723D" />
@@ -23,6 +24,7 @@ export default function TeamCard({ img, name, position }) {
                         </clipPath>
                     </defs>
                 </svg>
+                </a>
             </div>
         </>
     )
