@@ -41,6 +41,10 @@
     display: flex;
     overflow: auto;
 
+    @media screen and (max-width: 1045px) {
+        width: calc(100vw - 240px);
+    }
+
     .heading {
         margin-top: 1rem;
         margin-bottom: 2rem;
@@ -167,6 +171,10 @@
 
         .wrapper {
             padding: 0 25px;
+
+            // @media screen and (max-width: 1100px) {
+            //     padding: 0 10px;
+            // }
         }
 
         .userPills {
@@ -200,6 +208,6 @@
             border-bottom: 1px dotted #a0a0a0;
         }
 
-        @include scrollbarStyles();
+        // @include scrollbarStyles();
     }
 }
