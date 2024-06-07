@@ -1,7 +1,7 @@
 import styles from "./SelectSlots.module.scss";
 import SlotInputField from "./SlotInputField/SlotInputField";
 
-const SelectSlots = ({ showHideSelectSlotTiming }) => {
+const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
   return (
     <div className={styles.SelectSlots}>
       <h3>Select Slots</h3>
@@ -10,7 +10,7 @@ const SelectSlots = ({ showHideSelectSlotTiming }) => {
       ></SlotInputField>
       <div className={styles.addDone}>
         <button>Add</button>
-        <button>Done</button>
+        <button onClick={showHideSelectSlots}>Done</button>
       </div>
     </div>
   );
