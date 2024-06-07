@@ -3,7 +3,7 @@ import styles from "./timeSelectButton.module.scss";
 function TimeSelectButton({active}) {
   return (
     <button className={`${styles.button} ${active?styles.active:null}`} >
-      {active?(<svg
+      {!active?(<svg
         xmlns="http://www.w3.org/2000/svg"
         width="21"
         height="20"
