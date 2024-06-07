@@ -1,6 +1,9 @@
 .pageContainer {
   margin: 0px 70px;
   height: 100vh;
+  @media screen and (max-width: 1000px){
+    margin: 0px 20px;
+  }
 }
 
 .backgroundGrid {

@@ -8,7 +8,7 @@ const MeetingDetails = () => {
         <h3 className={styles.MeetingDetailsHeader}>Meeting details</h3>
         <p className={styles.MeetingStatus}>Confirmed</p>
         <div className={styles.DateSlider}>
-          <svg
+          {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
             height="20"
@@ -19,9 +19,9 @@ const MeetingDetails = () => {
               d="M15.8333 2.5L4.16658 10L15.8333 17.5V2.5Z"
               fill="#111213"
             />
-          </svg>
+          </svg> */}
           <div>25 May, 2024</div>
-          <svg
+          {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
             height="20"
@@ -32,7 +32,7 @@ const MeetingDetails = () => {
               d="M4.16675 2.5L15.8334 10L4.16675 17.5V2.5Z"
               fill="#111213"
             />
-          </svg>
+          </svg> */}
         </div>
         <div className={styles.photos}>
           <div className={styles.avatarContainer}>
@@ -88,7 +88,7 @@ const MeetingDetails = () => {
         <div className={styles.personDetails}>
           <p>with</p>
           <p>bhavesh</p>
-          <p>+91 00001 00001</p>
+          {/* <p>+91 00001 00001</p> */}
         </div>
         <div className={styles.lowerContent}>
           <div className={styles.upper}>
