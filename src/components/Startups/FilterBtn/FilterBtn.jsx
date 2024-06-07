@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Menu, Dropdown } from "antd";
 import * as styles from "./FilterBtn.module.scss";
 
@@ -114,8 +114,31 @@ const getLevelKeys = (items1) => {
 };
 const levelKeys = getLevelKeys(items);
 
-export default function FilterBtn({ onClick, isFilterBtnActive }) {
+export default function FilterBtn({
+  onClick,
+  isFilterBtnActive,
+  setIsFilterBtnActive,
+}) {
   const [stateOpenKeys, setStateOpenKeys] = useState([]);
+  const menuRef = useRef();
+  const btnRef = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(e.target) &&
+        !btnRef.current.contains(e.target)
+      ) {
+        setIsFilterBtnActive(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [isFilterBtnActive]);
+
   const onOpenChange = (openKeys) => {
     const currentOpenKey = openKeys.find(
       (key) => stateOpenKeys.indexOf(key) === -1
@@ -136,10 +159,11 @@ export default function FilterBtn({ onClick, isFilterBtnActive }) {
   return (
     <>
       <div className={styles.filter}>
-        <Button onClick={onClick} icon={<FilterSVG />}>
+        <Button onClick={onClick} icon={<FilterSVG />} ref={btnRef}>
           Filter
         </Button>
         <div
+          ref={menuRef}
           className={styles.filterMenu}
           style={{ display: isFilterBtnActive ? "" : "none" }}
         >
