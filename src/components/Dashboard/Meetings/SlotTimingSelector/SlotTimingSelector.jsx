@@ -1,3 +1,4 @@
+import axios from "axios";
 import SlotDateButton from "./SlotDateButton/SlotDateButton";
 import TimeSelectButton from "./TimeSelectButton/TimeSelectButton";
 import TimeSelectButtonHeader from "./TimeSelectButtonHeader/TimeSelectButtonHeader";
@@ -248,6 +249,24 @@ const eveningSvg = (
 );
 
 const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
+  const createSlot = () => {
+    axios.post('http://conquest-api.bits-dvm.org/api/meetings/slots/', {
+      user: '1',
+      start_time: '1717564000',
+      end_time: '1717564000'
+    },{
+      headers: {
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
+      }, 
+    
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  };
   return (
     <>
       <div
@@ -315,7 +334,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
         </div>
         <div className={styles.bottomSection}>
           <p>Select a 45 min. slot</p>
-          <button>Select</button>
+          <button onClick={()=>{createSlot()}}>Select</button>
         </div>
       </div>
     </>
