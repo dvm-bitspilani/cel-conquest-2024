@@ -71,6 +71,32 @@ export default function StartupProfileHeader({ img, name, desc, location }) {
                     <div className={styles.profileInfoContainer}>
                         {profileInfo[selectedTopic]}
                     </div>
+                                        <div className={styles.mobile}>
+                        <div className={styles.button}>
+                            <button className={styles.btn_m}>Message</button>
+                            <button className={`${styles.btn_m} ${styles.schedule_m}`}>Schedule</button>
+                        </div>
+                        <div className={styles.head}>
+                            <p className={styles.headings}>About</p>
+                            <About {...DummyAbout}></About>
+                        </div>
+                        <div className={styles.head}>
+                            <p className={styles.headings}>Details</p>
+                            <Details {...dummyDetails}></Details>
+                        </div>
+                        <div className={styles.head}>
+                            <p className={styles.headings}>Pitch</p>
+                            <Pitch></Pitch>
+                        </div>
+                        <div className={styles.head}>
+                            <p className={styles.headings}>Team</p>
+                            <Team></Team>
+                        </div>
+                        <div className={styles.head}>
+                            <p className={styles.headings}>Contact</p>
+                            <StartupProfileContact {...dummyContact} />
+                        </div>
+                    </div>
                 </div>
                 <div className={styles.contact}>
                     <div className={styles.buttonContainer}>
