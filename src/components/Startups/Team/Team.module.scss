@@ -26,7 +26,49 @@
     gap: 17px;
     width: fit-content;
     padding-right: 150px;
+    padding-bottom: 30px;
     height: 515px;
     overflow-y: scroll;
     @include scrollbarStyles();
+}
+
+@media(max-width:1200px) {
+    
+    .teamContainer {
+        padding-right: 4vw;
+    }
+}
+
+@media(max-width:1000px) {
+
+    .teamContainer {
+        padding-right: 14px;
+    }
+}
+
+@media(max-width: 900px) {
+
+    .teamContainer {
+        grid-template-columns: repeat(2,1fr);
+        padding-right: 7vw;
+    }
+}
+
+@media(max-width:500px) {
+
+    .teamContainer {
+        padding-right: 0;
+        background-color: white;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        overflow-y: hidden;
+        padding-top: 15px;
+    }
+
+    @mixin scrollbarStyles() {
+        &::-webkit-scrollbar {
+            width: 0px;
+        }
+    }   
 }
