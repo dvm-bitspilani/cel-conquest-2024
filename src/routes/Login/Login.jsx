@@ -33,7 +33,8 @@ export default function Login() {
             // console.log(values)
             usernameLogin(values)
         },
-        // validateOnChange: false
+        validateOnChange: firstSubmit,
+        validateOnBlur: firstSubmit
     })
 
     useEffect(() => {
@@ -75,7 +76,6 @@ export default function Login() {
                             blurFn={handleBlur}
                             value={values.username}
                             error={errors.username}
-                            firstSubmit={firstSubmit}
                         />
                         <TextInput
                             name='password'
@@ -84,12 +84,12 @@ export default function Login() {
                             blurFn={handleBlur}
                             value={values.password}
                             error={errors.password}
-                            firstSubmit={firstSubmit}
                             type='password'
                         />
                         {/* <input type="submit" value="Log In" className={styles.submitBtn} /> */}
                         <button
                             className={styles.submitBtn}
+                            type='submit'
                             onClick={() => {
                                 setFirstSubmit(true)
                             }}
