@@ -18,12 +18,13 @@
     overflow: auto;
 
     .meetingWrapper {
+      padding-top: 20px;
       overflow-y: auto;
     }
 
     .meetingsListOptionsContainer {
       padding-top: 30px;
-      padding-left: 15px;
+      padding-left: 9px;
       padding-right: 50px;
       display: flex;
       gap: 20px;
