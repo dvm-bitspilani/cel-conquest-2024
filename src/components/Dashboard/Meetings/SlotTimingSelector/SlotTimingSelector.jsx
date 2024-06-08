@@ -288,6 +288,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
       ></SlotDateButton>
     );
   }
+  console.log(dateTime)
 
   const createSlot = () => {
     axios
