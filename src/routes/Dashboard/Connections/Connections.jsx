@@ -57,6 +57,7 @@ function Connections() {
           My Connections
         </button>
       </div>
+      <ConnectionListItem />
     </div>
   );
 }
