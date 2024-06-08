@@ -254,6 +254,9 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
   const changeDate = (date) => {
     setDateTime((prev) => ({ date: date, ...prev }));
   }
+  const changeTime = (time) => {
+    setDateTime((prev) => ({ time: time, ...prev }));
+  }
 
   const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const weekday_mobile = ["Su", "M", "T", "W", "Th", "F", "Sa"];
@@ -269,9 +272,12 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
   }
   let dateComponents = [];
   const [dateTime, setDateTime] = useState({ date: days[0].getDate(), time: null });
+  console.log(dateTime);
   for (let i = 0; i < 7; i++) {
     dateComponents[i] = (
       <SlotDateButton
+        changeDate={changeDate}
+        changeTime={changeTime}
         day={week[days[i].getDay()]}
         date={days[i].getDate()}
         active={dateTime.date === days[i].getDate() ? true : false}
