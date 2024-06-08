@@ -1,3 +1,7 @@
+body{
+    overflow-x: hidden;
+}
+
 .container {
     width: 77vw;
     height: 85vh;
@@ -78,6 +82,9 @@
             top: 40px;
             left: 6%;
         }
+        .mobile {
+            display: none;
+        }
     }
 
     .contact {
@@ -125,18 +132,14 @@
                 font-weight: 600;
                 line-height: 18px;
             }
-
-            .dropdown {
-                position: relative;
-
-                .dots {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate3d(-50%, -50%, 0);
-                }
-            }
         }
+    }
+}
+
+@media(max-width: 1800px) {
+
+    body{
+        overflow-x: hidden;
     }
 }
 
@@ -181,9 +184,6 @@
         width: fit-content;
         align-items: center;
 
-        .dropdown {
-            display: none;
-        }
     }
     .container .profile {
         width: 80%;
@@ -241,9 +241,18 @@
     .container {
         width: 100%;
         margin-left: 40px;
+        margin-top: 30px;
 
         .profile{
             width:calc(70% - 40px);
+
+            .contentContainer {
+    
+                .logoContainer {
+                    position: relative;
+                    top: -10px;
+                }
+            }
         }        
         .contact {
             position: relative;
@@ -334,6 +343,10 @@
 
 
 @media(max-width:500px) {
+
+    body{
+        overflow-x: hidden;
+    }
 
     .container {
         margin-left: 35px;
