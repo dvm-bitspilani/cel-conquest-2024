@@ -97,11 +97,9 @@ const Meetings = () => {
       <div className={styles.meetingsContainer}>
         <div className={styles.meetingsList}>
           <div className={styles.meetingsListOptionsContainer}>
-            <div  className={`${styles.meetingsListOptions} ${styles.active}`}>
-              Upcoming
-            </div>
-            <div className={styles.meetingsListOptions}>Pending</div>
-            <div className={styles.meetingsListOptions}>Past</div>
+            <div className={`${styles.meetingsListOptions} ${(listTab==="Upcoming")? styles.active:null}`}>Upcoming</div>
+            <div className={`${styles.meetingsListOptions} ${(listTab==="Pending")? styles.active:null}`}>Pending</div>
+            <div className={`${styles.meetingsListOptions} ${(listTab==="Past")? styles.active:null}`}>Past</div>
           </div>
           <div className={styles.meetingWrapper}>
             <MeetingList listItms={listItms} />
