@@ -8,11 +8,10 @@
 .superCont {
     width: 100vw;
     height: 100dvh;
+    overflow: hidden;
 }
 
 .container {
-    scale: 0.75;
-    top: -125px;
     width: 100vw;
     display: flex;
     font-size: 1rem;
@@ -21,6 +20,46 @@
     align-items: center;
     gap: 0.5rem;
     position: relative;
+
+    @media screen and (max-height: 1055px) {
+        scale: 0.95;
+        top: -30px;
+    }
+
+    @media screen and (max-height: 1000px) {
+        scale: 0.9;
+        top: -50px;
+    }
+
+    @media screen and (max-height: 950px) {
+        scale: 0.85;
+        top: -70px;
+    }
+
+    @media screen and (max-height: 900px) {
+        scale: 0.8;
+        top: -90px;
+    }
+
+    @media screen and (max-height: 850px) {
+        scale: 0.75;
+        top: -115px;
+    }
+
+    @media screen and (max-height: 800px) {
+        scale: 0.7;
+        top: -135px;
+    }
+
+    @media screen and (max-height: 750px) {
+        scale: 0.65;
+        top: -155px;
+    }
+
+    @media screen and (max-height: 700px) {
+        scale: 0.6;
+        top: -175px;
+    }
 
     .backBtn {
         position: absolute;
