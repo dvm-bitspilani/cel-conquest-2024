@@ -5,12 +5,7 @@ function Connections() {
   return (
     <div className={styles.container}>
       <div className={styles.ButtonContainer}>
-        <div
-          onClick={() => {
-            setListTab("pending");
-            getMeetingList("pending");
-          }}
-          className={`${styles.meetingsListOptions} ${
+        <div className={`${styles.meetingsListOptions} ${
             listTab === "pending" ? styles.active : null
           }`}
         >
