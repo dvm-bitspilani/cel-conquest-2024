@@ -12,14 +12,22 @@
   border-radius: 8px;
   border: 1px solid #a0a0a0;
 
-  p {
-    color: #646464;
-    font-family: Montserrat;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    span{
+  div {
+    display: flex;
+    width: 100%;
+    div:nth-child(2) {
+      color: #646464;
+      font-family: Montserrat;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      display: flex;
+      justify-content: center;
+    }
+    
+    div:nth-child(1){
+      width: 80px;
       color: #646464;
 font-family: Montserrat;
 font-size: 17px;

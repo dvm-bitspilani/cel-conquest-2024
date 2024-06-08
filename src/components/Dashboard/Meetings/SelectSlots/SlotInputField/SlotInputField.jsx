@@ -34,10 +34,14 @@ const SlotInputField = ({
       : `${hoursEnd}:${minutesEnd} AM`;
   return (
     <div className={styles.inputField}>
-      <p>
-        <span> Slot {slotno}</span> ({meetDate} {month} ({week[dateObj.getDay()]}),{" "}
+      <div>
+        <div> Slot {slotno}</div> 
+        <div>
+
+        ({meetDate} {month} ({week[dateObj.getDay()]}),{" "}
         {fullTime} - {fullTimeEnd})
-      </p>
+        </div>
+      </div>
       <button
         className={styles.SelectButton}
         onClick={showHideSelectSlotTiming}
