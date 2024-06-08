@@ -4,11 +4,58 @@ import dashboard_mountain_circle from "../../../assets/images/Dashboard/dashboar
 import Button from "./Button/Button";
 import demoAvatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
 
-import bell from "../../../assets/images/Dashboard/bell.svg";
-import back_arrow from "../../../assets/images/Dashboard/arrow-left.svg";
 import { useState } from "react";
 
 const Sidebar = () => {
+  const bell = (
+    <svg
+      width="23"
+      height="24"
+      viewBox="0 0 23 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M17.25 8C17.25 6.4087 16.6442 4.88258 15.5659 3.75736C14.4875 2.63214 13.025 2 11.5 2C9.97501 2 8.51247 2.63214 7.43414 3.75736C6.3558 4.88258 5.75 6.4087 5.75 8C5.75 15 2.875 17 2.875 17H20.125C20.125 17 17.25 15 17.25 8Z"
+        stroke="#111213"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M13.1579 21C12.9894 21.3031 12.7476 21.5547 12.4566 21.7295C12.1656 21.9044 11.8357 21.9965 11.5 21.9965C11.1642 21.9965 10.8343 21.9044 10.5433 21.7295C10.2524 21.5547 10.0105 21.3031 9.84204 21"
+        stroke="#111213"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <circle cx="17" cy="4" r="4" fill="#F7703C" />
+    </svg>
+  );
+  const back_arrow = (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M19 12H5"
+        stroke="#111213"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M12 19L5 12L12 5"
+        stroke="#111213"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
   const [activeButton, setActiveButton] = useState("Home");
 
   const handleButtonClick = (text) => {
@@ -18,8 +65,8 @@ const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
       <div className={styles.headerButtons}>
-        <img src={back_arrow} />
-        <img src={bell} />
+        {back_arrow}
+        {bell}
       </div>
       <div className={styles.profileSection}>
         <a href="/dashboard/startup-profile" className={styles.profileAvatar}>
