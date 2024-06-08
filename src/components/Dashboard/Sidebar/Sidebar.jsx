@@ -143,7 +143,7 @@ const Sidebar = () => {
         <img height={50} width={53} src={dashboard_mountain_circle} />
       </div> */}
 
-      <a className={styles.madeWithContainer} href="">
+      <a className={styles.madeWithContainer} href="https://bits-dvm.org/">
         <div className={styles.madeWithSomething}>
           <span className={styles.madeWithText}>Made with</span>
           <span className={styles.heart}>
