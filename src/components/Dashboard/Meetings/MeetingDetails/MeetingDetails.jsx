@@ -3,6 +3,31 @@ import demoAvatar from "../../../../assets/images/Dashboard/demoAvatar.jpeg";
 
 const MeetingDetails = ({ myData }) => {
   console.log(1, myData, 1);
+
+  const dateObjEnd = new Date(myData.slot_end_time);
+  const dateObj = new Date(myData.slot_start_time);
+  const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
+    dateObj
+  );
+  const meetDate = dateObj.getDate();
+  const hours = dateObj.getHours();
+  const minutes = dateObj.getMinutes();
+  const fullTime =
+    hours > 12
+      ? `${hours - 12}:${minutes}`
+      : hours === 0
+      ? `12:${minutes}`
+      : `${hours}:${minutes}`;
+
+  const hoursEnd = dateObjEnd.getHours();
+  const minutesEnd = dateObjEnd.getMinutes();
+  const fullTimeEnd =
+    hoursEnd > 12
+      ? `${hoursEnd - 12}:${minutesEnd}`
+      : hoursEnd === 0
+      ? `12:${minutesEnd}`
+      : `${hoursEnd}:${minutesEnd}`;
+
   return (
     <div className={styles.MeetingDetailsContainer}>
       <div className={styles.MeetingDetails}>
@@ -23,7 +48,7 @@ const MeetingDetails = ({ myData }) => {
               fill="#111213"
             />
           </svg> */}
-          <div>25 May, 2024</div>
+          <div>{meetDate} {month.slice(0, 3)}, 2024</div>
           {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -97,7 +122,7 @@ const MeetingDetails = ({ myData }) => {
           <div className={styles.upper}>
             <div className={styles.lowerBold}>Date & Time</div>
             <div className={styles.dateTime}>
-              <p>May 25th</p>
+              <p>{month.slice(0, 3)} 25th</p>
               <p>15:30 - 16:00</p>
             </div>
           </div>
