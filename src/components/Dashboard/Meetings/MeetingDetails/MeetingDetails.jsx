@@ -120,7 +120,7 @@ const MeetingDetails = () => {
                   d="M5.83325 5.83325H14.1666V14.1666"
                   stroke="#138CFD"
                   strokeWidth="1.5"
-                  strokeLinecap"round"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
