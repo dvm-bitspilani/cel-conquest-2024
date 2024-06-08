@@ -90,10 +90,17 @@
             }
         }
         svg {
-            margin-left: auto;
+            margin-left: 32vw;
             height: 26px;
             width: 26px;
         }
+    }
+}
+
+@media(max-width:460px) {
+
+    .teamMemberContainer svg{
+        margin-left: 28vw;
     }
 }
 
@@ -102,12 +109,26 @@
     .teamMemberContainer {
         width: 81vw;
     }
+    .teamMemberContainer svg{
+        margin-left: 19vw;
+    }
 }
 
 @media(max-width:350px) {
 
     .teamMemberContainer {
         width: 78vw;
+    }
+    .teamMemberContainer svg{
+        margin-left: 5vw;
+    }
+    
+}
+
+@media(max-width:300px) {
+
+    .teamMemberContainer svg{
+        margin-left: 0vw;
     }
 }
 

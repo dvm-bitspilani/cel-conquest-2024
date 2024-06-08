@@ -15,12 +15,16 @@ import Home from "./routes/Dashboard/Home/Home";
 import Meetings from "./routes/Dashboard/Meetings/Meetings";
 import Startups from "./routes/Dashboard/Startups/Startups";
 import Unauthorised from "./routes/Unauthorised/Unauthorised";
+import StartupProfile from "./routes/Dashboard/StartupProfile/StartupProfile";
+import Experts from "./routes/Dashboard/Experts/Experts";
+import Mentors from "./routes/Dashboard/Mentors/Mentors";
+import Connections from "./routes/Dashboard/Connections/Connections";
 ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment variables -> will do later
 
 function App() {
   // tracking page views
   const { setUser, getUserData } = useContext(WebContext);
-  const userData = getUserData()
+  const userData = getUserData();
   // const location = useLocation();
   useEffect(() => {
     console.log(window.location.pathname + window.location.search); // for debugging
@@ -31,17 +35,13 @@ function App() {
     });
 
     if (userData) {
-      setUser(userData)
+      setUser(userData);
     }
   }, []);
 
   return (
     <Routes>
-      <Route
-        path="/"
-        element={<LandingPage />}
-        errorElement={<ErrorPage />}
-      />
+      <Route path="/" element={<LandingPage />} errorElement={<ErrorPage />} />
       <Route path="unauthorised" element={<Unauthorised />} />
       <Route path="login" element={<Login />} />
       <Route element={<RequireAuth />}>
@@ -49,6 +49,10 @@ function App() {
           <Route index element={<Home />}></Route>
           <Route path="meetings" element={<Meetings />}></Route>
           <Route path="startups" element={<Startups />}></Route>
+          <Route path="experts" element={<Experts />}></Route>
+          <Route path="startup-profile" element={<StartupProfile />}></Route>
+          <Route path="mentors" element={<Mentors />}></Route>
+          <Route path="connections" element={<Connections />}></Route>
         </Route>
       </Route>
     </Routes>

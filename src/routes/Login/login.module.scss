@@ -5,6 +5,24 @@
     margin: 0;
 }
 
+.superCont {
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+.backBtn {
+    position: absolute;
+    left: 80px;
+    top: 32px;
+    width: 3rem;
+
+    @media screen and (max-width: 640px) {
+        margin-top: 0.25rem;
+        left: calc(20 / 1024 * 100dvh);
+    }
+}
+
 .container {
     width: 100vw;
     display: flex;
@@ -15,16 +33,56 @@
     gap: 0.5rem;
     position: relative;
 
-    .backBtn {
-        position: absolute;
-        left: 80px;
-        top: 47px;
-        width: 3rem;
+    @media screen and (max-height: 1055px) {
+        scale: 0.95;
+        top: -30px;
+    }
 
-        @media screen and (max-width: 640px) {
-            margin-top: 0.25rem;
-            left: calc(20 / 1024 * 100dvh);
+    @media screen and (max-height: 1000px) {
+        scale: 0.9;
+        top: -50px;
+    }
+
+    @media screen and (max-height: 950px) {
+        scale: 0.85;
+        top: -70px;
+    }
+
+    @media screen and (max-height: 900px) {
+        scale: 0.8;
+        top: -90px;
+    }
+
+    @media screen and (max-height: 850px) {
+        scale: 0.75;
+        top: -115px;
+    }
+
+    @media screen and (max-height: 800px) {
+        scale: 0.7;
+        top: -135px;
+    }
+
+    @media screen and (max-height: 750px) {
+        scale: 0.65;
+        top: -155px;
+    }
+
+    @media screen and (max-height: 700px) {
+        scale: 0.6;
+        top: -175px;
+    }
+
+    @for $i from 1 through 10 {
+        @media screen and (max-height: calc(650px - $i * 10px)) {
+            scale: 0.59 - $i * 0.005;
+            top: -180px - $i * 5px;
         }
+    }
+
+    @media screen and (max-width: 670px) {
+        scale: 0.85;
+        top: -70px;
     }
 
     .logo {
@@ -68,6 +126,9 @@
 
             .logoContainer {
                 aspect-ratio: 1 / 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 @media screen and (min-width: 671px) {
                     width: 95%;

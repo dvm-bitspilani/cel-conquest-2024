@@ -10,7 +10,6 @@ const Button = ({ active, text, handleButtonClick, link }) => {
         handleButtonClick(text);
         e.preventDefault();
         navigate(`${link}`);
-        console.log(link);
       }}
     >
       {text}
