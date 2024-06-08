@@ -9,6 +9,9 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
+  overflow-y: scroll;
+  gap: 15px;
+
 
   @media screen and (max-width: 1100px) {
     padding: 20px 10px;
