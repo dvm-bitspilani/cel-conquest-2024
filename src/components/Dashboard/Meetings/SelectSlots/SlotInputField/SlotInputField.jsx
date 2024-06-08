@@ -3,6 +3,7 @@ import styles from "./SlotInputField.module.scss";
 const SlotInputField = ({
   showHideSelectSlotTiming,
   id,
+  slotno,
   dateTimeStart,
   dateTimeEnd,
 }) => {
@@ -34,7 +35,7 @@ const SlotInputField = ({
   return (
     <div className={styles.inputField}>
       <p>
-        <span> Slot {id}</span> ({meetDate} {month} ({week[dateObj.getDay()]}),{" "}
+        <span> Slot {slotno}</span> ({meetDate} {month} ({week[dateObj.getDay()]}),{" "}
         {fullTime} - {fullTimeEnd})
       </p>
       <button
