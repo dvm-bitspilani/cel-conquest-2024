@@ -1,22 +1,18 @@
 import * as styles from "./StartupProfileContact.module.scss";
 
-export default function StartupProfileContact({ phone, email, website, twitter, linkedin }) {
+export default function StartupProfileContact({ email, website, twitter, linkedin }) {
     return (
         <>
             <div className={styles.contactUsWrapper}>
                 <div className={styles.contactContainer}>
                     <div className={styles.title}>Contact <span>Us</span></div>
                     <div className={styles.mobile}>
-                        <div className={styles.type}>Phone :</div>
-                        <div className={styles.details}>{phone}</div>
-                    </div>
-                    <div className={styles.mobile}>
                         <div className={styles.type}>Email :</div>
                         <div className={styles.details}>{email}</div>
                     </div>
                     <div className={styles.mobile}>
                         <div className={styles.type}>Website :</div>
-                        <span className={styles.website}>{website}</span>
+                        <a href={website} target="_blank" className={styles.website}>{website}</a>
                         <svg className={styles.link} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                             <path d="M8.962 12.0578H6.30775C5.46175 12.0578 4.74075 11.7598 4.14475 11.1638C3.54875 10.5678 3.2505 9.84653 3.25 9.00003C3.2495 8.15353 3.54775 7.43228 4.14475 6.83628C4.74175 6.24028 5.46275 5.94203 6.30775 5.94153H8.962V6.69153H6.30775C5.67275 6.69153 5.1295 6.91753 4.678 7.36953C4.226 7.82203 4 8.36553 4 9.00003C4 9.63453 4.226 10.1778 4.678 10.6298C5.13 11.0818 5.67325 11.3078 6.30775 11.3078H8.962V12.0578ZM7.375 9.37503V8.62503H12.625V9.37503H7.375ZM11.0388 12.0578V11.3078H13.6923C14.3273 11.3078 14.8705 11.0818 15.322 10.6298C15.774 10.1778 16 9.63453 16 9.00003C16 8.36553 15.774 7.82228 15.322 7.37028C14.87 6.91828 14.3268 6.69228 13.6923 6.69228H11.0388V5.94228H13.6923C14.5383 5.94228 15.2595 6.24028 15.856 6.83628C16.4525 7.43228 16.7505 8.15353 16.75 9.00003C16.7495 9.84653 16.4512 10.5678 15.8552 11.1638C15.2592 11.7598 14.5383 12.058 13.6923 12.0585L11.0388 12.0578Z" fill="#138CFD" />
                         </svg>
