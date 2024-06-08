@@ -6,7 +6,6 @@ function Connections() {
     <div className={styles.ButtonContainer}>
       <button className={styles.PendingButton}>Pending</button>
       <button className={styles.ConnectionsButton}>My Connections</button>
-
     </div>
   </div>;
 }
