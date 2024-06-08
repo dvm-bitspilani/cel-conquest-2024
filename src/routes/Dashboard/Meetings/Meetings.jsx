@@ -10,9 +10,10 @@ import MeetingItem from "../../../components/MeetingList/MeetingItem/MeetingItem
 const Meetings = () => {
   //meeting list code
   const dataRef = useRef(null);
+  const [data, setData] = useState(null);
 
   function handleClick() {
-    console.log(dataRef.current);
+    setData(dataRef.current);
   }
 
   // rest of the code
@@ -97,7 +98,7 @@ const Meetings = () => {
                 mentorName={newItm.requested_name}
                 duration={45}
                 key={newItm.id}
-                // data={newItm}
+                data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
               />
@@ -183,7 +184,7 @@ const Meetings = () => {
               selectSlots ? styles.blur : null
             }`}
           >
-            <MeetingDetails></MeetingDetails>
+            <MeetingDetails myData={data}></MeetingDetails>
           </div>
         </div>
       </div>

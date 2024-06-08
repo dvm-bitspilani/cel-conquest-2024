@@ -1,7 +1,8 @@
 import styles from "./MeetingDetails.module.scss";
 import demoAvatar from "../../../../assets/images/Dashboard/demoAvatar.jpeg";
 
-const MeetingDetails = () => {
+const MeetingDetails = ({myData}) => {
+  console.log(1, myData, 1);
   return (
     <div className={styles.MeetingDetailsContainer}>
       <div className={styles.MeetingDetails}>
