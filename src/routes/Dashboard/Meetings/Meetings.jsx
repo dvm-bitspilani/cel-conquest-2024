@@ -47,44 +47,24 @@ const Meetings = () => {
           }
         )
         .then((res) => {
-          // console.log(res.data)
+          console.log(res.data)
 
-          // const newArr = res.data.map(newItm => {
-          //   return (
-          //     <MeetingItem
-          //       date={newItm.slot_start_time}
-          //       avatar={newItm.requested_logo}
-          //       mentorName={newItm.requested_name}
-          //       duration={45}
-          //       key={newItm.id}
-          //       // data={newItm}
-          //       handleClick={handleClick}
-          //       dataRef={dataRef}
-          //     />
-          //   )
-          // })
-
-          // setListItms(newArr)
-
-          for (let i = 0; i < 6; i++) {
-            const newItm = (
+          const newArr = res.data.map(newItm => {
+            return (
               <MeetingItem
-                date="May 24, 2024, 00:30:00"
-                avatar={avatar}
-                mentorName="Bhavesh"
-                duration={30}
-                // isGrayLink={true}
-                key={Math.random()}
-                data={{ test: "hello", id: i }}
+                date={newItm.slot_start_time}
+                avatar={newItm.requested_logo}
+                mentorName={newItm.requested_name}
+                duration={45}
+                key={newItm.id}
+                // data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
               />
-            );
+            )
+          })
 
-            setListItms((prev) => {
-              return [...prev, newItm];
-            });
-          }
+          setListItms(newArr)
         })
         .catch((err) => {
           console.log(err);
@@ -108,44 +88,24 @@ const Meetings = () => {
           }
         )
         .then((res) => {
-          // console.log(res.data)
+          console.log(res.data)
 
-          // const newArr = res.data.map(newItm => {
-          //   return (
-          //     <MeetingItem
-          //       date={newItm.slot_start_time}
-          //       avatar={newItm.requested_logo}
-          //       mentorName={newItm.requested_name}
-          //       duration={45}
-          //       key={newItm.id}
-          //       // data={newItm}
-          //       handleClick={handleClick}
-          //       dataRef={dataRef}
-          //     />
-          //   )
-          // })
-
-          // setListItms(newArr)
-
-          for (let i = 0; i < 6; i++) {
-            const newItm = (
+          const newArr = res.data.map(newItm => {
+            return (
               <MeetingItem
-                date="May 24, 2024, 00:30:00"
-                avatar={avatar}
-                mentorName="Bhavesh"
-                duration={30}
-                // isGrayLink={true}
-                key={Math.random()}
-                data={{ test: "hello", id: i }}
+                date={newItm.slot_start_time}
+                avatar={newItm.requested_logo}
+                mentorName={newItm.requested_name}
+                duration={45}
+                key={newItm.id}
+                // data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
               />
-            );
+            )
+          })
 
-            setListItms((prev) => {
-              return [...prev, newItm];
-            });
-          }
+          setListItms(newArr)
         })
         .catch((err) => {
           console.log(err);
