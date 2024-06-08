@@ -9,25 +9,25 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
   const [slotList, setSlotList] = useState([]);
   const [slotData, setSlotData] = useState([]);
   const deleteSlot = (id) => {
-    console.log("delete slot");
-    console.log(slotData);
-    let newArray = slotData.filter((itm) => {
-      return itm.id !== id;
-    });
-    let newArr = newArray.map((newItm, index) => {
-      return (
-        <SlotInputField
-          slotno={index + 1}
-          key={newItm.id}
-          id={newItm.id}
-          showHideSelectSlotTiming={showHideSelectSlotTiming}
-          dateTimeStart={newItm.start_time}
-          dateTimeEnd={newItm.end_time}
-          deleteSlot={deleteSlot}
-        ></SlotInputField>
-      );
-    });
-    setSlotList(newArr);
+    // console.log("delete slot");
+    // console.log(slotData);
+    // let newArray = slotData.filter((itm) => {
+    //   return itm.id !== id;
+    // });
+    // let newArr = newArray.map((newItm, index) => {
+    //   return (
+    //     <SlotInputField
+    //       slotno={index + 1}
+    //       key={newItm.id}
+    //       id={newItm.id}
+    //       showHideSelectSlotTiming={showHideSelectSlotTiming}
+    //       dateTimeStart={newItm.start_time}
+    //       dateTimeEnd={newItm.end_time}
+    //       deleteSlot={deleteSlot}
+    //     ></SlotInputField>
+    //   );
+    // });
+    // setSlotList(newArr);
   };
 
   useEffect(() => {
