@@ -30,6 +30,8 @@ const Meetings = () => {
     console.log(selectSlotTiming);
   };
 
+  const [listTab, setListTab] = useState("Upcoming");
+
   useEffect(() => {
     if (JSON.parse(localStorage.getItem('userData')).tokens) {
       axios.get('https://conquest-api.bits-dvm.org/api/meetings/all_meetings/', {
@@ -95,7 +97,7 @@ const Meetings = () => {
       <div className={styles.meetingsContainer}>
         <div className={styles.meetingsList}>
           <div className={styles.meetingsListOptionsContainer}>
-            <div className={`${styles.meetingsListOptions} ${styles.active}`}>
+            <div  className={`${styles.meetingsListOptions} ${styles.active}`}>
               Upcoming
             </div>
             <div className={styles.meetingsListOptions}>Pending</div>
