@@ -1,10 +1,11 @@
 import styles from "./SlotInputField.module.scss";
 
-const SlotInputField = ({ showHideSelectSlotTiming }) => {
+const SlotInputField = ({ showHideSelectSlotTiming , id, dateTimeStart, dateTimeEnd}) => {
+  let dateStart = new Date(dateTimeStart * 1000);
+  let dateEnd = new Date(dateTimeEnd * 1000);
   return (
     <div className={styles.inputField}>
-      <input type="text" placeholder="Slot 1" />
-      <p></p>
+      <p>`Slot {id}  () `</p>
       <button
         className={styles.SelectButton}
         onClick={showHideSelectSlotTiming}
