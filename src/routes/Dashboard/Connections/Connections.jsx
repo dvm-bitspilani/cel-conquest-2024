@@ -3,9 +3,11 @@ import styles from "./Connections.module.scss";
 import { useState } from "react";
 import ConnectionListItem from "../../../components/Connections/ConnectionListItem/ConnectionListItem";
 import axios from "axios";
+import { List } from "antd";
 
 function Connections() {
   const [listTab, setListTab] = useState("pending");
+  const [listItms, setListItms] = useState([]);
 
   const getList = (listTab) => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
@@ -76,7 +78,9 @@ function Connections() {
           My Connections
         </button>
       </div>
+      {}
       <ConnectionListItem />
+      {listItms}
     </div>
   );
 }
