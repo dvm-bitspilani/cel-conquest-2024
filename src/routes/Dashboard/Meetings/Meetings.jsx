@@ -56,7 +56,7 @@ const Meetings = () => {
                 mentorName={newItm.requested_name}
                 duration={45}
                 key={newItm.id}
-                // data={newItm}
+                data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
               />
