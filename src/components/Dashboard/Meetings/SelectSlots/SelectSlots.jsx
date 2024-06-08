@@ -28,7 +28,7 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
               //   handleClick={handleClick}
               //   dataRef={dataRef}
               // />
-              <SlotInputField showHideSelectSlotTiming={showHideSelectSlotTiming}></SlotInputField>
+              <SlotInputField showHideSelectSlotTiming={showHideSelectSlotTiming} dateTimeStart={newItm.start_time} dateTimeEnd={newItm.end_time}></SlotInputField>
             )
           })
 
