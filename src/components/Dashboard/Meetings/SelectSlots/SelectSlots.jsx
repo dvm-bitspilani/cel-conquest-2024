@@ -35,9 +35,8 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
       axios
         .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
           headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("userData")).tokens.access
-            }`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
           },
         })
         .then((res) => {
@@ -69,11 +68,13 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
 
   return (
     <div className={styles.SelectSlots}>
-      <h3>Select Slots</h3>
-      {slotList}
-      <div className={styles.addDone}>
-        <button onClick={showHideSelectSlotTiming}>Add</button>
-        <button onClick={showHideSelectSlots}>Done</button>
+      <div className={styles.slotListWrapper}>
+        <h3>Select Slots</h3>
+        {slotList}
+        <div className={styles.addDone}>
+          <button onClick={showHideSelectSlotTiming}>Add</button>
+          <button onClick={showHideSelectSlots}>Done</button>
+        </div>
       </div>
     </div>
   );

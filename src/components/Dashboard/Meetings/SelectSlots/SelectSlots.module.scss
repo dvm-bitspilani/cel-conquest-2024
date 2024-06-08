@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   gap: 32px;
-  
+
   overflow-y: scroll;
   height: 500px;
   width: 550px;
@@ -19,16 +19,27 @@
   border: 1px solid #fb723d;
   background: #fff;
   box-shadow: 0px 3px 18px 0px rgba(0, 0, 0, 0.12);
+
+  .slotListWrapper {
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    gap: 32px;
+    flex-direction: column;
+  }
+
   .addDone {
     display: flex;
     justify-content: space-between;
     width: 100%;
+
     //select first button in the SelectSlots component
     button {
       &:hover {
         cursor: pointer;
       }
     }
+
     button:first-child {
       background-color: white;
       display: flex;
@@ -46,6 +57,7 @@
       font-weight: 500;
       line-height: normal;
     }
+
     button:nth-child(2) {
       display: flex;
       width: 79px;
