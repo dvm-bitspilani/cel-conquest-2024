@@ -281,6 +281,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
   for (let i = 0; i < 7; i++) {
     dateComponents[i] = (
       <SlotDateButton
+        key={i}
         changeDate={changeDate}
         day={week[days[i].getDay()]}
         date={days[i].getDate()}
