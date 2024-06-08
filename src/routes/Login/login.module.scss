@@ -5,7 +5,14 @@
     margin: 0;
 }
 
+.superCont {
+    width: 100vw;
+    height: 100dvh;
+}
+
 .container {
+    scale: 0.75;
+    top: -125px;
     width: 100vw;
     display: flex;
     font-size: 1rem;
