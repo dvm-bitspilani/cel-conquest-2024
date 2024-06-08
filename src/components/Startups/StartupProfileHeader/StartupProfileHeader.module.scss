@@ -1,3 +1,7 @@
+body{
+    overflow-x: hidden;
+}
+
 .container {
     width: 77vw;
     height: 85vh;
@@ -132,6 +136,13 @@
     }
 }
 
+@media(max-width: 1800px) {
+
+    body{
+        overflow-x: hidden;
+    }
+}
+
 @media(max-width: 1300px) {
 
     .container .contact .buttonContainer {
@@ -230,9 +241,18 @@
     .container {
         width: 100%;
         margin-left: 40px;
+        margin-top: 30px;
 
         .profile{
             width:calc(70% - 40px);
+
+            .contentContainer {
+    
+                .logoContainer {
+                    position: relative;
+                    top: -10px;
+                }
+            }
         }        
         .contact {
             position: relative;
@@ -323,6 +343,10 @@
 
 
 @media(max-width:500px) {
+
+    body{
+        overflow-x: hidden;
+    }
 
     .container {
         margin-left: 35px;
@@ -415,9 +439,6 @@
                         color: #FB723D;
                     }
                 }
-                .head1 {
-                    display: none;
-                } 
 
                 .head {
                     border-top: #A0A0A0 dashed 1.5px;
