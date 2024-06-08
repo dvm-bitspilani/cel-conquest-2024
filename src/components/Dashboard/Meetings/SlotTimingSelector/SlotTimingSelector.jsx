@@ -1,8 +1,9 @@
-import axios from "axios";
+import axios, { formToJSON } from "axios";
 import SlotDateButton from "./SlotDateButton/SlotDateButton";
 import TimeSelectButton from "./TimeSelectButton/TimeSelectButton";
 import TimeSelectButtonHeader from "./TimeSelectButtonHeader/TimeSelectButtonHeader";
 import styles from "./slotTimingSelector.module.scss";
+import { useState } from "react";
 
 const morningSvg = (
   <svg
@@ -249,23 +250,69 @@ const eveningSvg = (
 );
 
 const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
-  const createSlot = () => {
-    axios.post('http://conquest-api.bits-dvm.org/api/meetings/slots/', {
-      user: '1',
-      start_time: '1717564000',
-      end_time: '1717564000'
-    },{
-      headers: {
-        Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
-      }, 
-    
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
+  const changeDate = (date) => {
+    setDateTime((prev) => {
+      return { ...prev, date: date };
     });
+  };
+  const changeTime = (time) => {
+    setDateTime((prev) => {
+      return { ...prev, time: time };
+    });
+  };
+
+  const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const weekday_mobile = ["Su", "M", "T", "W", "Th", "F", "Sa"];
+
+  const d = new Date();
+  let week = weekday;
+  if (screen.width < 820) {
+    week = weekday_mobile;
+  }
+  const days = [];
+  for (let i = 0; i < 7; i++) {
+    days[i] = new Date(new Date().getTime() + i * 24 * 60 * 60 * 1000);
+  }
+  let dateComponents = [];
+  const [dateTime, setDateTime] = useState({
+    date: days[0].getDate(),
+    time: "9:00",
+  });
+  for (let i = 0; i < 7; i++) {
+    dateComponents[i] = (
+      <SlotDateButton
+        changeDate={changeDate}
+        day={week[days[i].getDay()]}
+        date={days[i].getDate()}
+        active={dateTime.date === days[i].getDate() ? true : false}
+      ></SlotDateButton>
+    );
+  }
+  console.log(dateTime)
+
+  const createSlot = () => {
+    axios
+      .post(
+        "https://conquest-api.bits-dvm.org/api/meetings/slots/",
+        {
+          user: "1",
+          start_time: "1717564000",
+          end_time: "1717564000",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
+          },
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   return (
     <>
@@ -276,7 +323,6 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
         <div className={styles.header}>
           <svg
             onClick={() => removeModal()}
-
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -300,41 +346,88 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
           </svg>
           <h2>Select Slot 1</h2>
         </div>
-        <div className={styles.slotDataButtonContainer}>
-          <SlotDateButton day="Mon" date="27" />
-          <SlotDateButton day="Tue" date="28" />
-          <SlotDateButton day="Wed" date="29" active={true} />
-          <SlotDateButton day="Thu" date="30" />
-          <SlotDateButton day="Fri" date="31" />
-          <SlotDateButton day="Sat" date="01" />
-          <SlotDateButton day="Sun" date="02" />
-        </div>
+        <div className={styles.slotDataButtonContainer}>{dateComponents}</div>
         <div className={styles.slotTimingContainer}>
           <div>
             <TimeSelectButtonHeader svg={morningSvg} header="Morning" />
-            <TimeSelectButton />
-            <TimeSelectButton />
-            <TimeSelectButton />
-            <TimeSelectButton />
+            <TimeSelectButton
+              time={"9:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"10:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"11:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"12:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
           </div>
           <div>
             <TimeSelectButtonHeader svg={afternoonSvg} header="Afternoon" />
-            <TimeSelectButton />
-            <TimeSelectButton />
-            <TimeSelectButton />
-            <TimeSelectButton />
+            <TimeSelectButton
+              time={"13:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"14:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"15:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"16:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
           </div>
           <div>
             <TimeSelectButtonHeader svg={eveningSvg} header="Evening" />
-            <TimeSelectButton active={true}/>
-            <TimeSelectButton />
-            <TimeSelectButton />
-            <TimeSelectButton />
+            <TimeSelectButton
+              time={"17:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"18:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"19:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"20:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
           </div>
         </div>
         <div className={styles.bottomSection}>
           <p>Select a 45 min. slot</p>
-          <button onClick={()=>{createSlot()}}>Select</button>
+          <button
+            onClick={() => {
+              createSlot();
+              removeModal();
+            }}
+          >
+            Select
+          </button>
         </div>
       </div>
     </>
