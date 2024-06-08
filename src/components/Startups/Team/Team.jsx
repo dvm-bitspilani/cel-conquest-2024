@@ -11,7 +11,6 @@ import avatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
 
 
 export default function Team({ teamArray }) {
-    console.log(teamArray)
     const validTeamArray = Array.isArray(teamArray) ? teamArray : [];
 
     return (

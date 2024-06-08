@@ -29,12 +29,12 @@ import Pitch from "../Pitch/Pitch";
 //     stage: "Early Stage",
 // }
 
-const profileInfo = {
-    about: <About {...DummyAbout} />,
-    details: <Details {...dummyDetails} />,
-    pitch: <Pitch />,
-    team: <Team />,
-}
+// const profileInfo = {
+//     about: <About {...DummyAbout} />,
+//     details: <Details {...dummyDetails} />,
+//     pitch: <Pitch />,
+//     team: <Team />,
+// }
 
 export default function StartupProfileHeader({ img, name, desc, location, email, website, twitter, linkedin, founder, cofounder1, cofounder2, stage, pitchdeck, pitchvideo, industries, areas, teamArray }) {
     const [selectedTopic, setSelectedTopic] = useState('about');
