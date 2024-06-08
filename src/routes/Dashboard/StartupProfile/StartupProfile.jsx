@@ -55,7 +55,7 @@ const StartupProfile = () => {
     console.log(startupProfile)
     return (
         <>
-            <StartupProfileHeader img={startupProfile.profile_logo} name={startupProfile.startup_name} desc={startupProfile.description} location={startupProfile.location_hq} />
+            <StartupProfileHeader img={startupProfile.profile_logo} name={startupProfile.startup_name} desc={startupProfile.description} location={startupProfile.location_hq} email={startupProfile.contact_email} website={startupProfile.website_url} twitter={startupProfile.linkedin} linkedin={startupProfile.linkedin} />
         </>
     );
 };

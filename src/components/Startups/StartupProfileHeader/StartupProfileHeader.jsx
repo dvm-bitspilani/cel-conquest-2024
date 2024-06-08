@@ -17,7 +17,7 @@ const dummyContact = {
 
 const DummyAbout = {
     description: "Lorem ipsum dolor sit amet consectetur. Adipiscing quisque massa scelerisque dolor est quis sit etiam augue. Risus risus etiam phasellus suspendisse augue placerat nisi arcu.",
-    industries: ["Climate Tech", "EV", "Fin-Tech","Climate Tech", "Lorem Ipsum", "Lorem Ipsum"],
+    industries: ["Climate Tech", "EV", "Fin-Tech", "Climate Tech", "Lorem Ipsum", "Lorem Ipsum"],
     areas: ["Climate Tech", "EV", "Fin-Tech"]
 }
 
@@ -29,20 +29,29 @@ const dummyDetails = {
     stage: "Early Stage",
 }
 
-const profileInfo = {
-    about: <About {...DummyAbout} />,
-    details: <Details {...dummyDetails}/>,
-    pitch: <Pitch />,
-    team: <Team />,
-}
+// const profileInfo = {
+//     about: <About {...DummyAbout} />,
+//     details: <Details {...dummyDetails} />,
+//     pitch: <Pitch />,
+//     team: <Team />,
+// }
 
-export default function StartupProfileHeader({ img, name, desc, location }) {
+export default function StartupProfileHeader({ img, name, desc, location, email, website, twitter, linkedin, founder, cofounder1, cofounder2, stage }) {
     const [selectedTopic, setSelectedTopic] = useState('about');
 
     function handleSelect(selectedButton) {
         setSelectedTopic(selectedButton);
         console.log(selectedTopic)
     }
+
+
+    const profileInfo = {
+        about: <About {...DummyAbout} />,
+        details: <Details founder={founder} cofounder1={cofounder1} cofounder2={cofounder2} location={cofounder2} stage={stage} />,
+        pitch: <Pitch />,
+        team: <Team />,
+    }
+
     return (
         <>
             <div className={styles.container}>
@@ -71,7 +80,7 @@ export default function StartupProfileHeader({ img, name, desc, location }) {
                     <div className={styles.profileInfoContainer}>
                         {profileInfo[selectedTopic]}
                     </div>
-                    
+
                     <div className={styles.mobile}>
                         <div className={styles.button}>
                             <button className={styles.btn_m}>Message</button>
@@ -95,7 +104,7 @@ export default function StartupProfileHeader({ img, name, desc, location }) {
                         </div>
                         <div className={styles.head}>
                             <p className={styles.headings}>Contact</p>
-                            <StartupProfileContact {...dummyContact} />
+                            <StartupProfileContact email={email} website={website} twitter={twitter} linkedin={linkedin} />
                         </div>
                     </div>
                 </div>
@@ -103,9 +112,9 @@ export default function StartupProfileHeader({ img, name, desc, location }) {
                     <div className={styles.buttonContainer}>
                         <div className={styles.btn}>Message</div>
                         <div className={`${styles.btn} ${styles.schedule}`}>Schedule</div>
-                        
+
                     </div>
-                    <StartupProfileContact {...dummyContact} />
+                    <StartupProfileContact email={email} website={website} twitter={twitter} linkedin={linkedin} />
 
                 </div>
             </div >
