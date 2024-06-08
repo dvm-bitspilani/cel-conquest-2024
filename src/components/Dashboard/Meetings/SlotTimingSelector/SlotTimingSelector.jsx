@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { formToJSON } from "axios";
 import SlotDateButton from "./SlotDateButton/SlotDateButton";
 import TimeSelectButton from "./TimeSelectButton/TimeSelectButton";
 import TimeSelectButtonHeader from "./TimeSelectButtonHeader/TimeSelectButtonHeader";
@@ -250,13 +250,37 @@ const eveningSvg = (
 );
 
 const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
+
+  const changeDate = (date) => {
+    setDateTime((prev) => ({ date: date, ...prev }));
+  }
+
   const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const weekday_mobile = ["Su", "M", "T", "W", "Th", "F", "Sa"];
 
   const d = new Date();
-  let day = weekday[d.getDay()];
+  let week = weekday;
+  if (screen.width < 820) {
+    week = weekday_mobile;
+  }
+  const days = [];
+  for (let i = 0; i < 7; i++) {
+    days[i] = new Date(new Date().getTime() + i * 24 * 60 * 60 * 1000);
+  }
+  let dateComponents = [];
+  const [dateTime, setDateTime] = useState({ date: days[0].getDate(), time: null });
+  for (let i = 0; i < 7; i++) {
+    dateComponents[i] = (
+      <SlotDateButton
+        day={week[days[i].getDay()]}
+        date={days[i].getDate()}
+        active={dateTime.date === days[i].getDate() ? true : false}
+      ></SlotDateButton>
+    );
+  }
 
-  const [dateTime, setDateTime] = useState({ date: null, time: null });
+ 
+
 
   const createSlot = () => {
     axios
@@ -315,13 +339,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
           <h2>Select Slot 1</h2>
         </div>
         <div className={styles.slotDataButtonContainer}>
-          <SlotDateButton day="Mon" date="27" />
-          <SlotDateButton day="Tue" date="28" />
-          <SlotDateButton day="Wed" date="29" active={true} />
-          <SlotDateButton day="Thu" date="30" />
-          <SlotDateButton day="Fri" date="31" />
-          <SlotDateButton day="Sat" date="01" />
-          <SlotDateButton day="Sun" date="02" />
+          {dateComponents}
         </div>
         <div className={styles.slotTimingContainer}>
           <div>
