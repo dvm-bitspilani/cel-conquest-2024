@@ -1,16 +1,15 @@
 import React from "react";
 import styles from "./Connections.module.scss";
+import { useState } from "react";
+
 
 function Connections() {
+  const [listTab, setListTab] = useState("pending");
+  const getList = () => {};
   return (
     <div className={styles.container}>
       <div className={styles.ButtonContainer}>
-        <div className={`${styles.meetingsListOptions} ${
-            listTab === "pending" ? styles.active : null
-          }`}
-        >
-          Pending
-        </div>
+        <button className={`${styles.ConnectionsButton}`}>Pending</button>
         <button className={`${styles.ConnectionsButton}`}>
           My Connections
         </button>
@@ -18,5 +17,9 @@ function Connections() {
     </div>
   );
 }
+
+// className={`${styles.meetingsListOptions} ${
+//   listTab === "pending" ? styles.active : null
+// }`}
 
 export default Connections;
