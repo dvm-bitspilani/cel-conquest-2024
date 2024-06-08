@@ -11,6 +11,18 @@
     overflow: hidden;
 }
 
+.backBtn {
+    position: absolute;
+    left: 80px;
+    top: 32px;
+    width: 3rem;
+
+    @media screen and (max-width: 640px) {
+        margin-top: 0.25rem;
+        left: calc(20 / 1024 * 100dvh);
+    }
+}
+
 .container {
     width: 100vw;
     display: flex;
@@ -56,7 +68,7 @@
         top: -155px;
     }
 
-    @media screen and (max-height: 700px) {
+    @media screen and (max-height: 700px) and (min-width: 670px) {
         scale: 0.6;
         top: -175px;
     }
@@ -65,18 +77,6 @@
         @media screen and (max-height: calc(650px - $i * 10px)) {
             scale: 0.59 - $i * 0.005;
             top: -180px - $i * 5px;
-        }
-    }
-
-    .backBtn {
-        position: absolute;
-        left: 80px;
-        top: 47px;
-        width: 3rem;
-
-        @media screen and (max-width: 640px) {
-            margin-top: 0.25rem;
-            left: calc(20 / 1024 * 100dvh);
         }
     }
 
@@ -121,6 +121,9 @@
 
             .logoContainer {
                 aspect-ratio: 1 / 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 @media screen and (min-width: 671px) {
                     width: 95%;
