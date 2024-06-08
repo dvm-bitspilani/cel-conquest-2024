@@ -17,6 +17,7 @@ import ReactGA from "react-ga4";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useNavigate } from "react-router-dom";
 
 const responsive = {
   desktop: {
@@ -34,7 +35,8 @@ const responsive = {
 };
 
 // temporary function for now
-function handleClick() {
+function handleClick(navigate) {
+
   // Track registration click event
   ReactGA.event({
     category: "Button Click",
@@ -43,11 +45,14 @@ function handleClick() {
   });
 
   console.log("hello world"); // for debugging
+  navigate("/login");
 
   // rest of the registration click code
 }
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Navbar2 />
@@ -68,10 +73,10 @@ const LandingPage = () => {
                 run by Center for Entrepreneurial Leadership, BITS Pilani.
               </div>
               <div className={styles.registerAndSignUp}>
-                <button className={styles.register} onClick={handleClick}>
-                  Register
+                <button className={styles.register} onClick={()=>{handleClick(navigate)}}>
+                  Login
                 </button>
-                <button className={styles.signUp}>Sign Up</button>
+                {/* <button className={styles.signUp}>Sign Up</button> */}
               </div>
             </div>
           </div>
