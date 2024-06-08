@@ -45,6 +45,7 @@ const Sidebar = () => {
           text="Cohort of 2024"
           active={activeButton === "Cohort of 2024"}
           handleButtonClick={handleButtonClick}
+          link="/dashboard/startups"
         ></Button>
         <Button
           text="Mentors"
