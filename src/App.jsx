@@ -16,6 +16,7 @@ import Meetings from "./routes/Dashboard/Meetings/Meetings";
 import Startups from "./routes/Dashboard/Startups/Startups";
 import Unauthorised from "./routes/Unauthorised/Unauthorised";
 import Experts from "./routes/Dashboard/Coaches/Coaches";
+import StartupProfile from "./routes/Dashboard/StartupProfile/StartupProfile";
 ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment variables -> will do later
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
           <Route path="meetings" element={<Meetings />}></Route>
           <Route path="startups" element={<Startups />}></Route>
           <Route path="experts" element={<Experts />}></Route>
+          <Route path="startup-profile" element={<StartupProfile />}></Route>
         </Route>
       </Route>
     </Routes>
