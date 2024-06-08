@@ -61,6 +61,13 @@
         top: -175px;
     }
 
+    @for $i from 1 through 10 {
+        @media screen and (max-height: calc(650px - $i * 10px)) {
+            scale: 0.59 - $i * 0.005;
+            top: -180px - $i * 5px;
+        }
+    }
+
     .backBtn {
         position: absolute;
         left: 80px;
