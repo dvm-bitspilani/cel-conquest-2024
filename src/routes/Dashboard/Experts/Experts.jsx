@@ -1,45 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Input, Button } from "antd";
-import * as styles from "./Startups.module.scss";
-import StartupCard from "../../../components/Startups/StartupCard/StartupCard";
+import * as styles from "./Experts.module.scss";
 import FilterBtn from "../../../components/Startups/FilterBtn/FilterBtn";
 import TagsBtn from "../../../components/Startups/TagsBtn/TagsBtn";
 import axios from "axios";
+import CoachCard from "../../../components/Coaches/CoachCard";
 
-// const exampleData = [
-//   {
-//     id: 1,
-//     img: "img",
-//     name: "Startup Name Startup Name",
-//     tags: ["Climate Tech", "EV", "Fin-Tech", "Climate Tech", "EV", "tagC"],
-//   },
-//   {
-//     id: 2,
-//     img: "img",
-//     name: "name2",
-//     tags: ["tagA", "tagB", "tagC"],
-//   },
-//   {
-//     id: 3,
-//     img: "img",
-//     name: "name3",
-//     tags: ["tagA", "tagB", "tagC"],
-//   },
-//   {
-//     id: 4,
-//     img: "img",
-//     name: "name3",
-//     tags: ["tagA", "tagB", "tagC"],
-//   },
-//   {
-//     id: 5,
-//     img: "img",
-//     name: "name3",
-//     tags: ["tagA", "tagB", "tagC"],
-//   },
-// ];
-
-const Startups = () => {
+const Experts = () => {
   const [value, setValue] = useState("");
   const [isFilterBtnActive, setIsFilterBtnActive] = useState(false);
   const [isTagsBtnActive, setIsTagsBtnActive] = useState(false);
@@ -49,7 +16,7 @@ const Startups = () => {
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
-        .get("https://conquest-api.bits-dvm.org/api/users/startup_list/", {
+        .get("https://conquest-api.bits-dvm.org/api/users/expert_list/", {
           headers: {
             Authorization: `Bearer ${
               JSON.parse(localStorage.getItem("userData")).tokens.access
@@ -57,23 +24,8 @@ const Startups = () => {
           },
         })
         .then((res) => {
-          setListItems(res.data.startup_list);
+          setListItems(res.data.expert_list);
         })
-        // .then((res) => {
-        //   // console.log(res.data.startup_list);
-        //   const newArr = res.data.startup_list.map((i) => {
-        //     return (
-        //       <StartupCard
-        //         img={i.profile_logo}
-        //         name={i.startup_name}
-        //         tags={i.industry}
-        //         key={i.id}
-        //       />
-        //     );
-        //   });
-        //   // setListItems(newArr);
-        //   // console.log(listItems);
-        // })
         .catch((err) => {
           console.log(err);
         });
@@ -92,9 +44,9 @@ const Startups = () => {
   };
 
   return (
-    <div className={styles.startups}>
+    <div className={styles.coaches}>
       <div className={styles.heading}>
-        List of <span>Startups:</span>
+        List of <span>Experts:</span>
       </div>
       <div className={styles.searchContainer}>
         <div className={styles.searchBar}>
@@ -131,24 +83,21 @@ const Startups = () => {
         <TagsBtn onClick={handleClickTags} isTagsBtnActive={isTagsBtnActive} />
       </div>
       <h2>Showing results for {value ? value : ".."}</h2>
-      <div className={styles.startupList}>
+      <div className={styles.coachList}>
         {listItems
           .filter((item) => {
-            if (
-              item.startup_name
-                .toLowerCase()
-                .includes(value.toLowerCase().trim())
-            ) {
+            if (item.name.toLowerCase().includes(value.toLowerCase().trim())) {
               if (!selectedStage || item.stage == selectedStage) return true;
             }
             return false;
           })
-          .map((startup) => (
-            <StartupCard
-              key={startup.id}
-              img={startup.profile_logo}
-              name={startup.startup_name}
-              tags={startup.industry}
+          .map((coach) => (
+            <CoachCard
+              key={coach.id}
+              img={coach.profile_logo}
+              name={coach.name}
+              tags={coach.sector_of_expertise}
+              designation={coach.designation}
             />
           ))}
       </div>
@@ -156,4 +105,4 @@ const Startups = () => {
   );
 };
 
-export default Startups;
+export default Experts;

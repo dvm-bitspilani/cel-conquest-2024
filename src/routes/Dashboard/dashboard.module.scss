@@ -26,7 +26,6 @@
 
   .sidebar {
     width: 23vw;
-    min-width: 240px;
     padding: 25px;
 
     @media screen and (max-width: 820px) {
@@ -35,11 +34,82 @@
   }
 
   .dashboardContent {
+    width: 77vw;
+
     padding-top: 15vh;
 
     @media screen and (max-width: 820px) {
       padding-top: 0;
       width: 100vw;
+    }
+  }
+}
+
+.nav {
+  padding: 32px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media screen and (min-width: 821px) {
+    display: none;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .hamMenu {
+    display: none;
+    cursor: pointer;
+
+    .hamIcon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+
+      .line {
+        width: 18px;
+        height: 2px;
+        background-color: black;
+        border-radius: 10px;
+      }
+    }
+
+    @media screen and (max-width: 820px) {
+      display: block;
+      height: 12px;
+    }
+  }
+}
+
+.cross {
+  display: flex;
+  width: 100%;
+  position: relative;
+  justify-content: flex-end;
+  cursor: pointer;
+
+  .line {
+    width: 18px;
+    height: 2px;
+    background-color: black;
+    border-radius: 10px;
+    position: absolute;
+
+    &:first-of-type {
+      transform: rotateZ(45deg);
+    }
+
+    &:last-of-type {
+      transform: rotateZ(-45deg);
     }
   }
 }

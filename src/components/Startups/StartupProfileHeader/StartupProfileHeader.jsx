@@ -71,6 +71,7 @@ export default function StartupProfileHeader({ img, name, desc, location }) {
                     <div className={styles.profileInfoContainer}>
                         {profileInfo[selectedTopic]}
                     </div>
+                    
                     <div className={styles.mobile}>
                         <div className={styles.button}>
                             <button className={styles.btn_m}>Message</button>
@@ -102,6 +103,7 @@ export default function StartupProfileHeader({ img, name, desc, location }) {
                     <div className={styles.buttonContainer}>
                         <div className={styles.btn}>Message</div>
                         <div className={`${styles.btn} ${styles.schedule}`}>Schedule</div>
+                        
                     </div>
                     <StartupProfileContact {...dummyContact} />
 

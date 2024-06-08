@@ -28,17 +28,17 @@ export default function Home() {
         }
       })
         .then((res) => {
-          // console.log(res.data)
+          console.log(res.data)
 
           const newArr = res.data.map(newItm => {
             return (
               <MeetingItem
                 date={newItm.slot_start_time}
-                avatar={newItm.requested_logo}
-                mentorName={newItm.requested_name}
+                avatar={newItm.requester_logo}
+                mentorName={newItm.requester_name}
                 duration={45}
                 key={newItm.id}
-                // data={newItm}
+                data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
               />

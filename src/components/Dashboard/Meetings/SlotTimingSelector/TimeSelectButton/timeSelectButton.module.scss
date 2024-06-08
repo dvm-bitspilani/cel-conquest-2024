@@ -12,4 +12,14 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  &:hover {
+    cursor: pointer;
+    border: 1px solid #FB723D; 
+  }
+}
+
+.active {
+  border: 1px solid #FB723D; 
+  background: #FFECE5; 
+  color: #FB723D;
 }

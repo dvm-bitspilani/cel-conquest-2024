@@ -1,8 +1,10 @@
 import styles from "./slotDateButton.module.scss";
 
-function SlotDateButton({ day, date, active }) {
+function SlotDateButton({ day, date, active, changeDate }) {
   return (
-    <button className={`${styles.container} ${active ? styles.active : null}`}>
+    <button 
+    onClick={()=>{changeDate(date)}}
+    className={`${styles.container} ${active ? styles.active : null}`}>
       <div>{day}</div>
       <div>{date}</div>
     </button>

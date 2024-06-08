@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Menu, Dropdown } from "antd";
 import * as styles from "./FilterBtn.module.scss";
 
@@ -66,32 +66,9 @@ const items = [
         key: "15",
         label: "Expansion Stage",
       },
-    ],
-  },
-  {
-    key: "2",
-    icon: <MenuSVG />,
-    label: "By smth",
-    children: [
       {
-        key: "21",
-        label: "Pre-Seed Stage",
-      },
-      {
-        key: "22",
-        label: "Seed Stage",
-      },
-      {
-        key: "23",
-        label: "Early Stage",
-      },
-      {
-        key: "24",
-        label: "Growth Stage",
-      },
-      {
-        key: "25",
-        label: "Expansion Stage",
+        key: "16",
+        label: "Exit Stage",
       },
     ],
   },
@@ -112,10 +89,52 @@ const getLevelKeys = (items1) => {
   func(items1);
   return key;
 };
+
+const getLabelByKey = (key, items) => {
+  for (const item of items) {
+    if (item.key === key) {
+      return item.label;
+    }
+    if (item.children) {
+      const childLabel = getLabelByKey(key, item.children);
+      if (childLabel) {
+        return childLabel;
+      }
+    }
+  }
+  return null;
+};
+
 const levelKeys = getLevelKeys(items);
 
-export default function FilterBtn({ onClick, isFilterBtnActive }) {
+export default function FilterBtn({
+  onClick,
+  isFilterBtnActive,
+  setIsFilterBtnActive,
+  setSelectedStage,
+  selectedStage,
+}) {
   const [stateOpenKeys, setStateOpenKeys] = useState([]);
+  const [selectedKeys, setSelectedKeys] = useState([]);
+  const menuRef = useRef();
+  const btnRef = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(e.target) &&
+        !btnRef.current.contains(e.target)
+      ) {
+        setIsFilterBtnActive(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [isFilterBtnActive]);
+
   const onOpenChange = (openKeys) => {
     const currentOpenKey = openKeys.find(
       (key) => stateOpenKeys.indexOf(key) === -1
@@ -133,13 +152,24 @@ export default function FilterBtn({ onClick, isFilterBtnActive }) {
       setStateOpenKeys(openKeys);
     }
   };
+
+  const handleMenuClick = (e) => {
+    let selectedLabel = getLabelByKey(e.key, items);
+    if (selectedStage == selectedLabel) selectedLabel = "";
+    setSelectedStage(selectedLabel);
+    setIsFilterBtnActive(false);
+    // console.log(selectedKeys);
+    selectedKeys == e.key ? setSelectedKeys([]) : setSelectedKeys(e.key);
+  };
+
   return (
     <>
       <div className={styles.filter}>
-        <Button onClick={onClick} icon={<FilterSVG />}>
-          Filter
+        <Button onClick={onClick} icon={<FilterSVG />} ref={btnRef}>
+          <span className={styles.filterSpan}>Filter</span>
         </Button>
         <div
+          ref={menuRef}
           className={styles.filterMenu}
           style={{ display: isFilterBtnActive ? "" : "none" }}
         >
@@ -150,22 +180,9 @@ export default function FilterBtn({ onClick, isFilterBtnActive }) {
             onOpenChange={onOpenChange}
             expandIcon={null}
             className={styles.menu}
-          >
-            {items.map((item) => (
-              <Menu.SubMenu key={item.key} title={item.label} icon={item.icon}>
-                {item.children.map((child) => (
-                  <Menu.Item
-                    key={child.key}
-                    className={
-                      stateOpenKeys === child.key ? styles.activeMenuItem : ""
-                    }
-                  >
-                    {child.label}
-                  </Menu.Item>
-                ))}
-              </Menu.SubMenu>
-            ))}
-          </Menu>
+            onClick={handleMenuClick}
+            selectedKeys={selectedKeys}
+          ></Menu>
         </div>
       </div>
     </>
