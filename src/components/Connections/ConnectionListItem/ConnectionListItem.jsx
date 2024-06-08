@@ -67,7 +67,7 @@ function ConnectionListItem({ img, type, name, designation }) {
       <div className={styles.buttonContainer}>
         <div className={styles.acceptBtn}>
           <span>Accept</span>
-          <AcceptSVG className={styles.acceptSVG} />
+          <AcceptSVG />
         </div>
         <div className={styles.rejectBtn}>
           <span>Reject</span>
