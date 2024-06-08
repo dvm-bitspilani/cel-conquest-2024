@@ -16,7 +16,7 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
         .then((res) => {
           console.log(res.data)
 
-          const newArr = res.data.map(newItm => {
+          const newArr = res.data.map((newItm, index) => {
             return (
               // <MeetingItem
               //   date={newItm.slot_start_time}
@@ -28,7 +28,7 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
               //   handleClick={handleClick}
               //   dataRef={dataRef}
               // />
-              <SlotInputField showHideSelectSlotTiming={showHideSelectSlotTiming} dateTimeStart={newItm.start_time} dateTimeEnd={newItm.end_time}></SlotInputField>
+              <SlotInputField id={index+1} showHideSelectSlotTiming={showHideSelectSlotTiming} dateTimeStart={newItm.start_time} dateTimeEnd={newItm.end_time}></SlotInputField>
             )
           })
 
