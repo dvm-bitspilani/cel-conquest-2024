@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./BookSlots.module.scss";
-import SlotInputField from "../SelectSlots/SlotInputField/SlotInputField";
 import BookSlotItem from "./BookSlotItem/BookSlotItem";
 
 function BookSlots() {
