@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Connections.module.scss";
 import { useState } from "react";
 import ConnectionListItem from "../../../components/Connections/ConnectionListItem/ConnectionListItem";
+import axios from "axios";
 
 function Connections() {
   const [listTab, setListTab] = useState("pending");
