@@ -5,7 +5,8 @@ const SlotInputField = ({ showHideSelectSlotTiming , id, dateTimeStart, dateTime
   let dateEnd = new Date(dateTimeEnd * 1000);
   return (
     <div className={styles.inputField}>
-      <p>`Slot {id}  () `</p>
+      
+      <p>Slot {id}   ({dateStart.getDate()} {dateStart.getDate()} ()) </p>
       <button
         className={styles.SelectButton}
         onClick={showHideSelectSlotTiming}
