@@ -22,9 +22,9 @@ const Sidebar = () => {
         <img src={bell} />
       </div>
       <div className={styles.profileSection}>
-        <div className={styles.profileAvatar}>
+        <a href="/dashboard/startup-profile" className={styles.profileAvatar}>
           <img src={demoAvatar} />
-        </div>
+        </a>
         <p>Welcome back,</p>
         <p>Madhur Jain</p>
       </div>
@@ -45,6 +45,7 @@ const Sidebar = () => {
           text="Cohort of 2024"
           active={activeButton === "Cohort of 2024"}
           handleButtonClick={handleButtonClick}
+          link="/dashboard/startups"
         ></Button>
         <Button
           text="Mentors"
