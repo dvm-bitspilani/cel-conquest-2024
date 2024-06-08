@@ -98,11 +98,13 @@ const Sidebar = () => {
           text="Mentors"
           active={activeButton === "Mentors"}
           handleButtonClick={handleButtonClick}
+          link="/dashboard/mentors"
         ></Button>
         <Button
           text="Experts"
           active={activeButton === "Experts"}
           handleButtonClick={handleButtonClick}
+          link="/dashboard/experts"
         ></Button>
         <Button
           text="Investment Partners"

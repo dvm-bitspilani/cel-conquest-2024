@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Input, Button } from "antd";
-import * as styles from "./Coaches.module.scss";
+import * as styles from "./Mentors.module.scss";
 import FilterBtn from "../../../components/Startups/FilterBtn/FilterBtn";
 import TagsBtn from "../../../components/Startups/TagsBtn/TagsBtn";
 import axios from "axios";
 import CoachCard from "../../../components/Coaches/CoachCard";
 
-const Coaches = () => {
+const Mentors = () => {
   const [value, setValue] = useState("");
   const [isFilterBtnActive, setIsFilterBtnActive] = useState(false);
   const [isTagsBtnActive, setIsTagsBtnActive] = useState(false);
@@ -24,7 +24,7 @@ const Coaches = () => {
           },
         })
         .then((res) => {
-          setListItems(res.data.coach_list);
+          setListItems(res.data.mentor_list);
         })
         .catch((err) => {
           console.log(err);
@@ -46,7 +46,7 @@ const Coaches = () => {
   return (
     <div className={styles.coaches}>
       <div className={styles.heading}>
-        List of <span>Coaches:</span>
+        List of <span>Mentors:</span>
       </div>
       <div className={styles.searchContainer}>
         <div className={styles.searchBar}>
@@ -105,4 +105,4 @@ const Coaches = () => {
   );
 };
 
-export default Coaches;
+export default Mentors;

@@ -6,10 +6,12 @@ export default function CoachCard({ img, name, tags, designation }) {
   return (
     <div className={styles.cardContainer}>
       <div className={styles.cardPrimary}>
-        <div
-          className={styles.imgContainer}
-          style={{ backgroundImage: `url(${img})` }}
-        />
+        <div className={styles.cardImg}>
+          <div
+            className={styles.imgContainer}
+            style={{ backgroundImage: `url(${img})` }}
+          />
+        </div>
         <div className={styles.textContainer}>
           <h6>{name}</h6>
         </div>
