@@ -36,7 +36,7 @@ import Pitch from "../Pitch/Pitch";
 //     team: <Team />,
 // }
 
-export default function StartupProfileHeader({ img, name, desc, location, email, website, twitter, linkedin, founder, cofounder1, cofounder2, stage, pitchdeck, pitchvideo, industries, areas, teamArray }) {
+export default function StartupProfileHeader({ img, name, desc, location, email, website, twitter, linkedin, founder, cofounder, stage, pitchdeck, pitchvideo, industries, areas, teamArray }) {
     const [selectedTopic, setSelectedTopic] = useState('about');
 
     function handleSelect(selectedButton) {
@@ -46,7 +46,7 @@ export default function StartupProfileHeader({ img, name, desc, location, email,
 
     const profileInfo = {
         about: <About desc={desc} industries={industries} areas={areas} />,
-        details: <Details founder={founder} cofounder1={cofounder1} cofounder2={cofounder2} location={location} stage={stage} teamArray={teamArray} />,
+        details: <Details founder={founder} cofounder={cofounder} location={location} stage={stage} teamArray={teamArray} />,
         pitch: <Pitch pitchdeck={pitchdeck} pitchvideo={pitchvideo} />,
         team: <Team teamArray={teamArray} />,
     }
@@ -91,7 +91,7 @@ export default function StartupProfileHeader({ img, name, desc, location, email,
                         </div>
                         <div className={styles.head}>
                             <p className={styles.headings}>Details</p>
-                            <Details founder={founder} cofounder1={cofounder1} cofounder2={cofounder2} location={cofounder2} stage={stage} />
+                            <Details founder={founder} cofounder={cofounder}location={location} stage={stage} />
                         </div>
                         <div className={styles.head}>
                             <p className={styles.headings}>Pitch</p>
