@@ -256,7 +256,9 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
     });
   };
   const changeTime = (time) => {
-    setDateTime((prev) => ({ time: time, ...prev }));
+    setDateTime((prev) => {
+      return { ...prev, time: time };
+    });
   };
 
   const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
