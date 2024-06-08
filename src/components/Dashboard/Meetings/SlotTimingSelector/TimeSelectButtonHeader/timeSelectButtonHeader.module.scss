@@ -8,4 +8,9 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  div {
+    @media screen and (max-width: 820px) {
+      display: none;
+    }
+  }
 }

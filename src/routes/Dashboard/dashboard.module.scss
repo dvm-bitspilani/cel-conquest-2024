@@ -51,6 +51,10 @@
   justify-content: space-between;
   align-items: center;
 
+  @media screen and (min-width: 821px) {
+    display: none;
+  }
+
   p {
     font-size: 14px;
     font-weight: 500;

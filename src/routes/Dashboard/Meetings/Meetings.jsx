@@ -19,7 +19,7 @@ const Meetings = () => {
   // rest of the code
   const [selectSlots, setselectSlots] = useState(false);
   const [selectSlotTiming, setselectSlotTiming] = useState(false);
-  const [listItms, setListItms] = useState([])
+  const [listItms, setListItms] = useState([]);
 
   let showHideSelectSlots = () => {
     setselectSlots(!selectSlots);
@@ -30,61 +30,90 @@ const Meetings = () => {
     console.log(selectSlotTiming);
   };
 
-  useEffect(() => {
-    if (JSON.parse(localStorage.getItem('userData')).tokens) {
-      axios.get('https://conquest-api.bits-dvm.org/api/meetings/all_meetings/', {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
-        }
-      })
+  const [listTab, setListTab] = useState("upcoming");
+
+  const getMeetingList = (listTab) => {
+    if (JSON.parse(localStorage.getItem("userData")).tokens) {
+      console.log("fetching data");
+      axios
+        .get(
+          `https://conquest-api.bits-dvm.org/api/meetings/meetings/${listTab}/`,
+          {
+            headers: {
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
+            },
+          }
+        )
         .then((res) => {
-          // console.log(res.data)
+          console.log(res.data)
 
-          // const newArr = res.data.map(newItm => {
-          //   return (
-          //     <MeetingItem
-          //       date={newItm.slot_start_time}
-          //       avatar={newItm.requested_logo}
-          //       mentorName={newItm.requested_name}
-          //       duration={45}
-          //       key={newItm.id}
-          //       // data={newItm}
-          //       handleClick={handleClick}
-          //       dataRef={dataRef}
-          //     />
-          //   )
-          // })
-
-          // setListItms(newArr)
-
-          for (let i = 0; i < 6; i++) {
-            const newItm = (
+          const newArr = res.data.map(newItm => {
+            return (
               <MeetingItem
-                date="May 24, 2024, 00:30:00"
-                avatar={avatar}
-                mentorName="Bhavesh"
-                duration={30}
-                // isGrayLink={true}
-                key={Math.random()}
-                data={{ test: 'hello', id: i }}
+                date={newItm.slot_start_time}
+                avatar={newItm.requested_logo}
+                mentorName={newItm.requested_name}
+                duration={45}
+                key={newItm.id}
+                // data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
               />
             )
+          })
 
-            setListItms(prev => {
-              return [...prev, newItm]
-            })
-          }
+          setListItms(newArr)
         })
         .catch((err) => {
-          console.log(err)
+          console.log(err);
+        });
+    } else {
+      console.log("error in fetching data");
+    }
+  }
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("userData")).tokens) {
+      axios
+        .get(
+          `https://conquest-api.bits-dvm.org/api/meetings/meetings/upcoming/`,
+          {
+            headers: {
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data)
+
+          const newArr = res.data.map(newItm => {
+            return (
+              <MeetingItem
+                date={newItm.slot_start_time}
+                avatar={newItm.requested_logo}
+                mentorName={newItm.requested_name}
+                duration={45}
+                key={newItm.id}
+                // data={newItm}
+                handleClick={handleClick}
+                dataRef={dataRef}
+              />
+            )
+          })
+
+          setListItms(newArr)
         })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("error in fetching data");
     }
-    else {
-      console.log("error in fetching data")
-    }
-  }, [JSON.parse(localStorage.getItem('userData')).tokens.access])
+  }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
 
   return (
     <>
@@ -95,11 +124,41 @@ const Meetings = () => {
       <div className={styles.meetingsContainer}>
         <div className={styles.meetingsList}>
           <div className={styles.meetingsListOptionsContainer}>
-            <div className={`${styles.meetingsListOptions} ${styles.active}`}>
+            <div
+              onClick={() => {
+                setListTab("upcoming");
+                getMeetingList("upcoming");
+              }}
+              className={`${styles.meetingsListOptions} ${
+                listTab === "upcoming" ? styles.active : null
+              }`}
+            >
               Upcoming
             </div>
-            <div className={styles.meetingsListOptions}>Pending</div>
-            <div className={styles.meetingsListOptions}>Past</div>
+            <div
+              onClick={() => {
+                setListTab("pending");
+                getMeetingList("pending");
+
+              }}
+              className={`${styles.meetingsListOptions} ${
+                listTab === "pending" ? styles.active : null
+              }`}
+            >
+              Pending
+            </div>
+            <div
+              onClick={() => {
+                setListTab("past");
+                getMeetingList("past");
+
+              }}
+              className={`${styles.meetingsListOptions} ${
+                listTab === "past" ? styles.active : null
+              }`}
+            >
+              Past
+            </div>
           </div>
           <div className={styles.meetingWrapper}>
             <MeetingList listItms={listItms} />
@@ -121,8 +180,9 @@ const Meetings = () => {
             ></SelectSlots>
           ) : null}
           <div
-            className={`${styles.meetingsDetails} ${selectSlots ? styles.blur : null
-              }`}
+            className={`${styles.meetingsDetails} ${
+              selectSlots ? styles.blur : null
+            }`}
           >
             <MeetingDetails></MeetingDetails>
           </div>
