@@ -3,66 +3,68 @@ import styles from "./SelectSlots.module.scss";
 import SlotInputField from "./SlotInputField/SlotInputField";
 import axios from "axios";
 
+
+
 const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
   const [slotList, setSlotList] = useState([]);
+  const [slotData, setSlotData] = useState([]);
+  const deleteSlot = (id) => {
+    console.log("delete slot");
+    const newArray = slotData.filter((itm) => {
+      return itm.id !== id;
+    });
+    const newArr = newArray.data.map((newItm, index) => {
+      return (
+        <SlotInputField
+          slotno={index + 1}
+          key={newItm.id}
+          id={newItm.id}
+          showHideSelectSlotTiming={showHideSelectSlotTiming}
+          dateTimeStart={newItm.start_time}
+          dateTimeEnd={newItm.end_time}
+          deleteSlot={deleteSlot}
+        ></SlotInputField>
+      );
+    });
+    setSlotList(newArr);
+  };
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('userData')).tokens) {
-      axios.get('https://conquest-api.bits-dvm.org/api/meetings/slots/', {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
-        }
-      })
+    if (JSON.parse(localStorage.getItem("userData")).tokens) {
+      axios
+        .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
+          },
+        })
         .then((res) => {
-          console.log(res.data)
-
+          console.log(res.data);
           const newArr = res.data.map((newItm, index) => {
             return (
-              // <MeetingItem
-              //   date={newItm.slot_start_time}
-              //   avatar={newItm.requested_logo}
-              //   mentorName={newItm.requested_name}
-              //   duration={45}
-              //   key={newItm.id}
-              //   // data={newItm}
-              //   handleClick={handleClick}
-              //   dataRef={dataRef}
-              // />
-              <SlotInputField slotno={index+1} key={newItm.id} id={newItm.id}  showHideSelectSlotTiming={showHideSelectSlotTiming} dateTimeStart={newItm.start_time} dateTimeEnd={newItm.end_time}></SlotInputField>
-            )
-          })
+              <SlotInputField
+                slotno={index + 1}
+                key={newItm.id}
+                id={newItm.id}
+                showHideSelectSlotTiming={showHideSelectSlotTiming}
+                dateTimeStart={newItm.start_time}
+                dateTimeEnd={newItm.end_time}
+                deleteSlot={deleteSlot}
+              ></SlotInputField>
+            );
+          });
+          setSlotList(newArr);
+          setSlotData(res.data);
 
-          setSlotList(newArr)
-
-          // for (let i = 0; i < 6; i++) {
-          //   const newItm = (
-          //     <MeetingItem
-          //       date="May 24, 2024, 00:30:00"
-          //       avatar={avatar}
-          //       mentorName="Bhavesh"
-          //       duration={30}
-          //       // isGrayLink={true}
-          //       key={Math.random()}
-          //       data={{ test: 'hello', id: i }}
-          //       handleClick={handleClick}
-          //       dataRef={dataRef}
-          //     />
-          //   )
-
-          //   setListItms(prev => {
-          //     return [...prev, newItm]
-          //   })
-          // }
         })
         .catch((err) => {
-          console.log(err)
-        })
+          console.log(err);
+        });
+    } else {
+      console.log("error in fetching data");
     }
-    else {
-      console.log("error in fetching data")
-    }
-  }, [JSON.parse(localStorage.getItem('userData')).tokens.access])
-
+  }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
 
   return (
     <div className={styles.SelectSlots}>
