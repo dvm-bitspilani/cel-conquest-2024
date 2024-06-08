@@ -1,13 +1,15 @@
 import styles from "./MeetingDetails.module.scss";
 import demoAvatar from "../../../../assets/images/Dashboard/demoAvatar.jpeg";
 
-const MeetingDetails = ({myData}) => {
+const MeetingDetails = ({ myData }) => {
   console.log(1, myData, 1);
   return (
     <div className={styles.MeetingDetailsContainer}>
       <div className={styles.MeetingDetails}>
         <h3 className={styles.MeetingDetailsHeader}>Meeting details</h3>
-        <p className={styles.MeetingStatus}>{myData.status.charAt(0).toUpperCase() + myData.status.slice(1)}</p>
+        <p className={styles.MeetingStatus}>
+          {myData.status.charAt(0).toUpperCase() + myData.status.slice(1)}
+        </p>
         <div className={styles.DateSlider}>
           {/* <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +39,7 @@ const MeetingDetails = ({myData}) => {
         </div>
         <div className={styles.photos}>
           <div className={styles.avatarContainer}>
-            <img src={demoAvatar} alt="" />
+            <img src={myData.requested_logo} alt="" />
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -83,12 +85,12 @@ const MeetingDetails = ({myData}) => {
             />
           </svg>
           <div className={styles.avatarContainer}>
-            <img src={demoAvatar} alt="" />
+            <img src={myData.requester_logo} alt="" />
           </div>
         </div>
         <div className={styles.personDetails}>
           <p>with</p>
-          <p>bhavesh</p>
+          <p>{myData.requester_name}</p>
           {/* <p>+91 00001 00001</p> */}
         </div>
         <div className={styles.lowerContent}>
@@ -101,31 +103,33 @@ const MeetingDetails = ({myData}) => {
           </div>
           <div className={styles.lower}>
             <p className={styles.lowerBold}>Join meet</p>
-            <div className={styles.joinLink}>
-              <p>Click to join</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <path
-                  d="M5.83325 14.1666L14.1666 5.83325"
-                  stroke="#138CFD"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M5.83325 5.83325H14.1666V14.1666"
-                  stroke="#138CFD"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
+            <a href={myData.meet_link}>
+              <div className={styles.joinLink}>
+                <p>Click to join</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                >
+                  <path
+                    d="M5.83325 14.1666L14.1666 5.83325"
+                    stroke="#138CFD"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M5.83325 5.83325H14.1666V14.1666"
+                    stroke="#138CFD"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </a>
           </div>
         </div>
       </div>
