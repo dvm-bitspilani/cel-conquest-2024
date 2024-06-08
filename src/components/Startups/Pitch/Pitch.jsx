@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import * as styles from "./Pitch.module.scss"
 
 export default function Pitch() {
-
     const [isPlaying, setIsPlaying] = useState(false);
     const videoRef = useRef(null);
 
@@ -20,12 +19,12 @@ export default function Pitch() {
 
     return (
         <>
-            <div className={styles.container}>
-                <div className={styles.contentContainer}>
-                    <div className={styles.title}>Pitch <span>Deck</span></div>
+            <div className={`${styles.container} ${isPlaying ? styles.blur : ''}`}>
+                <div className={`${styles.contentContainer} ${isPlaying ? styles.fullscreen : ''}`}>
+                    <div className={`${styles.title} ${isPlaying ? styles.hide : ''}`}>Pitch <span>Deck</span></div>
                 </div>
-                <div className={styles.contentContainer}>
-                    <div className={styles.title}>Video</div>
+                <div className={`${styles.contentContainer} ${isPlaying ? styles.fullscreen : ''}`}>
+                    <div className={`${styles.title} ${isPlaying ? styles.hide : ''}`}>Video</div>
                     <div className={`${styles.video} ${isPlaying ? styles.large : ''}`}>
                         <video ref={videoRef} src="https://pub-1658b62356034e6383dac2ceabbea7a0.r2.dev/people1-video-extracompressed.mp4"></video>
                         <div className={styles.button} onClick={togglePlay}>
@@ -46,5 +45,7 @@ export default function Pitch() {
                 </div>
             </div>
         </>
-    )
+    );
 }
+
+
