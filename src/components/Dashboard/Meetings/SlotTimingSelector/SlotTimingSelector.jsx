@@ -347,24 +347,24 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
         <div className={styles.slotTimingContainer}>
           <div>
             <TimeSelectButtonHeader svg={morningSvg} header="Morning" />
-            <TimeSelectButton />
-            <TimeSelectButton />
-            <TimeSelectButton />
-            <TimeSelectButton />
+            <TimeSelectButton time={"10:00"}/>
+            <TimeSelectButton time={"10:00"}/>
+            <TimeSelectButton time={"10:00"}/>
+            <TimeSelectButton time={"10:00"}/>
           </div>
           <div>
             <TimeSelectButtonHeader svg={afternoonSvg} header="Afternoon" />
-            <TimeSelectButton />
-            <TimeSelectButton />
-            <TimeSelectButton />
-            <TimeSelectButton />
+            <TimeSelectButton time={"10:00"}/>
+            <TimeSelectButton time={"10:00"}/>
+            <TimeSelectButton time={"10:00"}/>
+            <TimeSelectButton time={"10:00"}/>
           </div>
           <div>
             <TimeSelectButtonHeader svg={eveningSvg} header="Evening" />
-            <TimeSelectButton active={true} />
-            <TimeSelectButton />
-            <TimeSelectButton />
-            <TimeSelectButton />
+            <TimeSelectButton time={"10:00"} active={true} />
+            <TimeSelectButton time={"10:00"}/>
+            <TimeSelectButton time={"10:00"}/>
+            <TimeSelectButton time={"10:00"}/>
           </div>
         </div>
         <div className={styles.bottomSection}>
@@ -372,6 +372,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
           <button
             onClick={() => {
               createSlot();
+              removeModal();
             }}
           >
             Select
