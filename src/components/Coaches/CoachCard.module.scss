@@ -70,7 +70,8 @@
   }
   .cardSecondary {
     width: 30%;
-    .textContainerSecondary {
+    .textContainerSecondary,
+    .textContainerTertiary {
       display: none;
     }
     .tagContainer {
@@ -123,20 +124,32 @@
         }
       }
     }
+    .cardTertiary {
+      display: none;
+    }
     .cardSecondary {
-      position: absolute;
-      right: 0;
       width: 70%;
       top: 1rem;
       .textContainerSecondary {
         display: flex;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
         margin-bottom: 0.5rem;
         h6 {
           font-size: 15.49px;
           font-weight: 500;
           text-align: center;
+        }
+      }
+      .textContainerTertiary {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        h6 {
+          color: #a0a0a0;
+          font-size: 13px;
+          font-weight: 600;
         }
       }
       .tagContainer {
@@ -157,6 +170,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          margin: 0;
 
           p {
             text-align: center;

@@ -44,7 +44,7 @@ const Experts = () => {
   };
 
   return (
-    <div className={styles.startups}>
+    <div className={styles.coaches}>
       <div className={styles.heading}>
         List of <span>Experts:</span>
       </div>
@@ -83,7 +83,7 @@ const Experts = () => {
         <TagsBtn onClick={handleClickTags} isTagsBtnActive={isTagsBtnActive} />
       </div>
       <h2>Showing results for {value ? value : ".."}</h2>
-      <div className={styles.startupList}>
+      <div className={styles.coachList}>
         {listItems
           .filter((item) => {
             if (item.name.toLowerCase().includes(value.toLowerCase().trim())) {

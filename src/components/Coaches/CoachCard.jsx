@@ -21,6 +21,9 @@ export default function CoachCard({ img, name, tags, designation }) {
         <div className={styles.textContainerSecondary}>
           <h6>{name}</h6>
         </div>
+        <div className={styles.textContainerTertiary}>
+          <h6>{designation}</h6>
+        </div>
         <div className={styles.tagContainer}>
           <div className={styles.cardTag}>
             <p>{tags}</p>
