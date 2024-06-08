@@ -35,8 +35,16 @@
             padding-right: 0.5rem;
             width: fit-content;
 
+            span {
+                text-align: center;
+            }
+
             span:first-of-type {
                 font-weight: 600;
+
+                @media screen and (max-width: 1157px) {
+                    font-size: 0.85rem;
+                }
             }
 
             span:last-of-type {
@@ -45,6 +53,10 @@
 
                 @media screen and (max-width: 1280px) {
                     font-size: 0.75rem;
+                }
+
+                @media screen and (max-width: 1180px) {
+                    font-size: 0.85rem;
                 }
             }
         }
