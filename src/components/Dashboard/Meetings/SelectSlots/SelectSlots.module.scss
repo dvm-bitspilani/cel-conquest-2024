@@ -1,7 +1,10 @@
 .SelectSlots {
   z-index: 1;
   position: absolute;
-  right: 80px;
+  right: calc(19.25vw - 200px);
+  @media screen and (max-width: 1200px) {
+    right: 30px;
+  }
   transform: translateY(90px);
 
   display: flex;

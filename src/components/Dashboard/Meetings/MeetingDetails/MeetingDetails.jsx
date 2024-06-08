@@ -1,12 +1,40 @@
 import styles from "./MeetingDetails.module.scss";
 import demoAvatar from "../../../../assets/images/Dashboard/demoAvatar.jpeg";
 
-const MeetingDetails = () => {
+const MeetingDetails = ({ myData }) => {
+  console.log(1, myData, 1);
+
+  const dateObjEnd = new Date(myData.slot_end_time);
+  const dateObj = new Date(myData.slot_start_time);
+  const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
+    dateObj
+  );
+  const meetDate = dateObj.getDate();
+  const hours = dateObj.getHours();
+  const minutes = dateObj.getMinutes();
+  const fullTime =
+    hours > 12
+      ? `${hours - 12}:${minutes}`
+      : hours === 0
+      ? `12:${minutes}`
+      : `${hours}:${minutes}`;
+
+  const hoursEnd = dateObjEnd.getHours();
+  const minutesEnd = dateObjEnd.getMinutes();
+  const fullTimeEnd =
+    hoursEnd > 12
+      ? `${hoursEnd - 12}:${minutesEnd}`
+      : hoursEnd === 0
+      ? `12:${minutesEnd}`
+      : `${hoursEnd}:${minutesEnd}`;
+
   return (
     <div className={styles.MeetingDetailsContainer}>
       <div className={styles.MeetingDetails}>
         <h3 className={styles.MeetingDetailsHeader}>Meeting details</h3>
-        <p className={styles.MeetingStatus}>Confirmed</p>
+        <p className={styles.MeetingStatus}>
+          {myData.status.charAt(0).toUpperCase() + myData.status.slice(1)}
+        </p>
         <div className={styles.DateSlider}>
           {/* <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +48,7 @@ const MeetingDetails = () => {
               fill="#111213"
             />
           </svg> */}
-          <div>25 May, 2024</div>
+          <div>{meetDate} {month.slice(0, 3)}, 2024</div>
           {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -36,7 +64,7 @@ const MeetingDetails = () => {
         </div>
         <div className={styles.photos}>
           <div className={styles.avatarContainer}>
-            <img src={demoAvatar} alt="" />
+            <img src={myData.requested_logo} alt="" />
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -82,49 +110,58 @@ const MeetingDetails = () => {
             />
           </svg>
           <div className={styles.avatarContainer}>
-            <img src={demoAvatar} alt="" />
+            <img src={myData.requester_logo} alt="" />
           </div>
         </div>
         <div className={styles.personDetails}>
           <p>with</p>
-          <p>bhavesh</p>
+          <p>{myData.requester_name}</p>
           {/* <p>+91 00001 00001</p> */}
         </div>
         <div className={styles.lowerContent}>
           <div className={styles.upper}>
             <div className={styles.lowerBold}>Date & Time</div>
             <div className={styles.dateTime}>
-              <p>May 25th</p>
-              <p>15:30 - 16:00</p>
+              <p>{month.slice(0, 3)} {meetDate}{meetDate % 10 === 1
+                    ? "st"
+                    : meetDate % 10 === 2
+                        ? "nd"
+                        : meetDate % 10 === 3
+                            ? "rd"
+                            : "th"
+                    }</p>
+              <p>{fullTime} - {fullTimeEnd}</p>
             </div>
           </div>
           <div className={styles.lower}>
             <p className={styles.lowerBold}>Join meet</p>
-            <div className={styles.joinLink}>
-              <p>Click to join</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <path
-                  d="M5.83325 14.1666L14.1666 5.83325"
-                  stroke="#138CFD"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M5.83325 5.83325H14.1666V14.1666"
-                  stroke="#138CFD"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
+            <a href={myData.meet_link}>
+              <div className={styles.joinLink}>
+                <p>Click to join</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                >
+                  <path
+                    d="M5.83325 14.1666L14.1666 5.83325"
+                    stroke="#138CFD"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M5.83325 5.83325H14.1666V14.1666"
+                    stroke="#138CFD"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </a>
           </div>
         </div>
       </div>

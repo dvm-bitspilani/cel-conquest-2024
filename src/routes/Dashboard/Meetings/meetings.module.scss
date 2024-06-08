@@ -89,8 +89,11 @@
     }
 
     .selectSlots {
-      position: absolute;
-      right: 20px;
+      position: absolute; 
+      right: calc(19.25vw - 200px);
+      @media screen and (max-width: 1200px) {
+        right: 30px;
+      }
       transform: translateY(20px);
       display: inline-flex;
       padding: 12px 24px;
