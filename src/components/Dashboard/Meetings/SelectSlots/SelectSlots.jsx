@@ -67,9 +67,6 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
   return (
     <div className={styles.SelectSlots}>
       <h3>Select Slots</h3>
-      <SlotInputField
-        showHideSelectSlotTiming={showHideSelectSlotTiming}
-      ></SlotInputField>
       {slotList}
       <div className={styles.addDone}>
         <button>Add</button>
