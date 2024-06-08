@@ -12,7 +12,7 @@ const SlotInputField = ({
   const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
     dateObj
   );
-  console.log(dateTimeEnd===dateTimeStart)
+  console.log(dateTimeEnd === dateTimeStart);
   const meetDate = dateObj.getDate();
   const hours = dateObj.getHours();
   const minutes = dateObj.getMinutes();
@@ -34,7 +34,8 @@ const SlotInputField = ({
   return (
     <div className={styles.inputField}>
       <p>
-        Slot {id} ({meetDate} {month} ({week[dateObj.getDay()]}), {fullTime} - {fullTimeEnd})
+        <span> Slot {id}</span> ({meetDate} {month} ({week[dateObj.getDay()]}),{" "}
+        {fullTime} - {fullTimeEnd})
       </p>
       <button
         className={styles.SelectButton}
