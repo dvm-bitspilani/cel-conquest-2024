@@ -10,10 +10,11 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
   const [slotData, setSlotData] = useState([]);
   const deleteSlot = (id) => {
     console.log("delete slot");
-    const newArray = slotData.filter((itm) => {
+    console.log(slotData);
+    let newArray = slotData.filter((itm) => {
       return itm.id !== id;
     });
-    const newArr = newArray.data.map((newItm, index) => {
+    let newArr = newArray.map((newItm, index) => {
       return (
         <SlotInputField
           slotno={index + 1}
@@ -40,7 +41,6 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
           },
         })
         .then((res) => {
-          console.log(res.data);
           const newArr = res.data.map((newItm, index) => {
             return (
               <SlotInputField
@@ -55,6 +55,7 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
             );
           });
           setSlotList(newArr);
+          console.log(res.data);
           setSlotData(res.data);
 
         })
