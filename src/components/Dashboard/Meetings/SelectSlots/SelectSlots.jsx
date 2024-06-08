@@ -69,7 +69,7 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
       <h3>Select Slots</h3>
       {slotList}
       <div className={styles.addDone}>
-        <button>Add</button>
+        <button onClick={showHideSelectSlotTiming}>Add</button>
         <button onClick={showHideSelectSlots}>Done</button>
       </div>
     </div>
