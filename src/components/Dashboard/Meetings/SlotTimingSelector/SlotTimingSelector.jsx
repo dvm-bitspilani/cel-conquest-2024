@@ -252,7 +252,7 @@ const eveningSvg = (
 const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
   const changeDate = (date) => {
     setDateTime((prev) => {
-      return { ...prev ,  date: date,};
+      return { ...prev, date: date };
     });
   };
   const changeTime = (time) => {
@@ -274,7 +274,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
   let dateComponents = [];
   const [dateTime, setDateTime] = useState({
     date: days[0].getDate(),
-    time: null,
+    time: "9:00",
   });
   for (let i = 0; i < 7; i++) {
     dateComponents[i] = (
@@ -347,24 +347,72 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
         <div className={styles.slotTimingContainer}>
           <div>
             <TimeSelectButtonHeader svg={morningSvg} header="Morning" />
-            <TimeSelectButton time={"10:00"}/>
-            <TimeSelectButton time={"10:00"}/>
-            <TimeSelectButton time={"10:00"}/>
-            <TimeSelectButton time={"10:00"}/>
+            <TimeSelectButton
+              time={"9:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"10:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"11:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"12:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
           </div>
           <div>
             <TimeSelectButtonHeader svg={afternoonSvg} header="Afternoon" />
-            <TimeSelectButton time={"10:00"}/>
-            <TimeSelectButton time={"10:00"}/>
-            <TimeSelectButton time={"10:00"}/>
-            <TimeSelectButton time={"10:00"}/>
+            <TimeSelectButton
+              time={"13:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"14:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"15:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"16:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
           </div>
           <div>
             <TimeSelectButtonHeader svg={eveningSvg} header="Evening" />
-            <TimeSelectButton time={"10:00"} active={true} />
-            <TimeSelectButton time={"10:00"}/>
-            <TimeSelectButton time={"10:00"}/>
-            <TimeSelectButton time={"10:00"}/>
+            <TimeSelectButton
+              time={"17:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"18:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"19:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
+            <TimeSelectButton
+              time={"20:00"}
+              changeTime={changeTime}
+              dateTime={dateTime}
+            />
           </div>
         </div>
         <div className={styles.bottomSection}>
