@@ -1,8 +1,20 @@
 import styles from "./SlotInputField.module.scss";
 
-const SlotInputField = ({ showHideSelectSlotTiming , id, dateTimeStart, dateTimeEnd}) => {
-  let dateStart = new Date(dateTimeStart * 1000);
-  let dateEnd = new Date(dateTimeEnd * 1000);
+const SlotInputField = ({ showHideSelectSlotTiming , id, dateTimeStart}) => {
+  const dateObj = new Date(dateTimeStart);
+    const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
+        dateObj
+    );
+    const meetDate = dateObj.getDate();
+
+    const hours = dateObj.getHours();
+    const minutes = dateObj.getMinutes();
+    const fullTime =
+        hours > 12
+            ? `${hours - 12}:${minutes} PM`
+            : hours === 0
+                ? `12:${minutes} AM`
+                : `${hours}:${minutes} AM`;
   return (
     <div className={styles.inputField}>
       
