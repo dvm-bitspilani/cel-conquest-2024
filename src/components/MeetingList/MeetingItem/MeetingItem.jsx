@@ -51,7 +51,7 @@ export default function MeetingItem({ date, avatar, mentorName, duration, isGray
                                 xs: 24,
                                 sm: 32,
                                 md: 40,
-                                lg: 64,
+                                lg: 48,
                                 xl: 64,
                                 xxl: 80,
                             }}

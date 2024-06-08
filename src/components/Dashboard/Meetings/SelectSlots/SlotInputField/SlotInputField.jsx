@@ -6,6 +6,7 @@ const SlotInputField = ({
   slotno,
   dateTimeStart,
   dateTimeEnd,
+  deleteSlot
 }) => {
   const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const dateObjEnd = new Date(dateTimeEnd);
@@ -13,7 +14,6 @@ const SlotInputField = ({
   const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
     dateObj
   );
-  console.log(dateTimeEnd === dateTimeStart);
   const meetDate = dateObj.getDate();
   const hours = dateObj.getHours();
   const minutes = dateObj.getMinutes();
@@ -44,7 +44,9 @@ const SlotInputField = ({
       </div>
       <button
         className={styles.SelectButton}
-        onClick={showHideSelectSlotTiming}
+        onClick={() => {
+          return deleteSlot(id);
+        }}
       >
         Delete
       </button>

@@ -1,0 +1,112 @@
+.cardContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1.5rem;
+  border: 1px solid #fb723d;
+  border-radius: 9px;
+
+  .imgContainer {
+    min-width: 40px;
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .cardImg {
+      border-radius: 50%;
+      background-color: #e0e0e0;
+      aspect-ratio: 1;
+      background-size: cover;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    .typeOfAcc {
+      color: #fa723d;
+      font-size: 14px;
+    }
+    .profileName {
+      font-size: 17px;
+      color: #111213;
+    }
+    .designation {
+      font-size: 14px;
+      color: #a0a0a0;
+    }
+  }
+  .buttonContainer {
+    display: flex;
+    margin-left: auto;
+    float: right;
+    gap: 2rem;
+    .acceptBtn,
+    .rejectBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #dff7e0;
+      padding: 0.5rem 1.5rem;
+      border-radius: 6px;
+      span {
+        color: #00c408;
+        font-size: 17px;
+        font-weight: 600;
+      }
+      svg {
+        display: none;
+      }
+    }
+    .rejectBtn {
+      background-color: #fde5e5;
+      span {
+        color: #ec2c2c;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .cardContainer {
+    padding: 0.5rem;
+    border: none;
+    padding: 2rem 0;
+    border-bottom: 0.75px dashed #dcdcdc;
+    .imgContainer {
+      margin: 0.5rem;
+    }
+    .textContainer {
+      width: 50%;
+      div {
+        width: 100%;
+        text-wrap: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .buttonContainer {
+      .acceptBtn,
+      .rejectBtn {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        padding: 0;
+        span {
+          display: none;
+        }
+        svg {
+          display: initial;
+        }
+        .acceptSVG,
+        .rejectSVG {
+          display: initial;
+          //   width: 100%;
+        }
+      }
+    }
+  }
+}

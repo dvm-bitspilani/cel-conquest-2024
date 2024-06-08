@@ -11,6 +11,18 @@
     overflow: hidden;
 }
 
+.backBtn {
+    position: absolute;
+    left: 80px;
+    top: 32px;
+    width: 3rem;
+
+    @media screen and (max-width: 640px) {
+        margin-top: 0.25rem;
+        left: calc(20 / 1024 * 100dvh);
+    }
+}
+
 .container {
     width: 100vw;
     display: flex;
@@ -68,16 +80,9 @@
         }
     }
 
-    .backBtn {
-        position: absolute;
-        left: 80px;
-        top: 47px;
-        width: 3rem;
-
-        @media screen and (max-width: 640px) {
-            margin-top: 0.25rem;
-            left: calc(20 / 1024 * 100dvh);
-        }
+    @media screen and (max-width: 670px) {
+        scale: 0.85;
+        top: -70px;
     }
 
     .logo {
@@ -121,6 +126,9 @@
 
             .logoContainer {
                 aspect-ratio: 1 / 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 @media screen and (min-width: 671px) {
                     width: 95%;
