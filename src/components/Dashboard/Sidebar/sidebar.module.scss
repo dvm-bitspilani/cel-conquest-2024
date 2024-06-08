@@ -12,10 +12,9 @@
 
   @media screen and (max-width: 1100px) {
     padding: 20px 10px;
-
   }
 
-  border: 0.75px solid #FB723D;
+  border: 0.75px solid #fb723d;
 
   .profileSection {
     display: flex;
@@ -70,12 +69,29 @@
   .bottomButtons {
     display: flex;
     flex-direction: column;
-
   }
 
   .conquestLogo {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .madeWithSomething {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+    .madeWithText {
+      color: #fb723d;
+      text-align: center;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 100%; /* 17.038px */
+    }
   }
 }

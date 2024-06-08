@@ -143,8 +143,8 @@ const Sidebar = () => {
         <img height={50} width={53} src={dashboard_mountain_circle} />
       </div> */}
       <div className={styles.madeWithSomething}>
-        <div className={styles.madeWithText}>Made with</div>
-        <div className={styles.heart}>
+        <span className={styles.madeWithText}>Made with</span>
+        <span className={styles.heart}>
         <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clip-path="url(#clip0_1783_3207)">
     <path d="M9.40262 15.0857L8.26729 14.0413C4.23491 10.3462 1.57275 7.90133 1.57275 4.9184C1.57275 2.47351 3.46758 0.56665 5.87918 0.56665C7.24157 0.56665 8.54916 1.20755 9.40262 2.2124C10.2561 1.20755 11.5637 0.56665 12.9261 0.56665C15.3377 0.56665 17.2325 2.47351 17.2325 4.9184C17.2325 7.90133 14.5703 10.3462 10.5379 14.0413L9.40262 15.0857Z" fill="#FB723D"/>
@@ -155,8 +155,8 @@ const Sidebar = () => {
     </clipPath>
   </defs>
 </svg>
-        </div>
-        <div className={styles.madeWithText}>by DVM</div>
+        </span>
+        <span className={styles.madeWithText}>by DVM</span>
       </div>
     </div>
   );
