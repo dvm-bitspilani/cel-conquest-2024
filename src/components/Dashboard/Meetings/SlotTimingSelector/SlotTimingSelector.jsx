@@ -3,6 +3,7 @@ import SlotDateButton from "./SlotDateButton/SlotDateButton";
 import TimeSelectButton from "./TimeSelectButton/TimeSelectButton";
 import TimeSelectButtonHeader from "./TimeSelectButtonHeader/TimeSelectButtonHeader";
 import styles from "./slotTimingSelector.module.scss";
+import { useState } from "react";
 
 const morningSvg = (
   <svg
@@ -249,23 +250,37 @@ const eveningSvg = (
 );
 
 const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
+  const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const weekday_mobile = ["Su", "M", "T", "W", "Th", "F", "Sa"];
+
+  const d = new Date();
+  let day = weekday[d.getDay()];
+
+  const [dateTime, setDateTime] = useState({ date: null, time: null });
+
   const createSlot = () => {
-    axios.post('http://conquest-api.bits-dvm.org/api/meetings/slots/', {
-      user: '1',
-      start_time: '1717564000',
-      end_time: '1717564000'
-    },{
-      headers: {
-        Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
-      }, 
-    
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    axios
+      .post(
+        "http://conquest-api.bits-dvm.org/api/meetings/slots/",
+        {
+          user: "1",
+          start_time: "1717564000",
+          end_time: "1717564000",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
+          },
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   return (
     <>
@@ -276,7 +291,6 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
         <div className={styles.header}>
           <svg
             onClick={() => removeModal()}
-
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -326,7 +340,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
           </div>
           <div>
             <TimeSelectButtonHeader svg={eveningSvg} header="Evening" />
-            <TimeSelectButton active={true}/>
+            <TimeSelectButton active={true} />
             <TimeSelectButton />
             <TimeSelectButton />
             <TimeSelectButton />
@@ -334,7 +348,13 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
         </div>
         <div className={styles.bottomSection}>
           <p>Select a 45 min. slot</p>
-          <button onClick={()=>{createSlot()}}>Select</button>
+          <button
+            onClick={() => {
+              createSlot();
+            }}
+          >
+            Select
+          </button>
         </div>
       </div>
     </>
