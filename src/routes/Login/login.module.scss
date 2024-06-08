@@ -68,7 +68,7 @@
         top: -155px;
     }
 
-    @media screen and (max-height: 700px) and (min-width: 670px) {
+    @media screen and (max-height: 700px) {
         scale: 0.6;
         top: -175px;
     }
@@ -78,6 +78,11 @@
             scale: 0.59 - $i * 0.005;
             top: -180px - $i * 5px;
         }
+    }
+
+    @media screen and (max-width: 670px) {
+        scale: 0.85;
+        top: -70px;
     }
 
     .logo {
