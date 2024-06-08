@@ -7,7 +7,7 @@ const MeetingDetails = ({myData}) => {
     <div className={styles.MeetingDetailsContainer}>
       <div className={styles.MeetingDetails}>
         <h3 className={styles.MeetingDetailsHeader}>Meeting details</h3>
-        <p className={styles.MeetingStatus}>Confirmed</p>
+        <p className={styles.MeetingStatus}>{myData.status.charAt(0).toUpperCase() + myData.status.slice(1)}</p>
         <div className={styles.DateSlider}>
           {/* <svg
             xmlns="http://www.w3.org/2000/svg"

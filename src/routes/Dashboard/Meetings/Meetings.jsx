@@ -47,9 +47,9 @@ const Meetings = () => {
           }
         )
         .then((res) => {
-          console.log(res.data)
+          console.log(res.data);
 
-          const newArr = res.data.map(newItm => {
+          const newArr = res.data.map((newItm) => {
             return (
               <MeetingItem
                 date={newItm.slot_start_time}
@@ -61,10 +61,10 @@ const Meetings = () => {
                 handleClick={handleClick}
                 dataRef={dataRef}
               />
-            )
-          })
+            );
+          });
 
-          setListItms(newArr)
+          setListItms(newArr);
         })
         .catch((err) => {
           console.log(err);
@@ -72,7 +72,7 @@ const Meetings = () => {
     } else {
       console.log("error in fetching data");
     }
-  }
+  };
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
@@ -88,9 +88,9 @@ const Meetings = () => {
           }
         )
         .then((res) => {
-          console.log(res.data)
+          console.log(res.data);
 
-          const newArr = res.data.map(newItm => {
+          const newArr = res.data.map((newItm) => {
             return (
               <MeetingItem
                 date={newItm.slot_start_time}
@@ -102,10 +102,10 @@ const Meetings = () => {
                 handleClick={handleClick}
                 dataRef={dataRef}
               />
-            )
-          })
+            );
+          });
 
-          setListItms(newArr)
+          setListItms(newArr);
         })
         .catch((err) => {
           console.log(err);
@@ -139,7 +139,6 @@ const Meetings = () => {
               onClick={() => {
                 setListTab("pending");
                 getMeetingList("pending");
-
               }}
               className={`${styles.meetingsListOptions} ${
                 listTab === "pending" ? styles.active : null
@@ -151,7 +150,6 @@ const Meetings = () => {
               onClick={() => {
                 setListTab("past");
                 getMeetingList("past");
-
               }}
               className={`${styles.meetingsListOptions} ${
                 listTab === "past" ? styles.active : null
@@ -184,7 +182,9 @@ const Meetings = () => {
               selectSlots ? styles.blur : null
             }`}
           >
-            <MeetingDetails myData={data}></MeetingDetails>
+            {data !== null ? (
+              <MeetingDetails myData={data}></MeetingDetails>
+            ) : null}
           </div>
         </div>
       </div>
