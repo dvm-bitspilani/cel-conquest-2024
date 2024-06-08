@@ -139,9 +139,9 @@ const Sidebar = () => {
           handleButtonClick={handleButtonClick}
         ></Button>
       </div>
-      <div className={styles.conquestLogo}>
+      {/* <div className={styles.conquestLogo}>
         <img height={50} width={53} src={dashboard_mountain_circle} />
-      </div>
+      </div> */}
     </div>
   );
 };
