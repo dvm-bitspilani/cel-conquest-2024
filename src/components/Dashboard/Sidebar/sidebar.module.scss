@@ -76,22 +76,24 @@
     justify-content: center;
     align-items: center;
   }
-
-  .madeWithSomething {
-    display: flex;
-    gap: 5px;
-    justify-content: center;
-    svg {
-      width: 15px;
-      height: 15px;
-    }
-    .madeWithText {
-      color: #fb723d;
-      text-align: center;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 100%; /* 17.038px */
+  .madeWithContainer {
+    text-decoration: none;
+    .madeWithSomething {
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+      .madeWithText {
+        color: #fb723d;
+        text-align: center;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 100%; /* 17.038px */
+      }
     }
   }
 }
