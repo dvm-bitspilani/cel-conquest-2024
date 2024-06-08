@@ -46,7 +46,7 @@ export default function StartupProfileHeader({ img, name, desc, location, email,
 
     const profileInfo = {
         about: <About desc={desc} industries={industries} areas={areas} />,
-        details: <Details founder={founder} cofounder1={cofounder1} cofounder2={cofounder2} location={cofounder2} stage={stage} />,
+        details: <Details founder={founder} cofounder1={cofounder1} cofounder2={cofounder2} location={location} stage={stage} teamArray={teamArray} />,
         pitch: <Pitch pitchdeck={pitchdeck} pitchvideo={pitchvideo} />,
         team: <Team teamArray={teamArray} />,
     }
