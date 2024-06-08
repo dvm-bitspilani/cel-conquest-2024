@@ -31,6 +31,8 @@
         .time {
             @include vertiAlignment();
             border-right: 0.75px solid #DCDCDC;
+            margin-right: 0.5rem;
+            padding-right: 0.5rem;
 
             span:first-of-type {
                 font-weight: 600;
@@ -40,7 +42,7 @@
                 font-weight: 500;
                 color: #A0A0A0;
 
-                @media screen and (max-width: 1000px) {
+                @media screen and (max-width: 1280px) {
                     font-size: 0.75rem;
                 }
             }
@@ -48,18 +50,26 @@
 
         .mentor {
             display: flex;
-            justify-content: space-evenly;
+            justify-content: flex-start;
             align-items: center;
+            gap: 0.5rem;
 
             .nameWrapper {
                 @include vertiAlignment();
 
                 span {
                     font-weight: 600;
-                }
 
-                span:first-of-type {
-                    color: #A0A0A0;
+                    &:first-of-type {
+                        color: #A0A0A0;
+                    }
+
+                    &:last-of-type {
+                        width: 100px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        text-align: center;
+                    }
                 }
             }
         }
