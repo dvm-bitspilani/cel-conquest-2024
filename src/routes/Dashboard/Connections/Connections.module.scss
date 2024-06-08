@@ -18,5 +18,11 @@
       border: 0.5px solid #111213;
       background: #fff;
     }
+    .active {
+      border-radius: 8px;
+      border: 0.5px solid #fb723d;
+      background: #ffece5;
+      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+    }
   }
 }
