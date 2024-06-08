@@ -293,7 +293,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
   const createSlot = () => {
     axios
       .post(
-        "http://conquest-api.bits-dvm.org/api/meetings/slots/",
+        "https://conquest-api.bits-dvm.org/api/meetings/slots/",
         {
           user: "1",
           start_time: "1717564000",
