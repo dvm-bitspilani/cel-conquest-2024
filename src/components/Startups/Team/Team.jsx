@@ -1,24 +1,32 @@
-import * as styles from "./Team.module.scss"
+import * as styles from "./Team.module.scss";
 import TeamCard from "../TeamCard/TeamCard";
 import avatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
 
-const dummyTeamData = {
-    img: avatar,
-    name: "Short Name",
-    position: "Co-Founder",
-    linkedin: "https://www.linkedin.com"
-}
+// const dummyTeamData = {
+//     img: avatar,
+//     name: "Short Name",
+//     position: "Co-Founder",
+//     linkedin: "https://www.linkedin.com"
+// }
 
-const arrayofData = Array.from({ length: 18 }, () => ({ ...dummyTeamData }));
 
-export default function Team() {
+export default function Team({ teamArray }) {
+    console.log(teamArray)
+    const validTeamArray = Array.isArray(teamArray) ? teamArray : [];
+
     return (
         <>
             <div className={styles.teamContainer}>
-                {arrayofData.map((member, index) => (
-                    <TeamCard key={index} {...member} />
+                {validTeamArray.map((member) => (
+                    <TeamCard
+                        key={member.id}
+                        img={member.img || avatar}
+                        name={member.name}
+                        position={member.position}
+                        linkedin={member.linkedin}
+                    />
                 ))}
             </div>
         </>
-    )
+    );
 }
