@@ -219,7 +219,7 @@ export default function Navbar2() {
       </ul>
       <LogoSVG className={styles.logo} />
       <div className={styles.register} onClick={() => navigate("/login")}>
-        Register
+        Login
       </div>
       <section className={styles.hamMenu}>
         <div
