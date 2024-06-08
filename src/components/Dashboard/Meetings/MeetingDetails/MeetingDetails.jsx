@@ -122,8 +122,15 @@ const MeetingDetails = ({ myData }) => {
           <div className={styles.upper}>
             <div className={styles.lowerBold}>Date & Time</div>
             <div className={styles.dateTime}>
-              <p>{month.slice(0, 3)} 25th</p>
-              <p>15:30 - 16:00</p>
+              <p>{month.slice(0, 3)} {meetDate}{meetDate % 10 === 1
+                    ? "st"
+                    : meetDate % 10 === 2
+                        ? "nd"
+                        : meetDate % 10 === 3
+                            ? "rd"
+                            : "th"
+                    }</p>
+              <p>{fullTime} - {fullTimeEnd}</p>
             </div>
           </div>
           <div className={styles.lower}>
