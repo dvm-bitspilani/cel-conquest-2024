@@ -6,7 +6,6 @@ import axios from "axios";
 import SlotTimingSelector from "../../../components/Dashboard/Meetings/SlotTimingSelector/SlotTimingSelector";
 import MeetingList from "../../../components/MeetingList/MeetingList";
 import MeetingItem from "../../../components/MeetingList/MeetingItem/MeetingItem";
-import avatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
 
 const Meetings = () => {
   //meeting list code
