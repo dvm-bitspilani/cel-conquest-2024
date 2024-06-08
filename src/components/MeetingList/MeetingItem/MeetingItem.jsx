@@ -39,25 +39,27 @@ export default function MeetingItem({ date, avatar, mentorName, duration, isGray
                     <span>{`${duration} minutes`}</span>
                 </div>
                 <div className={styles.mentor}>
-                    <ConfigProvider
-                        theme={{
-                            token: {
-                                lineWidth: 0,
-                            },
-                        }}
-                    >
-                        <Avatar
-                            size={{
-                                xs: 24,
-                                sm: 32,
-                                md: 40,
-                                lg: 48,
-                                xl: 64,
-                                xxl: 80,
+                    <div className={styles.avatarWrapper}>
+                        <ConfigProvider
+                            theme={{
+                                token: {
+                                    lineWidth: 0,
+                                },
                             }}
-                            icon={<img src={avatar} alt="icon" />}
-                        />
-                    </ConfigProvider>
+                        >
+                            <Avatar
+                                size={{
+                                    xs: 24,
+                                    sm: 32,
+                                    md: 40,
+                                    lg: 48,
+                                    xl: 64,
+                                    xxl: 80,
+                                }}
+                                icon={<img src={avatar} alt="user avatar" />}
+                            />
+                        </ConfigProvider>
+                    </div>
                     <div className={styles.nameWrapper}>
                         <span>With</span>
                         <span>{mentorName}</span>

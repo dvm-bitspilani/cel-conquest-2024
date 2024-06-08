@@ -24,15 +24,16 @@
     }
 
     .gridLeft {
-        width: 60%;
+        width: 100%;
         display: grid;
-        grid-template-columns: 1fr 1.5fr;
+        grid-template-columns: 1fr 3.6fr;
 
         .time {
             @include vertiAlignment();
             border-right: 0.75px solid #DCDCDC;
             margin-right: 0.5rem;
             padding-right: 0.5rem;
+            width: fit-content;
 
             span:first-of-type {
                 font-weight: 600;
@@ -56,19 +57,22 @@
 
             .nameWrapper {
                 @include vertiAlignment();
+                min-width: 60%;
 
                 span {
                     font-weight: 600;
 
                     &:first-of-type {
                         color: #A0A0A0;
+                        width: min-content;
                     }
 
                     &:last-of-type {
-                        width: 100px;
+                        width: 70%;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         text-align: center;
+                        flex-shrink: 2;
                     }
                 }
             }
@@ -85,6 +89,10 @@
             @media screen and (max-width: $screenWidth) {
                 height: $height;
             }
+        }
+
+        span {
+            text-align: center;
         }
 
         a {
