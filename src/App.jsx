@@ -18,7 +18,7 @@ import Unauthorised from "./routes/Unauthorised/Unauthorised";
 import StartupProfile from "./routes/Dashboard/StartupProfile/StartupProfile";
 import Experts from "./routes/Dashboard/Experts/Experts";
 import Mentors from "./routes/Dashboard/Mentors/Mentors";
-import Connections from "./routes/Connections/Connections";
+import Connections from "./routes/Dashboard/Connections/Connections";
 ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment variables -> will do later
 
 function App() {
