@@ -52,8 +52,26 @@ function Connections() {
   return (
     <div className={styles.container}>
       <div className={styles.ButtonContainer}>
-        <button className={`${styles.ConnectionsButton}`}>Pending</button>
-        <button className={`${styles.ConnectionsButton}`}>
+        <button
+          onClick={() => {
+            setListTab("pending");
+            getList("pending");
+          }}
+          className={`${styles.ConnectionsButton} ${
+            listTab === "pending" ? styles.active : null
+          }`}
+        >
+          Pending
+        </button>
+        <button
+          onClick={() => {
+            setListTab("connections");
+            getList("connections");
+          }}
+          className={`${styles.ConnectionsButton} ${
+            listTab === "connections" ? styles.active : null
+          }`}
+        >
           My Connections
         </button>
       </div>
