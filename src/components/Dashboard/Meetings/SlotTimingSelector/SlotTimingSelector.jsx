@@ -250,13 +250,14 @@ const eveningSvg = (
 );
 
 const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
-
   const changeDate = (date) => {
-    setDateTime((prev) => ({ date: date, ...prev }));
-  }
+    setDateTime((prev) => {
+      return { ...prev ,  date: date,};
+    });
+  };
   const changeTime = (time) => {
     setDateTime((prev) => ({ time: time, ...prev }));
-  }
+  };
 
   const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const weekday_mobile = ["Su", "M", "T", "W", "Th", "F", "Sa"];
@@ -271,22 +272,20 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
     days[i] = new Date(new Date().getTime() + i * 24 * 60 * 60 * 1000);
   }
   let dateComponents = [];
-  const [dateTime, setDateTime] = useState({ date: days[0].getDate(), time: null });
-  console.log(dateTime);
+  const [dateTime, setDateTime] = useState({
+    date: days[0].getDate(),
+    time: null,
+  });
   for (let i = 0; i < 7; i++) {
     dateComponents[i] = (
       <SlotDateButton
         changeDate={changeDate}
-        changeTime={changeTime}
         day={week[days[i].getDay()]}
         date={days[i].getDate()}
         active={dateTime.date === days[i].getDate() ? true : false}
       ></SlotDateButton>
     );
   }
-
- 
-
 
   const createSlot = () => {
     axios
@@ -344,9 +343,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
           </svg>
           <h2>Select Slot 1</h2>
         </div>
-        <div className={styles.slotDataButtonContainer}>
-          {dateComponents}
-        </div>
+        <div className={styles.slotDataButtonContainer}>{dateComponents}</div>
         <div className={styles.slotTimingContainer}>
           <div>
             <TimeSelectButtonHeader svg={morningSvg} header="Morning" />
