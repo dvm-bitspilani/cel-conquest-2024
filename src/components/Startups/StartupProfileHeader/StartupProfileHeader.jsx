@@ -7,13 +7,13 @@ import Team from "../Team/Team";
 import Details from "../Details/Details";
 import Pitch from "../Pitch/Pitch";
 
-const dummyContact = {
-    phone: "+91 00001 73314",
-    email: "random@email.com",
-    website: "bits-dvm.org",
-    twitter: "https://x.com",
-    linkedin: "https://linkedin.com",
-}
+// const dummyContact = {
+//     phone: "+91 00001 73314",
+//     email: "random@email.com",
+//     website: "bits-dvm.org",
+//     twitter: "https://x.com",
+//     linkedin: "https://linkedin.com",
+// }
 
 const DummyAbout = {
     description: "Lorem ipsum dolor sit amet consectetur. Adipiscing quisque massa scelerisque dolor est quis sit etiam augue. Risus risus etiam phasellus suspendisse augue placerat nisi arcu.",
@@ -29,14 +29,14 @@ const dummyDetails = {
     stage: "Early Stage",
 }
 
-// const profileInfo = {
-//     about: <About {...DummyAbout} />,
-//     details: <Details {...dummyDetails} />,
-//     pitch: <Pitch />,
-//     team: <Team />,
-// }
+const profileInfo = {
+    about: <About {...DummyAbout} />,
+    details: <Details {...dummyDetails} />,
+    pitch: <Pitch />,
+    team: <Team />,
+}
 
-export default function StartupProfileHeader({ img, name, desc, location, email, website, twitter, linkedin, founder, cofounder1, cofounder2, stage, pitchdeck, pitchvideo }) {
+export default function StartupProfileHeader({ img, name, desc, location, email, website, twitter, linkedin, founder, cofounder1, cofounder2, stage, pitchdeck, pitchvideo, industries, areas }) {
     const [selectedTopic, setSelectedTopic] = useState('about');
 
     function handleSelect(selectedButton) {
@@ -46,7 +46,7 @@ export default function StartupProfileHeader({ img, name, desc, location, email,
 
 
     const profileInfo = {
-        about: <About {...DummyAbout} />,
+        about: <About desc={desc} industries={industries} areas={areas} />,
         details: <Details founder={founder} cofounder1={cofounder1} cofounder2={cofounder2} location={cofounder2} stage={stage} />,
         pitch: <Pitch pitchdeck={pitchdeck} pitchvideo={pitchvideo} />,
         team: <Team />,
@@ -88,15 +88,15 @@ export default function StartupProfileHeader({ img, name, desc, location, email,
                         </div>
                         <div className={styles.head}>
                             <p className={styles.headings}>About</p>
-                            <About {...DummyAbout}></About>
+                            <About desc={desc} industries={industries} areas={areas} />
                         </div>
                         <div className={styles.head}>
                             <p className={styles.headings}>Details</p>
-                            <Details {...dummyDetails}></Details>
+                            <Details founder={founder} cofounder1={cofounder1} cofounder2={cofounder2} location={cofounder2} stage={stage} />
                         </div>
                         <div className={styles.head}>
                             <p className={styles.headings}>Pitch</p>
-                            <Pitch></Pitch>
+                            <Pitch pitchdeck={pitchdeck} pitchvideo={pitchvideo} />
                         </div>
                         <div className={styles.head}>
                             <p className={styles.headings}>Team</p>

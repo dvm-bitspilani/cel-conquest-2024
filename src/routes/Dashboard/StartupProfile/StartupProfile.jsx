@@ -22,6 +22,8 @@ let startupId = 1
 const StartupProfile = () => {
 
     const [startupProfile, setstartupProfile] = useState({});
+    const [userProfile, setuserProfile] = useState({});
+    const [team, setTeam] = useState({});
     const [selectedTopic, setSelectedTopic] = useState('about');
 
     useEffect(() => {
@@ -41,6 +43,8 @@ const StartupProfile = () => {
                 .then(function (response) {
                     // console.log(response.data);
                     setstartupProfile(response.data);
+                    setuserProfile(response.data.user_profile);
+                    setTeam(response.data.team_member);
                     // console.log(startupProfile)
                 })
                 .catch(function (error) {
@@ -52,10 +56,12 @@ const StartupProfile = () => {
 
     }, [startupId]);
     
-    console.log(startupProfile)
+    console.log(startupProfile);
+    console.log(startupProfile.industry);
+    console.log(userProfile.sector_of_expertise);
     return (
         <>
-            <StartupProfileHeader img={startupProfile.profile_logo} name={startupProfile.startup_name} desc={startupProfile.description} location={startupProfile.location_hq} email={startupProfile.contact_email} website={startupProfile.website_url} twitter={startupProfile.linkedin} linkedin={startupProfile.linkedin} founder={startupProfile.location_hq} cofounder1={startupProfile.location_hq} cofounder2={startupProfile.location_hq} location={startupProfile.location_hq} stage={startupProfile.stage} pitchdeck={startupProfile.pitch_deck} pitchvideo={startupProfile.video_pitch} />
+            <StartupProfileHeader img={startupProfile.profile_logo} name={startupProfile.startup_name} desc={startupProfile.description} location={startupProfile.location_hq} email={startupProfile.contact_email} website={startupProfile.website_url} twitter={startupProfile.linkedin} linkedin={startupProfile.linkedin} founder={startupProfile.location_hq} cofounder1={startupProfile.location_hq} cofounder2={startupProfile.location_hq} stage={startupProfile.stage} pitchdeck={startupProfile.pitch_deck} pitchvideo={startupProfile.video_pitch} industries={startupProfile.industry} areas={userProfile.sector_of_expertise} />
         </>
     );
 };
