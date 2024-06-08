@@ -36,7 +36,7 @@ const dummyDetails = {
 //     team: <Team />,
 // }
 
-export default function StartupProfileHeader({ img, name, desc, location, email, website, twitter, linkedin, founder, cofounder1, cofounder2, stage }) {
+export default function StartupProfileHeader({ img, name, desc, location, email, website, twitter, linkedin, founder, cofounder1, cofounder2, stage, pitchdeck, pitchvideo }) {
     const [selectedTopic, setSelectedTopic] = useState('about');
 
     function handleSelect(selectedButton) {
@@ -48,7 +48,7 @@ export default function StartupProfileHeader({ img, name, desc, location, email,
     const profileInfo = {
         about: <About {...DummyAbout} />,
         details: <Details founder={founder} cofounder1={cofounder1} cofounder2={cofounder2} location={cofounder2} stage={stage} />,
-        pitch: <Pitch />,
+        pitch: <Pitch pitchdeck={pitchdeck} pitchvideo={pitchvideo} />,
         team: <Team />,
     }
 
