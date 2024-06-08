@@ -7,12 +7,12 @@ const SlotInputField = ({ showHideSelectSlotTiming , id, dateTimeStart, dateTime
     <div className={styles.inputField}>
       
       <p>Slot {id} ({dateStart.getDate()} {dateStart.getDate()} ()) </p>
-      {/* <button
+      <button
         className={styles.SelectButton}
         onClick={showHideSelectSlotTiming}
       >
-        Select
-      </button> */}
+        Delete
+      </button>
     </div>
   );
 };
