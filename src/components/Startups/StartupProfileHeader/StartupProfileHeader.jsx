@@ -15,19 +15,19 @@ import Pitch from "../Pitch/Pitch";
 //     linkedin: "https://linkedin.com",
 // }
 
-const DummyAbout = {
-    description: "Lorem ipsum dolor sit amet consectetur. Adipiscing quisque massa scelerisque dolor est quis sit etiam augue. Risus risus etiam phasellus suspendisse augue placerat nisi arcu.",
-    industries: ["Climate Tech", "EV", "Fin-Tech", "Climate Tech", "Lorem Ipsum", "Lorem Ipsum"],
-    areas: ["Climate Tech", "EV", "Fin-Tech"]
-}
+// const DummyAbout = {
+//     description: "Lorem ipsum dolor sit amet consectetur. Adipiscing quisque massa scelerisque dolor est quis sit etiam augue. Risus risus etiam phasellus suspendisse augue placerat nisi arcu.",
+//     industries: ["Climate Tech", "EV", "Fin-Tech", "Climate Tech", "Lorem Ipsum", "Lorem Ipsum"],
+//     areas: ["Climate Tech", "EV", "Fin-Tech"]
+// }
 
-const dummyDetails = {
-    founder: "A very very very long name",
-    cofounder1: "A very very very long name",
-    cofounder2: "A very very very long name",
-    location: "Pilani, Rajasthan",
-    stage: "Early Stage",
-}
+// const dummyDetails = {
+//     founder: "A very very very long name",
+//     cofounder1: "A very very very long name",
+//     cofounder2: "A very very very long name",
+//     location: "Pilani, Rajasthan",
+//     stage: "Early Stage",
+// }
 
 const profileInfo = {
     about: <About {...DummyAbout} />,
@@ -99,7 +99,7 @@ export default function StartupProfileHeader({ img, name, desc, location, email,
                         </div>
                         <div className={styles.head}>
                             <p className={styles.headings}>Team</p>
-                            <Team></Team>
+                            <Team teamArray={teamArray} />
                         </div>
                         <div className={styles.head}>
                             <p className={styles.headings}>Contact</p>
