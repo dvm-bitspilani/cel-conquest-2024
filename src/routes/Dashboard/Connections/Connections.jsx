@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Connections.module.scss";
 import { useState } from "react";
+import ConnectionListItem from "../../../components/Connections/ConnectionListItem/ConnectionListItem";
 
 function Connections() {
   const [listTab, setListTab] = useState("pending");
@@ -24,16 +25,17 @@ function Connections() {
 
           const newArr = res.data.map((newItm) => {
             return (
-              <MeetingItem
-                date={newItm.slot_start_time}
-                avatar={newItm.requested_logo}
-                mentorName={newItm.requested_name}
-                duration={45}
-                key={newItm.id}
-                // data={newItm}
-                handleClick={handleClick}
-                dataRef={dataRef}
-              />
+              // <MeetingItem
+              //   date={newItm.slot_start_time}
+              //   avatar={newItm.requested_logo}
+              //   mentorName={newItm.requested_name}
+              //   duration={45}
+              //   key={newItm.id}
+              //   // data={newItm}
+              //   handleClick={handleClick}
+              //   dataRef={dataRef}
+              // />
+              <ConnectionListItem></ConnectionListItem>
             );
           });
 
@@ -47,7 +49,6 @@ function Connections() {
     }
   };
 
-  
   return (
     <div className={styles.container}>
       <div className={styles.ButtonContainer}>
