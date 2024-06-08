@@ -22,9 +22,9 @@ const Sidebar = () => {
         <img src={bell} />
       </div>
       <div className={styles.profileSection}>
-        <div className={styles.profileAvatar}>
+        <a href="/dashboard/startup-profile" className={styles.profileAvatar}>
           <img src={demoAvatar} />
-        </div>
+        </a>
         <p>Welcome back,</p>
         <p>Madhur Jain</p>
       </div>
