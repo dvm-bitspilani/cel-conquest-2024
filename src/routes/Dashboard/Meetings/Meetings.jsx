@@ -6,18 +6,26 @@ import axios from "axios";
 import SlotTimingSelector from "../../../components/Dashboard/Meetings/SlotTimingSelector/SlotTimingSelector";
 import MeetingList from "../../../components/MeetingList/MeetingList";
 import MeetingItem from "../../../components/MeetingList/MeetingItem/MeetingItem";
+import BookSlots from "../../../components/Dashboard/Meetings/BookSlots/BookSlots";
 
 const Meetings = () => {
   //meeting list code
   const dataRef = useRef(null);
+  const [data, setData] = useState(null);
+  const isStartup =
+    JSON.parse(localStorage.getItem("userData")).user_profile_obj.role ===
+    "Startup"
+      ? true
+      : false;
 
   function handleClick() {
-    console.log(dataRef.current);
+    setData(dataRef.current);
   }
 
   // rest of the code
   const [selectSlots, setselectSlots] = useState(false);
   const [selectSlotTiming, setselectSlotTiming] = useState(false);
+  const [bookSlots, setBookSlots] = useState(false);
   const [listItms, setListItms] = useState([]);
 
   let showHideSelectSlots = () => {
@@ -27,6 +35,10 @@ const Meetings = () => {
   let showHideSelectSlotTiming = () => {
     setselectSlotTiming(!selectSlotTiming);
     console.log(selectSlotTiming);
+  };
+
+  let showHideBookSlots = () => {
+    setBookSlots(!bookSlots);
   };
 
   const [listTab, setListTab] = useState("upcoming");
@@ -46,9 +58,9 @@ const Meetings = () => {
           }
         )
         .then((res) => {
-          console.log(res.data)
+          console.log(res.data);
 
-          const newArr = res.data.map(newItm => {
+          const newArr = res.data.map((newItm) => {
             return (
               <MeetingItem
                 date={newItm.slot_start_time}
@@ -56,14 +68,14 @@ const Meetings = () => {
                 mentorName={newItm.requested_name}
                 duration={45}
                 key={newItm.id}
-                // data={newItm}
+                data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
               />
-            )
-          })
+            );
+          });
 
-          setListItms(newArr)
+          setListItms(newArr);
         })
         .catch((err) => {
           console.log(err);
@@ -71,7 +83,7 @@ const Meetings = () => {
     } else {
       console.log("error in fetching data");
     }
-  }
+  };
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
@@ -87,9 +99,9 @@ const Meetings = () => {
           }
         )
         .then((res) => {
-          console.log(res.data)
+          console.log(res.data);
 
-          const newArr = res.data.map(newItm => {
+          const newArr = res.data.map((newItm) => {
             return (
               <MeetingItem
                 date={newItm.slot_start_time}
@@ -97,14 +109,14 @@ const Meetings = () => {
                 mentorName={newItm.requested_name}
                 duration={45}
                 key={newItm.id}
-                // data={newItm}
+                data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
               />
-            )
-          })
+            );
+          });
 
-          setListItms(newArr)
+          setListItms(newArr);
         })
         .catch((err) => {
           console.log(err);
@@ -113,9 +125,13 @@ const Meetings = () => {
       console.log("error in fetching data");
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
-
+  console.log("isStartup", isStartup);
   return (
     <>
+      <BookSlots
+        bookSlots={bookSlots}
+        showHideBookSlots={showHideBookSlots}
+      ></BookSlots>
       <SlotTimingSelector
         selectSlotTiming={selectSlotTiming}
         removeModal={showHideSelectSlotTiming}
@@ -138,7 +154,6 @@ const Meetings = () => {
               onClick={() => {
                 setListTab("pending");
                 getMeetingList("pending");
-
               }}
               className={`${styles.meetingsListOptions} ${
                 listTab === "pending" ? styles.active : null
@@ -150,7 +165,6 @@ const Meetings = () => {
               onClick={() => {
                 setListTab("past");
                 getMeetingList("past");
-
               }}
               className={`${styles.meetingsListOptions} ${
                 listTab === "past" ? styles.active : null
@@ -166,11 +180,11 @@ const Meetings = () => {
         <div className={styles.divider}></div>
         <div className={styles.rightPart}>
           <button
-            style={{ zIndex: 2 }}
+            style={{ zIndex: 2, display: isStartup ? "none" : null }}
             className={styles.selectSlots}
-            onClick={showHideSelectSlots}
+            onClick={isStartup ? showHideBookSlots : showHideSelectSlots}
           >
-            Select Slots
+            {isStartup ? "Book Slot" : "Select Slots"}
           </button>
           {selectSlots ? (
             <SelectSlots
@@ -183,7 +197,9 @@ const Meetings = () => {
               selectSlots ? styles.blur : null
             }`}
           >
-            <MeetingDetails></MeetingDetails>
+            {data !== null ? (
+              <MeetingDetails myData={data}></MeetingDetails>
+            ) : null}
           </div>
         </div>
       </div>

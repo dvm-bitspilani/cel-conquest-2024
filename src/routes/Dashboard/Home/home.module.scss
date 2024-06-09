@@ -42,7 +42,9 @@
     overflow: auto;
 
     @media screen and (max-width: 1045px) {
-        width: calc(100vw - 240px);
+        // width: calc(100vw - 240px);
+        right: 0;
+        position: relative;
     }
 
     @media screen and (max-width: 820px) {
@@ -256,6 +258,55 @@
             border-bottom: 1px dotted #a0a0a0;
         }
 
-        // @include scrollbarStyles();
+        .formsContainer {
+            padding: 0 25px;
+
+            // @media screen and (max-width: 1100px) {
+            //     padding: 0 10px;
+            // }
+
+            @media screen and (max-width: 820px) {
+                padding: 0 10px;
+            }
+
+            .heading {
+                width: 100%;
+                display: flex;
+                cursor: pointer;
+                justify-content: space-between;
+                position: relative;
+
+                @media screen and (max-width: 1017px) and (min-width: 820px) {
+                    font-size: 21px;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 0%;
+                    height: 3px;
+                    background-color: #FB723D;
+                    border-radius: 10px;
+                    left: 0;
+                    bottom: -3px;
+                    transition: width 0.3s;
+                }
+
+                &:hover::after {
+                    width: 60%;
+                }
+
+                svg {
+                    aspect-ratio: 1 / 1;
+                    width: 31px;
+
+                    @media screen and (max-width: 1017px) and (min-width: 820px) {
+                        width: 24px;
+                    }
+                }
+            }
+        }
+
+        @include scrollbarStyles();
     }
 }

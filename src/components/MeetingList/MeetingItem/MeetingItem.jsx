@@ -33,12 +33,12 @@ export default function MeetingItem({ date, avatar, mentorName, duration, isGray
                 handleClick()
             }}
         >
-            <div className={styles.gridLeft}>
-                <div className={styles.time}>
-                    <span>{fullTime}</span>
-                    <span>{`${duration} minutes`}</span>
-                </div>
-                <div className={styles.mentor}>
+            <div className={styles.time}>
+                <span>{fullTime}</span>
+                <span>{`${duration} minutes`}</span>
+            </div>
+            <div className={styles.mentor}>
+                <div className={styles.avatarWrapper}>
                     <ConfigProvider
                         theme={{
                             token: {
@@ -55,13 +55,13 @@ export default function MeetingItem({ date, avatar, mentorName, duration, isGray
                                 xl: 64,
                                 xxl: 80,
                             }}
-                            icon={<img src={avatar} alt="icon" />}
+                            icon={<img src={avatar} alt="user avatar" />}
                         />
                     </ConfigProvider>
-                    <div className={styles.nameWrapper}>
-                        <span>With</span>
-                        <span>{mentorName}</span>
-                    </div>
+                </div>
+                <div className={styles.nameWrapper}>
+                    <span>With</span>
+                    <span>{mentorName}</span>
                 </div>
             </div>
             <div className={styles.link}>
@@ -95,7 +95,7 @@ export default function MeetingItem({ date, avatar, mentorName, duration, isGray
                             strokeLinecap="round"
                             strokeLinejoin="round"
                         />
-                    </svg>{" "}
+                    </svg>
                     Join
                 </a>
             </div>

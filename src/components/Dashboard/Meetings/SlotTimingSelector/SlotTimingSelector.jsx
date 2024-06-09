@@ -250,9 +250,9 @@ const eveningSvg = (
 );
 
 const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
-  const changeDate = (date) => {
+  const changeDate = (date, month, year) => {
     setDateTime((prev) => {
-      return { ...prev, date: date };
+      return { ...prev, date: date, month: month, year: year };
     });
   };
   const changeTime = (time) => {
@@ -277,27 +277,57 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
   const [dateTime, setDateTime] = useState({
     date: days[0].getDate(),
     time: "9:00",
+    month: days[0].getMonth(),
+    year: days[0].getFullYear(),
   });
   for (let i = 0; i < 7; i++) {
     dateComponents[i] = (
       <SlotDateButton
         key={i}
         changeDate={changeDate}
+        month={days[i].getMonth()}
         day={week[days[i].getDay()]}
         date={days[i].getDate()}
+        year={days[i].getFullYear()}
         active={dateTime.date === days[i].getDate() ? true : false}
       ></SlotDateButton>
     );
   }
 
-  const createSlot = () => {
+  const createSlot = (dateTime) => {
+    const month = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    const date = new Date(
+      `${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${
+        dateTime.time
+      } GMT+0530`
+    );
+    const unixTimeStamp = date.getTime() / 1000;
+    const unixTimeStamp2 = Number(unixTimeStamp) + 45 * 60;
+    console.log({
+      user: "1",
+      start_time: unixTimeStamp,
+      end_time: unixTimeStamp2,
+    });
     axios
       .post(
         "https://conquest-api.bits-dvm.org/api/meetings/slots/",
         {
           user: "1",
-          start_time: "1717564000",
-          end_time: "1717564000",
+          start_time: unixTimeStamp,
+          end_time: unixTimeStamp2,
         },
         {
           headers: {
@@ -314,6 +344,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
         console.log(error);
       });
   };
+  console.log(dateTime);
   return (
     <>
       <div
@@ -422,7 +453,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
           <p>Select a 45 min. slot</p>
           <button
             onClick={() => {
-              createSlot();
+              createSlot(dateTime);
               removeModal();
             }}
           >

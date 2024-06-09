@@ -10,7 +10,7 @@ export default function MeetingList({ listItms, ...props }) {
     }
 
     const meetList = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 1; i++) {
         const newWeek = (
             <div className={styles.week}>
                 <p className={styles.weekHeading}>This Week</p>

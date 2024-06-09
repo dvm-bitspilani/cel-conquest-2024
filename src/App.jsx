@@ -19,6 +19,7 @@ import StartupProfile from "./routes/Dashboard/StartupProfile/StartupProfile";
 import Experts from "./routes/Dashboard/Experts/Experts";
 import Mentors from "./routes/Dashboard/Mentors/Mentors";
 import Connections from "./routes/Dashboard/Connections/Connections";
+import Forms from "./routes/Dashboard/Forms/Forms";
 ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment variables -> will do later
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
           <Route path="startup-profile" element={<StartupProfile />}></Route>
           <Route path="mentors" element={<Mentors />}></Route>
           <Route path="connections" element={<Connections />}></Route>
+          <Route path="forms" element={<Forms />}></Route>
         </Route>
       </Route>
     </Routes>

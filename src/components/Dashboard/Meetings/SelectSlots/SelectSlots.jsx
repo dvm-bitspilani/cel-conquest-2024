@@ -7,27 +7,26 @@ import axios from "axios";
 
 const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
   const [slotList, setSlotList] = useState([]);
-  const [slotData, setSlotData] = useState([]);
   const deleteSlot = (id) => {
-    console.log("delete slot");
-    console.log(slotData);
-    let newArray = slotData.filter((itm) => {
-      return itm.id !== id;
-    });
-    let newArr = newArray.map((newItm, index) => {
-      return (
-        <SlotInputField
-          slotno={index + 1}
-          key={newItm.id}
-          id={newItm.id}
-          showHideSelectSlotTiming={showHideSelectSlotTiming}
-          dateTimeStart={newItm.start_time}
-          dateTimeEnd={newItm.end_time}
-          deleteSlot={deleteSlot}
-        ></SlotInputField>
-      );
-    });
-    setSlotList(newArr);
+    // console.log("delete slot");
+    // console.log(slotData);
+    // let newArray = slotData.filter((itm) => {
+    //   return itm.id !== id;
+    // });
+    // let newArr = newArray.map((newItm, index) => {
+    //   return (
+    //     <SlotInputField
+    //       slotno={index + 1}
+    //       key={newItm.id}
+    //       id={newItm.id}
+    //       showHideSelectSlotTiming={showHideSelectSlotTiming}
+    //       dateTimeStart={newItm.start_time}
+    //       dateTimeEnd={newItm.end_time}
+    //       deleteSlot={deleteSlot}
+    //     ></SlotInputField>
+    //   );
+    // });
+    // setSlotList(newArr);
   };
 
   useEffect(() => {
@@ -35,9 +34,8 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
       axios
         .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
           headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("userData")).tokens.access
-            }`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
           },
         })
         .then((res) => {
@@ -69,11 +67,13 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
 
   return (
     <div className={styles.SelectSlots}>
-      <h3>Select Slots</h3>
-      {slotList}
-      <div className={styles.addDone}>
-        <button onClick={showHideSelectSlotTiming}>Add</button>
-        <button onClick={showHideSelectSlots}>Done</button>
+      <div className={styles.slotListWrapper}>
+        <h3>Select Slots</h3>
+        {slotList}
+        <div className={styles.addDone}>
+          <button onClick={showHideSelectSlotTiming}>Add</button>
+          <button onClick={showHideSelectSlots}>Done</button>
+        </div>
       </div>
     </div>
   );
