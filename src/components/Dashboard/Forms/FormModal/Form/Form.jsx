@@ -34,11 +34,76 @@ export default function Form({ data, formClose }) {
         }
     }
 
+    function responseObjectGenerator(obj) {
+        const subjResponse = []
+        const fileResponse = []
+        const prefResponse = []
+        const scoreResponse = []
+
+        for (let key in obj) {
+            const ident = key.split('-')
+
+            if (ident[0] === 'subj') {
+                const newAnswer = {
+                    "id": parseInt(ident[1]),
+                    "ans": obj[key] ? obj[key] : ''
+                }
+                subjResponse.push(newAnswer)
+            }
+
+            if (ident[0] === 'file') {
+                const newAnswer = {
+                    "id": parseInt(ident[1]),
+                    "ans": obj[key] ? obj[key] : ''
+                }
+                fileResponse.push(newAnswer)
+            }
+
+            if (ident[0] === 'pref') {
+                const newAnswer = {
+                    "id": parseInt(ident[1]),
+                    "preferences": obj[key] ? obj[key] : ''
+                }
+                prefResponse.push(newAnswer)
+            }
+
+            if (ident[0] === 'score') {
+                const newAnswer = {
+                    "id": parseInt(ident[1]),
+                    "ans": `${parseInt(obj[key])}` === 'NaN' ? 0 : parseInt(obj[key])
+                }
+                scoreResponse.push(newAnswer)
+            }
+        }
+
+        const responseObject = {
+            "subjective_questions": subjResponse,
+            "scoring_questions": scoreResponse,
+            "file_upload_questions": fileResponse,
+            "preference_questions": prefResponse,
+        }
+
+        return responseObject
+    }
+
     const { values, errors, handleBlur, handleSubmit, handleChange, setFieldValue } = useFormik({
         initialValues: initialValues,
         onSubmit: (values, action) => {
             console.log("In Form.jsx")
+            const response = responseObjectGenerator(values)
+            // axios.post(`https://conquest-api.bits-dvm.org/api/forms/${data.form_id}/answers/`, response, {
+            //     headers: {
+            //         Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
+            //     }
+            // })
+            //     .then(res => {
+            //         console.log(res)
+            //     })
+            //     .catch(err => {
+            //         console.log(err)
+            //     })
             console.log(values)
+            console.log(response)
             action.resetForm()
             formClose()
         }
