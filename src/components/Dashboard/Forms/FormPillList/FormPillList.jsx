@@ -37,24 +37,23 @@ export default function FormPillList() {
             .then(res => {
                 console.log(res)
 
-                const temp = DUMMY_FORM_LIST.map(form => {
+                const temp = res.data.reverse().map(form => {
                     return (
-                        <FormPillItem key={form.id} formId={form.id} title={form.title} avatar={form.avatar} />
+                        <FormPillItem key={form.id} formId={form.id} title={form.form_name} avatar={form.avatar} />
                     )
                 })
+                // const temp = DUMMY_FORM_LIST.reverse().map((form, index) => {
+                //     if (index >= 1) {
+                //         return (
+                //             <FormPillItem key={form.id} title={form.title} avatar={form.avatar} />
+                //         )
+                //     }
+                // })
 
                 setFormsList(temp)
             })
             .catch(err => {
                 console.log(err)
-
-                const temp = DUMMY_FORM_LIST.map(form => {
-                    return (
-                        <FormPillItem key={form.id} title={form.title} avatar={form.avatar} />
-                    )
-                })
-
-                setFormsList(temp)
             })
     }, [JSON.parse(localStorage.getItem('userData')).tokens.access])
     return (
