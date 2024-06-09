@@ -25,7 +25,7 @@ const Meetings = () => {
 
   const changeRequestSent = () => {
     setRequestSent(!requestSent);
-  }
+  };
 
   // rest of the code
   const [selectSlots, setselectSlots] = useState(false);
@@ -142,6 +142,23 @@ const Meetings = () => {
       ></SlotTimingSelector>
       <div className={styles.meetingsContainer}>
         <div className={styles.meetingsList}>
+          <div className={styles.phoneView}>
+            <h2>Meetings</h2>
+            <button
+              style={{ zIndex: 2, display: isStartup ? "none" : null }}
+              className={styles.selectSlots}
+              onClick={isStartup ? showHideBookSlots : showHideSelectSlots}
+            >
+              {isStartup ? "Book Slot" : "Select Slots"}
+            </button>
+            {selectSlots ? (
+              <SelectSlots
+                showHideSelectSlotTiming={showHideSelectSlotTiming}
+                showHideSelectSlots={showHideSelectSlots}
+                requestSent={requestSent}
+              ></SelectSlots>
+            ) : null}
+          </div>
           <div className={styles.meetingsListOptionsContainer}>
             <div
               onClick={() => {
