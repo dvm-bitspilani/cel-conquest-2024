@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import { Avatar, ConfigProvider } from "antd";
 
@@ -11,6 +12,7 @@ import avatar from '../../../assets/images/Dashboard/demoAvatar.jpeg'
 import * as styles from './home.module.scss'
 
 export default function Home() {
+  const navigate = useNavigate()
   const [listItms, setListItms] = useState([])
 
   // GETTING MEETING DATA FROM CLICK
@@ -169,6 +171,16 @@ export default function Home() {
               </div>
             </div> : null}
           </section>
+        </div>
+        <div className={styles.formsContainer}>
+          <h1 className={styles.heading}>
+            <div onClick={() => navigate('/dashboard/forms')}>Pending <span>Forms</span></div>
+            <span>
+              <svg viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.9165 21.9582L19.3748 15.4998L12.9165 9.0415" stroke="#FB723D" strokeWidth="3.22917" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </h1>
         </div>
       </div>
     </div>
