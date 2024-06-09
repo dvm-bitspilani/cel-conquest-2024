@@ -3,8 +3,6 @@ import styles from "./SelectSlots.module.scss";
 import SlotInputField from "./SlotInputField/SlotInputField";
 import axios from "axios";
 
-
-
 const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
   const [slotList, setSlotList] = useState([]);
   const deleteSlot = (id) => {
@@ -34,12 +32,14 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
       axios
         .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
           headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
           },
         })
         .then((res) => {
           const newArr = res.data.map((newItm, index) => {
+            console.log("time", index, newItm.start_time, newItm.end_time);
             return (
               <SlotInputField
                 slotno={index + 1}
@@ -55,7 +55,6 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
           setSlotList(newArr);
           console.log(res.data);
           setSlotData(res.data);
-
         })
         .catch((err) => {
           console.log(err);
