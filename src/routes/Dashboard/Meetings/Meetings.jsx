@@ -11,6 +11,11 @@ const Meetings = () => {
   //meeting list code
   const dataRef = useRef(null);
   const [data, setData] = useState(null);
+  const isStartup =
+    JSON.parse(localStorage.getItem("userData")).user_profile_obj.role ===
+    "Startup"
+      ? true
+      : false;
 
   function handleClick() {
     setData(dataRef.current);
@@ -29,6 +34,8 @@ const Meetings = () => {
     setselectSlotTiming(!selectSlotTiming);
     console.log(selectSlotTiming);
   };
+
+  let showHideBookSlots = () => {};
 
   const [listTab, setListTab] = useState("upcoming");
 
@@ -167,7 +174,7 @@ const Meetings = () => {
           <button
             style={{ zIndex: 2 }}
             className={styles.selectSlots}
-            onClick={showHideSelectSlots}
+            onClick={isStartup ? showHideBookSlots : showHideSelectSlots}
           >
             Select Slots
           </button>
