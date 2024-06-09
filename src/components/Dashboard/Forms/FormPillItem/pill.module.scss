@@ -11,6 +11,7 @@
     box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.08);
     // gap: 1.4rem;
     gap: clamp(0.5rem, 5%, 1.4rem);
+    cursor: pointer;
 
     @media screen and (min-width: 820px) {
         aspect-ratio: 421 / 78;
