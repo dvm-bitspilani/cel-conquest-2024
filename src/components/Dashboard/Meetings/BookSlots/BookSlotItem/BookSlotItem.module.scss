@@ -1,0 +1,49 @@
+.inputField {
+  width: 100%;
+  font-size: 17px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  gap: 10px;
+  background-color: #fff;
+  padding: 8px 8px 8px 8px;
+  border-radius: 8px;
+  border: 1px solid #a0a0a0;
+
+  div {
+    display: flex;
+    width: 100%;
+    div:nth-child(2) {
+      color: #646464;
+      font-family: Montserrat;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      display: flex;
+      justify-content: center;
+    }
+
+    div:nth-child(1) {
+      width: 80px;
+      color: #646464;
+      font-family: Montserrat;
+      font-size: 17px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+
+  .SelectButton {
+    background-color: #fb723d;
+    padding: 6px 24px;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
