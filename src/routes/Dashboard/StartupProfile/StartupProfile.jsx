@@ -41,7 +41,6 @@ const StartupProfile = () => {
                     }
                 )
                 .then(function (response) {
-                    // console.log(response.data);
                     setstartupProfile(response.data);
                     setuserProfile(response.data.user_profile);
                     setTeam(response.data.team_member);
@@ -56,9 +55,11 @@ const StartupProfile = () => {
 
     }, [startupId]);
 
+
+
     return (
         <>
-            <StartupProfileHeader img={startupProfile.profile_logo} name={startupProfile.startup_name} desc={startupProfile.description} location={startupProfile.location_hq} email={startupProfile.contact_email} website={startupProfile.website_url} twitter={startupProfile.linkedin} linkedin={startupProfile.linkedin} founder={startupProfile.location_hq} cofounder={startupProfile.location_hq} stage={startupProfile.stage} pitchdeck={startupProfile.pitch_deck} pitchvideo={startupProfile.video_pitch} industries={startupProfile.industry} areas={userProfile.sector_of_expertise} teamArray={startupProfile.team_members} />
+            <StartupProfileHeader img={startupProfile.profile_logo} name={startupProfile.startup_name} desc={startupProfile.description} location={startupProfile.location_hq} email={startupProfile.contact_email} website={startupProfile.website_url} twitter={startupProfile.twitter} linkedin={startupProfile.linkedin} founder={startupProfile.location_hq} cofounder={startupProfile.location_hq} stage={startupProfile.stage} pitchdeck={startupProfile.pitch_deck} pitchvideo={startupProfile.video_pitch} industries={startupProfile.industry} areas={startupProfile.functional_areas} teamArray={startupProfile.team_members} />
         </>
     );
 };
