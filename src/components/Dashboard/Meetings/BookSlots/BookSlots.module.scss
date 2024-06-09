@@ -24,6 +24,9 @@
       }
       svg{
         justify-self: flex-end;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
