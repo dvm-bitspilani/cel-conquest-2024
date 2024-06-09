@@ -180,7 +180,7 @@ const Meetings = () => {
         <div className={styles.divider}></div>
         <div className={styles.rightPart}>
           <button
-            style={{ zIndex: 2 }}
+            style={{ zIndex: 2, display: isStartup ? "none" : null }}
             className={styles.selectSlots}
             onClick={isStartup ? showHideBookSlots : showHideSelectSlots}
           >
