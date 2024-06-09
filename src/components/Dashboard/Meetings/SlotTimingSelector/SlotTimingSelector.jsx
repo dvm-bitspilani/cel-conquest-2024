@@ -250,9 +250,9 @@ const eveningSvg = (
 );
 
 const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
-  const changeDate = (date) => {
+  const changeDate = (date, month) => {
     setDateTime((prev) => {
-      return { ...prev, date: date };
+      return { ...prev, date: date, month: month, year: year };
     });
   };
   const changeTime = (time) => {
@@ -277,20 +277,26 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
   const [dateTime, setDateTime] = useState({
     date: days[0].getDate(),
     time: "9:00",
+    month: days[0].getMonth(),
+    year: days[0].getFullYear(),
   });
   for (let i = 0; i < 7; i++) {
     dateComponents[i] = (
       <SlotDateButton
         key={i}
         changeDate={changeDate}
+        month={days[i].getMonth()}
         day={week[days[i].getDay()]}
         date={days[i].getDate()}
+        year={days[i].getFullYear()}
         active={dateTime.date === days[i].getDate() ? true : false}
       ></SlotDateButton>
     );
   }
 
-  const createSlot = () => {
+  const createSlot = (dateTime) => {
+    // date = new Date(`May ${dateTime.date}, 2024 ${dateTime.time} GMT+0530`)
+    // return date.getTime() / 1000
     axios
       .post(
         "https://conquest-api.bits-dvm.org/api/meetings/slots/",
@@ -314,6 +320,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
         console.log(error);
       });
   };
+  console.log(dateTime);
   return (
     <>
       <div
@@ -422,7 +429,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
           <p>Select a 45 min. slot</p>
           <button
             onClick={() => {
-              createSlot();
+              createSlot(dateTime);
               removeModal();
             }}
           >
