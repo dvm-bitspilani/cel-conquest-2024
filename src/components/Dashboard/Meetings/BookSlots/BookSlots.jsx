@@ -31,8 +31,8 @@ function BookSlots({ bookSlots, showHideBookSlots }) {
             );
           });
           setSlotList(newArr);
-          console.log(res.data);
-          setSlotData(res.data);
+          // console.log(res.data);
+          // setSlotData(res.data);
         })
         .catch((err) => {
           console.log(err);
@@ -60,16 +60,16 @@ function BookSlots({ bookSlots, showHideBookSlots }) {
             <path
               d="M18 6L6 18"
               stroke="black"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M6 6L18 18"
               stroke="black"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>

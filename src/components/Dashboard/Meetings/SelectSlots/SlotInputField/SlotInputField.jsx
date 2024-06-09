@@ -6,17 +6,21 @@ const SlotInputField = ({
   slotno,
   dateTimeStart,
   dateTimeEnd,
-  deleteSlot
+  deleteSlot,
 }) => {
   const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const dateObjEnd = new Date(dateTimeEnd);
-  const dateObj = new Date(dateTimeStart);
+  const dateObjEnd = new Date(dateTimeEnd * 1000);
+  const dateObj = new Date(dateTimeStart * 1000);
+  // console.log(dateTimeStart);
+  // console.log(dateObj);
   const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
     dateObj
   );
   const meetDate = dateObj.getDate();
   const hours = dateObj.getHours();
-  const minutes = dateObj.getMinutes();
+  // console.log(hours);
+  let minutes = dateObj.getMinutes();
+  minutes = minutes == 0 ? "00" : minutes;
   const fullTime =
     hours > 12
       ? `${hours - 12}:${minutes} PM`
@@ -35,11 +39,10 @@ const SlotInputField = ({
   return (
     <div className={styles.inputField}>
       <div>
-        <div> Slot {slotno}</div> 
+        <div> Slot {slotno}</div>
         <div>
-
-        ({meetDate} {month} ({week[dateObj.getDay()]}),{" "}
-        {fullTime} - {fullTimeEnd})
+          ({meetDate} {month} ({week[dateObj.getDay()]}), {fullTime} -{" "}
+          {fullTimeEnd})
         </div>
       </div>
       <button
@@ -48,7 +51,32 @@ const SlotInputField = ({
           return deleteSlot(id);
         }}
       >
-        Delete
+        {window.innerWidth > 600 ? (
+          "Delete"
+        ) : (
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 6L6 18"
+              stroke="white"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6 6L18 18"
+              stroke="white"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        )}
       </button>
     </div>
   );

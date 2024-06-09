@@ -16,7 +16,7 @@
     display: flex;
     width: 100%;
     div:nth-child(2) {
-      transform: translateX(-5px);
+      // transform: translateX(-5px);
       color: #646464;
       font-family: Montserrat;
       font-size: 14px;
@@ -24,18 +24,21 @@
       font-weight: 500;
       line-height: normal;
       display: flex;
-      justify-content: center;
+      justify-content: start;
       align-items: center;
     }
 
     div:nth-child(1) {
-      width: 80px;
+      width: 90px;
       color: #3d3d3d;
       font-family: Montserrat;
       font-size: 17px;
       font-style: normal;
       font-weight: 700;
       line-height: normal;
+      @media screen and (max-width: 600px) {
+        display: none;
+      }
     }
   }
 
@@ -47,5 +50,16 @@
     color: #fff;
     font-weight: 600;
     cursor: pointer;
+    position: relative;
+    @media screen and (max-width: 600px){
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;;
+      padding: 10px 18px;
+      svg{
+      position: absolute;
+        transform: translateX(-10px) translateY(-11px);
+    }
+    }
   }
 }
