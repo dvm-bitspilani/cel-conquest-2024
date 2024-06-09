@@ -18,6 +18,7 @@ const SlotInputField = ({
   );
   const meetDate = dateObj.getDate();
   const hours = dateObj.getHours();
+  console.log(hours);
   const minutes = dateObj.getMinutes();
   const fullTime =
     hours > 12
