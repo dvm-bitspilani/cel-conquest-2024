@@ -51,6 +51,7 @@ const DUMMY_FORM_LIST = [
 ]
 
 const DUMMY_QUESTIONS = {
+    form_name: "Test form",
     form_id: 1,
     subjective_questions: [
         {
