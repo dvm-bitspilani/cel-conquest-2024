@@ -10,17 +10,17 @@ import avatar from '../../../../assets/images/Dashboard/demoAvatar.jpeg'
 const DUMMY_FORM_LIST = [
     {
         id: 1,
-        title: 'First form',
+        form_name: 'First form',
         avatar: avatar
     },
     {
         id: 2,
-        title: 'Second form',
+        form_name: 'Second form',
         avatar: avatar
     },
     {
         id: 3,
-        title: 'Another one',
+        form_name: 'Another one',
         avatar: avatar
     },
 ]
@@ -42,12 +42,11 @@ export default function FormPillList() {
                         <FormPillItem key={form.id} formId={form.id} title={form.form_name} avatar={form.avatar} />
                     )
                 })
-                // const temp = DUMMY_FORM_LIST.reverse().map((form, index) => {
-                //     if (index >= 1) {
+                // const temp = DUMMY_FORM_LIST.reverse().map(form => {
                 //         return (
-                //             <FormPillItem key={form.id} title={form.title} avatar={form.avatar} />
+                //             <FormPillItem key={form.id} title={form.form_name} avatar={form.avatar} />
                 //         )
-                //     }
+                //     
                 // })
 
                 setFormsList(temp)
