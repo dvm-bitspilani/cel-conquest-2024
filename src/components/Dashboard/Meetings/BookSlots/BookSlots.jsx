@@ -41,7 +41,7 @@ function BookSlots({ bookSlots, showHideBookSlots }) {
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
   return (
-    <div className={styles.SelectSlots}>
+    <div style={bookSlots?{display:"block"}:{display:"none"}} className={styles.SelectSlots}>
       <div className={styles.slotListWrapper}>
         <div className={styles.BookSlotsHeader}>
           <h3>Book Slots</h3>

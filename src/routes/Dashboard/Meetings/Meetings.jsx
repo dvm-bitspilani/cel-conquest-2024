@@ -38,7 +38,7 @@ const Meetings = () => {
   };
 
   let showHideBookSlots = () => {
-    setBookSlots(!setBookSlots);
+    setBookSlots(!bookSlots);
   };
 
   const [listTab, setListTab] = useState("upcoming");
