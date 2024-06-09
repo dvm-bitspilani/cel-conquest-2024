@@ -46,10 +46,13 @@
     }
   }
   .connectionList {
-    margin-top: 3rem;
+    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    @media screen and (max-width: 820px){
+      margin-top: 0rem;
+    }
   }
 }
 
