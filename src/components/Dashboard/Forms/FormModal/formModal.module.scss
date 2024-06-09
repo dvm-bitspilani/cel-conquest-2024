@@ -12,6 +12,15 @@
         backdrop-filter: blur(12px);
     }
 
+    @media screen and (max-width: 820px) {
+        width: calc(349 / 393 * 100vw);
+        height: 90dvh;
+        border-radius: 16px;
+        border: 1px solid #FB723D;
+        background: #FFF;
+        box-shadow: 0px 3px 18px 0px rgba(0, 0, 0, 0.12);
+    }
+
     .cross {
         aspect-ratio: 1 / 1;
         width: 31px;
@@ -19,5 +28,11 @@
         right: 45px;
         top: 30px;
         cursor: pointer;
+
+        @media screen and (max-width: 820px) {
+            top: 15px;
+            right: 20px;
+
+        }
     }
 }
