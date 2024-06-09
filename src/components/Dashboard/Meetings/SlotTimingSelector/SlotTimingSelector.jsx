@@ -315,11 +315,11 @@ const SlotTimingSelector = ({
     const date = new Date(
       `${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${
         dateTime.time
-      } GMT+0530`
+      }`
     );
     // console.log(date);
     let unixTimeStamp = date.getTime() / 1000;
-    unixTimeStamp = Number(unixTimeStamp) - 60 * 60 * 6 - 60 * 30;
+    unixTimeStamp = Number(unixTimeStamp) + 60 * 60 * 5 + 60 * 30;
     const unixTimeStamp2 = Number(unixTimeStamp) + 45 * 60;
     // console.log({
     //   user: "1",
@@ -349,11 +349,6 @@ const SlotTimingSelector = ({
         console.log(error);
       });
   };
-  const date = new Date(
-    `${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${
-      dateTime.time
-    } GMT+0530`
-  );
   // console.log(dateTime);
   // console.log(date);
   return (
