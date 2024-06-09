@@ -64,6 +64,65 @@ const SelectSlots = ({
     //   );
     // });
     // setSlotList(newArr);
+    console.log("delete", id);
+    axios.delete(`https://conquest-api.bits-dvm.org/api/meetings/slots/${id}`, {
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("userData")).tokens.access
+        }`,
+      },
+    });
+
+    let oldArr = slotList;
+    let newArr = oldArr.filter((itm) => {
+      return itm.props.id !== id;
+    });
+    let newSlotList = newArr.map((newItm, index) => {
+      // console.log("time", index, newItm.start_time, newItm.end_time);
+      return (
+        <SlotInputField
+          slotno={index + 1}
+          key={newItm.id}
+          id={newItm.id}
+          showHideSelectSlotTiming={showHideSelectSlotTiming}
+          dateTimeStart={newItm.start_time}
+          dateTimeEnd={newItm.end_time}
+          deleteSlot={deleteSlot}
+        ></SlotInputField>
+      );
+    });
+    // setSlotList(newSlotList);
+
+    axios
+      .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
+        headers: {
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("userData")).tokens.access
+          }`,
+        },
+      })
+      .then((res) => {
+        const newArr = res.data.map((newItm, index) => {
+          // console.log("time", index, newItm.start_time, newItm.end_time);
+          return (
+            <SlotInputField
+              slotno={index + 1}
+              key={newItm.id}
+              id={newItm.id}
+              showHideSelectSlotTiming={showHideSelectSlotTiming}
+              dateTimeStart={newItm.start_time}
+              dateTimeEnd={newItm.end_time}
+              deleteSlot={deleteSlot}
+            ></SlotInputField>
+          );
+        });
+        setSlotList(newArr);
+        // console.log(res.data);
+        // setSlotData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
