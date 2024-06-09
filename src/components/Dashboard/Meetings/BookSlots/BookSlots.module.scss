@@ -1,7 +1,30 @@
 .SelectSlots {
+  display: inline-flex;
+  padding: 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  border-radius: 12px;
+  border: 1px solid #fb723d;
+  background: #fff;
+  box-shadow: 0px 3px 18px 0px rgba(0, 0, 0, 0.12);
+  width: 700px;
   .slotListWrapper {
-    .BookSlotsHeader{
-        
+    .BookSlotsHeader {
+        display: flex;
+        justify-content: center;
+      h3 {
+        color: #111213;
+        font-family: Montserrat;
+        font-size: 23px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+      svg{
+        justify-self: flex-end;
+      }
     }
   }
 }
