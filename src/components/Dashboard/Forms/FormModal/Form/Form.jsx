@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useFormik } from 'formik'
+import { useFormik } from 'formik';
+import axios from 'axios';
 
 import TextInput2 from '../Inputs/Text/TextInput'
 import Score from '../Inputs/Score/Score'
