@@ -149,6 +149,7 @@ const Startups = () => {
               img={startup.profile_logo}
               name={startup.startup_name}
               tags={startup.industry}
+              id={startup.id}
             />
           ))}
       </div>

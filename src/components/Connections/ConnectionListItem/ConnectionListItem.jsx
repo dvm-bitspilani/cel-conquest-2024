@@ -68,6 +68,9 @@ function ConnectionListItem({ img, type, name, designation, listTab, id }) {
             },
           }
         )
+        .then((res) => {
+          console.log(res);
+        })
         .catch((err) => {
           console.log(err);
         });
@@ -79,8 +82,8 @@ function ConnectionListItem({ img, type, name, designation, listTab, id }) {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       // console.log("fetching data");
       axios
-        .delete(
-          "https://conquest-api.bits-dvm.org/api/users/connections/accept/",
+        .post(
+          "https://conquest-api.bits-dvm.org/api/users/connections/delete/",
           {
             id: id,
           },
@@ -120,21 +123,24 @@ function ConnectionListItem({ img, type, name, designation, listTab, id }) {
           <>
             <div
               className={styles.acceptBtn}
-              onClick={() => handleAccept("true", id)}
+              onClick={() => handleAccept(true, +id)}
             >
               <span>Accept</span>
               <AcceptSVG />
             </div>
             <div
               className={styles.rejectBtn}
-              onClick={() => handleAccept("false", id)}
+              onClick={() => handleAccept(false, +id)}
             >
               <span>Reject</span>
               <RejectSVG />
             </div>
           </>
         ) : (
-          <div className={styles.rejectBtn} onClick={() => handleDelete(id)}>
+          <div
+            className={styles.rejectBtn}
+            onClick={() => handleDelete(Number(id))}
+          >
             <span>Remove</span>
             <RejectSVG />
           </div>
