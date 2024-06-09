@@ -50,7 +50,7 @@ const RejectSVG = () => {
 };
 
 function ConnectionListItem({ img, type, name, designation, listTab, id }) {
-  const handleAccept = (status) => {
+  const handleAccept = (status, id) => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       // console.log("fetching data");
       axios
@@ -58,7 +58,7 @@ function ConnectionListItem({ img, type, name, designation, listTab, id }) {
           "https://conquest-api.bits-dvm.org/api/users/connections/accept/",
           {
             status: status,
-            id: 2,
+            id: id,
           },
           {
             headers: {
@@ -75,14 +75,14 @@ function ConnectionListItem({ img, type, name, designation, listTab, id }) {
       console.log("error in fetching data");
     }
   };
-  const handleDelete = () => {
+  const handleDelete = (id) => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       // console.log("fetching data");
       axios
-        .post(
+        .delete(
           "https://conquest-api.bits-dvm.org/api/users/connections/accept/",
           {
-            id: 2,
+            id: id,
           },
           {
             headers: {
@@ -118,17 +118,23 @@ function ConnectionListItem({ img, type, name, designation, listTab, id }) {
       <div className={styles.buttonContainer}>
         {listTab === "pending" ? (
           <>
-            <div className={styles.acceptBtn} onClick={handleAccept("true")}>
+            <div
+              className={styles.acceptBtn}
+              onClick={() => handleAccept("true", id)}
+            >
               <span>Accept</span>
               <AcceptSVG />
             </div>
-            <div className={styles.rejectBtn} onClick={handleAccept("false")}>
+            <div
+              className={styles.rejectBtn}
+              onClick={() => handleAccept("false", id)}
+            >
               <span>Reject</span>
               <RejectSVG />
             </div>
           </>
         ) : (
-          <div className={styles.rejectBtn}>
+          <div className={styles.rejectBtn} onClick={() => handleDelete(id)}>
             <span>Remove</span>
             <RejectSVG />
           </div>
