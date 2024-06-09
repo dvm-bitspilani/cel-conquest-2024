@@ -250,7 +250,7 @@ const eveningSvg = (
 );
 
 const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
-  const changeDate = (date, month) => {
+  const changeDate = (date, month, year) => {
     setDateTime((prev) => {
       return { ...prev, date: date, month: month, year: year };
     });
@@ -295,10 +295,32 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
   }
 
   const createSlot = (dateTime) => {
-    const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    date = new Date(`${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${dateTime.time} GMT+0530`)
+    const month = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    const date = new Date(
+      `${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${
+        dateTime.time
+      } GMT+0530`
+    );
     const unixTimeStamp = date.getTime() / 1000;
-    const unixTimeStamp2 = Number(unixTimeStamp)  + (45*60);
+    const unixTimeStamp2 = Number(unixTimeStamp) + 45 * 60;
+    console.log({
+      user: "1",
+      start_time: unixTimeStamp,
+      end_time: unixTimeStamp2,
+    });
     axios
       .post(
         "https://conquest-api.bits-dvm.org/api/meetings/slots/",
