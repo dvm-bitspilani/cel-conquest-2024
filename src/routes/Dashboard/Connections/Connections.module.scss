@@ -1,3 +1,16 @@
+.mobileContainer {
+  display: none;
+  color: #000;
+  font-family: Montserrat;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-left: 25px;
+  @media screen and (max-width: 820px) {
+    display: block;
+  }
+}
 .container {
   width: 100%;
   height: 85vh;

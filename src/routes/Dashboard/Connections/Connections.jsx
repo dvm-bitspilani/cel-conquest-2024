@@ -67,6 +67,10 @@ function Connections() {
   };
 
   return (
+    <>
+    <div className={styles.mobileContainer}>
+      Connections
+    </div>
     <div className={styles.container}>
       <div className={styles.ButtonContainer}>
         <button
@@ -96,6 +100,7 @@ function Connections() {
       </div>
       <div className={styles.connectionList}>{listItms}</div>
     </div>
+    </>
   );
 }
 
