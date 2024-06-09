@@ -70,7 +70,7 @@ function BookSlots({ bookSlots, showHideBookSlots }) {
           </svg>
         </div>
         {slotList}
-        <div className={styles.addDone}>
+        <div className={styles.confirm}>
           <button onClick={showHideBookSlots}>Confirm</button>
         </div>
       </div>

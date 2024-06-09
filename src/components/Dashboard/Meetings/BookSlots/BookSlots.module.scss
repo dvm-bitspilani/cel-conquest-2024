@@ -10,10 +10,17 @@
   background: #fff;
   box-shadow: 0px 3px 18px 0px rgba(0, 0, 0, 0.12);
   width: 700px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
   .slotListWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
     .BookSlotsHeader {
-        display: flex;
-        justify-content: center;
+      display: flex;
+      justify-content: center;
       h3 {
         color: #111213;
         font-family: Montserrat;
@@ -22,11 +29,30 @@
         font-weight: 700;
         line-height: normal;
       }
-      svg{
+      svg {
         justify-self: flex-end;
         &:hover {
           cursor: pointer;
         }
+      }
+    }
+    .confirm {
+      button {
+        display: flex;
+        padding: 12px 211px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 8px;
+        background: #fb723d;
+        color: #fff;
+        font-family: Montserrat;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        border: none;
+        width: 100%;
       }
     }
   }
