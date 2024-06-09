@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Connections.module.scss";
 import { useState } from "react";
 import ConnectionListItem from "../../../components/Connections/ConnectionListItem/ConnectionListItem";
@@ -9,9 +9,13 @@ function Connections() {
   const [listTab, setListTab] = useState("pending");
   const [listItms, setListItms] = useState([]);
 
+  useEffect(() => {
+    getList(listTab);
+  }, []);
+
   const getList = (listTab) => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
-      console.log("fetching data");
+      // console.log("fetching data");
       axios
         .get(`https://conquest-api.bits-dvm.org/api/users/connections/list/`, {
           headers: {
@@ -21,27 +25,37 @@ function Connections() {
           },
         })
         .then((res) => {
-          console.log(res.data);
-
-          const newArr = (listTab = "pending"
-            ? res.data.connections_unaccepted_sent.map((newItm) => {
-                console.log(newItm);
-                return (
-                  <ConnectionListItem
-                    key={newItm.id}
-                    listTab={listTab}
-                    name={newItm.to_user.name}
-                    designation={newItm.to_user.designation}
-                    img={newItm.to_user.profile_logo}
-                    type={newItm.to_user.role}
-                  ></ConnectionListItem>
-                );
-              })
-            : res.connected_users.map((newItm) => {
-                return (
-                  <ConnectionListItem listTab={listTab}></ConnectionListItem>
-                );
-              }));
+          // console.log(res.data);
+          // console.log(listTab);
+          const newArr =
+            listTab == "pending"
+              ? res.data.connection_unaccepted_recieved.map((newItm) => {
+                  // console.log(newItm);
+                  return (
+                    <ConnectionListItem
+                      key={newItm.id}
+                      listTab={listTab}
+                      name={newItm.from_user.name}
+                      designation={newItm.from_user.designation}
+                      img={newItm.from_user.profile_logo}
+                      type={newItm.from_user.role}
+                      id={newItm.id}
+                    ></ConnectionListItem>
+                  );
+                })
+              : res.data.connected_users.map((newItm) => {
+                  // console.log(newItm);
+                  return (
+                    <ConnectionListItem
+                      key={newItm.id}
+                      listTab={listTab}
+                      name={newItm.name}
+                      designation={newItm.designation}
+                      img={newItm.profile_logo}
+                      type={newItm.role}
+                    ></ConnectionListItem>
+                  );
+                });
           setListItms(newArr);
         })
         .catch((err) => {
@@ -80,11 +94,7 @@ function Connections() {
           My Connections
         </button>
       </div>
-      <div className={styles.connectionList}>
-        <ConnectionListItem listTab={listTab} />
-        <ConnectionListItem listTab={listTab} />
-        {listItms}
-      </div>
+      <div className={styles.connectionList}>{listItms}</div>
     </div>
   );
 }

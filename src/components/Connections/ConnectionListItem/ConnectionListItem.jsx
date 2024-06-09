@@ -1,5 +1,6 @@
 import React from "react";
 import * as styles from "./ConnectionListItem.module.scss";
+import axios from "axios";
 
 const AcceptSVG = () => {
   return (
@@ -48,7 +49,57 @@ const RejectSVG = () => {
   );
 };
 
-function ConnectionListItem({ img, type, name, designation, listTab }) {
+function ConnectionListItem({ img, type, name, designation, listTab, id }) {
+  const handleAccept = (status) => {
+    if (JSON.parse(localStorage.getItem("userData")).tokens) {
+      // console.log("fetching data");
+      axios
+        .post(
+          "https://conquest-api.bits-dvm.org/api/users/connections/accept/",
+          {
+            status: status,
+            id: 2,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
+            },
+          }
+        )
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("error in fetching data");
+    }
+  };
+  const handleDelete = () => {
+    if (JSON.parse(localStorage.getItem("userData")).tokens) {
+      // console.log("fetching data");
+      axios
+        .post(
+          "https://conquest-api.bits-dvm.org/api/users/connections/accept/",
+          {
+            id: 2,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
+            },
+          }
+        )
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("error in fetching data");
+    }
+  };
+
   return (
     <div className={styles.cardContainer}>
       <div className={styles.imgContainer}>
@@ -67,11 +118,11 @@ function ConnectionListItem({ img, type, name, designation, listTab }) {
       <div className={styles.buttonContainer}>
         {listTab === "pending" ? (
           <>
-            <div className={styles.acceptBtn}>
+            <div className={styles.acceptBtn} onClick={handleAccept("true")}>
               <span>Accept</span>
               <AcceptSVG />
             </div>
-            <div className={styles.rejectBtn}>
+            <div className={styles.rejectBtn} onClick={handleAccept("false")}>
               <span>Reject</span>
               <RejectSVG />
             </div>
