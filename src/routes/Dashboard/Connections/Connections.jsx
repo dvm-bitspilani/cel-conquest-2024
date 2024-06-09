@@ -25,12 +25,12 @@ function Connections() {
           },
         })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           // console.log(listTab);
           const newArr =
             listTab == "pending"
               ? res.data.connection_unaccepted_recieved.map((newItm) => {
-                  console.log(newItm);
+                  // console.log(newItm);
                   return (
                     <ConnectionListItem
                       key={newItm.id}
