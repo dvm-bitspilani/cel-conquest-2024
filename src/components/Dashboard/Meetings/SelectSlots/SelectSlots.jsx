@@ -7,7 +7,6 @@ import axios from "axios";
 
 const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
   const [slotList, setSlotList] = useState([]);
-  const [slotData, setSlotData] = useState([]);
   const deleteSlot = (id) => {
     // console.log("delete slot");
     // console.log(slotData);
