@@ -1,0 +1,23 @@
+.modal {
+    margin: auto;
+    width: calc(1108 / 1440 * 100vw);
+    height: calc(750 / 1024 * 100dvh);
+    border-radius: 50px;
+    border: 1.5px solid #FB723D;
+    background: #FFFAF8;
+    box-shadow: 0px 4px 28px 0px rgba(0, 0, 0, 0.12);
+    position: relative;
+
+    &::backdrop {
+        backdrop-filter: blur(12px);
+    }
+
+    .cross {
+        aspect-ratio: 1 / 1;
+        width: 31px;
+        position: absolute;
+        right: 45px;
+        top: 30px;
+        cursor: pointer;
+    }
+}
