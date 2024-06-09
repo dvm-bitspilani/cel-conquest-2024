@@ -1,4 +1,5 @@
 .SelectSlots {
+    z-index: 2;
   display: inline-flex;
   padding: 24px;
   flex-direction: column;
@@ -20,17 +21,21 @@
     gap: 32px;
     .BookSlotsHeader {
       display: flex;
-      justify-content: center;
+      justify-content: end;
+      position: relative;
       h3 {
+        position: absolute;
         color: #111213;
         font-family: Montserrat;
         font-size: 23px;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+        left: 50%;
+        transform: translateX(-50%);
       }
       svg {
-        justify-self: flex-end;
+        transform: scale(1.25);
         &:hover {
           cursor: pointer;
         }
