@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 
 import TextInput2 from '../Inputs/Text/TextInput'
+import Score from '../Inputs/Score/Score'
 
 import styles from './form.module.scss'
 
@@ -56,6 +57,20 @@ export default function Form({ data, formClose }) {
             )
         }
     }
+    if (data.scoring_questions.length > 0) {
+        for (let i = 0; i < data.scoring_questions.length; i++) {
+            scoreQuestions.push(
+                <Score
+                    key={`score-${data.scoring_questions[i].id}`}
+                    name={`score-${data.scoring_questions[i].id}`}
+                    heading={data.scoring_questions[i].question}
+                    changeFn={handleChange}
+                // blurFn={handleBlur}
+                // value={values[`subj-${data.subjective_questions[i].id}`]}
+                />
+            )
+        }
+    }
 
     return (
         <main className={styles.form}>
@@ -64,6 +79,7 @@ export default function Form({ data, formClose }) {
                 onSubmit={handleSubmit}
             >
                 {subjQuestions}
+                {scoreQuestions}
                 <button type='submit' className={styles.submit}>Submit</button>
             </form>
         </main>
