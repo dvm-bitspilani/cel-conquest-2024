@@ -53,6 +53,9 @@
         line-height: normal;
         border: none;
         width: 100%;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
