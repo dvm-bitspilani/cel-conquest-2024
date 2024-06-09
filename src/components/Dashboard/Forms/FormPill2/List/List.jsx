@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 
 import FormPillItem2 from '../Item/Item'
+import FormModal from '../../FormModal/FormModal';
 
 import styles from './list.module.scss'
 
@@ -51,6 +52,11 @@ const DUMMY_FORM_LIST = [
 
 export default function FormPillList2() {
     const [formsList, setFormsList] = useState([])
+    const formModal = useRef(null)
+
+    function formOpenHandler() {
+        formModal.current.openForm()
+    }
 
     useEffect(() => {
         axios.get('https://conquest-api.bits-dvm.org/api/forms/list/', {
@@ -68,7 +74,13 @@ export default function FormPillList2() {
                 // })
                 const temp = DUMMY_FORM_LIST.reverse().map(form => {
                     return (
-                        <FormPillItem2 key={form.id} formId={form.id} title={form.form_name} avatar={form.avatar} />
+                        <FormPillItem2
+                            key={form.id}
+                            formId={form.id}
+                            title={form.form_name}
+                            avatar={form.avatar}
+                            clickHandler={formOpenHandler}
+                        />
                     )
                 })
 
@@ -80,8 +92,11 @@ export default function FormPillList2() {
     }, [JSON.parse(localStorage.getItem('userData')).tokens.access])
 
     return (
-        <div className={styles.container}>
-            {formsList.length > 0 ? formsList : <h1>No forms available</h1>}
-        </div>
+        <>
+            <FormModal ref={formModal} />
+            <div className={styles.container}>
+                {formsList.length > 0 ? formsList : <h1>No forms available</h1>}
+            </div>
+        </>
     )
 }
