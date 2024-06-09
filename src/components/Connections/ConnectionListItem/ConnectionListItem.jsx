@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as styles from "./ConnectionListItem.module.scss";
 import axios from "axios";
 
@@ -50,7 +50,9 @@ const RejectSVG = () => {
 };
 
 function ConnectionListItem({ img, type, name, designation, listTab, id }) {
+  const [deleted, setDeleted] = useState(false);
   const handleAccept = (status, id) => {
+    setDeleted(true);
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       // console.log("fetching data");
       axios
@@ -79,6 +81,7 @@ function ConnectionListItem({ img, type, name, designation, listTab, id }) {
     }
   };
   const handleDelete = (id) => {
+    setDeleted(true);
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       // console.log("fetching data");
       axios
@@ -96,6 +99,7 @@ function ConnectionListItem({ img, type, name, designation, listTab, id }) {
           }
         )
         .catch((err) => {
+          console.log(id);
           console.log(err);
         });
     } else {
@@ -103,7 +107,9 @@ function ConnectionListItem({ img, type, name, designation, listTab, id }) {
     }
   };
 
-  return (
+  return deleted ? (
+    ""
+  ) : (
     <div className={styles.cardContainer}>
       <div className={styles.imgContainer}>
         <div
@@ -137,10 +143,7 @@ function ConnectionListItem({ img, type, name, designation, listTab, id }) {
             </div>
           </>
         ) : (
-          <div
-            className={styles.rejectBtn}
-            onClick={() => handleDelete(Number(id))}
-          >
+          <div className={styles.rejectBtn} onClick={() => handleDelete(id)}>
             <span>Remove</span>
             <RejectSVG />
           </div>

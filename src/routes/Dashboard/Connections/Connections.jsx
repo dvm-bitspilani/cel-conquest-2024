@@ -25,12 +25,12 @@ function Connections() {
           },
         })
         .then((res) => {
-          // console.log(res.data);
+          console.log(res.data);
           // console.log(listTab);
           const newArr =
             listTab == "pending"
               ? res.data.connection_unaccepted_recieved.map((newItm) => {
-                  // console.log(newItm);
+                  console.log(newItm);
                   return (
                     <ConnectionListItem
                       key={newItm.id}
@@ -47,12 +47,13 @@ function Connections() {
                   // console.log(newItm);
                   return (
                     <ConnectionListItem
-                      key={newItm.id}
+                      key={newItm.connection_id}
                       listTab={listTab}
-                      name={newItm.name}
-                      designation={newItm.designation}
-                      img={newItm.profile_logo}
-                      type={newItm.role}
+                      name={newItm.user.name}
+                      designation={newItm.user.designation}
+                      img={newItm.user.profile_logo}
+                      type={newItm.user.role}
+                      id={newItm.connection_id}
                     ></ConnectionListItem>
                   );
                 });
@@ -68,38 +69,36 @@ function Connections() {
 
   return (
     <>
-    <div className={styles.mobileContainer}>
-      Connections
-    </div>
-    <div className={styles.container}>
-      <div className={styles.ButtonContainer}>
-        <button
-          onClick={() => {
-            setListTab("pending");
-            // console.log(listTab);
-            getList("pending");
-          }}
-          className={`${styles.ConnectionsButton} ${
-            listTab === "pending" ? styles.active : null
-          }`}
-        >
-          Pending
-        </button>
-        <button
-          onClick={() => {
-            setListTab("connections");
-            // console.log(listTab);
-            getList("connections");
-          }}
-          className={`${styles.ConnectionsButton} ${
-            listTab === "connections" ? styles.active : null
-          }`}
-        >
-          My Connections
-        </button>
+      <div className={styles.mobileContainer}>Connections</div>
+      <div className={styles.container}>
+        <div className={styles.ButtonContainer}>
+          <button
+            onClick={() => {
+              setListTab("pending");
+              // console.log(listTab);
+              getList("pending");
+            }}
+            className={`${styles.ConnectionsButton} ${
+              listTab === "pending" ? styles.active : null
+            }`}
+          >
+            Pending
+          </button>
+          <button
+            onClick={() => {
+              setListTab("connections");
+              // console.log(listTab);
+              getList("connections");
+            }}
+            className={`${styles.ConnectionsButton} ${
+              listTab === "connections" ? styles.active : null
+            }`}
+          >
+            My Connections
+          </button>
+        </div>
+        <div className={styles.connectionList}>{listItms}</div>
       </div>
-      <div className={styles.connectionList}>{listItms}</div>
-    </div>
     </>
   );
 }
