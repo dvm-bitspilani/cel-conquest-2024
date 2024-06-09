@@ -295,15 +295,17 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
   }
 
   const createSlot = (dateTime) => {
-    // date = new Date(`May ${dateTime.date}, 2024 ${dateTime.time} GMT+0530`)
-    // return date.getTime() / 1000
+    const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    date = new Date(`${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${dateTime.time} GMT+0530`)
+    const unixTimeStamp = date.getTime() / 1000;
+    const unixTimeStamp2 = Number(unixTimeStamp)  + (45*60);
     axios
       .post(
         "https://conquest-api.bits-dvm.org/api/meetings/slots/",
         {
           user: "1",
-          start_time: "1717564000",
-          end_time: "1717564000",
+          start_time: unixTimeStamp,
+          end_time: unixTimeStamp2,
         },
         {
           headers: {
