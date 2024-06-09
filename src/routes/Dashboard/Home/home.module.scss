@@ -42,7 +42,9 @@
     overflow: auto;
 
     @media screen and (max-width: 1045px) {
-        width: calc(100vw - 240px);
+        // width: calc(100vw - 240px);
+        right: 0;
+        position: relative;
     }
 
     @media screen and (max-width: 820px) {
@@ -274,6 +276,10 @@
                 justify-content: space-between;
                 position: relative;
 
+                @media screen and (max-width: 1017px) and (min-width: 820px) {
+                    font-size: 21px;
+                }
+
                 &::after {
                     content: '';
                     position: absolute;
@@ -293,6 +299,10 @@
                 svg {
                     aspect-ratio: 1 / 1;
                     width: 31px;
+
+                    @media screen and (max-width: 1017px) and (min-width: 820px) {
+                        width: 24px;
+                    }
                 }
             }
         }
