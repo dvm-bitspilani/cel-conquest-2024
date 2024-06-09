@@ -20,7 +20,6 @@ import Experts from "./routes/Dashboard/Experts/Experts";
 import Mentors from "./routes/Dashboard/Mentors/Mentors";
 import Connections from "./routes/Dashboard/Connections/Connections";
 import Forms from "./routes/Dashboard/Forms/Forms";
-import Form from "./routes/Dashboard/Forms/Form/Form";
 ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment variables -> will do later
 
 function App() {
@@ -57,7 +56,6 @@ function App() {
           <Route path="connections" element={<Connections />}></Route>
           <Route path="forms" element={<Forms />}></Route>
         </Route>
-        <Route path="/dashboard/forms/:formId" element={<Form />}></Route>
       </Route>
     </Routes>
   );
