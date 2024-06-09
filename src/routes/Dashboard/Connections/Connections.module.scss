@@ -32,6 +32,12 @@
       background: #ffece5;
     }
   }
+  .connectionList {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 820px) {

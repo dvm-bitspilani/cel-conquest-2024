@@ -46,6 +46,7 @@
     gap: 2rem;
     .acceptBtn,
     .rejectBtn {
+      cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -60,6 +61,12 @@
       svg {
         display: none;
       }
+    }
+    .acceptBtn:hover {
+      border: solid 1px #00c408;
+    }
+    .rejectBtn:hover {
+      border: solid 1px #ec2c2c;
     }
     .rejectBtn {
       background-color: #fde5e5;

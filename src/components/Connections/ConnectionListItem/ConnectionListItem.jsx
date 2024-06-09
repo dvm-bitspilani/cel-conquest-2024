@@ -48,7 +48,7 @@ const RejectSVG = () => {
   );
 };
 
-function ConnectionListItem({ img, type, name, designation }) {
+function ConnectionListItem({ img, type, name, designation, listTab }) {
   return (
     <div className={styles.cardContainer}>
       <div className={styles.imgContainer}>
@@ -58,21 +58,30 @@ function ConnectionListItem({ img, type, name, designation }) {
         />
       </div>
       <div className={styles.textContainer}>
-        <div className={styles.typeOfAcc}>{type}Startup</div>
-        <div className={styles.profileName}>{name}Bhavesh Jhangir</div>
+        <div className={styles.typeOfAcc}>{type ?? "Startup"}</div>
+        <div className={styles.profileName}>{name ?? "Example Name"}</div>
         <div className={styles.designation}>
-          {designation}Studies at BITS Pilani
+          {designation ?? "Studies at BITS Pilani"}
         </div>
       </div>
       <div className={styles.buttonContainer}>
-        <div className={styles.acceptBtn}>
-          <span>Accept</span>
-          <AcceptSVG />
-        </div>
-        <div className={styles.rejectBtn}>
-          <span>Reject</span>
-          <RejectSVG />
-        </div>
+        {listTab === "pending" ? (
+          <>
+            <div className={styles.acceptBtn}>
+              <span>Accept</span>
+              <AcceptSVG />
+            </div>
+            <div className={styles.rejectBtn}>
+              <span>Reject</span>
+              <RejectSVG />
+            </div>
+          </>
+        ) : (
+          <div className={styles.rejectBtn}>
+            <span>Remove</span>
+            <RejectSVG />
+          </div>
+        )}
       </div>
     </div>
   );
