@@ -6,6 +6,7 @@ import axios from "axios";
 import SlotTimingSelector from "../../../components/Dashboard/Meetings/SlotTimingSelector/SlotTimingSelector";
 import MeetingList from "../../../components/MeetingList/MeetingList";
 import MeetingItem from "../../../components/MeetingList/MeetingItem/MeetingItem";
+import BookSlots from "../../../components/Dashboard/Meetings/BookSlots/BookSlots";
 
 const Meetings = () => {
   //meeting list code
@@ -24,6 +25,7 @@ const Meetings = () => {
   // rest of the code
   const [selectSlots, setselectSlots] = useState(false);
   const [selectSlotTiming, setselectSlotTiming] = useState(false);
+  const [bookSlots, setBookSlots] = useState(false);
   const [listItms, setListItms] = useState([]);
 
   let showHideSelectSlots = () => {
@@ -35,7 +37,9 @@ const Meetings = () => {
     console.log(selectSlotTiming);
   };
 
-  let showHideBookSlots = () => {};
+  let showHideBookSlots = () => {
+    setBookSlots(!setBookSlots);
+  };
 
   const [listTab, setListTab] = useState("upcoming");
 
@@ -121,9 +125,13 @@ const Meetings = () => {
       console.log("error in fetching data");
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
-  console.log("isStartup", isStartup)
+  console.log("isStartup", isStartup);
   return (
     <>
+      <BookSlots
+        bookSlots={bookSlots}
+        showHideBookSlots={showHideBookSlots}
+      ></BookSlots>
       <SlotTimingSelector
         selectSlotTiming={selectSlotTiming}
         removeModal={showHideSelectSlotTiming}
@@ -176,7 +184,7 @@ const Meetings = () => {
             className={styles.selectSlots}
             onClick={isStartup ? showHideBookSlots : showHideSelectSlots}
           >
-          {isStartup? "Book Slot" : "Select Slots"}
+            {isStartup ? "Book Slot" : "Select Slots"}
           </button>
           {selectSlots ? (
             <SelectSlots

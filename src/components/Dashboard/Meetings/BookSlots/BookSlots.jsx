@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./BookSlots.module.scss";
 import BookSlotItem from "./BookSlotItem/BookSlotItem";
+import axios from "axios";
 
-function BookSlots() {
+function BookSlots({ bookSlots, showHideBookSlots }) {
   const [slotList, setSlotList] = useState([]);
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
@@ -21,7 +22,7 @@ function BookSlots() {
                 slotno={index + 1}
                 key={newItm.id}
                 id={newItm.id}
-                showHideSelectSlotTiming={showHideSelectSlotTiming}
+                showHideSelectSlotTiming={showHideBookSlots}
                 dateTimeStart={newItm.start_time}
                 dateTimeEnd={newItm.end_time}
                 deleteSlot={deleteSlot}
@@ -45,6 +46,7 @@ function BookSlots() {
         <div className={styles.BookSlotsHeader}>
           <h3>Book Slots</h3>
           <svg
+            onClick={showHideBookSlots}
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -69,7 +71,7 @@ function BookSlots() {
         </div>
         {slotList}
         <div className={styles.addDone}>
-          <button onClick={showHideSelectSlotTiming}>Confirm</button>
+          <button onClick={showHideBookSlots}>Confirm</button>
         </div>
       </div>
     </div>
