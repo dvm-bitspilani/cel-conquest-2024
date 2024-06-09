@@ -1,10 +1,12 @@
-import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 import styles from './formModal.module.scss'
 
 import Form from './Form/Form';
 
 const FormModal = forwardRef(function ({ data }, ref) {
+    const [rerenderer, setRerenderer] = useState(Math.random())
+
     const dialog = useRef(null)
 
     function formCloseHandler() {
@@ -34,6 +36,7 @@ const FormModal = forwardRef(function ({ data }, ref) {
             ref={dialog}
             onClose={() => {
                 document.querySelector('body').removeAttribute('style')
+                setRerenderer(Math.random())
             }}
             className={styles.modal}
         >
@@ -43,7 +46,7 @@ const FormModal = forwardRef(function ({ data }, ref) {
             </svg>
             <h2 className={styles.heading}>{data.form_name}</h2>
             <main className={styles.questionsContainer}>
-                <Form data={data} formClose={formCloseHandler} />
+                <Form key={rerenderer} data={data} formClose={formCloseHandler} />
             </main>
         </dialog>
     )
