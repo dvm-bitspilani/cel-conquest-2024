@@ -1,19 +1,42 @@
+import { useEffect, useState } from 'react'
 import styles from './score.module.scss'
 
 export default function Score({ name, heading, changeFn }) {
+    const [selectedRadio, setSelectedRadio] = useState(null)
+
+    const radios = []
+
+    for (let i = 1; i <= 10; i++) {
+        radios.push(
+            <div className={styles.radioWrapper} key={`${name}${i}`}>
+                <input
+                    type="radio"
+                    name={name}
+                    onChange={changeFn}
+                    value={i}
+                />
+                <span
+                    className={styles.numCircles}
+                    onClick={() => setSelectedRadio(i)}
+                >
+                    {i}
+                </span>
+            </div>
+        )
+    }
+
+    useEffect(() => {
+        if (selectedRadio) {
+            document.querySelectorAll(`input[name="${name}"]`)[selectedRadio - 1].click()
+        }
+    }, [selectedRadio])
+
     return (
         <div className={styles.inputGrp}>
-            <label htmlFor={name}>{heading}</label>
-            <input type="radio" name={name} onChange={changeFn} value={1} />
-            <input type="radio" name={name} onChange={changeFn} value={2} />
-            <input type="radio" name={name} onChange={changeFn} value={3} />
-            <input type="radio" name={name} onChange={changeFn} value={4} />
-            <input type="radio" name={name} onChange={changeFn} value={5} />
-            <input type="radio" name={name} onChange={changeFn} value={6} />
-            <input type="radio" name={name} onChange={changeFn} value={7} />
-            <input type="radio" name={name} onChange={changeFn} value={8} />
-            <input type="radio" name={name} onChange={changeFn} value={9} />
-            <input type="radio" name={name} onChange={changeFn} value={10} />
+            <label htmlFor={name} className={styles.label}>{heading}</label>
+            <div className={styles.radioGrid}>
+                {radios}
+            </div>
         </div>
     )
 }
