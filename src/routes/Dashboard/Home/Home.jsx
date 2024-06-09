@@ -7,6 +7,7 @@ import { Avatar, ConfigProvider } from "antd";
 import MeetingList from "../../../components/MeetingList/MeetingList"
 import MeetingItem from '../../../components/MeetingList/MeetingItem/MeetingItem';
 import UserPill from "../../../components/UserPill/UserPill";
+import FormPillList from "../../../components/Dashboard/Forms/FormPillList/FormPillList";
 import avatar from '../../../assets/images/Dashboard/demoAvatar.jpeg'
 
 import * as styles from './home.module.scss'
@@ -181,6 +182,7 @@ export default function Home() {
               </svg>
             </span>
           </h1>
+          <FormPillList />
         </div>
       </div>
     </div>
