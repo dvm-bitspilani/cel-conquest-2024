@@ -319,7 +319,7 @@ const SlotTimingSelector = ({
     );
     // console.log(date);
     let unixTimeStamp = date.getTime() / 1000;
-    unixTimeStamp = Number(unixTimeStamp) + 60 * 60 * 5 + 60 * 30;
+    unixTimeStamp = Number(unixTimeStamp);
     const unixTimeStamp2 = Number(unixTimeStamp) + 45 * 60;
     // console.log({
     //   user: "1",
