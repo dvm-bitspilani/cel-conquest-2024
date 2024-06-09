@@ -1,17 +1,20 @@
 import styles from './textinput.module.scss'
 
-export default function TextInput() {
+export default function TextInput2({ name, heading, changeFn, blurFn, value }) {
     return (
         <div className={styles.inputGrp}>
             <label
-                htmlFor='question'
+                htmlFor={name}
                 className={styles.label}>
-                Question
+                {heading}
             </label>
             <input
                 type='text'
-                id='question'
-                name='question'
+                id={name}
+                name={name}
+                onChange={changeFn}
+                onBlur={blurFn}
+                value={value}
                 className={styles.input}
             />
         </div>

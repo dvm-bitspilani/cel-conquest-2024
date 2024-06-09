@@ -7,12 +7,19 @@ import Form from './Form/Form';
 const FormModal = forwardRef(function ({ data }, ref) {
     const dialog = useRef(null)
 
+    function formCloseHandler() {
+        dialog.current.close()
+    }
+
     useImperativeHandle(ref, () => {
         return (
             {
                 openForm() {
                     dialog.current.showModal()
                     document.querySelector('body').style.overflow = 'hidden'
+                },
+                closeForm() {
+                    dialog.current.close()
                 }
             }
         )
@@ -36,7 +43,7 @@ const FormModal = forwardRef(function ({ data }, ref) {
             </svg>
             <h2 className={styles.heading}>{data.form_name}</h2>
             <main className={styles.questionsContainer}>
-                <Form data={data} />
+                <Form data={data} formClose={formCloseHandler} />
             </main>
         </dialog>
     )
