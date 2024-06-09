@@ -249,7 +249,11 @@ const eveningSvg = (
   </svg>
 );
 
-const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
+const SlotTimingSelector = ({
+  selectSlotTiming,
+  removeModal,
+  changeRequestSent,
+}) => {
   const changeDate = (date, month, year) => {
     setDateTime((prev) => {
       return { ...prev, date: date, month: month, year: year };
@@ -315,7 +319,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
     );
     // console.log(date);
     let unixTimeStamp = date.getTime() / 1000;
-    unixTimeStamp = Number(unixTimeStamp) - (60*60*6) - (60*30);
+    unixTimeStamp = Number(unixTimeStamp) - 60 * 60 * 6 - 60 * 30;
     const unixTimeStamp2 = Number(unixTimeStamp) + 45 * 60;
     // console.log({
     //   user: "1",
@@ -462,6 +466,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
             onClick={() => {
               createSlot(dateTime);
               removeModal();
+              changeRequestSent();
             }}
           >
             Select

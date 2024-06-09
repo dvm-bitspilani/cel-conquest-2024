@@ -12,6 +12,7 @@ const Meetings = () => {
   //meeting list code
   const dataRef = useRef(null);
   const [data, setData] = useState(null);
+  const [requestSent, setRequestSent] = useState(false);
   const isStartup =
     JSON.parse(localStorage.getItem("userData")).user_profile_obj.role ===
     "Startup"
@@ -20,6 +21,10 @@ const Meetings = () => {
 
   function handleClick() {
     setData(dataRef.current);
+  }
+
+  const changeRequestSent = () => {
+    setRequestSent(!requestSent);
   }
 
   // rest of the code
@@ -133,6 +138,7 @@ const Meetings = () => {
       <SlotTimingSelector
         selectSlotTiming={selectSlotTiming}
         removeModal={showHideSelectSlotTiming}
+        changeRequestSent={changeRequestSent}
       ></SlotTimingSelector>
       <div className={styles.meetingsContainer}>
         <div className={styles.meetingsList}>
@@ -188,6 +194,7 @@ const Meetings = () => {
             <SelectSlots
               showHideSelectSlotTiming={showHideSelectSlotTiming}
               showHideSelectSlots={showHideSelectSlots}
+              requestSent={requestSent}
             ></SelectSlots>
           ) : null}
           <div
