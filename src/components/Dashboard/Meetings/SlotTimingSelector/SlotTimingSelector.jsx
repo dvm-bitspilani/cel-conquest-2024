@@ -276,7 +276,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
   let dateComponents = [];
   const [dateTime, setDateTime] = useState({
     date: days[0].getDate(),
-    time: "9:00",
+    time: "09:00",
     month: days[0].getMonth(),
     year: days[0].getFullYear(),
   });
@@ -389,7 +389,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
           <div>
             <TimeSelectButtonHeader svg={morningSvg} header="Morning" />
             <TimeSelectButton
-              time={"9:00"}
+              time={"09:00"}
               changeTime={changeTime}
               dateTime={dateTime}
             />
