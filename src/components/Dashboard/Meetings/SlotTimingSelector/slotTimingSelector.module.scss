@@ -15,6 +15,9 @@
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   z-index: 9;
+  @media screen and (max-width: 600px) {
+    transform: scale(0.7) translateX(-71.5%) translateY(-70%);
+  }
   .header {
     display: flex;
     position: relative;
