@@ -97,7 +97,14 @@ const DUMMY_QUESTIONS = {
 
 export default function FormPillList2() {
     const [formsList, setFormsList] = useState([])
-    const [modalData, setModalData] = useState(null)
+    const [modalData, setModalData] = useState({
+        form_name: "",
+        form_id: undefined,
+        subjective_questions: [],
+        file_upload_questions: [],
+        scoring_questions: [],
+        preference_questions: []
+    })
     const formModal = useRef(null)
 
     function formOpenHandler(formId) {

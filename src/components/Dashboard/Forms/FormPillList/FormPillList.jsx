@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 
 import FormPillItem from '../FormPillItem/FormPillItem';
+import FormModal from '../../../../components/Dashboard/Forms/FormModal/FormModal';
 
 import styles from './pillList.module.scss'
 
@@ -25,8 +26,79 @@ const DUMMY_FORM_LIST = [
     },
 ]
 
+const DUMMY_QUESTIONS = {
+    form_name: "Test form",
+    form_id: 1,
+    subjective_questions: [
+        {
+            question: "subjective question 1",
+            id: 1,
+        },
+        {
+            question: "subjective question 2",
+            id: 2,
+        }
+    ],
+    file_upload_questions: [
+        {
+            question: "file question 1",
+            id: 1,
+        },
+        {
+            question: "file question 2",
+            id: 2,
+        }
+    ],
+    scoring_questions: [
+        {
+            question: "scoring question 1",
+            id: 1,
+        },
+        {
+            question: "scoring question 2",
+            id: 2,
+        }
+    ],
+    preference_questions: [
+        {
+            question: "preference question 1",
+            id: 1,
+        },
+        {
+            question: "preference question 2",
+            id: 2,
+        }
+    ]
+}
+
 export default function FormPillList() {
     const [formsList, setFormsList] = useState([])
+    const [modalData, setModalData] = useState({
+        form_name: "",
+        form_id: undefined,
+        subjective_questions: [],
+        file_upload_questions: [],
+        scoring_questions: [],
+        preference_questions: []
+    })
+    const formModal = useRef(null)
+
+    function formOpenHandler(formId) {
+        // axios.get(`https://conquest-api.bits-dvm.org/api/forms/${formId}/questions/`, {
+        //     headers: {
+        //         Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
+        //     }
+        // })
+        //     .then(res => {
+        //         setModalData(res.data)
+        //         formModal.current.openForm()
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //     })
+        setModalData(DUMMY_QUESTIONS)
+        formModal.current.openForm()
+    }
 
     useEffect(() => {
         axios.get('https://conquest-api.bits-dvm.org/api/forms/list/', {
@@ -39,7 +111,13 @@ export default function FormPillList() {
 
                 const temp = res.data.reverse().map(form => {
                     return (
-                        <FormPillItem key={form.id} formId={form.id} title={form.form_name} avatar={form.avatar} />
+                        <FormPillItem
+                            key={form.id}
+                            formId={form.id}
+                            title={form.form_name}
+                            avatar={form.avatar}
+                            clickHandler={formOpenHandler}
+                        />
                     )
                 })
                 // const temp = DUMMY_FORM_LIST.reverse().map(form => {
@@ -55,9 +133,13 @@ export default function FormPillList() {
                 console.log(err)
             })
     }, [JSON.parse(localStorage.getItem('userData')).tokens.access])
+
     return (
-        <div className={styles.container}>
-            {formsList.length > 0 ? formsList : <h1>No forms available</h1>}
-        </div>
+        <>
+            <FormModal ref={formModal} data={modalData} />
+            <div className={styles.container}>
+                {formsList.length > 0 ? formsList : <h1>No forms available</h1>}
+            </div>
+        </>
     )
 }
