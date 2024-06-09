@@ -39,7 +39,7 @@ export default function FormPillList() {
 
                 const temp = DUMMY_FORM_LIST.map(form => {
                     return (
-                        <FormPillItem key={form.id} title={form.title} avatar={form.avatar} />
+                        <FormPillItem key={form.id} formId={form.id} title={form.title} avatar={form.avatar} />
                     )
                 })
 

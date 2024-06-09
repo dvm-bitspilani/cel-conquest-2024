@@ -1,8 +1,14 @@
+import { useNavigate } from 'react-router-dom'
+
 import styles from './pill.module.scss'
 
-export default function FormPillItem({ title, avatar }) {
+export default function FormPillItem({ formId, title, avatar }) {
+    const navigate = useNavigate()
+
     return (
-        <div className={styles.pillBody}>
+        <div className={styles.pillBody} onClick={() => {
+            navigate(`/dashboard/forms/${formId}`)
+        }}>
             <img src={avatar} alt="avatar" className={styles.avatar} />
             <p>{title}</p>
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
