@@ -18,6 +18,7 @@ export default function Score({ name, heading, changeFn }) {
                 <span
                     className={styles.numCircles}
                     onClick={() => setSelectedRadio(i)}
+                    style={i <= selectedRadio ? { backgroundColor: '#FB723D' } : {}}
                 >
                     {i}
                 </span>
