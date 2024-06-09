@@ -34,7 +34,6 @@ const Meetings = () => {
 
   let showHideSelectSlotTiming = () => {
     setselectSlotTiming(!selectSlotTiming);
-    console.log(selectSlotTiming);
   };
 
   let showHideBookSlots = () => {
@@ -45,7 +44,6 @@ const Meetings = () => {
 
   const getMeetingList = (listTab) => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
-      console.log("fetching data");
       axios
         .get(
           `https://conquest-api.bits-dvm.org/api/meetings/meetings/${listTab}/`,
@@ -58,7 +56,7 @@ const Meetings = () => {
           }
         )
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
 
           const newArr = res.data.map((newItm) => {
             return (
@@ -99,7 +97,7 @@ const Meetings = () => {
           }
         )
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
 
           const newArr = res.data.map((newItm) => {
             return (
@@ -125,7 +123,7 @@ const Meetings = () => {
       console.log("error in fetching data");
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
-  console.log("isStartup", isStartup);
+  // console.log("isStartup", isStartup);
   return (
     <>
       <BookSlots

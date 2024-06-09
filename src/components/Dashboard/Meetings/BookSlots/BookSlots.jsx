@@ -31,8 +31,8 @@ function BookSlots({ bookSlots, showHideBookSlots }) {
             );
           });
           setSlotList(newArr);
-          console.log(res.data);
-          setSlotData(res.data);
+          // console.log(res.data);
+          // setSlotData(res.data);
         })
         .catch((err) => {
           console.log(err);

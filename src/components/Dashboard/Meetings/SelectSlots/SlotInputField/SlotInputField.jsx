@@ -6,20 +6,21 @@ const SlotInputField = ({
   slotno,
   dateTimeStart,
   dateTimeEnd,
-  deleteSlot
+  deleteSlot,
 }) => {
   const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const dateObjEnd = new Date(dateTimeEnd*1000);
-  const dateObj = new Date(dateTimeStart*1000);
-  console.log(dateTimeStart);
-  console.log(dateObj);
+  const dateObjEnd = new Date(dateTimeEnd * 1000);
+  const dateObj = new Date(dateTimeStart * 1000);
+  // console.log(dateTimeStart);
+  // console.log(dateObj);
   const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
     dateObj
   );
   const meetDate = dateObj.getDate();
   const hours = dateObj.getHours();
-  console.log(hours);
-  const minutes = dateObj.getMinutes();
+  // console.log(hours);
+  let minutes = dateObj.getMinutes();
+  minutes = minutes == 0 ? "00" : minutes;
   const fullTime =
     hours > 12
       ? `${hours - 12}:${minutes} PM`
@@ -38,11 +39,10 @@ const SlotInputField = ({
   return (
     <div className={styles.inputField}>
       <div>
-        <div> Slot {slotno}</div> 
+        <div> Slot {slotno}</div>
         <div>
-
-        ({meetDate} {month} ({week[dateObj.getDay()]}),{" "}
-        {fullTime} - {fullTimeEnd})
+          ({meetDate} {month} ({week[dateObj.getDay()]}), {fullTime} -{" "}
+          {fullTimeEnd})
         </div>
       </div>
       <button

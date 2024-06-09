@@ -39,7 +39,7 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
         })
         .then((res) => {
           const newArr = res.data.map((newItm, index) => {
-            console.log("time", index, newItm.start_time, newItm.end_time);
+            // console.log("time", index, newItm.start_time, newItm.end_time);
             return (
               <SlotInputField
                 slotno={index + 1}
@@ -53,8 +53,8 @@ const SelectSlots = ({ showHideSelectSlotTiming, showHideSelectSlots }) => {
             );
           });
           setSlotList(newArr);
-          console.log(res.data);
-          setSlotData(res.data);
+          // console.log(res.data);
+          // setSlotData(res.data);
         })
         .catch((err) => {
           console.log(err);
