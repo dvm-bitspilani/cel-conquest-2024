@@ -120,6 +120,7 @@ export default function FormPillList2() {
         //     .catch(err => {
         //         console.log(err)
         //     })
+
         setModalData(DUMMY_QUESTIONS)
         formModal.current.openForm()
     }
@@ -138,6 +139,7 @@ export default function FormPillList2() {
                 //         <FormPillItem key={form.id} formId={form.id} title={form.form_name} avatar={form.avatar} />
                 //     )
                 // })
+
                 const temp = DUMMY_FORM_LIST.reverse().map(form => {
                     return (
                         <FormPillItem2

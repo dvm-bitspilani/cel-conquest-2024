@@ -3,6 +3,7 @@ import { useFormik } from 'formik'
 
 import TextInput2 from '../Inputs/Text/TextInput'
 import Score from '../Inputs/Score/Score'
+import FileUpload from '../Inputs/FileUpload/FileUpload'
 
 import styles from './form.module.scss'
 
@@ -33,7 +34,7 @@ export default function Form({ data, formClose }) {
         }
     }
 
-    const { values, errors, handleBlur, handleSubmit, handleChange } = useFormik({
+    const { values, errors, handleBlur, handleSubmit, handleChange, setFieldValue } = useFormik({
         initialValues: initialValues,
         onSubmit: (values, action) => {
             console.log("In Form.jsx")
@@ -71,6 +72,21 @@ export default function Form({ data, formClose }) {
             )
         }
     }
+    if (data.file_upload_questions.length > 0) {
+        for (let i = 0; i < data.file_upload_questions.length; i++) {
+            fileQuestions.push(
+                <FileUpload
+                    key={`file-${data.file_upload_questions[i].id}`}
+                    name={`file-${data.file_upload_questions[i].id}`}
+                    heading={data.file_upload_questions[i].question}
+                    manualValue={setFieldValue}
+                // changeFn={handleChange}
+                // blurFn={handleBlur}
+                // value={values[`subj-${data.subjective_questions[i].id}`]}
+                />
+            )
+        }
+    }
 
     return (
         <main className={styles.form}>
@@ -80,6 +96,7 @@ export default function Form({ data, formClose }) {
             >
                 {subjQuestions}
                 {scoreQuestions}
+                {fileQuestions}
                 <button type='submit' className={styles.submit}>Submit</button>
             </form>
         </main>
