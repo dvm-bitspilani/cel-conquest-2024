@@ -121,7 +121,7 @@ const Meetings = () => {
       console.log("error in fetching data");
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
-
+  console.log("isStartup", isStartup)
   return (
     <>
       <SlotTimingSelector
@@ -176,7 +176,7 @@ const Meetings = () => {
             className={styles.selectSlots}
             onClick={isStartup ? showHideBookSlots : showHideSelectSlots}
           >
-            Select Slots
+          {isStartup? "Book Slot" : "Select Slots"}
           </button>
           {selectSlots ? (
             <SelectSlots
