@@ -9,7 +9,7 @@ export default function FormPillItem2({ formId, title, avatar, clickHandler }) {
                 <button
                     onClick={(e) => {
                         e.preventDefault()
-                        clickHandler()
+                        clickHandler(formId)
                     }}
                 >Fill</button>
             </div>

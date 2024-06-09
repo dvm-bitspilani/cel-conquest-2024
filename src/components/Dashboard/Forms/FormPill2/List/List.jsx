@@ -50,11 +50,69 @@ const DUMMY_FORM_LIST = [
     },
 ]
 
+const DUMMY_QUESTIONS = {
+    form_id: 1,
+    subjective_questions: [
+        {
+            question: "subjective question 1",
+            id: 1,
+        },
+        {
+            question: "subjective question 2",
+            id: 2,
+        }
+    ],
+    file_upload_questions: [
+        {
+            question: "file question 1",
+            id: 1,
+        },
+        {
+            question: "file question 2",
+            id: 2,
+        }
+    ],
+    scoring_questions: [
+        {
+            question: "scoring question 1",
+            id: 1,
+        },
+        {
+            question: "scoring question 2",
+            id: 2,
+        }
+    ],
+    preference_questions: [
+        {
+            question: "preference question 1",
+            id: 1,
+        },
+        {
+            question: "preference question 2",
+            id: 2,
+        }
+    ]
+}
+
 export default function FormPillList2() {
     const [formsList, setFormsList] = useState([])
+    const [modalData, setModalData] = useState(null)
     const formModal = useRef(null)
 
-    function formOpenHandler() {
+    function formOpenHandler(formId) {
+        // axios.get(`https://conquest-api.bits-dvm.org/api/forms/${formId}/questions/`, {
+        //     headers: {
+        //         Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
+        //     }
+        // })
+        //     .then(res => {
+        //         setModalData(res.data)
+        //         formModal.current.openForm()
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //     })
+        setModalData(DUMMY_QUESTIONS)
         formModal.current.openForm()
     }
 
@@ -93,7 +151,7 @@ export default function FormPillList2() {
 
     return (
         <>
-            <FormModal ref={formModal} />
+            <FormModal ref={formModal} data={modalData} />
             <div className={styles.container}>
                 {formsList.length > 0 ? formsList : <h1>No forms available</h1>}
             </div>
