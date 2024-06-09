@@ -16,6 +16,7 @@
     display: flex;
     width: 100%;
     div:nth-child(2) {
+      transform: translateX(-9px);
       color: #646464;
       font-family: Montserrat;
       font-size: 14px;
@@ -24,15 +25,18 @@
       line-height: normal;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
     div:nth-child(1) {
       width: 80px;
-      color: #646464;
+      color: #3d3d3d;
+      leading-trim: both;
+      text-edge: cap;
       font-family: Montserrat;
       font-size: 17px;
       font-style: normal;
-      font-weight: 500;
+      font-weight: 700;
       line-height: normal;
     }
   }

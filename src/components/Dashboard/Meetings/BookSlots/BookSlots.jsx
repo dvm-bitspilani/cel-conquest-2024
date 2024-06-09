@@ -5,6 +5,7 @@ import axios from "axios";
 
 function BookSlots({ bookSlots, showHideBookSlots }) {
   const [slotList, setSlotList] = useState([]);
+  const selectSlot = (id) => {};
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
@@ -25,7 +26,7 @@ function BookSlots({ bookSlots, showHideBookSlots }) {
                 showHideSelectSlotTiming={showHideBookSlots}
                 dateTimeStart={newItm.start_time}
                 dateTimeEnd={newItm.end_time}
-                deleteSlot={deleteSlot}
+                selectSlot={selectSlot}
               ></BookSlotItem>
             );
           });
@@ -41,7 +42,10 @@ function BookSlots({ bookSlots, showHideBookSlots }) {
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
   return (
-    <div style={bookSlots?{display:"block"}:{display:"none"}} className={styles.SelectSlots}>
+    <div
+      style={bookSlots ? { display: "block" } : { display: "none" }}
+      className={styles.SelectSlots}
+    >
       <div className={styles.slotListWrapper}>
         <div className={styles.BookSlotsHeader}>
           <h3>Book Slots</h3>
