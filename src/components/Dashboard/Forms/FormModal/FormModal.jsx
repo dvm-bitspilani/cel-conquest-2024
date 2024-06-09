@@ -2,6 +2,8 @@ import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 
 import styles from './formModal.module.scss'
 
+import Form from './Form/Form';
+
 const FormModal = forwardRef(function ({ data }, ref) {
     const dialog = useRef(null)
 
@@ -33,7 +35,9 @@ const FormModal = forwardRef(function ({ data }, ref) {
                 <path d="M8.25 10.4502L24.75 26.9502" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             <h2 className={styles.heading}>{data.form_name}</h2>
-            <main className={styles.questionsContainer}></main>
+            <main className={styles.questionsContainer}>
+                <Form data={data} />
+            </main>
         </dialog>
     )
 })
