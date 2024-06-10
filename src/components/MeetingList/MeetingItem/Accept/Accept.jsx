@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import styles from './accept.module.scss'
 
-export default function AcceptMeet() {
+export default function AcceptMeet({ meetData }) {
     function clickHandler(e) {
         // axios.post('someurl', { some content }, {
         //     headers: {

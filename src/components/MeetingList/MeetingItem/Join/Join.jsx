@@ -1,6 +1,6 @@
 import styles from './join.module.scss'
 
-export default function JoinMeet({ isGrayLink = false }) {
+export default function JoinMeet({ isGrayLink = false, meetData }) {
     return (
         <a className={styles.link} style={isGrayLink ? { filter: 'grayscale(1)', cursor: 'not-allowed' } : {}}>
             <svg

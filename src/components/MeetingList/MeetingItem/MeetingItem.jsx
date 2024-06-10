@@ -27,25 +27,25 @@ export default function MeetingItem({ date, avatar, mentorName, duration, isGray
         case 'accept':
             content = (
                 <div>
-                    <AcceptMeet />
+                    <AcceptMeet meetData={data} />
                 </div>
             )
             break;
         case 'decline':
             content = (
                 <div>
-                    <DeclineMeet />
+                    <DeclineMeet meetData={data} />
                 </div>
             )
             break;
         case 'join':
-            content = <JoinMeet isGrayLink={isGrayLink} />
+            content = <JoinMeet isGrayLink={isGrayLink} meetData={data} />
             break;
         case 'accept-decline':
             content = (
                 <div className={styles.acceptDecline}>
-                    <AcceptMeet />
-                    <DeclineMeet />
+                    <AcceptMeet meetData={data} />
+                    <DeclineMeet meetData={data} />
                 </div>
             )
             break;

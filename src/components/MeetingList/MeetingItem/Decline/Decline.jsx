@@ -1,6 +1,6 @@
 import styles from './decline.module.scss'
 
-export default function DeclineMeet() {
+export default function DeclineMeet({ meetData }) {
     function clickHandler(e) {
         // axios.post('someurl', { some content }, {
         //     headers: {
