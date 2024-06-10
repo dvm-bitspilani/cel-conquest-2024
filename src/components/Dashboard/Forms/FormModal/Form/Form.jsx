@@ -119,6 +119,7 @@ export default function Form({ data, formClose }) {
                     heading={data.subjective_questions[i].question}
                     changeFn={handleChange}
                     blurFn={handleBlur}
+                    type='long'
                 // value={values[`subj-${data.subjective_questions[i].id}`]}
                 />
             )
@@ -141,13 +142,22 @@ export default function Form({ data, formClose }) {
     if (data.file_upload_questions.length > 0) {
         for (let i = 0; i < data.file_upload_questions.length; i++) {
             fileQuestions.push(
-                <FileUpload
+                // <FileUpload
+                //     key={`file-${data.file_upload_questions[i].id}`}
+                //     name={`file-${data.file_upload_questions[i].id}`}
+                //     heading={data.file_upload_questions[i].question}
+                //     manualValue={setFieldValue}
+                // // changeFn={handleChange}
+                // // blurFn={handleBlur}
+                // // value={values[`subj-${data.subjective_questions[i].id}`]}
+                // />
+                <TextInput2
                     key={`file-${data.file_upload_questions[i].id}`}
                     name={`file-${data.file_upload_questions[i].id}`}
                     heading={data.file_upload_questions[i].question}
-                    manualValue={setFieldValue}
-                // changeFn={handleChange}
-                // blurFn={handleBlur}
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    type='link'
                 // value={values[`subj-${data.subjective_questions[i].id}`]}
                 />
             )
