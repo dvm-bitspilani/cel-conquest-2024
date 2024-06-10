@@ -44,7 +44,7 @@
   .slotTimingContainer {
     display: flex;
     justify-content: space-between;
-    &>div {
+    & > div {
       display: flex;
       flex-direction: column;
       gap: 20px;

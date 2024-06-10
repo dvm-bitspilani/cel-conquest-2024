@@ -22,7 +22,33 @@ export default function Pitch({ pitchdeck, pitchvideo}) {
             <div className={`${styles.container} ${isPlaying ? styles.blur : ''}`}>
                 <div className={`${styles.contentContainer} ${isPlaying ? styles.fullscreen : ''}`}>
                     <div className={`${styles.title} ${isPlaying ? styles.hide : ''}`}>Pitch <span>Deck</span></div>
-                    <a href={pitchdeck} target="_blank">{pitchdeck}</a>
+                </div>
+                <div className={styles.pdfContainer}>
+                    <a href={pitchdeck} target="_blank">
+                        <div className={styles.written}>
+                            <h5>PitchDecker.pdf</h5>
+                            <p>2.69 MB</p>
+                        </div>
+                        <div className={styles.download}>
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_d_1266_2526)">
+                                    <path d="M10.9993 14.7694L6.28068 10.0521L7.22468 9.09208L10.3327 12.2001V0.666748H11.666V12.2001L14.7727 9.09341L15.718 10.0521L10.9993 14.7694ZM3.82068 19.3334C3.20646 19.3334 2.69402 19.1281 2.28335 18.7174C1.87268 18.3067 1.6669 17.7939 1.66602 17.1787V13.9481H2.99935V17.1787C2.99935 17.3841 3.08468 17.5725 3.25535 17.7441C3.42602 17.9156 3.61402 18.001 3.81935 18.0001H18.1793C18.3838 18.0001 18.5718 17.9147 18.7434 17.7441C18.9149 17.5734 19.0002 17.385 18.9993 17.1787V13.9481H20.3327V17.1787C20.3327 17.793 20.1273 18.3054 19.7167 18.7161C19.306 19.1267 18.7931 19.3325 18.178 19.3334H3.82068Z" fill="#FB723D" />
+                                </g>
+                                <defs>
+                                    <filter id="filter0_d_1266_2526" x="0.666016" y="0.666748" width="20.6667" height="20.6666" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                        <feOffset dy="1" />
+                                        <feGaussianBlur stdDeviation="0.5" />
+                                        <feComposite in2="hardAlpha" operator="out" />
+                                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1266_2526" />
+                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1266_2526" result="shape" />
+                                    </filter>
+                                </defs>
+                            </svg>
+                        </div>
+                    </a>
                 </div>
                 <div className={`${styles.contentContainer} ${isPlaying ? styles.fullscreen : ''}`}>
                     <div className={`${styles.title} ${isPlaying ? styles.hide : ''}`}>Video</div>

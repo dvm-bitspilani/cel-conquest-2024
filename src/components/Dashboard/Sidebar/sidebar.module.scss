@@ -16,7 +16,7 @@
   align-items: stretch;
   overflow-y: scroll;
   gap: 15px;
-  position: relative; 
+  // position: relative;
 
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -73,6 +73,12 @@
   .headerButtons {
     display: flex;
     justify-content: space-between;
+
+    .rightButtons {
+      display: flex;
+      flex-direction: row;
+      gap: 35px;
+    }
   }
 
   .topButtons {

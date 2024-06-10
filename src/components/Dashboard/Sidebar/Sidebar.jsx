@@ -4,6 +4,8 @@ import dashboard_mountain_circle from "../../../assets/images/Dashboard/dashboar
 import Button from "./Button/Button";
 import demoAvatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
 
+import SearchButton from "./SearchButton/SearchButton";
+
 import { useState } from "react";
 import Notifications from "../Notifications/Notifications";
 
@@ -70,7 +72,10 @@ const Sidebar = () => {
       <div className={styles.sidebar}>
         <div className={styles.headerButtons}>
           {back_arrow}
-          {bell}
+          <div className={styles.rightButtons}>
+            <div className={styles.searchButton}><SearchButton></SearchButton></div>
+            {bell}
+        </div>
         </div>
         <div className={styles.profileSection}>
           <a href="/dashboard/startup-profile" className={styles.profileAvatar}>
