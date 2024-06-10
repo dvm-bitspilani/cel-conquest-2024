@@ -18,6 +18,10 @@
     font-size: 220px;
     font-weight: 700;
     line-height: 0.75;
+
+    @media screen and (max-width: 820px) {
+      font-size: 120px;
+    }
   }
 
   .cardContent {
@@ -40,8 +44,11 @@
       .date {
         font-size: 20px;
         font-weight: 700;
-        color: #FB723D;
-        ;
+        color: #fb723d;
+
+        @media screen and (max-width: 820px) {
+          font-size: 12px;
+        }
       }
 
       .title {
@@ -52,6 +59,10 @@
 
         @media screen and (max-width: 991px) {
           font-size: 46px;
+        }
+
+        @media screen and (max-width: 820px) {
+          font-size: 23px;
         }
       }
 
@@ -86,6 +97,7 @@
       @media screen and (max-width: 820px) {
         width: 100%;
         margin-top: 20px;
+        font-size: 12px;
       }
     }
   }
