@@ -4,6 +4,7 @@ import axios from 'axios';
 import TextInput2 from '../Inputs/Text/TextInput'
 import Score from '../Inputs/Score/Score'
 import FileUpload from '../Inputs/FileUpload/FileUpload'
+import Preference from '../Inputs/Preference/Preference';
 
 import styles from './form.module.scss'
 
@@ -152,6 +153,22 @@ export default function Form({ data, formClose }) {
             )
         }
     }
+    if (data.preference_questions.length > 0) {
+        for (let i = 0; i < data.preference_questions.length; i++) {
+            prefQuestions.push(
+                <Preference
+                    key={`pref-${data.preference_questions[i].id}`}
+                    name={`pref-${data.preference_questions[i].id}`}
+                    heading={data.preference_questions[i].question}
+                    options={data.preference_questions[i].preferences}
+                    manualValue={setFieldValue}
+                // changeFn={handleChange}
+                // blurFn={handleBlur}
+                // value={values[`subj-${data.subjective_questions[i].id}`]}
+                />
+            )
+        }
+    }
 
     return (
         <main className={styles.form}>
@@ -162,6 +179,7 @@ export default function Form({ data, formClose }) {
                 {subjQuestions}
                 {scoreQuestions}
                 {fileQuestions}
+                {prefQuestions}
                 <button type='submit' className={styles.submit}>Submit</button>
             </form>
         </main>
