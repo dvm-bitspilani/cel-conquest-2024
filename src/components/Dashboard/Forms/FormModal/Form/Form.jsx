@@ -90,21 +90,21 @@ export default function Form({ data, formClose }) {
     const { values, errors, handleBlur, handleSubmit, handleChange, setFieldValue } = useFormik({
         initialValues: initialValues,
         onSubmit: (values, action) => {
-            console.log("In Form.jsx")
+            // console.log("In Form.jsx")
             const response = responseObjectGenerator(values)
-            // axios.post(`https://conquest-api.bits-dvm.org/api/forms/${data.form_id}/answers/`, response, {
-            //     headers: {
-            //         Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
-            //     }
-            // })
-            //     .then(res => {
-            //         console.log(res)
-            //     })
-            //     .catch(err => {
-            //         console.log(err)
-            //     })
-            console.log(values)
-            console.log(response)
+            axios.post(`https://conquest-api.bits-dvm.org/api/forms/${data.form_id}/answers/`, response, {
+                headers: {
+                    Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
+                }
+            })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            // console.log(values)
+            // console.log(response)
             action.resetForm()
             formClose()
         }
