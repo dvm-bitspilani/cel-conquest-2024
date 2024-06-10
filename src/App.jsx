@@ -52,7 +52,7 @@ function App() {
           <Route path="startups" element={<Startups />}></Route>
           <Route path="experts" element={<Experts />}></Route>
           <Route
-            path="startup-profile/:id"
+            path="startup-profile/:id?"
             element={<StartupProfile />}
           ></Route>
           <Route path="mentors" element={<Mentors />}></Route>
