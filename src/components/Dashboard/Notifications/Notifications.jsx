@@ -29,6 +29,19 @@ const cross = (
 
 function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
   console.log(1, notifsData);
+
+  let notifs = notifsData.map((notif, index) => {
+    let time = new Date(notif.timestamp);
+    let fullTime = `${time.getHours()}:${time.getMinutes()}`;
+    return (
+      <NotificationsItem
+        key={index}
+        time={fullTime}
+        message={notif.message}
+      />
+    );
+  });
+
   return (
     <div
       style={{ display: isNotifVisible ? "flex" : "none" }}

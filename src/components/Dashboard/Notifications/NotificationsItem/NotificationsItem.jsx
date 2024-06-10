@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./NotificationsItem.module.scss";
 
-function NotificationsItem() {
+function NotificationsItem({time, message}) {
   return (
     <div className={styles.container}>
       <div className={styles.time}>10:00</div>
