@@ -15,6 +15,7 @@
   .divider {
     width: 3px;
     background-color: #FB723D;;
+    min-height: 58px;
   }
   .message {
     padding: 8px 0px;
@@ -26,5 +27,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    display: flex;
+    align-items: center;
   }
 }
