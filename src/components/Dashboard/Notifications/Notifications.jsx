@@ -32,6 +32,8 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
   console.log(1, notifsData);
   let date;
   let notifs = notifsData.map((notif, index) => {
+    let time = new Date(notif.timestamp);
+    let fullTime = `${time.getHours()}:${time.getMinutes()}`;
     if (index === 0) {
       let newdate = new Date(notif.timestamp);
       date = newdate.timestamp;
@@ -47,8 +49,6 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
       );
     }
 
-    let time = new Date(notif.timestamp);
-    let fullTime = `${time.getHours()}:${time.getMinutes()}`;
     if (date !== time.getDate()) {
       date = time.getDate();
       return (
@@ -67,6 +67,8 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
     );
   });
 
+  console.log(2, notifs);
+
   return (
     <div
       style={{ display: isNotifVisible ? "flex" : "none" }}
@@ -83,8 +85,7 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
           {cross}
         </div>
       </div>
-      <NotificationsItem />
-      <NotificationsItem />
+      {notifs}
     </div>
   );
 }
