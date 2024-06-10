@@ -27,7 +27,10 @@
     width: fit-content;
     padding-right: 7.5vw;
     padding-bottom: 30px;
-    height: 515px;
+    padding-left: 8px;
+    padding-top: 8px;
+    height: fit-content;
+    max-height: 515px;
     overflow-y: scroll;
     @include scrollbarStyles();
 }
@@ -64,6 +67,7 @@
         flex-direction: column;
         overflow-y: hidden;
         padding-top: 15px;
+        padding-left: 0px;
     }
 
     @mixin scrollbarStyles() {
