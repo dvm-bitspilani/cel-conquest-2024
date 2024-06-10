@@ -45,6 +45,7 @@ export default function Home() {
                 duration={45}
                 key={newItm.id}
                 data={newItm}
+                type="accept-decline"
                 handleClick={handleClick}
                 dataRef={dataRef}
               />
