@@ -84,20 +84,20 @@ export default function FormPillList() {
     const formModal = useRef(null)
 
     function formOpenHandler(formId) {
-        // axios.get(`https://conquest-api.bits-dvm.org/api/forms/${formId}/questions/`, {
-        //     headers: {
-        //         Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
-        //     }
-        // })
-        //     .then(res => {
-        //         setModalData(res.data)
-        //         formModal.current.openForm()
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
-        setModalData(DUMMY_QUESTIONS)
-        formModal.current.openForm()
+        axios.get(`https://conquest-api.bits-dvm.org/api/forms/${formId}/questions/`, {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
+            }
+        })
+            .then(res => {
+                setModalData(res.data)
+                formModal.current.openForm()
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        // setModalData(DUMMY_QUESTIONS)
+        // formModal.current.openForm()
     }
 
     useEffect(() => {
