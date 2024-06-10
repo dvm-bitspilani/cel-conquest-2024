@@ -48,9 +48,9 @@ export default function MeetingItem({ date, avatar, mentorName, duration, isGray
                     >
                         <Avatar
                             size={{
-                                xs: 24,
-                                sm: 32,
-                                md: 40,
+                                xs: 48,
+                                sm: 64,
+                                md: 48,
                                 lg: 48,
                                 xl: 64,
                                 xxl: 80,
@@ -75,8 +75,6 @@ export default function MeetingItem({ date, avatar, mentorName, duration, isGray
                     }`}</span>
                 <a style={isGrayLink ? { filter: 'grayscale(1)', cursor: 'not-allowed' } : {}}>
                     <svg
-                        width="21"
-                        height="10"
                         viewBox="0 0 21 10"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"

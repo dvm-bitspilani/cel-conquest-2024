@@ -100,16 +100,15 @@
         height: 80px;
         font-weight: 500;
 
-        @include vertiAlignment();
-
-        @mixin setHeight($screenWidth, $height) {
-            @media screen and (max-width: $screenWidth) {
-                height: $height;
-            }
+        @media screen and (max-width: 420px) {
+            font-size: 0.75rem;
         }
+
+        @include vertiAlignment();
 
         span {
             text-align: center;
+            // font-size: 1rem;
         }
 
         a {
@@ -118,12 +117,15 @@
             gap: 0.5rem;
             color: #138CFD;
             cursor: pointer;
-        }
 
-        @include setHeight(1600px, 64px);
-        @include setHeight(1200px, 64px);
-        @include setHeight(992px, 40px);
-        @include setHeight(768px, 32px);
-        @include setHeight(576px, 24px);
+            svg {
+                aspect-ratio: 21 / 10;
+                width: 21px;
+
+                @media screen and (max-width: 420px) {
+                    width: 16px;
+                }
+            }
+        }
     }
 }
