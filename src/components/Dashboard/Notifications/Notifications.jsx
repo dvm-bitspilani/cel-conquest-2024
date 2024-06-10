@@ -28,6 +28,7 @@ const cross = (
 );
 
 function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
+  console.log(1, notifsData)
   return (
     <div
       style={{ display: isNotifVisible ? "flex" : "none" }}
