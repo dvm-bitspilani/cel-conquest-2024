@@ -1,7 +1,7 @@
 .teamMemberContainer {
     border-radius: 7.711px;
     background: #FFF;
-    box-shadow: 0px 3.085px 12.338px 0px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 1px 12.34px 0px #00000029;
     display: inline-flex;
     flex-direction: column;
     gap: 13px;
@@ -11,97 +11,105 @@
     width: 145px;
     height: 156px;
 
-    .avatarContainer {
-        width: 49.353px;
-        height: 49.353px;
-        border-radius: 50%;
-
-        img {
-            height: 100%;
-            width: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-    }
-
-    .content {
+    .left {
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 5px;
 
-        .name {
-            color: #000;
-            text-align: center;
-            font-family: Montserrat;
-            font-size: 13.881px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
+        .avatarContainer {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+
+            img {
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+                object-fit: cover;
+            }
         }
 
-        .position {
-            color: #777;
-            text-align: center;
-            font-family: Montserrat;
-            font-size: 10.887px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+            .name {
+                color: #000;
+                text-align: center;
+                font-family: Montserrat;
+                font-size: 13.881px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
+
+            .position {
+                color: #777;
+                text-align: center;
+                font-family: Montserrat;
+                font-size: 10.887px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
         }
     }
+
 }
 
 @media(max-width:500px) {
-    
+
     .teamMemberContainer {
         margin: 1px;
         border-radius: 10px;
         height: 64px;
         box-shadow: 0px 1px 4.34px 0px #00000029;
-        display:flex;
+        display: flex;
         flex-direction: row;
         gap: 25px;
         align-items: center;
+        justify-content: space-between;
         padding-top: 20px;
         padding-bottom: 20px;
         padding-left: 15px;
         padding-right: 20px;
         width: 84vw;
-    
-        .avatarContainer {
-            width: 45px;
-            height: 45px;
-        }
-    
-        .content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 2px;
-    
-            .name {
-                font-size: 16px;
-                font-weight: 500;
-                line-height: normal;
+
+        .left {
+            gap: 20px;
+            align-items: center;
+            flex-direction: row;
+            
+            .avatarContainer {
+                width: 45px;
+                height: 45px;
             }
     
-            .position{
-                font-size: 12px;
-                font-weight: 600;
+            .content {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+    
+                .name {
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: normal;
+                    text-align: left;
+                }
+    
+                .position {
+                    font-size: 12px;
+                    font-weight: 600;
+                    text-align: left;
+                }
             }
         }
+
         svg {
-            margin-left: 32vw;
             height: 26px;
             width: 26px;
         }
-    }
-}
-
-@media(max-width:460px) {
-
-    .teamMemberContainer svg{
-        margin-left: 28vw;
     }
 }
 
@@ -110,9 +118,6 @@
     .teamMemberContainer {
         width: 81vw;
     }
-    .teamMemberContainer svg{
-        margin-left: 19vw;
-    }
 }
 
 @media(max-width:350px) {
@@ -120,18 +125,9 @@
     .teamMemberContainer {
         width: 78vw;
     }
-    .teamMemberContainer svg{
-        margin-left: 5vw;
-    }
-    
+
 }
 
-@media(max-width:300px) {
-
-    .teamMemberContainer svg{
-        margin-left: 0vw;
-    }
-}
 
 @media(max-width:260px) {
 
