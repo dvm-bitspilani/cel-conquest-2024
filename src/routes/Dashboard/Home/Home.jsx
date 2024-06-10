@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { Avatar, ConfigProvider } from "antd";
+
+import { WebContext } from "../../../store/website-context";
 
 import MeetingList from "../../../components/MeetingList/MeetingList"
 import MeetingItem from '../../../components/MeetingList/MeetingItem/MeetingItem';
@@ -13,6 +15,7 @@ import avatar from '../../../assets/images/Dashboard/demoAvatar.jpeg'
 import * as styles from './home.module.scss'
 
 export default function Home() {
+  const { glogout } = useContext(WebContext)
   const navigate = useNavigate()
   const [listItms, setListItms] = useState([])
 
@@ -102,6 +105,17 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <button
+        onClick={(e) => {
+          e.preventDefault()
+          glogout()
+        }}
+        style={{
+          position: 'absolute',
+          top: '0px',
+          right: '0px'
+        }}
+      >Logout</button>
       <div className={styles.meetings}>
         <h1 className={styles.heading}>Conquest <span>Calendar:</span></h1>
         <section className={styles.ongoing}>
