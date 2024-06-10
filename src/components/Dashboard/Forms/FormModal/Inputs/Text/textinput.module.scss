@@ -1,0 +1,25 @@
+.inputGrp {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+
+    .label {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 100%;
+    }
+
+    .input {
+        aspect-ratio: 850 / 45;
+        border-radius: 8px;
+        border: 1px solid #BFBFBF;
+        background: #FFF;
+        width: 100%;
+        padding: 0px 10px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

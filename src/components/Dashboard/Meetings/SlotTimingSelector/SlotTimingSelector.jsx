@@ -249,7 +249,11 @@ const eveningSvg = (
   </svg>
 );
 
-const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
+const SlotTimingSelector = ({
+  selectSlotTiming,
+  removeModal,
+  changeRequestSent,
+}) => {
   const changeDate = (date, month, year) => {
     setDateTime((prev) => {
       return { ...prev, date: date, month: month, year: year };
@@ -276,7 +280,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
   let dateComponents = [];
   const [dateTime, setDateTime] = useState({
     date: days[0].getDate(),
-    time: "9:00",
+    time: "09:00",
     month: days[0].getMonth(),
     year: days[0].getFullYear(),
   });
@@ -293,34 +297,35 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
       ></SlotDateButton>
     );
   }
-
+  const month = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
   const createSlot = (dateTime) => {
-    const month = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
     const date = new Date(
       `${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${
         dateTime.time
-      } GMT+0530`
+      }`
     );
-    const unixTimeStamp = date.getTime() / 1000;
+    // console.log(date);
+    let unixTimeStamp = date.getTime() / 1000;
+    unixTimeStamp = Number(unixTimeStamp);
     const unixTimeStamp2 = Number(unixTimeStamp) + 45 * 60;
-    console.log({
-      user: "1",
-      start_time: unixTimeStamp,
-      end_time: unixTimeStamp2,
-    });
+    // console.log({
+    //   user: "1",
+    //   start_time: unixTimeStamp,
+    //   end_time: unixTimeStamp2,
+    // });
     axios
       .post(
         "https://conquest-api.bits-dvm.org/api/meetings/slots/",
@@ -338,13 +343,16 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
         }
       )
       .then(function (response) {
+        changeRequestSent();
+
         console.log(response);
       })
       .catch(function (error) {
         console.log(error);
       });
   };
-  console.log(dateTime);
+  // console.log(dateTime);
+  // console.log(date);
   return (
     <>
       <div
@@ -382,7 +390,7 @@ const SlotTimingSelector = ({ selectSlotTiming, removeModal }) => {
           <div>
             <TimeSelectButtonHeader svg={morningSvg} header="Morning" />
             <TimeSelectButton
-              time={"9:00"}
+              time={"09:00"}
               changeTime={changeTime}
               dateTime={dateTime}
             />

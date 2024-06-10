@@ -1,13 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 
-import FormPillItem from '../FormPillItem/FormPillItem';
-import FormModal from '../../../../components/Dashboard/Forms/FormModal/FormModal';
+import FormPillItem2 from '../Item/Item'
+import FormModal from '../../FormModal/FormModal';
 
-import styles from './pillList.module.scss'
+import styles from './list.module.scss'
 
-import avatar from '../../../../assets/images/Dashboard/demoAvatar.jpeg'
-
+import avatar from '../../../../../assets/images/Dashboard/demoAvatar.jpeg'
 const DUMMY_FORM_LIST = [
     {
         id: 1,
@@ -24,6 +23,31 @@ const DUMMY_FORM_LIST = [
         form_name: 'Another one',
         avatar: avatar
     },
+    {
+        id: 4,
+        form_name: 'Another one',
+        avatar: avatar
+    },
+    {
+        id: 5,
+        form_name: 'Another one',
+        avatar: avatar
+    },
+    {
+        id: 6,
+        form_name: 'Another one',
+        avatar: avatar
+    },
+    {
+        id: 7,
+        form_name: 'Another one',
+        avatar: avatar
+    },
+    {
+        id: 8,
+        form_name: 'Another one',
+        avatar: avatar
+    },
 ]
 
 const DUMMY_QUESTIONS = {
@@ -31,7 +55,7 @@ const DUMMY_QUESTIONS = {
     form_id: 1,
     subjective_questions: [
         {
-            question: "subjective question 1",
+            question: "subjective question 3",
             id: 1,
         },
         {
@@ -71,7 +95,7 @@ const DUMMY_QUESTIONS = {
     ]
 }
 
-export default function FormPillList() {
+export default function FormPillList2() {
     const [formsList, setFormsList] = useState([])
     const [modalData, setModalData] = useState({
         form_name: "",
@@ -96,6 +120,7 @@ export default function FormPillList() {
         //     .catch(err => {
         //         console.log(err)
         //     })
+
         setModalData(DUMMY_QUESTIONS)
         formModal.current.openForm()
     }
@@ -109,9 +134,15 @@ export default function FormPillList() {
             .then(res => {
                 console.log(res)
 
-                const temp = res.data.reverse().map(form => {
+                // const temp = res.data.reverse().map(form => {
+                //     return (
+                //         <FormPillItem key={form.id} formId={form.id} title={form.form_name} avatar={form.avatar} />
+                //     )
+                // })
+
+                const temp = DUMMY_FORM_LIST.reverse().map(form => {
                     return (
-                        <FormPillItem
+                        <FormPillItem2
                             key={form.id}
                             formId={form.id}
                             title={form.form_name}
@@ -120,12 +151,6 @@ export default function FormPillList() {
                         />
                     )
                 })
-                // const temp = DUMMY_FORM_LIST.reverse().map(form => {
-                //         return (
-                //             <FormPillItem key={form.id} title={form.form_name} avatar={form.avatar} />
-                //         )
-                //     
-                // })
 
                 setFormsList(temp)
             })

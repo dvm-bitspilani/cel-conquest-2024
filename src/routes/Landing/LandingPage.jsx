@@ -144,7 +144,7 @@ const LandingPage = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                 >
-                  <g clip-path="url(#clip0_145_1784)">
+                  <g clipPath="url(#clip0_145_1784)">
                     <path
                       fill-rule="evenodd"
                       clip-rule="evenodd"

@@ -12,6 +12,7 @@ const Meetings = () => {
   //meeting list code
   const dataRef = useRef(null);
   const [data, setData] = useState(null);
+  const [requestSent, setRequestSent] = useState(false);
   const isStartup =
     JSON.parse(localStorage.getItem("userData")).user_profile_obj.role ===
     "Startup"
@@ -21,6 +22,10 @@ const Meetings = () => {
   function handleClick() {
     setData(dataRef.current);
   }
+
+  const changeRequestSent = () => {
+    setRequestSent(!requestSent);
+  };
 
   // rest of the code
   const [selectSlots, setselectSlots] = useState(false);
@@ -34,7 +39,6 @@ const Meetings = () => {
 
   let showHideSelectSlotTiming = () => {
     setselectSlotTiming(!selectSlotTiming);
-    console.log(selectSlotTiming);
   };
 
   let showHideBookSlots = () => {
@@ -45,7 +49,6 @@ const Meetings = () => {
 
   const getMeetingList = (listTab) => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
-      console.log("fetching data");
       axios
         .get(
           `https://conquest-api.bits-dvm.org/api/meetings/meetings/${listTab}/`,
@@ -58,7 +61,7 @@ const Meetings = () => {
           }
         )
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
 
           const newArr = res.data.map((newItm) => {
             return (
@@ -99,7 +102,7 @@ const Meetings = () => {
           }
         )
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
 
           const newArr = res.data.map((newItm) => {
             return (
@@ -125,7 +128,7 @@ const Meetings = () => {
       console.log("error in fetching data");
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
-  console.log("isStartup", isStartup);
+  // console.log("isStartup", isStartup);
   return (
     <>
       <BookSlots
@@ -135,9 +138,27 @@ const Meetings = () => {
       <SlotTimingSelector
         selectSlotTiming={selectSlotTiming}
         removeModal={showHideSelectSlotTiming}
+        changeRequestSent={changeRequestSent}
       ></SlotTimingSelector>
       <div className={styles.meetingsContainer}>
         <div className={styles.meetingsList}>
+          <div className={styles.phoneView}>
+            <h2>Meetings</h2>
+            <button
+              style={{ zIndex: 2, display: isStartup ? "none" : null }}
+              className={styles.selectSlots}
+              onClick={isStartup ? showHideBookSlots : showHideSelectSlots}
+            >
+              {isStartup ? "Book Slot" : "Select Slots"}
+            </button>
+            {selectSlots ? (
+              <SelectSlots
+                showHideSelectSlotTiming={showHideSelectSlotTiming}
+                showHideSelectSlots={showHideSelectSlots}
+                requestSent={requestSent}
+              ></SelectSlots>
+            ) : null}
+          </div>
           <div className={styles.meetingsListOptionsContainer}>
             <div
               onClick={() => {
@@ -190,6 +211,8 @@ const Meetings = () => {
             <SelectSlots
               showHideSelectSlotTiming={showHideSelectSlotTiming}
               showHideSelectSlots={showHideSelectSlots}
+              requestSent={requestSent}
+              changeRequestSent={changeRequestSent}
             ></SelectSlots>
           ) : null}
           <div

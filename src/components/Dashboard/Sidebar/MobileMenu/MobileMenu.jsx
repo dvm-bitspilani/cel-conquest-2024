@@ -28,6 +28,11 @@ export default function MobileMenu() {
           "#dashboardMenu .ant-menu .ant-menu-item:nth-of-type(2)"
         ).id = "selected";
         break;
+      case "/dashboard/forms":
+        document.querySelector(
+          "#dashboardMenu .ant-menu .ant-menu-item:nth-of-type(8)"
+        ).id = "selected";
+        break;
     }
   }, [location.pathname]);
 

@@ -1,0 +1,47 @@
+.inputGrp {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+
+    .label {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 100%;
+    }
+
+    .radioGrid {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 10px;
+
+        @media screen and (max-width: 640px) {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .radioWrapper {
+            position: relative;
+
+            input[type="radio"] {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+
+            .numCircles {
+                aspect-ratio: 1 / 1;
+                display: flex;
+                height: 38px;
+                align-items: center;
+                justify-content: center;
+                border: 1.5px solid #FB723D;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: background-color 300ms;
+            }
+        }
+
+    }
+}

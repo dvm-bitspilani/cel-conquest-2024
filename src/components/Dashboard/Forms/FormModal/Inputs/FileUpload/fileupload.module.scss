@@ -1,0 +1,68 @@
+.inputGrp {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+
+    .label {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 100%;
+    }
+
+    .dropZone {
+        aspect-ratio: 850 / 190;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 15.052px;
+        border: 2.316px dashed #CBD0DC;
+        background: #FFF;
+        cursor: pointer;
+
+        @media screen and (max-width: 820px) {
+            aspect-ratio: 306 / 146;
+        }
+
+        svg {
+            aspect-ratio: 343 / 143;
+            height: 70%;
+        }
+
+        .browseBtn {
+            aspect-ratio: 122 / 30;
+            border-radius: 5px;
+            border: 1.158px solid #CBD0DC;
+            background: #FFF;
+            color: #54575C;
+            font-size: 0.75rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            height: 20%;
+            cursor: pointer;
+
+
+            @media screen and (max-width: 870px) {
+                font-size: 0.6rem;
+            }
+
+            @media screen and (max-width: 820px) {
+                aspect-ratio: 93.747 / 23.053;
+                border-radius: 3.842px;
+                border: 0.89px solid #CBD0DC;
+                height: 15%;
+                font-size: 1.2rem;
+            }
+
+            @media screen and (max-width: 542px) {
+                height: 20%;
+            }
+
+            @media screen and (max-width: 430px) {
+                font-size: 1rem;
+            }
+        }
+    }
+}
