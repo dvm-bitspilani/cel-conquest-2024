@@ -8,8 +8,17 @@ export default function TextInput2({ name, heading, changeFn, blurFn, value }) {
                 className={styles.label}>
                 {heading}
             </label>
-            <input
+            {/* <input
                 type='text'
+                id={name}
+                name={name}
+                onChange={changeFn}
+                onBlur={blurFn}
+                value={value}
+                className={styles.input}
+            /> */}
+            <textarea
+                // type='text'
                 id={name}
                 name={name}
                 onChange={changeFn}
