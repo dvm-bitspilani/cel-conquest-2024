@@ -26,9 +26,12 @@ const cross = (
   </svg>
 );
 
-function Notifications() {
+function Notifications({ isNotifVisible }) {
   return (
-    <div className={styles.container}>
+    <div
+      style={{ display: isNotifVisible ? "flex" : "none" }}
+      className={styles.container}
+    >
       <div className={styles.notifHeader}>
         <h3>Notifications</h3>
         <div className={styles.cross}>{cross}</div>

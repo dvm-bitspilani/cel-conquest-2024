@@ -8,6 +8,7 @@ import { useState } from "react";
 import Notifications from "../Notifications/Notifications";
 
 const Sidebar = () => {
+  const [isNotifVisible, setisNotifVisible] = useState(false);
   const bell = (
     <svg
       width="23"
@@ -65,7 +66,7 @@ const Sidebar = () => {
 
   return (
     <div className={styles.sidebarContainer}>
-      <Notifications></Notifications>
+      <Notifications isNotifVisible={isNotifVisible}></Notifications>
       <div className={styles.sidebar}>
         <div className={styles.headerButtons}>
           {back_arrow}
