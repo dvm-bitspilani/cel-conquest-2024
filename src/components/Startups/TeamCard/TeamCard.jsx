@@ -5,12 +5,14 @@ export default function TeamCard({ img, name, position, linkedin }) {
     return (
         <>
             <div className={styles.teamMemberContainer}>
-                <div className={styles.avatarContainer}>
-                    <img src={img} alt="" />
-                </div>
-                <div className={styles.content}>
-                    <div className={styles.name}>{name}</div>
-                    <div className={styles.position}>{position}</div>
+                <div className={styles.left}>
+                    <div className={styles.avatarContainer}>
+                        <img src={img} alt="" />
+                    </div>
+                    <div className={styles.content}>
+                        <div className={styles.name}>{name}</div>
+                        <div className={styles.position}>{position}</div>
+                    </div>
                 </div>
                 <a href={linkedin} target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
