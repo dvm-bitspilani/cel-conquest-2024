@@ -7,6 +7,8 @@ export const WebContext = createContext({
     user: {},
     isUserLoginBtnDisabled: false,
     loginErrorMessage: null,
+    formListRerender: 0,
+    setFormListRerender: () => { },
     setLoginErrorMessage: () => { },
     setUser: () => { },
     glogin: () => { },
@@ -21,6 +23,7 @@ export default function WebContextProvider({ children }) {
     const [user, setUser] = useState(null);
     const [isUserLoginBtnDisabled, setIsUserLoginBtnDisabled] = useState(false);
     const [loginErrorMessage, setLoginErrorMessage] = useState(null);
+    const [formListRerender, setFormListRerender] = useState(Math.random())
 
     const usernameLogin = (credentials) => {
         setIsUserLoginBtnDisabled(true)
@@ -101,6 +104,8 @@ export default function WebContextProvider({ children }) {
         user,
         isUserLoginBtnDisabled,
         loginErrorMessage,
+        formListRerender,
+        setFormListRerender,
         setLoginErrorMessage,
         setUser,
         glogin,

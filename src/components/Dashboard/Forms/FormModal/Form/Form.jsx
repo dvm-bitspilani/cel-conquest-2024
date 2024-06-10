@@ -1,5 +1,8 @@
+import { useContext } from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
+
+import { WebContext } from '../../../../../store/website-context';
 
 import TextInput2 from '../Inputs/Text/TextInput'
 import Score from '../Inputs/Score/Score'
@@ -9,6 +12,7 @@ import Preference from '../Inputs/Preference/Preference';
 import styles from './form.module.scss'
 
 export default function Form({ data, formClose }) {
+    const { setFormListRerender } = useContext(WebContext)
     const initialValues = {}
     const subjQuestions = []
     const prefQuestions = []
@@ -99,9 +103,12 @@ export default function Form({ data, formClose }) {
             })
                 .then(res => {
                     console.log(res)
+                    alert('Form submitted successfully!')
+                    setFormListRerender(Math.random())
                 })
                 .catch(err => {
                     console.log(err)
+                    alert(`Error submitting form - ${err}`)
                 })
             // console.log(values)
             // console.log(response)
@@ -119,6 +126,7 @@ export default function Form({ data, formClose }) {
                     heading={data.subjective_questions[i].question}
                     changeFn={handleChange}
                     blurFn={handleBlur}
+                    type='long'
                 // value={values[`subj-${data.subjective_questions[i].id}`]}
                 />
             )
@@ -141,13 +149,22 @@ export default function Form({ data, formClose }) {
     if (data.file_upload_questions.length > 0) {
         for (let i = 0; i < data.file_upload_questions.length; i++) {
             fileQuestions.push(
-                <FileUpload
+                // <FileUpload
+                //     key={`file-${data.file_upload_questions[i].id}`}
+                //     name={`file-${data.file_upload_questions[i].id}`}
+                //     heading={data.file_upload_questions[i].question}
+                //     manualValue={setFieldValue}
+                // // changeFn={handleChange}
+                // // blurFn={handleBlur}
+                // // value={values[`subj-${data.subjective_questions[i].id}`]}
+                // />
+                <TextInput2
                     key={`file-${data.file_upload_questions[i].id}`}
                     name={`file-${data.file_upload_questions[i].id}`}
                     heading={data.file_upload_questions[i].question}
-                    manualValue={setFieldValue}
-                // changeFn={handleChange}
-                // blurFn={handleBlur}
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    type='link'
                 // value={values[`subj-${data.subjective_questions[i].id}`]}
                 />
             )

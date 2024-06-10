@@ -11,21 +11,17 @@ const TimelineCard = ({ srno, date, title, para, srcolor, index = 0 }) => {
     // alignItems: index % 2 === 0 ? "flex-start" : "flex-end",
     alignSelf: index % 2 === 0 ? "flex-start" : "flex-end",
     width: "min-content",
-  }
+  };
 
   if (index % 2 === 0) {
     srStyles.left = "0";
-  }
-  else {
+  } else {
     srStyles.right = "0";
   }
 
   return (
     <div className={styles.Timelinecard}>
-      <div
-        className={styles.srno}
-        style={srStyles}
-      >
+      <div className={styles.srno} style={srStyles}>
         {srno}
       </div>
       <div className={styles.cardContent}>
