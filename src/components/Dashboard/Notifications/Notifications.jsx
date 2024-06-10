@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Notifications.module.scss";
 import NotificationsItem from "./NotificationsItem/NotificationsItem";
+import { date } from "yup";
 
 const cross = (
   <svg
@@ -29,16 +30,40 @@ const cross = (
 
 function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
   console.log(1, notifsData);
-
+  let date;
   let notifs = notifsData.map((notif, index) => {
+    if (index === 0) {
+      let newdate = new Date(notif.timestamp);
+      date = newdate.timestamp;
+      return (
+        <>
+          <p>{date}</p>
+          <NotificationsItem
+            key={index}
+            time={fullTime}
+            message={notif.message}
+          />
+        </>
+      );
+    }
+
     let time = new Date(notif.timestamp);
     let fullTime = `${time.getHours()}:${time.getMinutes()}`;
+    if (date !== time.getDate()) {
+      date = time.getDate();
+      return (
+        <>
+          <p>{date}</p>
+          <NotificationsItem
+            key={index}
+            time={fullTime}
+            message={notif.message}
+          />
+        </>
+      );
+    }
     return (
-      <NotificationsItem
-        key={index}
-        time={fullTime}
-        message={notif.message}
-      />
+      <NotificationsItem key={index} time={fullTime} message={notif.message} />
     );
   });
 
