@@ -144,21 +144,21 @@ export default function FormPillList2() {
     const formModal = useRef(null)
 
     function formOpenHandler(formId) {
-        // axios.get(`https://conquest-api.bits-dvm.org/api/forms/${formId}/questions/`, {
-        //     headers: {
-        //         Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
-        //     }
-        // })
-        //     .then(res => {
-        //         setModalData(res.data)
-        //         formModal.current.openForm()
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
+        axios.get(`https://conquest-api.bits-dvm.org/api/forms/${formId}/questions/`, {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
+            }
+        })
+            .then(res => {
+                setModalData(res.data)
+                formModal.current.openForm()
+            })
+            .catch(err => {
+                console.log(err)
+            })
 
-        setModalData(DUMMY_QUESTIONS)
-        formModal.current.openForm()
+        // setModalData(DUMMY_QUESTIONS)
+        // formModal.current.openForm()
     }
 
     useEffect(() => {
@@ -170,13 +170,7 @@ export default function FormPillList2() {
             .then(res => {
                 console.log(res)
 
-                // const temp = res.data.reverse().map(form => {
-                //     return (
-                //         <FormPillItem key={form.id} formId={form.id} title={form.form_name} avatar={form.avatar} />
-                //     )
-                // })
-
-                const temp = DUMMY_FORM_LIST.reverse().map(form => {
+                const temp = res.data.reverse().map(form => {
                     return (
                         <FormPillItem2
                             key={form.id}
@@ -187,6 +181,18 @@ export default function FormPillList2() {
                         />
                     )
                 })
+
+                // const temp = DUMMY_FORM_LIST.reverse().map(form => {
+                //     return (
+                //         <FormPillItem2
+                //             key={form.id}
+                //             formId={form.id}
+                //             title={form.form_name}
+                //             avatar={form.avatar}
+                //             clickHandler={formOpenHandler}
+                //         />
+                //     )
+                // })
 
                 setFormsList(temp)
             })
