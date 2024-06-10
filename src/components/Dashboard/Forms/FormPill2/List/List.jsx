@@ -168,7 +168,7 @@ export default function FormPillList2() {
             }
         })
             .then(res => {
-                console.log(res)
+                // console.log(res)
 
                 const temp = res.data.reverse().map(form => {
                     return (
