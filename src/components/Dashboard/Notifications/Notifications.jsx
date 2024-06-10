@@ -36,10 +36,11 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
     let fullTime = `${time.getHours()}:${time.getMinutes()}`;
     if (index === 0) {
       let newdate = new Date(notif.timestamp);
-      date = newdate.timestamp;
+      date = newdate.getDate();
+      console.log("012345134");
       return (
         <>
-          <p>{date}</p>
+          <p key={index+"p"}>{date}</p>
           <NotificationsItem
             key={index}
             time={fullTime}
@@ -51,6 +52,7 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
 
     if (date !== time.getDate()) {
       date = time.getDate();
+      console.log("hello")
       return (
         <>
           <p>{date}</p>
@@ -62,6 +64,7 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
         </>
       );
     }
+    console.log("11111111111111111");
     return (
       <NotificationsItem key={index} time={fullTime} message={notif.message} />
     );

@@ -15,8 +15,14 @@
     left: calc(100% - 35px);
     top: 50px;
   }
-
-
+  p {
+    color: #a0a0a0;
+    font-family: Montserrat;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 17px */
+  }
 }
 .notifHeader {
   display: flex;
