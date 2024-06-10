@@ -87,11 +87,47 @@ const DUMMY_QUESTIONS = {
         {
             question: "preference question 1",
             id: 1,
+            preferences: [
+                {
+                    preference_name: "Q1 preference 1",
+                    id: 1
+                },
+                {
+                    preference_name: "Q1 preference 2",
+                    id: 2
+                },
+                {
+                    preference_name: "Q1 preference 3",
+                    id: 3
+                },
+                {
+                    preference_name: "Q1 preference 4",
+                    id: 4
+                },
+            ]
         },
         {
             question: "preference question 2",
             id: 2,
-        }
+            preferences: [
+                {
+                    preference_name: "Q2 preference 1",
+                    id: 1
+                },
+                {
+                    preference_name: "Q2 preference 2",
+                    id: 2
+                },
+                {
+                    preference_name: "Q2 preference 3",
+                    id: 3
+                },
+                {
+                    preference_name: "Q2 preference 4",
+                    id: 4
+                },
+            ]
+        },
     ]
 }
 
