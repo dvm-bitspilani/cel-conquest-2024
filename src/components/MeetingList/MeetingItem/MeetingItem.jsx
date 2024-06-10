@@ -25,10 +25,18 @@ export default function MeetingItem({ date, avatar, mentorName, duration, isGray
     let content;
     switch (type) {
         case 'accept':
-            content = <AcceptMeet />
+            content = (
+                <div>
+                    <AcceptMeet />
+                </div>
+            )
             break;
         case 'decline':
-            content = <DeclineMeet />
+            content = (
+                <div>
+                    <DeclineMeet />
+                </div>
+            )
             break;
         case 'join':
             content = <JoinMeet isGrayLink={isGrayLink} />
