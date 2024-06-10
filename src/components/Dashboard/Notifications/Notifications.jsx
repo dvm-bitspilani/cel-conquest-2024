@@ -47,14 +47,22 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
   let date;
   let notifs = notifsData.map((notif, index) => {
     let time = new Date(notif.timestamp);
-    let fullTime = `${time.getHours()}:${time.getMinutes()}`;
+    let fullTime = `${
+      time.getHours().toString().length === 1
+        ? "0" + time.getHours()
+        : time.getHours()
+    }:${time.getMinutes().toString().length === 1
+      ? "0" + time.getMinutes()
+      : time.getMinutes()}`;
     if (index === 0) {
       let newdate = new Date(notif.timestamp);
       date = newdate.getDate();
       console.log("012345134");
       return (
         <>
-          <p key={index + "p"}>{month[time.getMonth()]} {date}, 2024</p>
+          <p key={index + "p"}>
+            {month[time.getMonth()]} {date}, 2024
+          </p>
           <NotificationsItem
             key={index}
             time={fullTime}
