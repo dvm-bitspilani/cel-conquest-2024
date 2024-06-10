@@ -6,6 +6,10 @@
   background-color: #111213;
   position: relative;
 
+  @media screen and (max-width: 820px) {
+    padding: 0 24px;
+  }
+
   .footerPrimary {
     margin-top: 5rem;
     width: 100%;
@@ -16,6 +20,7 @@
     @media screen and (max-width: 850px) {
       flex-direction: column;
       padding-bottom: 4rem;
+      margin-top: 24px;
     }
 
     .links {
@@ -62,6 +67,10 @@
       color: #fff;
       font-weight: 700;
       font-size: 28px;
+
+      @media screen and (max-width: 820px) {
+        font-size: 20px;
+      }
     }
 
     h4 {
@@ -69,6 +78,9 @@
       font-weight: 600;
       font-size: 17px;
       margin-top: 5px;
+      @media screen and (max-width: 820px) {
+        font-size: 12px;
+      }
     }
 
     .subscribe {
@@ -89,9 +101,8 @@
         min-width: 1.5rem;
         max-width: 1.5rem;
 
-        @media screen and (max-width: 750px) {
-          min-width: 1rem;
-          max-width: 1rem;
+        @media screen and (max-width: 820px) {
+          display: none;
         }
       }
 
@@ -103,6 +114,7 @@
 
         @media screen and (max-width: 850px) {
           width: 50%;
+          font-size: 12px;
         }
       }
 
@@ -114,16 +126,22 @@
         font-weight: 600;
         cursor: pointer;
         text-overflow: ellipsis;
+
+        @media screen and (max-width: 820px) {
+          padding: 7px;
+          font-size: 12px;
+        }
       }
 
       @media screen and (max-width: 850px) {
         margin-top: 0;
         width: 60%;
+        height: 32px;
       }
 
       @media screen and (max-width: 750px) {
         font-size: 15px;
-        padding: 3px 3px 3px 15px;
+        padding: 3px 3px 3px 0;
       }
     }
 
@@ -139,6 +157,11 @@
       font-weight: 500;
       font-size: 17px;
       color: #a0a0a0;
+
+      @media screen and (max-width: 820px) {
+        font-size: 12px;
+        margin-top: 14px;
+      }
     }
 
     margin-bottom: 5rem;
@@ -160,6 +183,10 @@
   position: absolute;
   z-index: -1;
   left: -70px;
+
+  @media screen and (max-width: 820px) {
+    display: none;
+  }
 }
 
 .footerDivider {

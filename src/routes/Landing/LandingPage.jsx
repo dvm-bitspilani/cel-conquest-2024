@@ -36,7 +36,6 @@ const responsive = {
 
 // temporary function for now
 function handleClick(navigate) {
-
   // Track registration click event
   ReactGA.event({
     category: "Button Click",
@@ -73,7 +72,12 @@ const LandingPage = () => {
                 run by Center for Entrepreneurial Leadership, BITS Pilani.
               </div>
               <div className={styles.registerAndSignUp}>
-                <button className={styles.register} onClick={()=>{handleClick(navigate)}}>
+                <button
+                  className={styles.register}
+                  onClick={() => {
+                    handleClick(navigate);
+                  }}
+                >
                   Login
                 </button>
                 {/* <button className={styles.signUp}>Sign Up</button> */}
@@ -95,9 +99,14 @@ const LandingPage = () => {
           {timelineData.map((data, index) => {
             if (window.innerWidth > 820) {
               return <TimelineCard key={data.srno} {...data}></TimelineCard>;
-            }
-            else {
-              return <TimelineCard key={data.srno} {...data} index={index}></TimelineCard>;
+            } else {
+              return (
+                <TimelineCard
+                  key={data.srno}
+                  {...data}
+                  index={index}
+                ></TimelineCard>
+              );
             }
           })}
         </div>
