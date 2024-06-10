@@ -5,8 +5,10 @@ import Button from "./Button/Button";
 import demoAvatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
 
 import { useState } from "react";
+import Notifications from "../Notifications/Notifications";
 
 const Sidebar = () => {
+  const [isNotifVisible, setisNotifVisible] = useState(false);
   const bell = (
     <svg
       width="23"
@@ -63,119 +65,122 @@ const Sidebar = () => {
   };
 
   return (
-    <div className={styles.sidebar}>
-      <div className={styles.headerButtons}>
-        {back_arrow}
-        {bell}
-      </div>
-      <div className={styles.profileSection}>
-        <a href="/dashboard/startup-profile" className={styles.profileAvatar}>
-          <img src={demoAvatar} />
-        </a>
-        <p>Welcome back,</p>
-        <p>Madhur Jain</p>
-      </div>
-      <div className={styles.topButtons}>
-        <Button
-          text="Home"
-          active={activeButton === "Home"}
-          handleButtonClick={handleButtonClick}
-          link="/dashboard"
-        ></Button>
-        <Button
-          text="Meetings"
-          active={activeButton === "Meetings"}
-          handleButtonClick={handleButtonClick}
-          link="/dashboard/meetings"
-        ></Button>
-        <Button
-          text="Cohort of 2024"
-          active={activeButton === "Cohort of 2024"}
-          handleButtonClick={handleButtonClick}
-          link="/dashboard/startups"
-        ></Button>
-        <Button
-          text="Mentors"
-          active={activeButton === "Mentors"}
-          handleButtonClick={handleButtonClick}
-          link="/dashboard/mentors"
-        ></Button>
-        <Button
-          text="Experts"
-          active={activeButton === "Experts"}
-          handleButtonClick={handleButtonClick}
-          link="/dashboard/experts"
-        ></Button>
-        <Button
-          text="Investment Partners"
-          active={activeButton === "Investment Partners"}
-          handleButtonClick={handleButtonClick}
-        ></Button>
-      </div>
-      <div className={styles.bottomButtons}>
-        <Button
-          text="Contact Us"
-          active={activeButton === "Contact Us"}
-          handleButtonClick={handleButtonClick}
-        ></Button>
-        <Button
-          text="Forms"
-          active={activeButton === "Forms"}
-          handleButtonClick={handleButtonClick}
-        ></Button>
-        <Button
-          text="Connections"
-          active={activeButton === "Connections"}
-          handleButtonClick={handleButtonClick}
-          link="/dashboard/connections"
-        ></Button>
-        <Button
-          text="Conquest Info"
-          active={activeButton === "Conquest Info"}
-          handleButtonClick={handleButtonClick}
-        ></Button>
-        <Button
-          text="Developers"
-          active={activeButton === "Developers"}
-          handleButtonClick={handleButtonClick}
-        ></Button>
-      </div>
-      {/* <div className={styles.conquestLogo}>
+    <div className={styles.sidebarContainer}>
+      <Notifications isNotifVisible={isNotifVisible}></Notifications>
+      <div className={styles.sidebar}>
+        <div className={styles.headerButtons}>
+          {back_arrow}
+          {bell}
+        </div>
+        <div className={styles.profileSection}>
+          <a href="/dashboard/startup-profile" className={styles.profileAvatar}>
+            <img src={demoAvatar} />
+          </a>
+          <p>Welcome back,</p>
+          <p>Madhur Jain</p>
+        </div>
+        <div className={styles.topButtons}>
+          <Button
+            text="Home"
+            active={activeButton === "Home"}
+            handleButtonClick={handleButtonClick}
+            link="/dashboard"
+          ></Button>
+          <Button
+            text="Meetings"
+            active={activeButton === "Meetings"}
+            handleButtonClick={handleButtonClick}
+            link="/dashboard/meetings"
+          ></Button>
+          <Button
+            text="Cohort of 2024"
+            active={activeButton === "Cohort of 2024"}
+            handleButtonClick={handleButtonClick}
+            link="/dashboard/startups"
+          ></Button>
+          <Button
+            text="Mentors"
+            active={activeButton === "Mentors"}
+            handleButtonClick={handleButtonClick}
+            link="/dashboard/mentors"
+          ></Button>
+          <Button
+            text="Experts"
+            active={activeButton === "Experts"}
+            handleButtonClick={handleButtonClick}
+            link="/dashboard/experts"
+          ></Button>
+          <Button
+            text="Investment Partners"
+            active={activeButton === "Investment Partners"}
+            handleButtonClick={handleButtonClick}
+          ></Button>
+        </div>
+        <div className={styles.bottomButtons}>
+          <Button
+            text="Contact Us"
+            active={activeButton === "Contact Us"}
+            handleButtonClick={handleButtonClick}
+          ></Button>
+          <Button
+            text="Forms"
+            active={activeButton === "Forms"}
+            handleButtonClick={handleButtonClick}
+          ></Button>
+          <Button
+            text="Connections"
+            active={activeButton === "Connections"}
+            handleButtonClick={handleButtonClick}
+            link="/dashboard/connections"
+          ></Button>
+          <Button
+            text="Conquest Info"
+            active={activeButton === "Conquest Info"}
+            handleButtonClick={handleButtonClick}
+          ></Button>
+          <Button
+            text="Developers"
+            active={activeButton === "Developers"}
+            handleButtonClick={handleButtonClick}
+          ></Button>
+        </div>
+        {/* <div className={styles.conquestLogo}>
         <img height={50} width={53} src={dashboard_mountain_circle} />
       </div> */}
 
-      <a className={styles.madeWithContainer} href="https://bits-dvm.org/">
-        <div className={styles.madeWithSomething}>
-          <span className={styles.madeWithText}>Made with</span>
-          <span className={styles.heart}>
-            <svg
-              width="19"
-              height="16"
-              viewBox="0 0 19 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clipPath="url(#clip0_1783_3207)">
-                <path
-                  d="M9.40262 15.0857L8.26729 14.0413C4.23491 10.3462 1.57275 7.90133 1.57275 4.9184C1.57275 2.47351 3.46758 0.56665 5.87918 0.56665C7.24157 0.56665 8.54916 1.20755 9.40262 2.2124C10.2561 1.20755 11.5637 0.56665 12.9261 0.56665C15.3377 0.56665 17.2325 2.47351 17.2325 4.9184C17.2325 7.90133 14.5703 10.3462 10.5379 14.0413L9.40262 15.0857Z"
-                  fill="#FB723D"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_1783_3207">
-                  <rect
-                    width="18.7917"
-                    height="15.0333"
-                    fill="white"
-                    transform="translate(0.00683594 0.56665)"
+        <a className={styles.madeWithContainer} href="https://bits-dvm.org/">
+          <div className={styles.madeWithSomething}>
+            <span className={styles.madeWithText}>Made with</span>
+            <span className={styles.heart}>
+              <svg
+                width="19"
+                height="16"
+                viewBox="0 0 19 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clipPath="url(#clip0_1783_3207)">
+                  <path
+                    d="M9.40262 15.0857L8.26729 14.0413C4.23491 10.3462 1.57275 7.90133 1.57275 4.9184C1.57275 2.47351 3.46758 0.56665 5.87918 0.56665C7.24157 0.56665 8.54916 1.20755 9.40262 2.2124C10.2561 1.20755 11.5637 0.56665 12.9261 0.56665C15.3377 0.56665 17.2325 2.47351 17.2325 4.9184C17.2325 7.90133 14.5703 10.3462 10.5379 14.0413L9.40262 15.0857Z"
+                    fill="#FB723D"
                   />
-                </clipPath>
-              </defs>
-            </svg>
-          </span>
-          <span className={styles.madeWithText}>by DVM</span>
-        </div>
-      </a>
+                </g>
+                <defs>
+                  <clipPath id="clip0_1783_3207">
+                    <rect
+                      width="18.7917"
+                      height="15.0333"
+                      fill="white"
+                      transform="translate(0.00683594 0.56665)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            </span>
+            <span className={styles.madeWithText}>by DVM</span>
+          </div>
+        </a>
+      </div>
     </div>
   );
 };

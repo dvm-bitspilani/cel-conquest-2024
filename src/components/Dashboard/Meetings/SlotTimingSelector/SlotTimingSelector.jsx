@@ -343,6 +343,8 @@ const SlotTimingSelector = ({
         }
       )
       .then(function (response) {
+        changeRequestSent();
+
         console.log(response);
       })
       .catch(function (error) {
@@ -461,7 +463,6 @@ const SlotTimingSelector = ({
             onClick={() => {
               createSlot(dateTime);
               removeModal();
-              changeRequestSent();
             }}
           >
             Select
