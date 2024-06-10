@@ -9,6 +9,11 @@ import { useState } from "react";
 import Notifications from "../Notifications/Notifications";
 
 const Sidebar = () => {
+  const userData = JSON.parse(
+    localStorage.getItem("userData")
+  ).user_profile_obj;
+  console.log(userData)
+
   const [isNotifVisible, setisNotifVisible] = useState(false);
   const bell = (
     <svg
@@ -72,16 +77,18 @@ const Sidebar = () => {
         <div className={styles.headerButtons}>
           {back_arrow}
           <div className={styles.rightButtons}>
-            <div className={styles.searchButton}><SearchButton></SearchButton></div>
+            <div className={styles.searchButton}>
+              <SearchButton></SearchButton>
+            </div>
             {bell}
-        </div>
+          </div>
         </div>
         <div className={styles.profileSection}>
           <a href="/dashboard/startup-profile" className={styles.profileAvatar}>
             <img src={demoAvatar} />
           </a>
           <p>Welcome back,</p>
-          <p>Madhur Jain</p>
+          <p>{userData.name}</p>
         </div>
         <div className={styles.topButtons}>
           <Button
