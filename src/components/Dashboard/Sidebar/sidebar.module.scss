@@ -73,6 +73,12 @@
   .headerButtons {
     display: flex;
     justify-content: space-between;
+
+    .rightButtons {
+      display: flex;
+      flex-direction: row;
+      gap: 35px;
+    }
   }
 
   .topButtons {
