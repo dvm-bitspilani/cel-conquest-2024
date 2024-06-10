@@ -1,6 +1,5 @@
 import styles from "./sidebar.module.scss";
 
-import dashboard_mountain_circle from "../../../assets/images/Dashboard/dashboard-mountain-circle.png";
 import Button from "./Button/Button";
 import demoAvatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
 
