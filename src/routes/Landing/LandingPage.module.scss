@@ -169,6 +169,11 @@
     margin-bottom: 80px;
     margin-top: 120px;
 
+    @media screen and (max-width: 820px) {
+      font-size: 23px;
+      margin-top: 0;
+      margin-bottom: 40px;
+    }
     span {
       color: #fb723d;
     }
@@ -182,6 +187,7 @@
 
     @media screen and (max-width: 820px) {
       margin: 0px -24px;
+      gap: 5px;
     }
 
     .investorCardUpperRow {
@@ -203,6 +209,11 @@
     margin-bottom: 80px;
     margin-top: 150px;
 
+    @media screen and (max-width: 820px) {
+      font-size: 23px;
+      margin-top: 64px;
+      margin-bottom: 35px;
+    }
     span {
       color: #fb723d;
     }
