@@ -63,7 +63,7 @@ export default function Form({ data, formClose }) {
             if (ident[0] === 'pref') {
                 const newAnswer = {
                     "id": parseInt(ident[1]),
-                    "preferences": obj[key] ? obj[key] : ''
+                    "preferences": obj[key]
                 }
                 prefResponse.push(newAnswer)
             }
