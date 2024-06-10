@@ -13,7 +13,7 @@ const Sidebar = () => {
   const userData = JSON.parse(
     localStorage.getItem("userData")
   ).user_profile_obj;
-  console.log(userData)
+  console.log(userData);
 
   const [isNotifVisible, setisNotifVisible] = useState(false);
   const [notifsData, setNotifsData] = useState([]);
@@ -114,7 +114,10 @@ const Sidebar = () => {
 
   return (
     <div className={styles.sidebarContainer}>
-      <Notifications isNotifVisible={isNotifVisible}></Notifications>
+      <Notifications
+        notifsData={notifsData}
+        isNotifVisible={isNotifVisible}
+      ></Notifications>
       <div className={styles.sidebar}>
         <div className={styles.headerButtons}>
           {back_arrow}
@@ -122,7 +125,7 @@ const Sidebar = () => {
             <div className={styles.searchButton}>
               <SearchButton></SearchButton>
             </div>
-            {bell}
+            <div>{bell}</div>
           </div>
         </div>
         <div className={styles.profileSection}>
