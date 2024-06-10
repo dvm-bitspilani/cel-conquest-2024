@@ -141,7 +141,8 @@ const Sidebar = () => {
           <a href="/dashboard/startup-profile" className={styles.profileAvatar}>
             <img src={demoAvatar} />
           </a>
-          <p>Welcome back,</p>
+          {/* <p>Welcome back,</p> */}
+          <p></p>
           <p>{userData.name}</p>
         </div>
         <div className={styles.topButtons}>
