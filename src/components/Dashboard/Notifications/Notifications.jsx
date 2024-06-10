@@ -27,6 +27,20 @@ const cross = (
     />
   </svg>
 );
+const month = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
 function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
   console.log(1, notifsData);
@@ -40,7 +54,7 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
       console.log("012345134");
       return (
         <>
-          <p key={index+"p"}>{date}</p>
+          <p key={index + "p"}>{month[time.getMonth()]} {date}, 2024</p>
           <NotificationsItem
             key={index}
             time={fullTime}
@@ -52,7 +66,7 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
 
     if (date !== time.getDate()) {
       date = time.getDate();
-      console.log("hello")
+      console.log("hello");
       return (
         <>
           <p>{date}</p>
