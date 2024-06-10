@@ -31,7 +31,7 @@ function Notifications() {
     <div className={styles.container}>
       <div className={styles.notifHeader}>
         <h3>Notifications</h3>
-        {cross}
+        <div className={styles.cross}>{cross}</div>
       </div>
       <div></div>
     </div>

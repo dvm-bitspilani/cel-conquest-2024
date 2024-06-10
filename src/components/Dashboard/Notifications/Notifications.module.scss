@@ -7,14 +7,21 @@
   border-radius: 16px;
   background: #fff;
   box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.16);
+  position: absolute;
+  z-index: 2;
 }
 .notifHeader {
   display: flex;
   justify-content: space-between;
   color: #000;
-font-family: Montserrat;
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;    
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  .cross {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

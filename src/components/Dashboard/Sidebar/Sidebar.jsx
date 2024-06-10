@@ -64,7 +64,7 @@ const Sidebar = () => {
   };
 
   return (
-    <>
+    <div className={styles.sidebarContainer}>
       <Notifications></Notifications>
       <div className={styles.sidebar}>
         <div className={styles.headerButtons}>
@@ -180,7 +180,7 @@ const Sidebar = () => {
           </div>
         </a>
       </div>
-    </>
+    </div>
   );
 };
 export default Sidebar;
