@@ -26,7 +26,7 @@ const cross = (
   </svg>
 );
 
-function Notifications({ isNotifVisible }) {
+function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
   return (
     <div
       style={{ display: isNotifVisible ? "flex" : "none" }}
@@ -34,7 +34,14 @@ function Notifications({ isNotifVisible }) {
     >
       <div className={styles.notifHeader}>
         <h3>Notifications</h3>
-        <div className={styles.cross}>{cross}</div>
+        <div
+          className={styles.cross}
+          onClick={() => {
+            setIsNotifVisible(!isNotifVisible);
+          }}
+        >
+          {cross}
+        </div>
       </div>
       <div></div>
     </div>

@@ -15,7 +15,7 @@ const Sidebar = () => {
   ).user_profile_obj;
   console.log(userData);
 
-  const [isNotifVisible, setisNotifVisible] = useState(false);
+  const [isNotifVisible, setIsNotifVisible] = useState(false);
   const [notifsData, setNotifsData] = useState([]);
   const bell = (
     <svg
@@ -117,6 +117,7 @@ const Sidebar = () => {
       <Notifications
         notifsData={notifsData}
         isNotifVisible={isNotifVisible}
+        setIsNotifVisible={setIsNotifVisible}
       ></Notifications>
       <div className={styles.sidebar}>
         <div className={styles.headerButtons}>
@@ -125,10 +126,15 @@ const Sidebar = () => {
             <div className={styles.searchButton}>
               <SearchButton></SearchButton>
             </div>
-            <div onClick={()=>{
-              setisNotifVisible(!isNotifVisible);
-              getNotifs();
-            }}>{bell}</div>
+            <div
+              className={styles.bell}
+              onClick={() => {
+                setIsNotifVisible(!isNotifVisible);
+                getNotifs();
+              }}
+            >
+              {bell}
+            </div>
           </div>
         </div>
         <div className={styles.profileSection}>
@@ -167,7 +173,7 @@ const Sidebar = () => {
             text="Experts"
             active={activeButton === "Experts"}
             handleButtonClick={handleButtonClick}
-            link="/dashboard/experts"
+            link="/dashboard/exrightperts"
           ></Button>
           <Button
             text="Investment Partners"
