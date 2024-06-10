@@ -8,9 +8,11 @@ import SearchButton from "./SearchButton/SearchButton";
 
 import { useState } from "react";
 import Notifications from "../Notifications/Notifications";
+import axios from "axios";
 
 const Sidebar = () => {
   const [isNotifVisible, setisNotifVisible] = useState(false);
+  const [notifsData, setNotifsData] = useState([]);
   const bell = (
     <svg
       width="23"
@@ -62,8 +64,48 @@ const Sidebar = () => {
   );
   const [activeButton, setActiveButton] = useState("Home");
 
+  const getNotifs = () => {
+    if (JSON.parse(localStorage.getItem("userData")).tokens) {
+      axios
+        .get(`https://conquest-api.bits-dvm.org/api/staff/notifications/`, {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          setNotifsData(res.data.notifications);
+
+          // const newArr = res.data.map((newItm) => {
+          //   return (
+          //     <MeetingItem
+          //       date={newItm.slot_start_time}
+          //       avatar={newItm.requested_logo}
+          //       mentorName={newItm.requested_name}
+          //       duration={45}
+          //       key={newItm.id}
+          //       data={newItm}
+          //       handleClick={handleClick}
+          //       dataRef={dataRef}
+          //     />
+          //   );
+          // });
+
+          // setListItms(newArr);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("error in fetching data");
+    }
+  };
+
   const handleButtonClick = (text) => {
     setActiveButton(text);
+    getNotifs();
   };
 
   return (
@@ -73,9 +115,11 @@ const Sidebar = () => {
         <div className={styles.headerButtons}>
           {back_arrow}
           <div className={styles.rightButtons}>
-            <div className={styles.searchButton}><SearchButton></SearchButton></div>
+            <div className={styles.searchButton}>
+              <SearchButton></SearchButton>
+            </div>
             {bell}
-        </div>
+          </div>
         </div>
         <div className={styles.profileSection}>
           <a href="/dashboard/startup-profile" className={styles.profileAvatar}>
