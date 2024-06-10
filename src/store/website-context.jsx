@@ -27,7 +27,7 @@ export default function WebContextProvider({ children }) {
         axios.post('https://conquest-api.bits-dvm.org/api/users/login/username/', credentials)
             .then((res) => {
                 console.log("In context")
-                console.log(res)
+                // console.log(res)
                 setUser(res.data.user_profile_obj)
                 localStorage.setItem("userData", JSON.stringify(res.data))
                 setIsUserLoginBtnDisabled(false)
@@ -70,7 +70,7 @@ export default function WebContextProvider({ children }) {
                 access_token: response.access_token
             }).then((res) => {
                 try {
-                    console.log(res.data)
+                    // console.log(res.data)
                     setUser(res.data.user_profile_obj)
                     localStorage.setItem("userData", JSON.stringify(res.data))
                 }

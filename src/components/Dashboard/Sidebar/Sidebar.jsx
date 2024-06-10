@@ -7,6 +7,7 @@ import SearchButton from "./SearchButton/SearchButton";
 
 import { useState } from "react";
 import Notifications from "../Notifications/Notifications";
+import axios from "axios";
 
 const Sidebar = () => {
   const userData = JSON.parse(
@@ -15,6 +16,7 @@ const Sidebar = () => {
   console.log(userData)
 
   const [isNotifVisible, setisNotifVisible] = useState(false);
+  const [notifsData, setNotifsData] = useState([]);
   const bell = (
     <svg
       width="23"
@@ -66,8 +68,48 @@ const Sidebar = () => {
   );
   const [activeButton, setActiveButton] = useState("Home");
 
+  const getNotifs = () => {
+    if (JSON.parse(localStorage.getItem("userData")).tokens) {
+      axios
+        .get(`https://conquest-api.bits-dvm.org/api/staff/notifications/`, {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          setNotifsData(res.data.notifications);
+
+          // const newArr = res.data.map((newItm) => {
+          //   return (
+          //     <MeetingItem
+          //       date={newItm.slot_start_time}
+          //       avatar={newItm.requested_logo}
+          //       mentorName={newItm.requested_name}
+          //       duration={45}
+          //       key={newItm.id}
+          //       data={newItm}
+          //       handleClick={handleClick}
+          //       dataRef={dataRef}
+          //     />
+          //   );
+          // });
+
+          // setListItms(newArr);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("error in fetching data");
+    }
+  };
+
   const handleButtonClick = (text) => {
     setActiveButton(text);
+    getNotifs();
   };
 
   return (
