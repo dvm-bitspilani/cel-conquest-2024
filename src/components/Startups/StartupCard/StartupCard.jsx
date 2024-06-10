@@ -6,7 +6,7 @@ export default function StartupCard({ img, name, tags, id }) {
   const tagsArray = tags.split(",");
   return (
     <Link
-      to={`/dashboard/startup-profile/?id=${id}`}
+      to={`/dashboard/startup-profile/${id}`}
       style={{ textDecoration: "none", color: "unset" }}
     >
       <div className={styles.cardContainer}>

@@ -51,7 +51,10 @@ function App() {
           <Route path="meetings" element={<Meetings />}></Route>
           <Route path="startups" element={<Startups />}></Route>
           <Route path="experts" element={<Experts />}></Route>
-          <Route path="startup-profile" element={<StartupProfile />}></Route>
+          <Route
+            path="startup-profile/:id"
+            element={<StartupProfile />}
+          ></Route>
           <Route path="mentors" element={<Mentors />}></Route>
           <Route path="connections" element={<Connections />}></Route>
           <Route path="forms" element={<Forms />}></Route>
