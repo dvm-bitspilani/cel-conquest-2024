@@ -12,6 +12,7 @@ export default function FileUpload({ name, heading, manualValue }) {
         reader.readAsDataURL(acceptedFiles[0])
         reader.onload = () => {
             manualValue(name, reader.result)
+            console.log(reader.result)
         }
     }, [])
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
