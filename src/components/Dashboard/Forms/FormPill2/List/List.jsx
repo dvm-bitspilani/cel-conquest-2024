@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import axios from 'axios';
 
 import FormPillItem2 from '../Item/Item'
@@ -7,6 +7,7 @@ import FormModal from '../../FormModal/FormModal';
 import styles from './list.module.scss'
 
 import avatar from '../../../../../assets/images/Dashboard/demoAvatar.jpeg'
+import { WebContext } from '../../../../../store/website-context';
 const DUMMY_FORM_LIST = [
     {
         id: 1,
@@ -132,6 +133,7 @@ const DUMMY_QUESTIONS = {
 }
 
 export default function FormPillList2() {
+    const { formListRerender } = useContext(WebContext)
     const [formsList, setFormsList] = useState([])
     const [modalData, setModalData] = useState({
         form_name: "",
@@ -199,7 +201,7 @@ export default function FormPillList2() {
             .catch(err => {
                 console.log(err)
             })
-    }, [JSON.parse(localStorage.getItem('userData')).tokens.access])
+    }, [JSON.parse(localStorage.getItem('userData')).tokens.access, formListRerender])
 
     return (
         <>

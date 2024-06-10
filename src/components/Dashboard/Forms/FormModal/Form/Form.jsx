@@ -1,5 +1,8 @@
+import { useContext } from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
+
+import { WebContext } from '../../../../../store/website-context';
 
 import TextInput2 from '../Inputs/Text/TextInput'
 import Score from '../Inputs/Score/Score'
@@ -9,6 +12,7 @@ import Preference from '../Inputs/Preference/Preference';
 import styles from './form.module.scss'
 
 export default function Form({ data, formClose }) {
+    const { setFormListRerender } = useContext(WebContext)
     const initialValues = {}
     const subjQuestions = []
     const prefQuestions = []
@@ -99,9 +103,12 @@ export default function Form({ data, formClose }) {
             })
                 .then(res => {
                     console.log(res)
+                    alert('Form submitted successfully!')
+                    setFormListRerender(Math.random())
                 })
                 .catch(err => {
                     console.log(err)
+                    alert(`Error submitting form - ${err}`)
                 })
             // console.log(values)
             // console.log(response)
