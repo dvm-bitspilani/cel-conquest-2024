@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Notifications.module.scss";
+import NotificationsItem from "./NotificationsItem/NotificationsItem";
 
 const cross = (
   <svg
@@ -43,7 +44,11 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
           {cross}
         </div>
       </div>
-      <div></div>
+      <div className={styles.notifcont}>
+        <NotificationsItem />
+        <NotificationsItem />
+        
+      </div>
     </div>
   );
 }
