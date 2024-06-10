@@ -28,7 +28,7 @@ const cross = (
 );
 
 function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
-  console.log(1, notifsData)
+  console.log(1, notifsData);
   return (
     <div
       style={{ display: isNotifVisible ? "flex" : "none" }}
@@ -45,11 +45,8 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
           {cross}
         </div>
       </div>
-      <div className={styles.notifcont}>
-        <NotificationsItem />
-        <NotificationsItem />
-        
-      </div>
+      <NotificationsItem />
+      <NotificationsItem />
     </div>
   );
 }
