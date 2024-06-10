@@ -4,10 +4,10 @@ import styles from "./NotificationsItem.module.scss";
 function NotificationsItem({time, message}) {
   return (
     <div className={styles.container}>
-      <div className={styles.time}>10:00</div>
+      <div className={styles.time}>{time}</div>
       <div className={styles.divider}></div>
       <div className={styles.message}>
-        You have an upcoming meeting in 3 more days with Mr. Goswami
+        {message}
       </div>
     </div>
   );
