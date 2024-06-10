@@ -125,7 +125,10 @@ const Sidebar = () => {
             <div className={styles.searchButton}>
               <SearchButton></SearchButton>
             </div>
-            <div>{bell}</div>
+            <div onClick={()=>{
+              setisNotifVisible(!isNotifVisible);
+              getNotifs();
+            }}>{bell}</div>
           </div>
         </div>
         <div className={styles.profileSection}>
