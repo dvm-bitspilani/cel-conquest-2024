@@ -12,7 +12,7 @@ export default function Preference({ options, name, manualValue, heading }) {
             return (
                 {
                     id: answer.id,
-                    position: items.indexOf(answer)
+                    position: items.indexOf(answer) + 1
                 }
             )
         })
