@@ -29,7 +29,6 @@ export default function SearchButton() {
         )
 
         .then((res) => {
-          console.log(res.data);
           setSearchResults(res.data.user_profiles);
         })
         .catch((err) => {
@@ -55,22 +54,18 @@ export default function SearchButton() {
     };
   }, []);
 
-  useEffect(() => {
+ useEffect(() => {
     const filteredResults = searchResults
       ? searchResults.filter((profile) => {
-          if (searchTerm) {
-            if (
-              profile.name
-                .trim()
-                .toLowerCase()
-                .includes(searchTerm.toLowerCase())
-            ) {
-              return true;
-            }
-            return false;
-          }
-          return true;
-        })
+        if (searchTerm) {
+          const lowercasedTerm = searchTerm.trim().toLowerCase();
+          const nameMatches = profile.name.trim().toLowerCase().includes(lowercasedTerm);
+          const roleMatches = profile.role.trim().toLowerCase().includes(lowercasedTerm);
+
+          return nameMatches || roleMatches;
+        }
+        return true;
+      })
       : [];
 
     setFilteredResults(filteredResults);
@@ -162,17 +157,19 @@ export default function SearchButton() {
             <div className={styles.searchResult}>
               {filteredResults.map((searchProfile) => (
                 <div className={styles.show} key={searchProfile.id}>
-                  <img
-                    src={searchProfile.profile_logo}
-                    alt={searchProfile.name}
-                  ></img>
+                  <div className={styles.imageContainer}>
+                    <img
+                      src={searchProfile.profile_logo}
+                      alt={searchProfile.name}
+                    ></img>
+                  </div>
                   <div className={styles.details}>
                     <div className={styles.companyName}>
-                      {searchProfile.company_name}
+                      {searchProfile.role}
                     </div>
                     <div className={styles.name}>{searchProfile.name}</div>
                     <div className={styles.desc}>
-                      {searchProfile.description}
+                      {searchProfile.designation}
                     </div>
                   </div>
                 </div>
