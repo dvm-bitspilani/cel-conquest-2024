@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+  .time {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    width: 90px;
+    color: #111213;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; /* 24px */
+  }
+  .divider {
+    width: 3px;
+    background-color: #FB723D;;
+    min-height: 58px;
+  }
+  .message {
+    padding: 8px 0px;
+    padding-left: 16px;
+    width: 400px;
+    color: #000;
+    font-family: Montserrat;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+  }
+}

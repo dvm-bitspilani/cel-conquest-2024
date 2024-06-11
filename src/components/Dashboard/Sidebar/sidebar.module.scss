@@ -77,7 +77,12 @@
     .rightButtons {
       display: flex;
       flex-direction: row;
-      gap: 35px;
+      gap: 15px;
+      .bell {
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
   }
 
