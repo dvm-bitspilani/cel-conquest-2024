@@ -30,7 +30,7 @@ button {
 
 .searchContainer {
     position: absolute;
-    z-index: 2;
+    z-index: 30;
     left: calc(100% - 60px);
     top: 70px;
     background-color: #fff;
@@ -202,7 +202,6 @@ button {
     .searchContainer {
         left: calc(25% - 5vw);
         top: 70px;
-        z-index: 30;
 
         .searchBar {
             svg {
@@ -246,7 +245,7 @@ button {
         border-radius: 0;
         box-shadow: none;
         padding: 30px 30px 35px 30px;
-        z-index: 1000;
+        // z-index: 1000;
 
         .searchBar {
             height: 40px;
