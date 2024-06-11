@@ -1,6 +1,5 @@
 import styles from "./sidebar.module.scss";
 
-import dashboard_mountain_circle from "../../../assets/images/Dashboard/dashboard-mountain-circle.png";
 import Button from "./Button/Button";
 import demoAvatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
 
@@ -8,9 +7,16 @@ import SearchButton from "./SearchButton/SearchButton";
 
 import { useState } from "react";
 import Notifications from "../Notifications/Notifications";
+import axios from "axios";
 
 const Sidebar = () => {
-  const [isNotifVisible, setisNotifVisible] = useState(false);
+  const userData = JSON.parse(
+    localStorage.getItem("userData")
+  ).user_profile_obj;
+  console.log(userData);
+
+  const [isNotifVisible, setIsNotifVisible] = useState(false);
+  const [notifsData, setNotifsData] = useState([]);
   const bell = (
     <svg
       width="23"
@@ -62,27 +68,82 @@ const Sidebar = () => {
   );
   const [activeButton, setActiveButton] = useState("Home");
 
+  const getNotifs = () => {
+    if (JSON.parse(localStorage.getItem("userData")).tokens) {
+      axios
+        .get(`https://conquest-api.bits-dvm.org/api/staff/notifications/`, {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          setNotifsData(res.data.notifications);
+
+          // const newArr = res.data.map((newItm) => {
+          //   return (
+          //     <MeetingItem
+          //       date={newItm.slot_start_time}
+          //       avatar={newItm.requested_logo}
+          //       mentorName={newItm.requested_name}
+          //       duration={45}
+          //       key={newItm.id}
+          //       data={newItm}
+          //       handleClick={handleClick}
+          //       dataRef={dataRef}
+          //     />
+          //   );
+          // });
+
+          // setListItms(newArr);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("error in fetching data");
+    }
+  };
+
   const handleButtonClick = (text) => {
     setActiveButton(text);
+    getNotifs();
   };
 
   return (
     <div className={styles.sidebarContainer}>
-      <Notifications isNotifVisible={isNotifVisible}></Notifications>
+      <Notifications
+        notifsData={notifsData}
+        isNotifVisible={isNotifVisible}
+        setIsNotifVisible={setIsNotifVisible}
+      ></Notifications>
       <div className={styles.sidebar}>
         <div className={styles.headerButtons}>
           {back_arrow}
           <div className={styles.rightButtons}>
-            <div className={styles.searchButton}><SearchButton></SearchButton></div>
-            {bell}
-        </div>
+            <div className={styles.searchButton}>
+              <SearchButton></SearchButton>
+            </div>
+            <div
+              className={styles.bell}
+              onClick={() => {
+                setIsNotifVisible(!isNotifVisible);
+                getNotifs();
+              }}
+            >
+              {bell}
+            </div>
+          </div>
         </div>
         <div className={styles.profileSection}>
           <a href="/dashboard/startup-profile" className={styles.profileAvatar}>
             <img src={demoAvatar} />
           </a>
-          <p>Welcome back,</p>
-          <p>Madhur Jain</p>
+          {/* <p>Welcome back,</p> */}
+          <p></p>
+          <p>{userData.name}</p>
         </div>
         <div className={styles.topButtons}>
           <Button
@@ -113,7 +174,7 @@ const Sidebar = () => {
             text="Experts"
             active={activeButton === "Experts"}
             handleButtonClick={handleButtonClick}
-            link="/dashboard/experts"
+            link="/dashboard/exrightperts"
           ></Button>
           <Button
             text="Investment Partners"

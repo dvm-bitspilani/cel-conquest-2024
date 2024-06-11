@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import axios from 'axios';
 
 import FormPillItem from '../FormPillItem/FormPillItem';
@@ -7,6 +7,7 @@ import FormModal from '../../../../components/Dashboard/Forms/FormModal/FormModa
 import styles from './pillList.module.scss'
 
 import avatar from '../../../../assets/images/Dashboard/demoAvatar.jpeg'
+import { WebContext } from '../../../../store/website-context';
 
 const DUMMY_FORM_LIST = [
     {
@@ -72,6 +73,7 @@ const DUMMY_QUESTIONS = {
 }
 
 export default function FormPillList() {
+    const { formListRerender } = useContext(WebContext)
     const [formsList, setFormsList] = useState([])
     const [modalData, setModalData] = useState({
         form_name: "",
@@ -84,20 +86,20 @@ export default function FormPillList() {
     const formModal = useRef(null)
 
     function formOpenHandler(formId) {
-        // axios.get(`https://conquest-api.bits-dvm.org/api/forms/${formId}/questions/`, {
-        //     headers: {
-        //         Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
-        //     }
-        // })
-        //     .then(res => {
-        //         setModalData(res.data)
-        //         formModal.current.openForm()
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
-        setModalData(DUMMY_QUESTIONS)
-        formModal.current.openForm()
+        axios.get(`https://conquest-api.bits-dvm.org/api/forms/${formId}/questions/`, {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
+            }
+        })
+            .then(res => {
+                setModalData(res.data)
+                formModal.current.openForm()
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        // setModalData(DUMMY_QUESTIONS)
+        // formModal.current.openForm()
     }
 
     useEffect(() => {
@@ -107,7 +109,7 @@ export default function FormPillList() {
             }
         })
             .then(res => {
-                console.log(res)
+                // console.log(res)
 
                 const temp = res.data.reverse().map(form => {
                     return (
@@ -132,7 +134,7 @@ export default function FormPillList() {
             .catch(err => {
                 console.log(err)
             })
-    }, [JSON.parse(localStorage.getItem('userData')).tokens.access])
+    }, [JSON.parse(localStorage.getItem('userData')).tokens.access, formListRerender])
 
     return (
         <>

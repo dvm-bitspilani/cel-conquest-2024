@@ -11,15 +11,30 @@
     }
 
     .input {
-        aspect-ratio: 850 / 45;
         border-radius: 8px;
         border: 1px solid #BFBFBF;
         background: #FFF;
         width: 100%;
-        padding: 0px 10px;
+        overflow-y: auto;
+        resize: none;
+
 
         &:focus {
             outline: none;
+        }
+
+        &.link {
+            aspect-ratio: 850 / 45;
+            padding: 0px 10px;
+        }
+
+        &.long {
+            height: 163px;
+            padding: 10px;
+
+            @media screen and (max-width: 820px) {
+                height: 200px;
+            }
         }
     }
 }

@@ -7,6 +7,8 @@ export const WebContext = createContext({
     user: {},
     isUserLoginBtnDisabled: false,
     loginErrorMessage: null,
+    formListRerender: 0,
+    setFormListRerender: () => { },
     setLoginErrorMessage: () => { },
     setUser: () => { },
     glogin: () => { },
@@ -21,13 +23,14 @@ export default function WebContextProvider({ children }) {
     const [user, setUser] = useState(null);
     const [isUserLoginBtnDisabled, setIsUserLoginBtnDisabled] = useState(false);
     const [loginErrorMessage, setLoginErrorMessage] = useState(null);
+    const [formListRerender, setFormListRerender] = useState(Math.random())
 
     const usernameLogin = (credentials) => {
         setIsUserLoginBtnDisabled(true)
         axios.post('https://conquest-api.bits-dvm.org/api/users/login/username/', credentials)
             .then((res) => {
                 console.log("In context")
-                console.log(res)
+                // console.log(res)
                 setUser(res.data.user_profile_obj)
                 localStorage.setItem("userData", JSON.stringify(res.data))
                 setIsUserLoginBtnDisabled(false)
@@ -70,7 +73,7 @@ export default function WebContextProvider({ children }) {
                 access_token: response.access_token
             }).then((res) => {
                 try {
-                    console.log(res.data)
+                    // console.log(res.data)
                     setUser(res.data.user_profile_obj)
                     localStorage.setItem("userData", JSON.stringify(res.data))
                 }
@@ -101,6 +104,8 @@ export default function WebContextProvider({ children }) {
         user,
         isUserLoginBtnDisabled,
         loginErrorMessage,
+        formListRerender,
+        setFormListRerender,
         setLoginErrorMessage,
         setUser,
         glogin,
