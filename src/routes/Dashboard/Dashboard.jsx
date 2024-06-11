@@ -5,7 +5,7 @@ import Sidebar from "../../components/Dashboard/Sidebar/Sidebar";
 import { useRef, useState } from "react";
 import { Drawer, ConfigProvider } from "antd";
 import MobileMenu from "../../components/Dashboard/Sidebar/MobileMenu/MobileMenu";
-
+import SearchButton from "../../components/Dashboard/Sidebar/SearchButton/SearchButton";
 
 
 const Dashboard = () => {
@@ -28,6 +28,9 @@ const Dashboard = () => {
           <h2>Madhur Jain</h2>
         </div>
         <section className={styles.hamMenu}>
+          <div className={styles.searchButton}>
+            <SearchButton></SearchButton>
+          </div>
           <div
             className={styles.hamIcon}
             ref={hamMenuIcon}

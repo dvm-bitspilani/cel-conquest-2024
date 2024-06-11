@@ -84,8 +84,10 @@
     }
 
     @media screen and (max-width: 820px) {
-      display: block;
+      display: flex;
       height: 12px;
+      align-items: center;
+      gap: 40px;
     }
   }
 }
