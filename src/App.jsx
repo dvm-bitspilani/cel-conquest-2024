@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import axios from "axios";
 
 import RequireAuth from "./routes/RequireAuth/RequireAuth";
 
@@ -24,8 +25,7 @@ ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment var
 
 function App() {
   // tracking page views
-  const { setUser, getUserData } = useContext(WebContext);
-  const userData = getUserData();
+  const { setUser, getUserData, tokenRefreshFunction } = useContext(WebContext);
   // const location = useLocation();
   useEffect(() => {
     console.log(window.location.pathname + window.location.search); // for debugging
@@ -35,6 +35,36 @@ function App() {
       title: "Custom Title",
     });
 
+    if (localStorage.getItem("lastSessionCall") && localStorage.getItem("tokens")) {
+      if (Date.now() > JSON.parse(localStorage.getItem("tokens")).refresh_token_lifetime) {
+        setUser(null);
+        if (localStorage.getItem("userData")) {
+          localStorage.removeItem("userData");
+        }
+      }
+      else if (Date.now() > JSON.parse(localStorage.getItem("tokens")).access_token_lifetime) {
+        tokenRefreshFunction()
+      }
+      else {
+        setTimeout(() => {
+          axios.post('https://conquest-api.bits-dvm.org/api/users/token/refresh/', {
+            refresh: JSON.parse(localStorage.getItem("tokens")).refresh
+          })
+            .then(res => {
+              localStorage.setItem("tokens", JSON.stringify(res.data))
+              const newUserData = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : null;
+              localStorage.setItem("lastSessionCall", `${Date.now()}`)
+              newUserData ?? localStorage.setItem("userData", JSON.stringify({ ...newUserData, tokens: res.data }));
+            })
+            .catch(err => {
+              console.log(err)
+            })
+          tokenRefreshFunction()
+        }, JSON.parse(localStorage.getItem("tokens")).access_token_lifetime - (Date.now() - parseInt(localStorage.getItem("lastSessionCall"))))
+      }
+    }
+
+    const userData = getUserData();
     if (userData) {
       setUser(userData);
     }
