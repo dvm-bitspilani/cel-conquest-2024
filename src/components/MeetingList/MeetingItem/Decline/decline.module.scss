@@ -2,4 +2,9 @@
     color: #EC2C2C;
     cursor: pointer;
     font-size: 1em;
+
+    &.loading {
+        filter: grayscale(1);
+        cursor: not-allowed;
+    }
 }

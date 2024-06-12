@@ -1,9 +1,12 @@
+import { useState } from 'react'
 import axios from 'axios'
 
 import styles from './decline.module.scss'
 
 export default function DeclineMeet({ meetData }) {
+    const [isLoading, setIsLoading] = useState(false)
     function clickHandler(e) {
+        setIsLoading(true)
         axios.patch(`https://conquest-api.bits-dvm.org/api/meetings/requests/${meetData.id}/`, {
             status: "rejected",
             slot: meetData.slot
@@ -18,10 +21,13 @@ export default function DeclineMeet({ meetData }) {
             })
             .catch(err => {
                 console.log(err)
+                setIsLoading(false)
             })
     }
 
     return (
-        <p className={styles.decline} onClick={clickHandler}>Reject</p>
+        <>
+            {isLoading ? <p className={`${styles.decline} ${styles.loading}`}>Reject</p> : <p className={styles.decline} onClick={clickHandler}>Reject</p>}
+        </>
     )
 }
