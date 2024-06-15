@@ -35,32 +35,23 @@ function App() {
       title: "Custom Title",
     });
 
-    if (localStorage.getItem("lastSessionCall") && localStorage.getItem("tokens")) {
-      if (Date.now() > JSON.parse(localStorage.getItem("tokens")).refresh_token_lifetime) {
-        setUser(null);
-        if (localStorage.getItem("userData")) {
-          localStorage.removeItem("userData");
+    if (localStorage.getItem("userData")) {
+      console.log('reload')
+      try {
+        if (localStorage.getItem('lastSessionCall') && (Date.now() - parseInt(localStorage.getItem('lastSessionCall')) > 10800000)) {
+          tokenRefreshFunction()
+        }
+        else if (localStorage.getItem('lastSessionCall') && (Date.now() - parseInt(localStorage.getItem('lastSessionCall')) <= 10800000)) {
+          console.log('timeout set')
+          const elapsedTime = Date.now() - parseInt(localStorage.getItem('lastSessionCall'))
+          setTimeout(() => {
+            console.log('timeout')
+            tokenRefreshFunction()
+          }, 10800000 - elapsedTime)
         }
       }
-      else if (Date.now() > JSON.parse(localStorage.getItem("tokens")).access_token_lifetime) {
-        tokenRefreshFunction()
-      }
-      else {
-        setTimeout(() => {
-          axios.post('https://conquest-api.bits-dvm.org/api/users/token/refresh/', {
-            refresh: JSON.parse(localStorage.getItem("tokens")).refresh
-          })
-            .then(res => {
-              localStorage.setItem("tokens", JSON.stringify(res.data))
-              const newUserData = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : null;
-              localStorage.setItem("lastSessionCall", `${Date.now()}`)
-              newUserData ?? localStorage.setItem("userData", JSON.stringify({ ...newUserData, tokens: res.data }));
-            })
-            .catch(err => {
-              console.log(err)
-            })
-          tokenRefreshFunction()
-        }, JSON.parse(localStorage.getItem("tokens")).access_token_lifetime - (Date.now() - parseInt(localStorage.getItem("lastSessionCall"))))
+      catch (err) {
+        console.log(err)
       }
     }
 
