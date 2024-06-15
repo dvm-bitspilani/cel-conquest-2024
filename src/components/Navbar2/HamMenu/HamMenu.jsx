@@ -13,7 +13,7 @@ export default function HamMenu() {
             label: 'Network',
             children: [
                 {
-                    key: '/sponsors',
+                    key: '/sponsors-and-partners',
                     label: 'Sponsors'
                 },
                 {
@@ -21,7 +21,7 @@ export default function HamMenu() {
                     label: 'Partners'
                 },
                 {
-                    key: '/jury',
+                    key: '/angels-jury',
                     label: 'Jury'
                 },
                 {
@@ -35,19 +35,19 @@ export default function HamMenu() {
             label: 'Alumni'
         },
         {
-            key: '/mediapresence',
+            key: '/news',
             label: 'Media Presence'
         },
         {
-            key: '/about',
+            key: '/aboutUs',
             label: 'About Us',
             children: [
                 {
-                    key: '/team',
+                    key: '/about',
                     label: 'Team'
                 },
                 {
-                    key: '/faq',
+                    key: '/faqs',
                     label: 'FAQs'
                 }
             ]
@@ -55,7 +55,10 @@ export default function HamMenu() {
     ]
 
     function onClick(e) {
-        navigate(e.key)
+        // navigate(e.key)
+        if (e.key !== '/network' && e.key !== '/aboutUs') {
+            window.open(`https://www.conquest.org.in${e.key}`, '_self')
+        }
     }
 
     return (

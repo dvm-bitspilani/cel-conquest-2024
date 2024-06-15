@@ -48,16 +48,16 @@ const FooterBody = () => {
                 <span>Quick Links</span>
               </li>
               <li>
-                <a href="">Alumni</a>
+                <a href="https://www.conquest.org.in/alumni">Alumni</a>
               </li>
               <li>
-                <a href="">Sponsors</a>
+                <a href="https://www.conquest.org.in/sponsors-and-partners">Sponsors</a>
               </li>
               <li>
-                <a href="">Resource partners</a>
+                <a href="https://www.conquest.org.in/partners">Resource partners</a>
               </li>
               <li>
-                <a href="">Mentors</a>
+                <a href="https://www.conquest.org.in/mentors">Mentors</a>
               </li>
             </ul>
           </div>
@@ -67,16 +67,16 @@ const FooterBody = () => {
                 <span>Learn more</span>
               </li>
               <li>
-                <a href="">About us</a>
+                <a href="https://www.conquest.org.in/about">About us</a>
               </li>
               <li>
-                <a href="">Our progress</a>
+                <a href="https://www.conquest.org.in/process">Our progress</a>
               </li>
               <li>
                 <a href="">Register</a>
               </li>
               <li>
-                <a href="">Privacy Policy</a>
+                <a href="https://www.conquest.org.in/privacy">Privacy Policy</a>
               </li>
             </ul>
           </div>
