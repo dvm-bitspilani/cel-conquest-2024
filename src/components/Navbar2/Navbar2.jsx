@@ -85,7 +85,7 @@ export default function Navbar2() {
   const items = [
     {
       label: "Sponsors",
-      key: "/sponsors",
+      key: "/sponsors-and-partners",
     },
     {
       label: "Partners",
@@ -93,7 +93,7 @@ export default function Navbar2() {
     },
     {
       label: "Jury",
-      key: "/jury",
+      key: "/angels-jury",
     },
     {
       label: "Mentors",
@@ -104,16 +104,18 @@ export default function Navbar2() {
   const items2 = [
     {
       label: "Team",
-      key: "/team",
+      key: "/about",
     },
     {
       label: "FAQs",
-      key: "/faq",
+      key: "/faqs",
     },
   ];
 
   const onClick = ({ key }) => {
-    navigate(key);
+    // navigate(key);
+    window.open(`https://www.conquest.org.in${key}`, '_self')
+    console.log(key);
   };
 
   function hamOpenHandler() {
@@ -133,12 +135,12 @@ export default function Navbar2() {
               items,
               onClick,
             }}
-            // trigger={['click']}
+          // trigger={['click']}
           >
             <a
               onClick={(e) => {
                 e.preventDefault();
-                navigate("/network");
+                // navigate("/network");
               }}
               className={styles.mainLink}
             >
@@ -165,7 +167,8 @@ export default function Navbar2() {
           <a
             onClick={(e) => {
               e.preventDefault();
-              navigate("/alumni");
+              // navigate("/alumni");
+              window.open('https://www.conquest.org.in/alumni', '_self')
             }}
             className={styles.mainLink}
           >
@@ -176,7 +179,8 @@ export default function Navbar2() {
           <a
             onClick={(e) => {
               e.preventDefault();
-              navigate("/mediapresence");
+              // navigate("/news");
+              window.open('https://www.conquest.org.in/news', '_self')
             }}
             className={styles.mainLink}
           >
@@ -193,7 +197,7 @@ export default function Navbar2() {
             <a
               onClick={(e) => {
                 e.preventDefault();
-                navigate("/about");
+                // navigate("/about");
               }}
               className={styles.mainLink}
             >
