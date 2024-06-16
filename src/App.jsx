@@ -39,6 +39,24 @@ function App() {
       console.log('reload')
       try {
         if (localStorage.getItem('lastSessionCall') && (Date.now() - parseInt(localStorage.getItem('lastSessionCall')) > 10800000)) {
+          axios.post('https://conquest-api.bits-dvm.org/api/users/token/refresh/', {
+            refresh: JSON.parse(localStorage.getItem("tokens")).refresh
+          })
+            .then(res => {
+              localStorage.setItem("tokens", JSON.stringify(res.data))
+              const newUserData = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : null;
+              localStorage.setItem("lastSessionCall", `${Date.now()}`)
+              // newUserData ?? localStorage.setItem("userData", JSON.stringify({ ...newUserData, tokens: res.data }));
+              if (newUserData) {
+                const newData = { ...newUserData, tokens: res.data }
+                console.log(newData)
+                localStorage.setItem("userData", JSON.stringify(newData))
+                console.log(newData.tokens.access === JSON.parse(localStorage.getItem("userData")).tokens.access)
+              }
+            })
+            .catch(err => {
+              console.log(err)
+            })
           tokenRefreshFunction()
         }
         else if (localStorage.getItem('lastSessionCall') && (Date.now() - parseInt(localStorage.getItem('lastSessionCall')) <= 10800000)) {
