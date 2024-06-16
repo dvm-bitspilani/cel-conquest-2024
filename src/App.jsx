@@ -23,6 +23,7 @@ import Connections from "./routes/Dashboard/Connections/Connections";
 import Forms from "./routes/Dashboard/Forms/Forms";
 import Developers from "./routes/Dashboard/Developers/Developers";
 import Coaches from "./routes/Dashboard/Coaches/Coaches";
+import Resources from "./routes/Dashboard/Resources/Resources";
 ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment variables -> will do later
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
         if (
           localStorage.getItem("lastSessionCall") &&
           Date.now() - parseInt(localStorage.getItem("lastSessionCall")) >
-            10800000
+          10800000
         ) {
           axios
             .post(
@@ -65,7 +66,7 @@ function App() {
                 localStorage.setItem("userData", JSON.stringify(newData));
                 console.log(
                   newData.tokens.access ===
-                    JSON.parse(localStorage.getItem("userData")).tokens.access
+                  JSON.parse(localStorage.getItem("userData")).tokens.access
                 );
               }
             })
@@ -76,7 +77,7 @@ function App() {
         } else if (
           localStorage.getItem("lastSessionCall") &&
           Date.now() - parseInt(localStorage.getItem("lastSessionCall")) <=
-            10800000
+          10800000
         ) {
           console.log("timeout set");
           const elapsedTime =
@@ -116,9 +117,10 @@ function App() {
           <Route path="coaches" element={<Coaches />}></Route>
           <Route path="connections" element={<Connections />}></Route>
           <Route path="forms" element={<Forms />}></Route>
-          <Route path="developers" element={<Developers />}></Route>
+          <Route path="resources" element={<Resources />}></Route>
         </Route>
       </Route>
+      <Route path="developers" element={<Developers />}></Route>
     </Routes>
   );
 }
