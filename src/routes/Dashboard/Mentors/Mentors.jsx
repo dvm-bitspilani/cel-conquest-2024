@@ -91,13 +91,14 @@ const Mentors = () => {
             }
             return false;
           })
-          .map((coach) => (
+          .map((mentor) => (
             <CoachCard
-              key={coach.id}
-              img={coach.profile_logo}
-              name={coach.name}
-              tags={coach.sector_of_expertise}
-              designation={coach.designation}
+              key={mentor.id}
+              img={mentor.profile_logo}
+              name={mentor.name}
+              tags={mentor.sector_of_expertise}
+              designation={mentor.designation}
+              id={mentor.id}
             />
           ))}
       </div>
