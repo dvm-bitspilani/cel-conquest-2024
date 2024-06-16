@@ -3,6 +3,7 @@
   width: 100%;
   position: relative;
 }
+
 .sidebar {
   width: 100%;
   height: 100%;
@@ -18,8 +19,11 @@
   gap: 15px;
   // position: relative;
 
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+
+  /* Firefox */
   &::-webkit-scrollbar {
     display: none;
   }
@@ -74,10 +78,26 @@
     display: flex;
     justify-content: space-between;
 
+    .backBtn {
+      cursor: pointer;
+
+      path {
+        fill: #000000;
+        transition: fill 200ms;
+      }
+
+      &:hover {
+        path {
+          fill: #EC2C2C;
+        }
+      }
+    }
+
     .rightButtons {
       display: flex;
       flex-direction: row;
       gap: 15px;
+
       .bell {
         &:hover {
           cursor: pointer;
@@ -101,23 +121,28 @@
     justify-content: center;
     align-items: center;
   }
+
   .madeWithContainer {
     text-decoration: none;
+
     .madeWithSomething {
       display: flex;
       gap: 5px;
       justify-content: center;
+
       svg {
         width: 15px;
         height: 15px;
       }
+
       .madeWithText {
         color: #fb723d;
         text-align: center;
         font-size: 12px;
         font-style: normal;
         font-weight: 500;
-        line-height: 100%; /* 17.038px */
+        line-height: 100%;
+        /* 17.038px */
       }
     }
   }

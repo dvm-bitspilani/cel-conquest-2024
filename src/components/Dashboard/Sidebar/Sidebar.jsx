@@ -5,11 +5,13 @@ import demoAvatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
 
 import SearchButton from "./SearchButton/SearchButton";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Notifications from "../Notifications/Notifications";
 import axios from "axios";
+import { WebContext } from "../../../store/website-context";
 
 const Sidebar = () => {
+  const { glogout } = useContext(WebContext)
   const userData = JSON.parse(
     localStorage.getItem("userData")
   ).user_profile_obj;
@@ -43,28 +45,38 @@ const Sidebar = () => {
     </svg>
   );
   const back_arrow = (
+    // <svg
+    //   width="24"
+    //   height="24"
+    //   viewBox="0 0 24 24"
+    //   fill="none"
+    //   xmlns="http://www.w3.org/2000/svg"
+    // >
+    //   <path
+    //     d="M19 12H5"
+    //     stroke="#111213"
+    //     strokeWidth="2"
+    //     strokeLinecap="round"
+    //     strokeLinejoin="round"
+    //   />
+    //   <path
+    //     d="M12 19L5 12L12 5"
+    //     stroke="#111213"
+    //     strokeWidth="2"
+    //     strokeLinecap="round"
+    //     strokeLinejoin="round"
+    //   />
+    // </svg>
     <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M19 12H5"
-        stroke="#111213"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 19L5 12L12 5"
-        stroke="#111213"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      className={styles.backBtn}
+      onClick={(e) => {
+        e.preventDefault();
+        glogout()
+      }}
+      width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 7L8.41 8.41L5.83 11H16V13H5.83L8.41 15.58L7 17L2 12M20 5H12V3H20C21.1 3 22 3.9 22 5V19C22 20.1 21.1 21 20 21H12V19H20V5Z" />
     </svg>
+
   );
   const [activeButton, setActiveButton] = useState("Home");
 
@@ -73,9 +85,8 @@ const Sidebar = () => {
       axios
         .get(`https://conquest-api.bits-dvm.org/api/staff/notifications/`, {
           headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("userData")).tokens.access
-            }`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
           },
         })
         .then((res) => {

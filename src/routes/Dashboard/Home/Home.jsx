@@ -99,17 +99,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <button
-        onClick={(e) => {
-          e.preventDefault()
-          glogout()
-        }}
-        style={{
-          position: 'absolute',
-          top: '0px',
-          right: '0px'
-        }}
-      >Logout</button>
       <div className={styles.meetings}>
         <h1 className={styles.heading}>Conquest <span>Calendar:</span></h1>
         <section className={styles.ongoing}>
