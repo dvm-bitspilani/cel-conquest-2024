@@ -18,12 +18,14 @@ export default function Home() {
   const { glogout } = useContext(WebContext)
   const navigate = useNavigate()
   const [listItms, setListItms] = useState([])
+  const [activeMeet, setActiveMeet] = useState({})
 
   // GETTING MEETING DATA FROM CLICK
   const dataRef = useRef(null)
 
   function handleClick() {
     console.log(dataRef.current)
+    setActiveMeet(dataRef.current)
   }
 
   useEffect(() => {
@@ -45,6 +47,7 @@ export default function Home() {
                 duration={45}
                 key={newItm.id}
                 data={newItm}
+                type="accept-decline"
                 handleClick={handleClick}
                 dataRef={dataRef}
               />
@@ -83,39 +86,19 @@ export default function Home() {
     }
   }, [JSON.parse(localStorage.getItem('userData')).tokens.access])
 
-
-  const coach = [];
-  const mentors = [];
-  const startups = [];
-
-  for (let i = 0; i < 1; i++) {
-    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' key={i} />
-    coach.push(newPill)
-  }
-
-  for (let i = 0; i < 4; i++) {
-    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' key={i} />
-    mentors.push(newPill)
-  }
-
-  for (let i = 0; i < 3; i++) {
-    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' key={i} />
-    startups.push(newPill)
-  }
+  const underGuidanceOf = JSON.parse(localStorage.getItem("userData")).startup_profile.under_guidance_of.map((item, index) => {
+    return {
+      role: item.role,
+      pill: <UserPill avatar={item.profile_logo} name={item.name} key={index} />
+    }
+  })
+  const coach = underGuidanceOf.filter(item => item.role === 'Coach').map(item => item.pill)
+  const mentors = underGuidanceOf.filter(item => item.role === 'Mentor').map(item => item.pill)
+  const experts = underGuidanceOf.filter(item => item.role === 'Function Expert').map(item => item.pill)
+  const startups = underGuidanceOf.filter(item => item.role === 'Startup').map(item => item.pill)
 
   return (
     <div className={styles.container}>
-      <button
-        onClick={(e) => {
-          e.preventDefault()
-          glogout()
-        }}
-        style={{
-          position: 'absolute',
-          top: '0px',
-          right: '0px'
-        }}
-      >Logout</button>
       <div className={styles.meetings}>
         <h1 className={styles.heading}>Conquest <span>Calendar:</span></h1>
         <section className={styles.ongoing}>
@@ -150,10 +133,10 @@ export default function Home() {
                     xl: 42,
                     xxl: 42,
                   }}
-                  icon={<img src={avatar} alt="icon" />}
+                  icon={<img src={activeMeet.requester_logo} alt="icon" />}
                 />
               </ConfigProvider>
-              <span>With<br />Bhavesh</span>
+              <span>With<br />{activeMeet.requester_name}</span>
             </div>
             <button>Join <svg width="20" height="20" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M26.5321 14.8972L26.6774 25.0237M26.5321 14.8972L16.4051 14.7991M26.5321 14.8972L14.8867 26.5969" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -177,6 +160,12 @@ export default function Home() {
               <h3>Mentors</h3>
               <div className={styles.pillGrid}>
                 {mentors}
+              </div>
+            </div> : null}
+            {experts[0] ? <div className={styles.userPills}>
+              <h3>Experts</h3>
+              <div className={styles.pillGrid}>
+                {experts}
               </div>
             </div> : null}
             {startups[0] ? <div className={styles.userPills}>

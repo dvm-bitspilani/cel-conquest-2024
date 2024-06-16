@@ -100,30 +100,36 @@
         height: 80px;
         font-weight: 500;
 
-        @include vertiAlignment();
-
-        @mixin setHeight($screenWidth, $height) {
-            @media screen and (max-width: $screenWidth) {
-                height: $height;
-            }
+        @media screen and (max-width: 420px) {
+            font-size: 0.75rem;
         }
+
+        @include vertiAlignment();
 
         span {
             text-align: center;
+            // font-size: 1rem;
         }
 
-        a {
+        .acceptDecline {
             display: flex;
-            align-items: center;
+            // flex-wrap: wrap;
+            justify-content: center;
             gap: 0.5rem;
-            color: #138CFD;
-            cursor: pointer;
-        }
 
-        @include setHeight(1600px, 64px);
-        @include setHeight(1200px, 64px);
-        @include setHeight(992px, 40px);
-        @include setHeight(768px, 32px);
-        @include setHeight(576px, 24px);
+            @media screen and (min-width: 821px) and (max-width: 940px) {
+                font-size: 0.75rem;
+            }
+
+            @media screen and (min-width:821px) and (max-width: 860px) {
+                flex-wrap: wrap;
+                gap: 0;
+            }
+
+            @media screen and (max-width: 480px) {
+                flex-wrap: wrap;
+                gap: 0;
+            }
+        }
     }
 }

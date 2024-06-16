@@ -14,7 +14,8 @@ export const WebContext = createContext({
     glogin: () => { },
     glogout: () => { },
     usernameLogin: () => { },
-    getUserData: () => { }
+    getUserData: () => { },
+    tokenRefreshFunction: () => { }
 });
 
 export default function WebContextProvider({ children }) {
@@ -25,6 +26,34 @@ export default function WebContextProvider({ children }) {
     const [loginErrorMessage, setLoginErrorMessage] = useState(null);
     const [formListRerender, setFormListRerender] = useState(Math.random())
 
+    const tokenRefreshFunction = () => {
+        console.log('token refresh function')
+        const refreshTokenInterval = setInterval(() => {
+            console.log('interval')
+            axios.post('https://conquest-api.bits-dvm.org/api/users/token/refresh/', {
+                refresh: JSON.parse(localStorage.getItem("tokens")).refresh
+            })
+                .then(res => {
+                    localStorage.setItem("tokens", JSON.stringify(res.data))
+                    const newUserData = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : null;
+                    localStorage.setItem("lastSessionCall", `${Date.now()}`)
+                    // newUserData ?? localStorage.setItem("userData", JSON.stringify({ ...newUserData, tokens: res.data }));
+                    if (newUserData) {
+                        const newData = { ...newUserData, tokens: res.data }
+                        console.log(newData)
+                        localStorage.setItem("userData", JSON.stringify(newData))
+                        console.log(newData.tokens.access === JSON.parse(localStorage.getItem("userData")).tokens.access)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }, 10800000)
+        // }, JSON.parse(localStorage.getItem("tokens")).access_token_lifetime)
+        // }, 10800000)
+        localStorage.setItem('refreshTokenInterval', `${refreshTokenInterval}`)
+    }
+
     const usernameLogin = (credentials) => {
         setIsUserLoginBtnDisabled(true)
         axios.post('https://conquest-api.bits-dvm.org/api/users/login/username/', credentials)
@@ -33,6 +62,9 @@ export default function WebContextProvider({ children }) {
                 // console.log(res)
                 setUser(res.data.user_profile_obj)
                 localStorage.setItem("userData", JSON.stringify(res.data))
+                localStorage.setItem("lastSessionCall", `${Date.now()}`)
+                localStorage.setItem("tokens", JSON.stringify(res.data.tokens))
+                tokenRefreshFunction()
                 setIsUserLoginBtnDisabled(false)
                 navigate('/dashboard')
                 setLoginErrorMessage('Log In Successful!')
@@ -61,8 +93,12 @@ export default function WebContextProvider({ children }) {
                 Authorization: `Bearer ${access_token}`
             }
         })
-        localStorage.removeItem("userData");
         setUser(null);
+        clearInterval(parseInt(localStorage.getItem('refreshTokenInterval')))
+        localStorage.removeItem("userData");
+        localStorage.removeItem('refreshTokenInterval')
+        localStorage.removeItem('tokens')
+        localStorage.removeItem('lastSessionCall')
     }
 
     const glogin = useGoogleLogin({
@@ -76,6 +112,9 @@ export default function WebContextProvider({ children }) {
                     // console.log(res.data)
                     setUser(res.data.user_profile_obj)
                     localStorage.setItem("userData", JSON.stringify(res.data))
+                    localStorage.setItem("lastSessionCall", `${Date.now()}`)
+                    localStorage.setItem("tokens", JSON.stringify(res.data.tokens))
+                    tokenRefreshFunction()
                 }
                 catch (err) {
                     console.log(err)
@@ -111,7 +150,8 @@ export default function WebContextProvider({ children }) {
         glogin,
         glogout,
         usernameLogin,
-        getUserData
+        getUserData,
+        tokenRefreshFunction
     };
 
     return (
