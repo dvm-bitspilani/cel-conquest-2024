@@ -11,47 +11,53 @@
       font-size: 23px;
       margin-bottom: 1.5rem;
     }
-    .memberCard {
-      width: 100px;
-      .imgWrapper {
-        position: relative;
-        img {
-          border-radius: 50%;
-          height: 100px;
-          width: 100px;
-          margin-bottom: 1rem;
+    .members {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10%;
+      margin-bottom: 2.75rem;
+      .memberCard {
+        width: 100px;
+        .imgWrapper {
+          position: relative;
+          img {
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            margin-bottom: 1rem;
+          }
+          .linkedIn {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+          }
+          &::after {
+            display: none;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            z-index: 1;
+            background-color: #b2320099;
+          }
         }
-        .linkedIn {
-          position: absolute;
-          z-index: 2;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          display: none;
-        }
-        &::after {
-          display: none;
-          content: "";
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0;
-          border-radius: 50%;
-          z-index: 1;
-          background-color: #b2320099;
-        }
-      }
-      &:hover {
-        .linkedIn {
-          display: initial;
-        }
-        .imgWrapper::after {
-          display: initial;
-        }
+        &:hover {
+          .linkedIn {
+            display: initial;
+          }
+          .imgWrapper::after {
+            display: initial;
+          }
 
-        .memberName {
-          color: #fb723d;
+          .memberName {
+            color: #fb723d;
+          }
         }
       }
       .memberName {
