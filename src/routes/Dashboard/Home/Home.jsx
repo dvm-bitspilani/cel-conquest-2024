@@ -84,25 +84,16 @@ export default function Home() {
     }
   }, [JSON.parse(localStorage.getItem('userData')).tokens.access])
 
-
-  const coach = [];
-  const mentors = [];
-  const startups = [];
-
-  for (let i = 0; i < 1; i++) {
-    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' key={i} />
-    coach.push(newPill)
-  }
-
-  for (let i = 0; i < 4; i++) {
-    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' key={i} />
-    mentors.push(newPill)
-  }
-
-  for (let i = 0; i < 3; i++) {
-    const newPill = <UserPill avatar={avatar} name='Paritosh Jain' key={i} />
-    startups.push(newPill)
-  }
+  const underGuidanceOf = JSON.parse(localStorage.getItem("userData")).startup_profile.under_guidance_of.map((item, index) => {
+    return {
+      role: item.role,
+      pill: <UserPill avatar={item.profile_logo} name={item.name} key={index} />
+    }
+  })
+  const coach = underGuidanceOf.filter(item => item.role === 'Coach').map(item => item.pill)
+  const mentors = underGuidanceOf.filter(item => item.role === 'Mentor').map(item => item.pill)
+  const experts = underGuidanceOf.filter(item => item.role === 'Function Expert').map(item => item.pill)
+  const startups = underGuidanceOf.filter(item => item.role === 'Startup').map(item => item.pill)
 
   return (
     <div className={styles.container}>
@@ -178,6 +169,12 @@ export default function Home() {
               <h3>Mentors</h3>
               <div className={styles.pillGrid}>
                 {mentors}
+              </div>
+            </div> : null}
+            {experts[0] ? <div className={styles.userPills}>
+              <h3>Experts</h3>
+              <div className={styles.pillGrid}>
+                {experts}
               </div>
             </div> : null}
             {startups[0] ? <div className={styles.userPills}>
