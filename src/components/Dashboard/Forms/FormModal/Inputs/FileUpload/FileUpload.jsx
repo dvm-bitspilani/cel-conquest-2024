@@ -3,7 +3,7 @@ import { useDropzone } from 'react-dropzone'
 
 import styles from './fileupload.module.scss'
 
-export default function FileUpload({ name, heading, manualValue, hasPreview = false }) {
+export default function FileUpload({ name, heading, manualValue, hasPreview = false, forceType }) {
     const [uploadedFile, setUploadedFile] = useState(null)
 
     const onDrop = useCallback(acceptedFiles => {
@@ -15,7 +15,25 @@ export default function FileUpload({ name, heading, manualValue, hasPreview = fa
             console.log(reader.result)
         }
     }, [])
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+
+    let dropzoneConfig;
+    switch (forceType) {
+        case 'image':
+            dropzoneConfig = {
+                onDrop,
+                accept: {
+                    'image/*': [],
+                }
+            }
+            break;
+        default:
+            dropzoneConfig = {
+                onDrop
+            }
+            break;
+    }
+
+    const { getRootProps, getInputProps, isDragActive } = useDropzone(dropzoneConfig)
 
     // function fileChangeHandler(e) {
     //     console.log(e.target.files)

@@ -16,12 +16,12 @@ export default function ProfileForm() {
             password: '',
             confirm_password: '',
             email: '',
+            profile_logo: '',
             location: '',
             website: '',
             description: '',
             industries: '',
             functional_areas: '',
-            website: '',
             twitter: '',
             linkedin: '',
             stage: ''
@@ -73,6 +73,25 @@ export default function ProfileForm() {
                     blurFn={handleBlur}
                     value={values.confirm_password}
                     error={errors.confirm_password}
+                    type='short'
+                />
+                <FileUpload
+                    key='profile_logo'
+                    name='profile_logo'
+                    heading='Change Profile Logo'
+                    manualValue={setFieldValue}
+                    forceType='image'
+                // changeFn={handleChange}
+                // blurFn={handleBlur}
+                // value={values[`subj-${data.subjective_questions[i].id}`]}
+                />
+                <TextInput2
+                    name='location'
+                    heading="Change Location HQ"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.location}
+                    error={errors.location}
                     type='short'
                 />
                 <button type='submit' className={styles.submit}>Submit</button>
