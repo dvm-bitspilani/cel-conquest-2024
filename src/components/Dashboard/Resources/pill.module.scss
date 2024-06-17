@@ -1,0 +1,94 @@
+.box {
+    display: flex;
+    gap: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid #FB723D;
+    background: #FFF;
+    padding: 20px calc(33 / 946 * 100%);
+    overflow: hidden;
+
+    @mixin absoluteDimensions($dimension) {
+        min-width: $dimension;
+        min-height: $dimension;
+        max-height: $dimension;
+        max-width: $dimension;
+    }
+
+    .avatarContainer {
+        @include absoluteDimensions(64px);
+        display: flex;
+        align-items: center;
+
+        .avatar {
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .content {
+        max-width: 100%;
+        overflow: hidden;
+        margin-top: auto;
+        margin-bottom: auto;
+
+        .title {
+            color: #111213;
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            display: flex;
+            align-items: center;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            font-size: 14px;
+
+            .text {
+                display: inline-block;
+                color: #A0A0A0;
+                width: 100%;
+
+                &.truncated {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+
+            .expander {
+                color: #FB723D;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .urlContainer {
+        display: flex;
+        align-items: center;
+
+        .url {
+            aspect-ratio: 103 / 36;
+            // max-width: 100px;
+            display: flex;
+            padding: 12px 32px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 6px;
+            background: #FFECE5;
+            color: #FB723D;
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+}
