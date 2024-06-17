@@ -9,7 +9,7 @@ import FileUpload from '../../../../Dashboard/Forms/FormModal/Inputs/FileUpload/
 
 import styles from './form.module.scss'
 
-export default function ProfileForm() {
+export default function ProfileForm({ formClose }) {
     const { values, errors, handleBlur, handleSubmit, handleChange, setFieldValue, setFieldError } = useFormik({
         initialValues: {
             name: '',
@@ -29,6 +29,7 @@ export default function ProfileForm() {
         onSubmit: (values, action) => {
             console.log(values)
             action.resetForm()
+            formClose()
         },
         validationSchema: profileSchemas
     })
