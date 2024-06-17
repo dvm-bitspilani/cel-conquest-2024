@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import * as styles from "./StartupProfileHeader.module.scss";
 import StartupProfileContact from "../StartupProfileContact/StartupProfileContact";
 import ProfileButton from "../ProfileButton/ProfileButton";
@@ -6,6 +6,8 @@ import About from "../About/About";
 import Team from "../Team/Team";
 import Details from "../Details/Details";
 import Pitch from "../Pitch/Pitch";
+import FormModal from "../../Dashboard/Forms/FormModal/FormModal";
+// import ProfileModal from "./ProfileEdit/Modal/Modal";
 
 // const dummyContact = {
 //     phone: "+91 00001 73314",
@@ -56,6 +58,8 @@ export default function StartupProfileHeader({
 }) {
   const [selectedTopic, setSelectedTopic] = useState("about");
 
+  const formModal = useRef(null);
+
   function handleSelect(selectedButton) {
     setSelectedTopic(selectedButton);
   }
@@ -77,6 +81,7 @@ export default function StartupProfileHeader({
 
   return (
     <>
+      <FormModal ref={formModal} title='Edit Profile' formType='profile edit' />
       <div className={styles.container}>
         <div className={styles.profile}>
           <div className={styles.contentContainer}>
@@ -166,8 +171,13 @@ export default function StartupProfileHeader({
         </div>
         <div className={styles.contact}>
           <div className={styles.buttonContainer}>
-            <div className={styles.btn}>Message</div>
-            <div className={`${styles.btn} ${styles.schedule}`}>Schedule</div>
+            {/* <div className={styles.btn}>Message</div> */}
+            <div
+              className={`${styles.btn} ${styles.schedule}`}
+              onClick={() => formModal.current.openForm()}
+            >
+              Edit
+            </div>
           </div>
           <StartupProfileContact
             email={email}
