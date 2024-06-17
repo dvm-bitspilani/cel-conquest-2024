@@ -3,8 +3,9 @@ import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 're
 import styles from './formModal.module.scss'
 
 import Form from './Form/Form';
+import ProfileForm from '../../../Startups/StartupProfileHeader/ProfileEdit/EditForm/ProfileForm';
 
-const FormModal = forwardRef(function ({ data }, ref) {
+const FormModal = forwardRef(function ({ data, formType = 'questionaire', title = null }, ref) {
     const [rerenderer, setRerenderer] = useState(Math.random())
 
     const dialog = useRef(null)
@@ -31,6 +32,18 @@ const FormModal = forwardRef(function ({ data }, ref) {
         dialog.current.close()
     }
 
+    let modalContent
+
+    switch (formType) {
+        case 'questionaire':
+            modalContent = <Form key={rerenderer} data={data} formClose={formCloseHandler} />
+            break;
+        case 'profile edit':
+            modalContent = <ProfileForm key={rerenderer} formClose={formCloseHandler} />
+            break;
+
+    }
+
     return (
         <dialog
             ref={dialog}
@@ -44,9 +57,9 @@ const FormModal = forwardRef(function ({ data }, ref) {
                 <path d="M24.75 10.4502L8.25 26.9502" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M8.25 10.4502L24.75 26.9502" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <h2 className={styles.heading}>{data.form_name}</h2>
+            <h2 className={styles.heading}>{title ?? data.form_name}</h2>
             <main className={styles.questionsContainer}>
-                <Form key={rerenderer} data={data} formClose={formCloseHandler} />
+                {modalContent}
             </main>
         </dialog>
     )
