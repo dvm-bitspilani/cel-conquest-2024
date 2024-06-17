@@ -10,31 +10,57 @@
         line-height: 100%;
     }
 
-    .input {
-        border-radius: 8px;
-        border: 1px solid #BFBFBF;
-        background: #FFF;
+    .inputField {
         width: 100%;
-        overflow-y: auto;
-        resize: none;
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .input {
+            border-radius: 8px;
+            border: 1px solid #BFBFBF;
+            background: #FFF;
+            width: 100%;
+            overflow-y: auto;
+            resize: none;
 
 
-        &:focus {
-            outline: none;
-        }
+            &:focus {
+                outline: none;
+            }
 
-        &.link {
-            aspect-ratio: 850 / 45;
-            padding: 0px 10px;
-        }
+            &.link,
+            &.short {
+                aspect-ratio: 850 / 45;
+                padding: 0px 10px;
+            }
 
-        &.long {
-            height: 163px;
-            padding: 10px;
+            &.long {
+                height: 163px;
+                padding: 10px;
 
-            @media screen and (max-width: 820px) {
-                height: 200px;
+                @media screen and (max-width: 820px) {
+                    height: 200px;
+                }
+            }
+
+            &.error {
+                border: 1.5px solid #EB0E00;
+                background: #FFE6E6;
             }
         }
+
+        .invalidInpIcon {
+            aspect-ratio: 1 / 1;
+            position: absolute;
+            right: -1.8rem;
+            width: 1.3rem;
+        }
+    }
+
+    .errMsg {
+        font-weight: 400;
+        font-size: 0.75em;
+        color: #EB0E00;
     }
 }
