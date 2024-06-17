@@ -94,6 +94,42 @@ export default function ProfileForm() {
                     error={errors.location}
                     type='short'
                 />
+                <TextInput2
+                    name='website'
+                    heading="Change Website Link"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.website}
+                    error={errors.website}
+                    type='link'
+                />
+                <TextInput2
+                    name='description'
+                    heading="Change Description"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.description}
+                    error={errors.description}
+                    type='long'
+                />
+                <TextInput2
+                    name='linkedin'
+                    heading="Change LinkedIn URL"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.linkedin}
+                    error={errors.linkedin}
+                    type='link'
+                />
+                <TextInput2
+                    name='twitter'
+                    heading="Change Twitter URL"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.twitter}
+                    error={errors.twitter}
+                    type='link'
+                />
                 <button type='submit' className={styles.submit}>Submit</button>
             </form>
         </main>
