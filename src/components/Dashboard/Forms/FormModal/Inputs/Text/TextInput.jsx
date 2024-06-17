@@ -11,7 +11,7 @@ export default function TextInput2({ name, heading, changeFn, blurFn, value, err
             <div className={styles.inputField}>
                 {type !== 'long' ? (
                     <input
-                        type='text'
+                        type={name !== 'password' && name !== 'confirm_password' ? 'text' : 'password'}
                         id={name}
                         name={name}
                         onChange={changeFn}

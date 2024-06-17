@@ -3,7 +3,7 @@ import { useDropzone } from 'react-dropzone'
 
 import styles from './fileupload.module.scss'
 
-export default function FileUpload({ name, heading, manualValue }) {
+export default function FileUpload({ name, heading, manualValue, hasPreview = false }) {
     const [uploadedFile, setUploadedFile] = useState(null)
 
     const onDrop = useCallback(acceptedFiles => {

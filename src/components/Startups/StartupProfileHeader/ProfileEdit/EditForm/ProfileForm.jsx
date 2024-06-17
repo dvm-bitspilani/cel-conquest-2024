@@ -41,7 +41,7 @@ export default function ProfileForm() {
             >
                 <TextInput2
                     name='name'
-                    heading="Name"
+                    heading="Change Name"
                     changeFn={handleChange}
                     blurFn={handleBlur}
                     value={values.name}
@@ -50,11 +50,29 @@ export default function ProfileForm() {
                 />
                 <TextInput2
                     name='email'
-                    heading="Email"
+                    heading="Change Email"
                     changeFn={handleChange}
                     blurFn={handleBlur}
                     value={values.email}
                     error={errors.email}
+                    type='short'
+                />
+                <TextInput2
+                    name='password'
+                    heading="Change Password"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.password}
+                    error={errors.password}
+                    type='short'
+                />
+                <TextInput2
+                    name='confirm_password'
+                    heading="Confirm Password"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.confirm_password}
+                    error={errors.confirm_password}
                     type='short'
                 />
                 <button type='submit' className={styles.submit}>Submit</button>
