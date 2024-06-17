@@ -1,9 +1,14 @@
+import { useFormik } from 'formik'
+import axios from 'axios'
+
 import styles from './form.module.scss'
 
 export default function ProfileForm() {
     return (
-        <div>
-            <h1>Form</h1>
-        </div>
+        <main className={styles.form}>
+            <form className={styles.wrapper}>
+                <button type='submit' className={styles.submit}>Submit</button>
+            </form>
+        </main>
     )
 }
