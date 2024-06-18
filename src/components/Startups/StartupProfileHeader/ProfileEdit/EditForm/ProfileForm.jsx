@@ -12,7 +12,9 @@ import styles from './form.module.scss'
 export default function ProfileForm({ formClose }) {
     const { values, errors, handleBlur, handleSubmit, handleChange, setFieldValue, setFieldError } = useFormik({
         initialValues: {
-            name: '',
+            username: '',
+            firstName: '',
+            lastName: '',
             password: '',
             confirm_password: '',
             email: '',
@@ -20,14 +22,45 @@ export default function ProfileForm({ formClose }) {
             location: '',
             website: '',
             description: '',
-            industries: '',
-            functional_areas: '',
             twitter: '',
             linkedin: '',
-            stage: ''
+            designation: '',
+            resume: '',
+            expertise: '',
+            domain: '',
+            company: '',
         },
         onSubmit: (values, action) => {
             console.log(values)
+            const requestObject = {
+                user: {
+                    username: values.username.trim(),
+                    password: values.password.trim(),
+                    first_name: values.firstName.trim(),
+                    last_name: values.lastName.trim(),
+                },
+                profile_logo: values.profile_logo,
+                google_email: values.email.trim(),
+                designation: values.designation.trim(),
+                linkedin: values.linkedin.trim(),
+                location: values.location.trim(),
+                description: values.description,
+                resume: values.resume.trim(),
+                sector_of_expertise: values.expertise,
+                domain_of_expertise: values.domain,
+                company_name: values.company,
+            }
+            axios.put('https://conquest-api.bits-dvm.org/api/users/profile/', requestObject, {
+                headers: {
+                    Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
+                }
+            })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
             action.resetForm()
             formClose()
         },
@@ -41,12 +74,30 @@ export default function ProfileForm({ formClose }) {
                 onSubmit={handleSubmit}
             >
                 <TextInput2
-                    name='name'
-                    heading="Change Name"
+                    name='username'
+                    heading="Change Username"
                     changeFn={handleChange}
                     blurFn={handleBlur}
-                    value={values.name}
-                    error={errors.name}
+                    value={values.username}
+                    error={errors.username}
+                    type='short'
+                />
+                <TextInput2
+                    name='firstName'
+                    heading="Change First Name"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.firstName}
+                    error={errors.firstName}
+                    type='short'
+                />
+                <TextInput2
+                    name='lastName'
+                    heading="Change Last Name"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.lastName}
+                    error={errors.lastName}
                     type='short'
                 />
                 <TextInput2
@@ -82,9 +133,15 @@ export default function ProfileForm({ formClose }) {
                     heading='Change Profile Logo'
                     manualValue={setFieldValue}
                     forceType='image'
-                // changeFn={handleChange}
-                // blurFn={handleBlur}
-                // value={values[`subj-${data.subjective_questions[i].id}`]}
+                />
+                <TextInput2
+                    name='company'
+                    heading="Change Company Name"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.company}
+                    error={errors.company}
+                    type='short'
                 />
                 <TextInput2
                     name='location'
@@ -105,6 +162,15 @@ export default function ProfileForm({ formClose }) {
                     type='link'
                 />
                 <TextInput2
+                    name='resume'
+                    heading="Share your resume as a google drive link"
+                    changeFn={handleChange}
+                    blurFn={handleBlur}
+                    value={values.resume}
+                    error={errors.resume}
+                    type='link'
+                />
+                <TextInput2
                     name='description'
                     heading="Change Description"
                     changeFn={handleChange}
@@ -122,7 +188,7 @@ export default function ProfileForm({ formClose }) {
                     error={errors.linkedin}
                     type='link'
                 />
-                <TextInput2
+                {/* <TextInput2
                     name='twitter'
                     heading="Change Twitter URL"
                     changeFn={handleChange}
@@ -130,7 +196,7 @@ export default function ProfileForm({ formClose }) {
                     value={values.twitter}
                     error={errors.twitter}
                     type='link'
-                />
+                /> */}
                 <button type='submit' className={styles.submit}>Submit</button>
             </form>
         </main>
