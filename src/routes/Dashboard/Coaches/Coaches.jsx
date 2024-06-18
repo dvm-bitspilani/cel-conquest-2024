@@ -98,6 +98,7 @@ const Coaches = () => {
               name={coach.name}
               tags={coach.sector_of_expertise}
               designation={coach.designation}
+              id={coach.id}
             />
           ))}
       </div>

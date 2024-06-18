@@ -1,0 +1,71 @@
+.modal {
+    margin: auto;
+    width: calc(1108 / 1440 * 100vw);
+    height: calc(750 / 1024 * 100dvh);
+    border-radius: 50px;
+    border: 1.5px solid #FB723D;
+    background: #FFFAF8;
+    box-shadow: 0px 4px 28px 0px rgba(0, 0, 0, 0.12);
+    position: relative;
+
+    &::backdrop {
+        backdrop-filter: blur(12px);
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    @media screen and (max-width: 820px) {
+        width: calc(349 / 393 * 100vw);
+        height: 90dvh;
+        border-radius: 16px;
+        border: 1px solid #FB723D;
+        background: #FFF;
+        box-shadow: 0px 3px 18px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    .cross {
+        aspect-ratio: 1 / 1;
+        width: 31px;
+        position: absolute;
+        right: 45px;
+        top: 30px;
+        cursor: pointer;
+
+        @media screen and (max-width: 820px) {
+            top: 15px;
+            right: 20px;
+        }
+    }
+
+    .heading {
+        color: #111213;
+        font-size: 23px;
+        font-weight: 700;
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @media screen and (max-width: 820px) {
+            top: 18px;
+        }
+    }
+
+    .questionsContainer {
+        position: absolute;
+        right: 45px;
+        left: 45px;
+        bottom: 45px;
+        top: calc(30px + 28.5px + 50px);
+        overflow: scroll;
+
+        @media screen and (max-width: 820px) {
+            left: 0;
+            right: 0;
+            top: calc(18px + 28.5px + 30px);
+            bottom: 20px;
+        }
+    }
+}

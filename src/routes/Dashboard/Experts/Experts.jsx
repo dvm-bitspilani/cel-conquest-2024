@@ -91,13 +91,14 @@ const Experts = () => {
             }
             return false;
           })
-          .map((coach) => (
+          .map((expert) => (
             <CoachCard
-              key={coach.id}
-              img={coach.profile_logo}
-              name={coach.name}
-              tags={coach.sector_of_expertise}
-              designation={coach.designation}
+              key={expert.id}
+              img={expert.profile_logo}
+              name={expert.name}
+              tags={expert.sector_of_expertise}
+              designation={expert.designation}
+              id={expert.id}
             />
           ))}
       </div>
