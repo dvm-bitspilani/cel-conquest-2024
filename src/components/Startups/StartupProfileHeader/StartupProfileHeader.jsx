@@ -228,7 +228,7 @@ export default function StartupProfileHeader({
                     );
                   }
                 } else {
-                  if (role1_Startup && bookSlots) {
+                  if (role1_Startup && startup.startupid !== undefined && bookSlots) {
                     return (
                       <BookSlots
                         bookSlots={bookSlots}
