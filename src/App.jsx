@@ -44,7 +44,7 @@ function App() {
         if (
           localStorage.getItem("lastSessionCall") &&
           Date.now() - parseInt(localStorage.getItem("lastSessionCall")) >
-          10800000
+            10800000
         ) {
           axios
             .post(
@@ -66,7 +66,7 @@ function App() {
                 localStorage.setItem("userData", JSON.stringify(newData));
                 console.log(
                   newData.tokens.access ===
-                  JSON.parse(localStorage.getItem("userData")).tokens.access
+                    JSON.parse(localStorage.getItem("userData")).tokens.access
                 );
               }
             })
@@ -77,7 +77,7 @@ function App() {
         } else if (
           localStorage.getItem("lastSessionCall") &&
           Date.now() - parseInt(localStorage.getItem("lastSessionCall")) <=
-          10800000
+            10800000
         ) {
           console.log("timeout set");
           const elapsedTime =
@@ -118,9 +118,9 @@ function App() {
           <Route path="connections" element={<Connections />}></Route>
           <Route path="forms" element={<Forms />}></Route>
           <Route path="resources" element={<Resources />}></Route>
+          <Route path="developers" element={<Developers />}></Route>
         </Route>
       </Route>
-      <Route path="developers" element={<Developers />}></Route>
     </Routes>
   );
 }
