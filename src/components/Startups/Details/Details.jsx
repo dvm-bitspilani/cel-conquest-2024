@@ -9,7 +9,7 @@ export default function Details({ location, stage, teamArray }) {
     const founderNames = founders.map(member => member.name).join(", ");
     const cofounderNames = cofounders.map(member => member.name).join(", ");
 
-    console.log(founderNames, cofounderNames);
+    // console.log(founderNames, cofounderNames);
 
     return (
         <>
