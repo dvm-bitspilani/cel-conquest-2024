@@ -65,6 +65,8 @@ const StartupProfile = () => {
         industries={startupProfile.industry}
         areas={startupProfile.functional_areas}
         teamArray={startupProfile.team_members}
+        schedulebtn={startupProfile.role}
+        startupid={id}
       />
     </>
   );

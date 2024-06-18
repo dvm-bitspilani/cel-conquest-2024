@@ -15,7 +15,7 @@ const Sidebar = () => {
   const userData = JSON.parse(
     localStorage.getItem("userData")
   ).user_profile_obj;
-  console.log(userData);
+  // console.log(userData);
 
   const [isNotifVisible, setIsNotifVisible] = useState(false);
   const [notifsData, setNotifsData] = useState([]);
