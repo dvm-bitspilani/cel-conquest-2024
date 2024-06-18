@@ -208,7 +208,7 @@ export default function StartupProfileHeader({
 
             <div>
               <button
-                style={{ zIndex: 2, display: role1_Mentor && startup.startupid !== undefined ? null : "none" }}
+                style={{ zIndex: 2, display: (role1_Mentor || role1_Startup) && startup.startupid !== undefined ? null : "none" }}
                 className={styles.schedule}
                 onClick={role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots}
               >
@@ -228,7 +228,7 @@ export default function StartupProfileHeader({
                     );
                   }
                 } else {
-                  if (role1_Startup && bookSlots) {
+                  if (role1_Startup && startup.startupid !== undefined && bookSlots) {
                     return (
                       <BookSlots
                         bookSlots={bookSlots}
