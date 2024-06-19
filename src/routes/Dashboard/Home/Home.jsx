@@ -1,10 +1,8 @@
-import { useEffect, useRef, useState, useContext } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { Avatar, ConfigProvider } from "antd";
-
-import { WebContext } from "../../../store/website-context";
 
 import MeetingList from "../../../components/MeetingList/MeetingList"
 import MeetingItem from '../../../components/MeetingList/MeetingItem/MeetingItem';
@@ -15,7 +13,6 @@ import avatar from '../../../assets/images/Dashboard/demoAvatar.jpeg'
 import * as styles from './home.module.scss'
 
 export default function Home() {
-  const { glogout } = useContext(WebContext)
   const navigate = useNavigate()
   const [listItms, setListItms] = useState([])
   const [activeMeet, setActiveMeet] = useState({})
