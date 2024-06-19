@@ -12,7 +12,7 @@ export default function RequireAuth() {
         return <Navigate to='/login' state={{ from: location }} replace />
     }
     else if (user.role === "Guest - Tier 2") {
-        return <Navigate to='/unauthorised' state={{ from: location }} replace />
+        return <Navigate to='/dashboard/meetings' state={{ from: location }} replace />
     }
     else if (user.role === "Startup" || user.role === "Mentor") {
         return <Outlet />
