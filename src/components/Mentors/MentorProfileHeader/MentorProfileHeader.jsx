@@ -106,12 +106,12 @@ export default function MentorProfileHeader({
         </div>
         <div className={styles.contact}>
           <div className={styles.buttonContainer}>
-            <div
-              className={`${styles.btn} ${styles.schedule}`}
+            {!startupid && (<div
+              className={styles.schedule}
               onClick={() => formModal.current.openForm()}
             >
               Edit
-            </div>
+            </div>)}
 
             <div>
               <button
