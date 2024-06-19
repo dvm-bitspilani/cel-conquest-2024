@@ -199,12 +199,12 @@ export default function StartupProfileHeader({
         <div className={styles.contact}>
           <div className={styles.buttonContainer}>
             {/* <div className={styles.btn}>Message</div> */}
-            <div
+            {!startupid && (<div
               className={`${styles.btn} ${styles.schedule}`}
               onClick={() => formModal.current.openForm()}
             >
               Edit
-            </div>
+            </div>)}
 
             <div>
               <button
