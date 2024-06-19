@@ -222,7 +222,10 @@ const Sidebar = () => {
           <Button
             text="Contact Us"
             active={activeButton === "Contact Us"}
-            handleButtonClick={handleButtonClick}
+            // handleButtonClick={handleButtonClick}
+            handleButtonClick={() => {
+              window.open("https://www.conquest.org.in/", "_self");
+            }}
           ></Button>
           <Button
             text="Forms"
@@ -245,7 +248,10 @@ const Sidebar = () => {
           <Button
             text="Conquest Info"
             active={activeButton === "Conquest Info"}
-            handleButtonClick={handleButtonClick}
+            // handleButtonClick={handleButtonClick}
+            handleButtonClick={() => {
+              window.open("https://www.conquest.org.in/", "_self");
+            }}
           ></Button>
           <Button
             text="Developers"
