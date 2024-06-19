@@ -9,9 +9,12 @@ import { useContext, useState } from "react";
 import Notifications from "../Notifications/Notifications";
 import axios from "axios";
 import { WebContext } from "../../../store/website-context";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const { glogout } = useContext(WebContext);
+  const navigate = useNavigate();
+
   const userData = JSON.parse(
     localStorage.getItem("userData")
   ).user_profile_obj;
@@ -71,6 +74,7 @@ const Sidebar = () => {
       className={styles.backBtn}
       onClick={(e) => {
         e.preventDefault();
+        navigate('/')
         glogout();
       }}
       width="24"
