@@ -13,6 +13,12 @@ export default function ResourcePill({ title, description, url, avatar }) {
                 <p className={styles.description}>
                     <span className={isExpanded ? styles.text : `${styles.text} ${styles.truncated}`}>
                         {description}
+                        {isExpanded && (
+                            <span
+                                className={styles.expander}
+                                onClick={() => setIsExpanded(false)}
+                            >&nbsp;less</span>
+                        )}
                     </span>
                     {isExpanded ? null : (
                         <span
