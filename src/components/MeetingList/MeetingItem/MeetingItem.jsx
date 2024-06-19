@@ -29,7 +29,6 @@ export default function MeetingItem({
   const period = hours >= 12 ? "PM" : "AM";
   const adjustedHours = hours % 12 || 12;
   const fullTime = `${adjustedHours}:${formattedMinutes} ${period}`;
-  //   console.log(dateObj);
 
   let content;
   switch (type) {
