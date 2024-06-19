@@ -9,7 +9,8 @@ import { useContext, useState } from "react";
 import Notifications from "../Notifications/Notifications";
 import axios from "axios";
 import { WebContext } from "../../../store/website-context";
-import { useNavigate } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const { glogout } = useContext(WebContext);
@@ -74,7 +75,7 @@ const Sidebar = () => {
       className={styles.backBtn}
       onClick={(e) => {
         e.preventDefault();
-        navigate('/')
+        navigate("/");
         glogout();
       }}
       width="24"
@@ -93,8 +94,9 @@ const Sidebar = () => {
       axios
         .get(`https://conquest-api.bits-dvm.org/api/staff/notifications/`, {
           headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
           },
         })
         .then((res) => {
@@ -157,9 +159,25 @@ const Sidebar = () => {
           </div>
         </div>
         <div className={styles.profileSection}>
-          <a href="/dashboard/startup-profile" className={styles.profileAvatar}>
-            <img src={demoAvatar} />
-          </a>
+          <Link
+            to={
+              JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                .role === "Startup"
+                ? "/dashboard/startup-profile"
+                : "/dashboard/profile"
+            }
+            className={styles.profileAvatar}
+          >
+            <img
+              src={
+                JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                  .profile_logo
+              }
+              onError={(e) => {
+                e.target.src = demoAvatar;
+              }}
+            />
+          </Link>
           {/* <p>Welcome back,</p> */}
           <p></p>
           <p>{userData.name}</p>
