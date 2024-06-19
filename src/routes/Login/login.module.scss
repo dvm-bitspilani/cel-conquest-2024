@@ -23,6 +23,16 @@
     }
 }
 
+// @function marginFactorDesktopValue() {
+//     @if 100vh>calc(580px * 1vh) {
+//         @return 69px;
+//     }
+
+//     @else {
+//         @return 55px;
+//     }
+// }
+
 .container {
     width: 100vw;
     display: flex;
@@ -76,7 +86,7 @@
     @for $i from 1 through 10 {
         @media screen and (max-height: calc(650px - $i * 10px)) {
             scale: 0.59 - $i * 0.005;
-            top: -180px - $i * 5px;
+            top: -180px - $i * 2px;
         }
     }
 
@@ -111,6 +121,10 @@
         @media screen and (max-width: 670px) {
             display: grid;
             grid-template-rows: 1fr calc(556 / 89 * 1fr);
+        }
+
+        @media screen and (max-width: 393px) {
+            top: calc(55px + 50px + 20px);
         }
 
         .orangeSection {
@@ -155,6 +169,54 @@
         }
 
         .whiteSection {
+            @mixin marginFactorDesktopXL($elem-index) {
+                $marginFactorDesktopXL: 69px;
+
+                @if $elem-index ==1 {
+                    // h1
+                    margin-top: $marginFactorDesktopXL;
+                }
+
+                @else if $elem-index ==2 {
+                    // button
+                    margin-bottom: calc(55 / 69 * $marginFactorDesktopXL);
+                }
+
+                @else if $elem-index ==3 {
+                    // p
+                    margin-top: calc(59 / 69 * $marginFactorDesktopXL);
+                }
+
+                @else if $elem-index ==4 {
+                    //login
+                    margin-top: calc(52 / 69 * $marginFactorDesktopXL);
+                }
+            }
+
+            @mixin marginFactorDesktopL($elem-index) {
+                $marginFactorDesktopL: 55px;
+
+                @if $elem-index ==1 {
+                    // h1
+                    margin-top: $marginFactorDesktopL;
+                }
+
+                @else if $elem-index ==2 {
+                    // button
+                    margin-bottom: calc(55 / 69 * $marginFactorDesktopL);
+                }
+
+                @else if $elem-index ==3 {
+                    // p
+                    margin-top: calc(59 / 69 * $marginFactorDesktopL);
+                }
+
+                @else if $elem-index ==4 {
+                    //login
+                    margin-top: calc(52 / 69 * $marginFactorDesktopL);
+                }
+            }
+
             width: calc(883 / 1144 * 100%);
             background-color: #FEFAF9;
             border-radius: 0px 63px 63px 0px;
@@ -173,8 +235,8 @@
                 font-size: 2.5rem;
                 width: 90%;
                 text-align: center;
-                margin-top: 69px;
                 font-weight: 600;
+                @include marginFactorDesktopXL(1);
 
                 @media screen and (max-width: 1075px) {
                     font-size: 2rem;
@@ -184,10 +246,20 @@
                     margin-top: 42px;
                     font-size: 2rem;
                 }
+
+                @media screen and (max-height: 580px) and (min-width: 670px) {
+                    font-size: 2.5rem;
+                    @include marginFactorDesktopL(1);
+                }
             }
 
             button {
-                margin-bottom: 55px;
+                // margin-bottom: calc(55 / 69 * $marginFactorDesktop);
+                @include marginFactorDesktopXL(2);
+
+                @media screen and (max-height: 580px) and (min-width: 670px) {
+                    @include marginFactorDesktopL(2);
+                }
             }
 
             p {
@@ -196,15 +268,16 @@
                 font-weight: 400;
                 text-align: center;
                 color: #606060;
-                margin-top: 59px;
-
-                @media screen and (max-width: 935px) {
-                    font-size: 1.125rem;
-                }
+                @include marginFactorDesktopXL(3);
 
                 @media screen and (max-width: 670px) {
                     margin-top: 29px;
-                    font-size: 0.75rem;
+                    font-size: 1.125rem;
+                }
+
+                @media screen and (max-height: 580px) and (min-width: 670px) {
+                    font-size: 1.75rem;
+                    @include marginFactorDesktopL(3);
                 }
             }
 
@@ -214,8 +287,13 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                margin-top: 52px;
+                // margin-top: calc(52 / 69 * $marginFactorDesktop);
+                @include marginFactorDesktopXL(4);
                 gap: 0.75rem;
+
+                @media screen and (max-height: 580px) and (min-width: 670px) {
+                    @include marginFactorDesktopL(4);
+                }
 
                 .submitBtn {
                     aspect-ratio: 354 / 55;
