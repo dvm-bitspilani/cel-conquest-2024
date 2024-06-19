@@ -149,7 +149,7 @@ body {
 @media(max-width: 1300px) {
 
     .container .contact .buttonContainer {
-        left: 8%;
+        left: 14%;
     }
 
     .container .contact::after {
@@ -161,7 +161,7 @@ body {
 @media(max-width: 1200px) {
 
     .container .contact .buttonContainer {
-        left: 0%;
+        left: 12%;
     }
 
     .container .contact::after {
@@ -182,7 +182,7 @@ body {
     }
 
     .container .contact .buttonContainer {
-        left: 0vw;
+        left: 12%;
         top: 20px;
         display: flex;
         flex-direction: row;
