@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+
 import ResourcePill from '../../../components/Dashboard/Resources/Pill'
 
 import avatar from '../../../assets/images/Dashboard/demoAvatar.jpeg'
@@ -14,17 +17,44 @@ Autem dolores sequi ipsa ad aliquid doloremque necessitatibus, similique non lab
 Sunt autem facilis molestiae est nobis commodi aut dicta culpa nemo ? Assumenda ratione repellendus reprehenderit rerum quas fuga perferendis officiis, nesciunt itaque exercitationem fugiat doloremque natus, fugit unde nobis ullam.`
 
 export default function Resources() {
-    const resources = []
-    for (let i = 0; i < 8; i++) {
-        resources.push(
-            <ResourcePill
-                key={i}
-                title="Resource Title"
-                description={randomLoremText}
-                url="https://google.com"
-                avatar={avatar}
-            />)
-    }
+    const [resources, setResources] = useState([])
+
+    useEffect(() => {
+        axios.get('https://conquest-api.bits-dvm.org/api/users/expert_list/', {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access}`
+            }
+        })
+            .then(res => {
+                console.log(res.data.resource_partners)
+                const resourceData = res.data.resource_partners.map((resource, index) => {
+                    return (
+                        <ResourcePill
+                            key={index}
+                            title={resource.company_name}
+                            description={resource.description}
+                            url={resource.website}
+                            avatar={resource.profile_logo}
+                        />
+                    )
+                })
+                setResources(resourceData)
+            })
+            .catch(err => {
+                console.log(err)
+
+            })
+    }, [])
+    // for (let i = 0; i < 8; i++) {
+    //     resources.push(
+    //         <ResourcePill
+    //             key={i}
+    //             title="Resource Title"
+    //             description={randomLoremText}
+    //             url="https://google.com"
+    //             avatar={avatar}
+    //         />)
+    // }
 
     return (
         <div className={styles.container}>
