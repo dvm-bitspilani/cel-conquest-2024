@@ -147,7 +147,7 @@ export default function Home() {
         <MeetingList listItms={listItms} />
       </div>
       <div className={styles.right}>
-        <div className={styles.wrapper}>
+        {/* <div className={styles.wrapper}>
           <h1 className={styles.heading}>Your <span>Pod:</span></h1>
           <section className={styles.pillsWrapper}>
             {coach[0] ? <div className={styles.userPills}>
@@ -175,7 +175,7 @@ export default function Home() {
               </div>
             </div> : null}
           </section>
-        </div>
+        </div> */}
         <div className={styles.formsContainer}>
           <h1 className={styles.heading}>
             <div onClick={() => navigate('/dashboard/forms')}>Pending <span>Forms</span></div>
