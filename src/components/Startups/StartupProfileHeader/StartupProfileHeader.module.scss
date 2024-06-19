@@ -75,6 +75,7 @@ body{
             gap: 36px;
             position: relative;
             left: 6%;
+            padding-top: 25px;
         }
 
         .profileInfoContainer{
@@ -151,7 +152,7 @@ body{
 @media(max-width: 1300px) {
 
     .container .contact .buttonContainer {
-        left: 8%;
+        left: 14%;
     }
     .container .contact::after {
         height: 72%;
@@ -162,7 +163,7 @@ body{
 @media(max-width: 1200px) {
 
     .container .contact .buttonContainer {
-        left: 0%;
+        left: 12%;
     }
 
     .container .contact::after {
@@ -182,7 +183,7 @@ body{
         top: 40%;
     }
     .container .contact .buttonContainer {
-        left: 0vw;
+        left: 12%;
         top: 20px;
         display: flex;
         flex-direction: row;
