@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 
 import RequireAuth from "./routes/RequireAuth/RequireAuth";
+import NullUserAuth from "./routes/RequireAuth/NullUser";
 
 import Login from "./routes/Login/Login";
 import LandingPage from "./routes/Landing/LandingPage";
@@ -103,22 +104,24 @@ function App() {
       <Route path="/" element={<LandingPage />} errorElement={<ErrorPage />} />
       <Route path="unauthorised" element={<Unauthorised />} />
       <Route path="login" element={<Login />} />
-      <Route path="dashboard" element={<Dashboard />}>
-        <Route path="meetings" element={<Meetings />}></Route>
-        <Route path="resources" element={<Resources />}></Route>
-        <Route path="developers" element={<Developers />}></Route>
-        <Route path="startups" element={<Startups />}></Route>
-        <Route element={<RequireAuth />}>
-          <Route index element={<Home />}></Route>
-          <Route path="experts" element={<Experts />}></Route>
-          <Route
-            path="startup-profile/:id?"
-            element={<StartupProfile />}
-          ></Route>
-          <Route path="mentors" element={<Mentors />}></Route>
-          <Route path="coaches" element={<Coaches />}></Route>
-          <Route path="connections" element={<Connections />}></Route>
-          <Route path="forms" element={<Forms />}></Route>
+      <Route element={<NullUserAuth />}>
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route path="meetings" element={<Meetings />}></Route>
+          <Route path="resources" element={<Resources />}></Route>
+          <Route path="developers" element={<Developers />}></Route>
+          <Route path="startups" element={<Startups />}></Route>
+          <Route element={<RequireAuth />}>
+            <Route index element={<Home />}></Route>
+            <Route path="experts" element={<Experts />}></Route>
+            <Route
+              path="startup-profile/:id?"
+              element={<StartupProfile />}
+            ></Route>
+            <Route path="mentors" element={<Mentors />}></Route>
+            <Route path="coaches" element={<Coaches />}></Route>
+            <Route path="connections" element={<Connections />}></Route>
+            <Route path="forms" element={<Forms />}></Route>
+          </Route>
         </Route>
       </Route>
     </Routes>
