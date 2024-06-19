@@ -18,6 +18,7 @@ export default function MentorProfileHeader({
   resume,
   twitter,
   linkedin,
+  companyname,
   schedulebtn,
   startupid
 }) {
@@ -62,6 +63,10 @@ export default function MentorProfileHeader({
 
             <div className={styles.headerContainer}>
               <div className={styles.name}>{name}</div>
+              <div>
+                <span className={styles.location}>Company : </span>
+                {companyname}
+              </div>
               <div>
                 <span className={styles.location}>Designation : </span>
                 {desg}
