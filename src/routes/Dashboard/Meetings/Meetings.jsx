@@ -67,8 +67,20 @@ const Meetings = () => {
             return (
               <MeetingItem
                 date={newItm.slot_start_time}
-                avatar={newItm.requested_logo}
-                mentorName={newItm.requested_name}
+                avatar={
+                  newItm.requested_name ===
+                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                    .name
+                    ? newItm.requester_logo
+                    : newItm.requested_logo
+                }
+                mentorName={
+                  newItm.requested_name ===
+                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                    .name
+                    ? newItm.requester_name
+                    : newItm.requested_name
+                }
                 duration={45}
                 key={newItm.id}
                 data={newItm}
@@ -108,8 +120,20 @@ const Meetings = () => {
             return (
               <MeetingItem
                 date={newItm.slot_start_time}
-                avatar={newItm.requested_logo}
-                mentorName={newItm.requested_name}
+                avatar={
+                  newItm.requested_name ===
+                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                    .name
+                    ? newItm.requester_logo
+                    : newItm.requested_logo
+                }
+                mentorName={
+                  newItm.requested_name ===
+                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                    .name
+                    ? newItm.requester_name
+                    : newItm.requested_name
+                }
                 duration={45}
                 key={newItm.id}
                 data={newItm}
