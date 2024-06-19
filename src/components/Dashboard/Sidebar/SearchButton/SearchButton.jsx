@@ -57,7 +57,7 @@ export default function SearchButton() {
  useEffect(() => {
     const filteredResults = searchResults
       ? searchResults.filter((profile) => {
-        if (searchTerm) {
+        if (searchTerm && profile.name && profile.role) {
           const lowercasedTerm = searchTerm.trim().toLowerCase();
           const nameMatches = profile.name.trim().toLowerCase().includes(lowercasedTerm);
           const roleMatches = profile.role.trim().toLowerCase().includes(lowercasedTerm);
