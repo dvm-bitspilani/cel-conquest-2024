@@ -147,7 +147,7 @@ const Startups = () => {
             <StartupCard
               key={startup.id}
               img={startup.user_profile.profile_logo}
-              name={startup.user_profile.name}
+              name={startup.startup_name}
               tags={startup.industry}
               id={startup.id}
             />
