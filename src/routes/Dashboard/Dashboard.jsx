@@ -7,6 +7,7 @@ import { Drawer, ConfigProvider } from "antd";
 import MobileMenu from "../../components/Dashboard/Sidebar/MobileMenu/MobileMenu";
 import SearchButton from "../../components/Dashboard/Sidebar/SearchButton/SearchButton";
 
+const userProfile = JSON.parse(localStorage.getItem("userData")).user_profile_obj;
 
 const Dashboard = () => {
   const [isHamOpen, setIsHamOpen] = useState(false);
@@ -25,7 +26,7 @@ const Dashboard = () => {
       <nav className={styles.nav}>
         <div className={styles.name}>
           <p>Hello,</p>
-          <h2>Madhur Jain</h2>
+          <h2>{userProfile.name}</h2>
         </div>
         <section className={styles.hamMenu}>
           <div className={styles.searchButton}>
