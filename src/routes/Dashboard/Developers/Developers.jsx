@@ -59,10 +59,8 @@ export default function Developers() {
       <div className={styles.title}>Developers</div>
       <div className={styles.container}>
         {exampleData.map((item, index) => (
-          <>
-            <div className={styles.vertical} key={index}>
-              {item.vertical}
-            </div>
+          <div key={index}>
+            <div className={styles.vertical}>{item.vertical}</div>
             <div className={styles.members}>
               {item.members.map((member, memberIndex) => (
                 <div key={memberIndex} className={styles.memberCard}>
@@ -90,7 +88,7 @@ export default function Developers() {
                 </div>
               ))}
             </div>
-          </>
+          </div>
         ))}
       </div>
     </div>
