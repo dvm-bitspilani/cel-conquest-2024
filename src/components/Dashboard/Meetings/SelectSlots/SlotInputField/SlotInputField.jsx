@@ -25,8 +25,8 @@ const SlotInputField = ({
     hours > 12
       ? `${hours - 12}:${minutes} PM`
       : hours === 0
-      ? `12:${minutes} AM`
-      : `${hours}:${minutes} AM`;
+        ? `12:${minutes} AM`
+        : `${hours}:${minutes} AM`;
 
   const hoursEnd = dateObjEnd.getHours();
   const minutesEnd = dateObjEnd.getMinutes();
@@ -34,8 +34,8 @@ const SlotInputField = ({
     hoursEnd > 12
       ? `${hoursEnd - 12}:${minutesEnd} PM`
       : hoursEnd === 0
-      ? `12:${minutesEnd} AM`
-      : `${hoursEnd}:${minutesEnd} AM`;
+        ? `12:${minutesEnd} AM`
+        : `${hoursEnd}:${minutesEnd} AM`;
   return (
     <div className={styles.inputField}>
       <div>
@@ -64,16 +64,16 @@ const SlotInputField = ({
             <path
               d="M18 6L6 18"
               stroke="white"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M6 6L18 18"
               stroke="white"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         )}

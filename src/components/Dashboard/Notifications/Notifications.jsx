@@ -14,16 +14,16 @@ const cross = (
     <path
       d="M18 6L6 18"
       stroke="black"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6 6L18 18"
       stroke="black"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -47,13 +47,12 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
   let date;
   let notifs = notifsData.map((notif, index) => {
     let time = new Date(notif.timestamp);
-    let fullTime = `${
-      time.getHours().toString().length === 1
-        ? "0" + time.getHours()
-        : time.getHours()
-    }:${time.getMinutes().toString().length === 1
-      ? "0" + time.getMinutes()
-      : time.getMinutes()}`;
+    let fullTime = `${time.getHours().toString().length === 1
+      ? "0" + time.getHours()
+      : time.getHours()
+      }:${time.getMinutes().toString().length === 1
+        ? "0" + time.getMinutes()
+        : time.getMinutes()}`;
     if (index === 0) {
       let newdate = new Date(notif.timestamp);
       date = newdate.getDate();
