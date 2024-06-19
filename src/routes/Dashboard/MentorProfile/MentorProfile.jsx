@@ -60,6 +60,7 @@ const MentorProfile = () => {
         resume={startupProfile}
         twitter={startupProfile.twitter}
         linkedin={startupProfile.linkedin}
+        companyname={startupProfile.company_name}
         schedulebtn={startupProfile.role}
         startupid={id}
       />
