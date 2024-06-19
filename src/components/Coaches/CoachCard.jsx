@@ -6,7 +6,7 @@ export default function CoachCard({ img, name, tags, designation, id }) {
   const tagsArray = tags ? tags.split(",") : [];
   return (
     <Link
-      to={`/dashboard/startup-profile/${id}`}
+      to={`/dashboard/profile/${id}`}
       style={{ textDecoration: "none", color: "unset" }}
     >
       <div className={styles.cardContainer}>

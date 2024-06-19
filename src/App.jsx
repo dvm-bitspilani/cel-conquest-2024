@@ -18,6 +18,7 @@ import Meetings from "./routes/Dashboard/Meetings/Meetings";
 import Startups from "./routes/Dashboard/Startups/Startups";
 import Unauthorised from "./routes/Unauthorised/Unauthorised";
 import StartupProfile from "./routes/Dashboard/StartupProfile/StartupProfile";
+import MentorProfile from "./routes/Dashboard/MentorProfile/MentorProfile";
 import Experts from "./routes/Dashboard/Experts/Experts";
 import Mentors from "./routes/Dashboard/Mentors/Mentors";
 import Connections from "./routes/Dashboard/Connections/Connections";
@@ -45,7 +46,7 @@ function App() {
         if (
           localStorage.getItem("lastSessionCall") &&
           Date.now() - parseInt(localStorage.getItem("lastSessionCall")) >
-          10800000
+            10800000
         ) {
           axios
             .post(
@@ -67,7 +68,7 @@ function App() {
                 localStorage.setItem("userData", JSON.stringify(newData));
                 console.log(
                   newData.tokens.access ===
-                  JSON.parse(localStorage.getItem("userData")).tokens.access
+                    JSON.parse(localStorage.getItem("userData")).tokens.access
                 );
               }
             })
@@ -78,7 +79,7 @@ function App() {
         } else if (
           localStorage.getItem("lastSessionCall") &&
           Date.now() - parseInt(localStorage.getItem("lastSessionCall")) <=
-          10800000
+            10800000
         ) {
           console.log("timeout set");
           const elapsedTime =
@@ -117,6 +118,7 @@ function App() {
               path="startup-profile/:id?"
               element={<StartupProfile />}
             ></Route>
+            <Route path="profile/:id?" element={<MentorProfile />}></Route>
             <Route path="mentors" element={<Mentors />}></Route>
             <Route path="coaches" element={<Coaches />}></Route>
             <Route path="connections" element={<Connections />}></Route>
