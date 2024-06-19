@@ -9,9 +9,14 @@ const Button = ({ active, text, handleButtonClick, link }) => {
     <div
       className={`${styles.Button} ${active ? styles.active : null}`}
       onClick={(e) => {
-        handleButtonClick(text);
-        e.preventDefault();
-        navigate(`${link}`);
+        if (link) {
+          handleButtonClick(text);
+          e.preventDefault();
+          navigate(`${link}`);
+        }
+        else {
+          window.open("https://www.conquest.org.in/", "_self");
+        }
       }}
     >
       {text}
