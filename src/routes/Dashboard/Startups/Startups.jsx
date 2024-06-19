@@ -147,11 +147,7 @@ const Startups = () => {
             <StartupCard
               key={startup.id}
               img={startup.user_profile.profile_logo}
-<<<<<<< Updated upstream
-              name={startup.user_profile.name}
-=======
               name={startup.startup_name}
->>>>>>> Stashed changes
               tags={startup.industry}
               id={startup.id}
             />
