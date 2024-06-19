@@ -73,12 +73,12 @@ export default function WebContextProvider({ children }) {
                 console.log("In context err")
                 console.log(err)
                 setIsUserLoginBtnDisabled(false)
-                if (err.response.status === 401) {
-                    setLoginErrorMessage('User does not exist!')
-                }
-                if (err.response.status === 404) {
-                    setLoginErrorMessage('Incorrect Credentials!')
-                }
+                setLoginErrorMessage('Incorrect Credentials!')
+                // if (err.response.status === 401) {
+                // }
+                // if (err.response.status === 404) {
+                //     setLoginErrorMessage('Incorrect Credentials!')
+                // }
             })
     }
 
