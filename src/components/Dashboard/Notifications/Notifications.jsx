@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styles from "./Notifications.module.scss";
 import NotificationsItem from "./NotificationsItem/NotificationsItem";
 import { date } from "yup";
@@ -58,16 +58,15 @@ function Notifications({ isNotifVisible, setIsNotifVisible, notifsData }) {
       date = newdate.getDate();
       console.log("012345134");
       return (
-        <>
-          <p key={index + "p"}>
+        <Fragment key={index}>
+          <p>
             {month[time.getMonth()]} {date}, 2024
           </p>
           <NotificationsItem
-            key={index}
             time={fullTime}
             message={notif.message}
           />
-        </>
+        </Fragment>
       );
     }
 
