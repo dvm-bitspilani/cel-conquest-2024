@@ -94,8 +94,9 @@ const Sidebar = () => {
       axios
         .get(`https://conquest-api.bits-dvm.org/api/staff/notifications/`, {
           headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
           },
         })
         .then((res) => {
@@ -216,6 +217,7 @@ const Sidebar = () => {
             text="Investment Partners"
             active={activeButton === "Investment Partners"}
             handleButtonClick={handleButtonClick}
+            link="/partners/"
           ></Button>
         </div>
         <div className={styles.bottomButtons}>

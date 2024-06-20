@@ -2,27 +2,33 @@ import React, { useEffect, useState } from "react";
 import styles from "./BookSlots.module.scss";
 import BookSlotItem from "./BookSlotItem/BookSlotItem";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function BookSlots({ bookSlots, showHideBookSlots }) {
+  const { id } = useParams();
   const [slotList, setSlotList] = useState([]);
   const selectSlot = (id) => {};
+  // console.log(id);
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
-        .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
-          headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("userData")).tokens.access
-            }`,
-          },
-        })
+        .get(
+          `https://conquest-api.bits-dvm.org/api/meetings/user/${id}/meeting-slots/`,
+          {
+            headers: {
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
+            },
+          }
+        )
         .then((res) => {
           const newArr = res.data.map((newItm, index) => {
             return (
               <BookSlotItem
-                slotno={index + 1}
+                slotno={index}
                 key={newItm.id}
-                id={newItm.id}
+                slotId={newItm.id}
                 showHideSelectSlotTiming={showHideBookSlots}
                 dateTimeStart={newItm.start_time}
                 dateTimeEnd={newItm.end_time}
@@ -31,7 +37,7 @@ function BookSlots({ bookSlots, showHideBookSlots }) {
             );
           });
           setSlotList(newArr);
-          // console.log(res.data);
+          console.log(res.data);
           // setSlotData(res.data);
         })
         .catch((err) => {
@@ -40,7 +46,7 @@ function BookSlots({ bookSlots, showHideBookSlots }) {
     } else {
       console.log("error in fetching data");
     }
-  }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
+  }, []);
   return (
     <div
       style={bookSlots ? { display: "block" } : { display: "none" }}

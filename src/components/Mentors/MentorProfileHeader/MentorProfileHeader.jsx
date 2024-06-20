@@ -20,14 +20,14 @@ export default function MentorProfileHeader({
   linkedin,
   companyname,
   schedulebtn,
-  startupid
+  startupid,
 }) {
-  
-
   const formModal = useRef(null);
 
   const [requestSent, setRequestSent] = useState(false);
-  const userProfile = JSON.parse(localStorage.getItem("userData")).user_profile_obj;
+  const userProfile = JSON.parse(
+    localStorage.getItem("userData")
+  ).user_profile_obj;
   const role1_Startup = userProfile.role === "Startup";
   const role1_Mentor = userProfile.role === "Mentor";
 
@@ -51,7 +51,7 @@ export default function MentorProfileHeader({
 
   return (
     <>
-      <FormModal ref={formModal} title='Edit Profile' formType='profile edit' />
+      <FormModal ref={formModal} title="Edit Profile" formType="profile edit" />
       <div className={styles.container}>
         <div className={styles.profile}>
           <div className={styles.contentContainer}>
@@ -81,21 +81,32 @@ export default function MentorProfileHeader({
           <div className={styles.profileInfoContainer}>
             <MentorAbout desc={desc} sector={sector} domain={domain} />
           </div>
-          
+
           <div className={styles.mobile}>
             <div className={styles.button}>
-              {!startupid && (<div
-                className={styles.mobileButton}
-                onClick={() => formModal.current.openForm()}
-              >
-                Edit
-              </div>)}
+              {!startupid && (
+                <div
+                  className={styles.mobileButton}
+                  onClick={() => formModal.current.openForm()}
+                >
+                  Edit
+                </div>
+              )}
 
               <div>
                 <button
-                  style={{ zIndex: 2, display: (role1_Mentor || role1_Startup) && startup.startupid !== undefined ? null : "none" }}
+                  style={{
+                    zIndex: 2,
+                    display:
+                      (role1_Mentor || role1_Startup) &&
+                      startup.startupid !== undefined
+                        ? null
+                        : "none",
+                  }}
                   className={styles.mobileButton1}
-                  onClick={role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots}
+                  onClick={
+                    role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
+                  }
                 >
                   {role1_Mentor ? "Select Slot" : "Book Slot"}
                 </button>
@@ -113,7 +124,11 @@ export default function MentorProfileHeader({
                       );
                     }
                   } else {
-                    if (role1_Startup && startup.startupid !== undefined && bookSlots) {
+                    if (
+                      role1_Startup &&
+                      startup.startupid !== undefined &&
+                      bookSlots
+                    ) {
                       return (
                         <BookSlots
                           bookSlots={bookSlots}
@@ -130,9 +145,8 @@ export default function MentorProfileHeader({
               <p className={styles.headings}>About</p>
               <MentorAbout desc={desc} sector={sector} domain={domain} />
             </div>
-            
+
             <div className={styles.head}>
-              
               <MentorProfileContact
                 resume={resume}
                 twitter={twitter}
@@ -143,18 +157,29 @@ export default function MentorProfileHeader({
         </div>
         <div className={styles.contact}>
           <div className={styles.buttonContainer}>
-            {!startupid && (<div
-              className={styles.schedule}
-              onClick={() => formModal.current.openForm()}
-            >
-              Edit
-            </div>)}
+            {!startupid && (
+              <div
+                className={styles.schedule}
+                onClick={() => formModal.current.openForm()}
+              >
+                Edit
+              </div>
+            )}
 
             <div>
               <button
-                style={{ zIndex: 2, display: (role1_Mentor || role1_Startup) && startup.startupid !== undefined ? null : "none" }}
+                style={{
+                  zIndex: 2,
+                  display:
+                    (role1_Mentor || role1_Startup) &&
+                    startup.startupid !== undefined
+                      ? null
+                      : "none",
+                }}
                 className={styles.schedule}
-                onClick={role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots}
+                onClick={
+                  role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
+                }
               >
                 {role1_Mentor ? "Select Slot" : "Book Slot"}
               </button>
@@ -172,7 +197,11 @@ export default function MentorProfileHeader({
                     );
                   }
                 } else {
-                  if (role1_Startup && startup.startupid !== undefined && bookSlots) {
+                  if (
+                    role1_Startup &&
+                    startup.startupid !== undefined &&
+                    bookSlots
+                  ) {
                     return (
                       <BookSlots
                         bookSlots={bookSlots}

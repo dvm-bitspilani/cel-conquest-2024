@@ -119,7 +119,12 @@ const MeetingDetails = ({ myData }) => {
         </div>
         <div className={styles.personDetails}>
           <p>with</p>
-          <p>{myData.requester_name}</p>
+          <p>
+            {myData.requested_name ===
+            JSON.parse(localStorage.getItem("userData")).user_profile_obj.name
+              ? myData.requester_name
+              : myData.requested_name}
+          </p>
           {/* <p>+91 00001 00001</p> */}
         </div>
         <div className={styles.lowerContent}>
