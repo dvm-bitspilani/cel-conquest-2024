@@ -138,53 +138,70 @@ export default function Home() {
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
-        .get("https://conquest-api.bits-dvm.org/api/meetings/all_meetings/", {
-          headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("userData")).tokens.access
-            }`,
-          },
-        })
+        .get(
+          `https://conquest-api.bits-dvm.org/api/meetings/meetings/upcoming/`,
+          {
+            headers: {
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
+            },
+          }
+        )
         .then((res) => {
-          // console.log(res.data)
+          console.log(res.data);
 
-          const newArr = res.data.map((newItm) => {
+          let newArr = res.data.meetings.map((newItm) => {
             return (
               <MeetingItem
                 date={newItm.slot_start_time}
-                avatar={newItm.requester_logo}
-                mentorName={newItm.requester_name}
+                avatar={
+                  newItm.requested_name ===
+                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                    .name
+                    ? newItm.requester_logo
+                    : newItm.requested_logo
+                }
+                mentorName={
+                  newItm.requested_name ===
+                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                    .name
+                    ? newItm.requester_name
+                    : newItm.requested_name
+                }
                 duration={45}
                 key={newItm.id}
                 data={newItm}
-                type="join"
                 handleClick={handleClick}
                 dataRef={dataRef}
+                type="join"
               />
             );
           });
-
+          let newArr2 = res.data.global_events.map((newItm) => {
+            return (
+              <MeetingItem
+                date={newItm.start_time}
+                avatar={
+                  newItm.requested_name ===
+                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                    .name
+                    ? newItm.requester_logo
+                    : newItm.requested_logo
+                }
+                mentorName={newItm.name}
+                duration={45}
+                key={newItm.id}
+                data={newItm}
+                handleClick={handleClick}
+                dataRef={dataRef}
+                type="join"
+              />
+            );
+          });
+          newArr.push(newArr2);
+          console.log("abc", newArr);
           setListItms(newArr);
-
-          // for (let i = 0; i < 6; i++) {
-          //   const newItm = (
-          //     <MeetingItem
-          //       date="May 24, 2024, 00:30:00"
-          //       avatar={avatar}
-          //       mentorName="Bhavesh"
-          //       duration={30}
-          //       // isGrayLink={true}
-          //       key={Math.random()}
-          //       data={{ test: 'hello', id: i }}
-          //       handleClick={handleClick}
-          //       dataRef={dataRef}
-          //     />
-          //   )
-
-          //   setListItms(prev => {
-          //     return [...prev, newItm]
-          //   })
-          // }
         })
         .catch((err) => {
           console.log(err);
