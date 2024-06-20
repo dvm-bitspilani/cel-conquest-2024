@@ -17,9 +17,8 @@ const MentorProfile = () => {
             `https://conquest-api.bits-dvm.org/api/users/profile_detail/?id=${id}`,
             {
               headers: {
-                Authorization: `Bearer ${
-                  JSON.parse(localStorage.getItem("userData")).tokens.access
-                }`,
+                Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                  }`,
               },
               params: {
                 id: id,
