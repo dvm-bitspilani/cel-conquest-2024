@@ -1,7 +1,6 @@
 import styles from "./MeetingDetails.module.scss";
-import demoAvatar from "../../../../assets/images/Dashboard/demoAvatar.jpeg";
 
-const MeetingDetails = ({ myData }) => {
+const MeetingDetails = ({ myData, listTab }) => {
   console.log(1, myData, 1);
 
   const startTime = myData.slot_start_time || myData.start_time;
@@ -121,7 +120,7 @@ const MeetingDetails = ({ myData }) => {
           <p>with</p>
           <p>
             {myData.requested_name ===
-            JSON.parse(localStorage.getItem("userData")).user_profile_obj.name
+              JSON.parse(localStorage.getItem("userData")).user_profile_obj.name
               ? myData.requester_name
               : myData.requested_name}
           </p>
@@ -136,46 +135,48 @@ const MeetingDetails = ({ myData }) => {
                 {meetDate % 10 === 1
                   ? "st"
                   : meetDate % 10 === 2
-                  ? "nd"
-                  : meetDate % 10 === 3
-                  ? "rd"
-                  : "th"}
+                    ? "nd"
+                    : meetDate % 10 === 3
+                      ? "rd"
+                      : "th"}
               </p>
               <p>
                 {fullTime} - {fullTimeEnd}
               </p>
             </div>
           </div>
-          <div className={styles.lower}>
-            <p className={styles.lowerBold}>Join meet</p>
-            <a href={myData.meet_link}>
-              <div className={styles.joinLink}>
-                <p>Click to join</p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                >
-                  <path
-                    d="M5.83325 14.1666L14.1666 5.83325"
-                    stroke="#138CFD"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M5.83325 5.83325H14.1666V14.1666"
-                    stroke="#138CFD"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </a>
-          </div>
+          {listTab === 'upcoming' ? (
+            <div className={styles.lower}>
+              <p className={styles.lowerBold}>Join meet</p>
+              <a href={myData.meet_link}>
+                <div className={styles.joinLink}>
+                  <p>Click to join</p>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                  >
+                    <path
+                      d="M5.83325 14.1666L14.1666 5.83325"
+                      stroke="#138CFD"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M5.83325 5.83325H14.1666V14.1666"
+                      stroke="#138CFD"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

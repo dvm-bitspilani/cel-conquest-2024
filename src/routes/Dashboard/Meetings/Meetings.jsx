@@ -267,7 +267,7 @@ const Meetings = () => {
               }`}
           >
             {data !== null ? (
-              <MeetingDetails myData={data}></MeetingDetails>
+              <MeetingDetails myData={data} listTab={listTab}></MeetingDetails>
             ) : null}
           </div>
         </div>
