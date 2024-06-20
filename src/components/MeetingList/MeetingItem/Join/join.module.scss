@@ -1,16 +1,17 @@
 .link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #138CFD;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #138cfd;
+  text-decoration: none;
+  cursor: pointer;
 
-    svg {
-        aspect-ratio: 21 / 10;
-        width: 21px;
+  svg {
+    aspect-ratio: 21 / 10;
+    width: 21px;
 
-        @media screen and (max-width: 420px) {
-            width: 16px;
-        }
+    @media screen and (max-width: 420px) {
+      width: 16px;
     }
+  }
 }
