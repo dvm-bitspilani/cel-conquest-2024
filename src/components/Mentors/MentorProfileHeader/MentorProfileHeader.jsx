@@ -280,6 +280,7 @@ export default function MentorProfileHeader({
                   className={styles.schedule}
                   onClick={connectionHandler}
                   disabled={connectionState === 'sent' || isLoading}
+                  style={connectionState === 'sent' || isLoading ? { filter: 'grayscale(1)', cursor: 'not-allowed' } : null}
                 >{connectionBtnText}</button>
               </div>
 
