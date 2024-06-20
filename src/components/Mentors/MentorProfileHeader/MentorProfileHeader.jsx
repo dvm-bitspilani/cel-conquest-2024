@@ -206,7 +206,6 @@ export default function MentorProfileHeader({
                       <BookSlots
                         bookSlots={bookSlots}
                         showHideBookSlots={showHideBookSlots}
-                        startupid={startupid}
                       />
                     );
                   }

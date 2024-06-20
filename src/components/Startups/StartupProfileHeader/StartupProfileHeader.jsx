@@ -210,7 +210,6 @@ export default function StartupProfileHeader({
                         <BookSlots
                           bookSlots={bookSlots}
                           showHideBookSlots={showHideBookSlots}
-                          startupid={startupid}
                         />
                       );
                     }
