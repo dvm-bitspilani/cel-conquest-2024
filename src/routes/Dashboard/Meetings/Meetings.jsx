@@ -86,6 +86,7 @@ const Meetings = () => {
                 data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
+                type={listTab === "pending" ? "accept-decline" : ""}
               />
             );
           });
