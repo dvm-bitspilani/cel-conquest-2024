@@ -101,7 +101,10 @@ const Meetings = () => {
   };
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("userData")).tokens) {
+    if (
+      JSON.parse(localStorage.getItem("userData")).tokens &&
+      listTab === "upcoming"
+    ) {
       axios
         .get(
           `https://conquest-api.bits-dvm.org/api/meetings/meetings/upcoming/`,
@@ -116,7 +119,7 @@ const Meetings = () => {
         .then((res) => {
           console.log(res.data);
 
-          const newArr = res.data.map((newItm) => {
+          const newArr = res.data.meetings.map((newItm) => {
             return (
               <MeetingItem
                 date={newItm.slot_start_time}
@@ -151,7 +154,7 @@ const Meetings = () => {
     } else {
       console.log("error in fetching data");
     }
-  }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
+  }, [JSON.parse(localStorage.getItem("userData")).tokens.access, listTab]);
   // console.log("isStartup", isStartup);
   return (
     <>
