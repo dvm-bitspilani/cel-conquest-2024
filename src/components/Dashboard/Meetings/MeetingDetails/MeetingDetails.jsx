@@ -4,36 +4,38 @@ import demoAvatar from "../../../../assets/images/Dashboard/demoAvatar.jpeg";
 const MeetingDetails = ({ myData }) => {
   console.log(1, myData, 1);
 
-  const dateObjEnd = new Date(myData.slot_end_time);
-  const dateObj = new Date(myData.slot_start_time);
+  const startTime = myData.slot_start_time || myData.start_time;
+  const endTime = myData.slot_end_time || myData.end_time;
+
+  const dateObj = new Date(startTime * 1000);
+  const dateObjEnd = new Date(endTime * 1000);
   const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
     dateObj
   );
   const meetDate = dateObj.getDate();
+
   const hours = dateObj.getHours();
   const minutes = dateObj.getMinutes();
-  const fullTime =
-    hours > 12
-      ? `${hours - 12}:${minutes}`
-      : hours === 0
-      ? `12:${minutes}`
-      : `${hours}:${minutes}`;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  const period = hours >= 12 ? "PM" : "AM";
+  const adjustedHours = hours % 12 || 12;
+  const fullTime = `${adjustedHours}:${formattedMinutes} ${period}`;
 
   const hoursEnd = dateObjEnd.getHours();
   const minutesEnd = dateObjEnd.getMinutes();
-  const fullTimeEnd =
-    hoursEnd > 12
-      ? `${hoursEnd - 12}:${minutesEnd}`
-      : hoursEnd === 0
-      ? `12:${minutesEnd}`
-      : `${hoursEnd}:${minutesEnd}`;
+  const formattedMinutesEnd = minutesEnd < 10 ? `0${minutesEnd}` : minutesEnd;
+  const periodEnd = hoursEnd >= 12 ? "PM" : "AM";
+  const adjustedHoursEnd = hoursEnd % 12 || 12;
+  const fullTimeEnd = `${adjustedHoursEnd}:${formattedMinutesEnd} ${periodEnd}`;
 
   return (
     <div className={styles.MeetingDetailsContainer}>
       <div className={styles.MeetingDetails}>
         <h3 className={styles.MeetingDetailsHeader}>Meeting details</h3>
         <p className={styles.MeetingStatus}>
-          {myData.status.charAt(0).toUpperCase() + myData.status.slice(1)}
+          {startTime === myData.slot_start_time
+            ? myData.status.charAt(0).toUpperCase() + myData.status.slice(1)
+            : ""}
         </p>
         <div className={styles.DateSlider}>
           {/* <svg
@@ -48,7 +50,9 @@ const MeetingDetails = ({ myData }) => {
               fill="#111213"
             />
           </svg> */}
-          <div>{meetDate} {month.slice(0, 3)}, 2024</div>
+          <div>
+            {meetDate} {month.slice(0, 3)}, 2024
+          </div>
           {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -122,15 +126,19 @@ const MeetingDetails = ({ myData }) => {
           <div className={styles.upper}>
             <div className={styles.lowerBold}>Date & Time</div>
             <div className={styles.dateTime}>
-              <p>{month.slice(0, 3)} {meetDate}{meetDate % 10 === 1
-                    ? "st"
-                    : meetDate % 10 === 2
-                        ? "nd"
-                        : meetDate % 10 === 3
-                            ? "rd"
-                            : "th"
-                    }</p>
-              <p>{fullTime} - {fullTimeEnd}</p>
+              <p>
+                {month.slice(0, 3)} {meetDate}
+                {meetDate % 10 === 1
+                  ? "st"
+                  : meetDate % 10 === 2
+                  ? "nd"
+                  : meetDate % 10 === 3
+                  ? "rd"
+                  : "th"}
+              </p>
+              <p>
+                {fullTime} - {fullTimeEnd}
+              </p>
             </div>
           </div>
           <div className={styles.lower}>
