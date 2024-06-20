@@ -5,6 +5,9 @@ import { useEffect } from "react";
 import * as styles from "./menu.module.scss";
 import "./menuStyles.scss";
 
+import demoAvatar from "../../../../assets/images/Dashboard/demoAvatar.jpeg"
+import { Link } from "react-router-dom";
+
 export default function MobileMenu() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -83,6 +86,15 @@ export default function MobileMenu() {
     },
   ];
 
+  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
+  const userProfile = userData.user_profile_obj || {};
+  const profileLink =
+    userProfile.role === "Startup"
+      ? "/dashboard/startup-profile"
+      : "/dashboard/profile";
+  const profileLogo = userProfile.profile_logo || demoAvatar;
+
+
   function onClick(e) {
     navigate(e.key);
   }
@@ -90,6 +102,17 @@ export default function MobileMenu() {
   return (
     <main className={styles.container}>
       <div id="dashboardMenu">
+        <div className={styles.profileSection}>
+          <Link to={profileLink} className={styles.profileAvatar}>
+            <img
+              src={profileLogo}
+              onError={(e) => {
+                e.target.src = demoAvatar;
+              }}
+              alt="Profile Avatar"
+            />
+          </Link>
+        </div>
         <ConfigProvider>
           <Menu onClick={onClick} items={items} mode="inline" />
         </ConfigProvider>
