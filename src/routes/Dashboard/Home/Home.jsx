@@ -175,6 +175,7 @@ export default function Home() {
                   data={newItm}
                   handleClick={handleClick}
                   dataRef={dataRef}
+                  isGlobal={false}
                   type="join"
                 />
               );
@@ -196,6 +197,7 @@ export default function Home() {
                 data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
+                isGlobal={true}
                 type="join"
               />
             );
