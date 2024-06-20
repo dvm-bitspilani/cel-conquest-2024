@@ -4,7 +4,8 @@ import axios from "axios";
 import MentorProfileContact from "../MentorProfileContact/MentorProfileContact";
 import MentorAbout from "../MentorAbout/MentorAbout";
 import FormModal from "../../Dashboard/Forms/FormModal/FormModal";
-import SlotTimingSelector from "../../Dashboard/Meetings/SlotTimingSelector/SlotTimingSelector";
+import BookMeeting from "../../Dashboard/Meetings/BookMeeting/BookMeeting";
+// import SlotTimingSelector from "../../Dashboard/Meetings/SlotTimingSelector/SlotTimingSelector";
 import BookSlots from "../../Dashboard/Meetings/BookSlots/BookSlots";
 import { WebContext } from "../../../store/website-context";
 // import ProfileModal from "./ProfileEdit/Modal/Modal";
@@ -198,14 +199,14 @@ export default function MentorProfileHeader({
                     role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
                   }
                 >
-                  {role1_Mentor ? "Select Slot" : "Book Slot"}
+                  {role1_Mentor ? "Book Meeting" : "Book Slot"}
                 </button>
 
                 {(() => {
                   if (role1_Mentor && startup.startupid !== undefined) {
                     if (selectSlotTiming) {
                       return (
-                        <SlotTimingSelector
+                        <BookMeeting
                           selectSlotTiming={selectSlotTiming}
                           showHideSelectSlotTiming={showHideSelectSlotTiming}
                           removeModal={showHideSelectSlotTiming}
@@ -273,7 +274,7 @@ export default function MentorProfileHeader({
                     role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
                   }
                 >
-                  {role1_Mentor ? "Select Slot" : "Book Slot"}
+                  {role1_Mentor ? "Book Meeting" : "Book Slot"}
                 </button>
 
                 <button
@@ -288,7 +289,7 @@ export default function MentorProfileHeader({
                 if (role1_Mentor && startup.startupid !== undefined) {
                   if (selectSlotTiming) {
                     return (
-                      <SlotTimingSelector
+                      <BookMeeting
                         selectSlotTiming={selectSlotTiming}
                         showHideSelectSlotTiming={showHideSelectSlotTiming}
                         removeModal={showHideSelectSlotTiming}

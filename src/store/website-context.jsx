@@ -119,6 +119,9 @@ export default function WebContextProvider({ children }) {
                     localStorage.setItem("userData", JSON.stringify(res.data))
                     localStorage.setItem("lastSessionCall", `${Date.now()}`)
                     localStorage.setItem("tokens", JSON.stringify(res.data.tokens))
+                    if (res.data.user_profile_obj.role !== "Guest - Tier 2") {
+                        navigate('/dashboard')
+                    }
                     tokenRefreshFunction()
                 }
                 catch (err) {
