@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./BookSlotItem.module.scss";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function BookSlotItem({
   showHideSelectSlotTiming,
-  id,
   slotno,
+  slotId,
   dateTimeStart,
   dateTimeEnd,
   deleteSlot,
@@ -31,21 +33,47 @@ function BookSlotItem({
   const adjustedHoursEnd = hoursEnd % 12 || 12;
   const fullTimeEnd = `${adjustedHoursEnd}:${formattedMinutesEnd} ${periodEnd}`;
 
+  const { id } = useParams();
+
+  const handleClick = () => {
+    if (JSON.parse(localStorage.getItem("userData")).tokens) {
+      axios
+        .post(
+          `https://conquest-api.bits-dvm.org/api/meetings/requests/`,
+          {
+            requester: JSON.parse(localStorage.getItem("userData"))
+              .user_profile_obj.id,
+            requested: id,
+            slot: slotId,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("error in fetching data");
+    }
+  };
   return (
     <div className={styles.inputField}>
       <div>
-        <div> Slot {slotno}</div>
+        <div> Slot {slotno + 1}</div>
         <div>
           ({meetDate} {month} ({week[dateObj.getDay()]}), {fullTime} -{" "}
           {fullTimeEnd})
         </div>
       </div>
-      <button
-        className={styles.SelectButton}
-        onClick={() => {
-          return deleteSlot(id);
-        }}
-      >
+      <button className={styles.SelectButton} onClick={() => handleClick()}>
         Book
       </button>
     </div>

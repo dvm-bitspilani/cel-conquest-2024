@@ -26,9 +26,9 @@ function BookSlots({ bookSlots, showHideBookSlots }) {
           const newArr = res.data.map((newItm, index) => {
             return (
               <BookSlotItem
-                slotno={index + 1}
+                slotno={index}
                 key={newItm.id}
-                id={newItm.id}
+                slotId={newItm.id}
                 showHideSelectSlotTiming={showHideBookSlots}
                 dateTimeStart={newItm.start_time}
                 dateTimeEnd={newItm.end_time}
@@ -37,7 +37,7 @@ function BookSlots({ bookSlots, showHideBookSlots }) {
             );
           });
           setSlotList(newArr);
-          // console.log(res.data);
+          console.log(res.data);
           // setSlotData(res.data);
         })
         .catch((err) => {
