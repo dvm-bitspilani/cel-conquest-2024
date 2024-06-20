@@ -244,7 +244,7 @@ export default function Home() {
         <section className={styles.ongoing}>
           {dataRef.current ? (
             <>
-              <h2>Meeting Title</h2>
+              <h2>Meeting Info</h2>
               <span>
                 <svg
                   width="17"
