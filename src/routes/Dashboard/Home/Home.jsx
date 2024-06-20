@@ -44,9 +44,9 @@ export default function Home() {
           "th";
       } else {
         switch (
-          `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(
-            " "
-          )[2][1]
+        `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(
+          " "
+        )[2][1]
         ) {
           case "1":
             date =
@@ -77,7 +77,7 @@ export default function Home() {
 
       let month;
       switch (
-        `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(" ")[1]
+      `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(" ")[1]
       ) {
         case "Jan":
           month = "January";
@@ -142,9 +142,8 @@ export default function Home() {
           `https://conquest-api.bits-dvm.org/api/meetings/meetings/upcoming/`,
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
             },
           }
         )
@@ -159,15 +158,15 @@ export default function Home() {
                   date={newItm.slot_start_time}
                   avatar={
                     newItm.requested_name ===
-                    JSON.parse(localStorage.getItem("userData"))
-                      .user_profile_obj.name
+                      JSON.parse(localStorage.getItem("userData"))
+                        .user_profile_obj.name
                       ? newItm.requester_logo
                       : newItm.requested_logo
                   }
                   mentorName={
                     newItm.requested_name ===
-                    JSON.parse(localStorage.getItem("userData"))
-                      .user_profile_obj.name
+                      JSON.parse(localStorage.getItem("userData"))
+                        .user_profile_obj.name
                       ? newItm.requester_name
                       : newItm.requested_name
                   }
@@ -186,8 +185,8 @@ export default function Home() {
                 date={newItm.start_time}
                 avatar={
                   newItm.requested_name ===
-                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                    .name
+                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                      .name
                     ? newItm.requester_logo
                     : newItm.requested_logo
                 }
