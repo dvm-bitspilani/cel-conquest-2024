@@ -1,14 +1,16 @@
 import styles from "./meetings.module.scss";
 import MeetingDetails from "../../../components/Dashboard/Meetings/MeetingDetails/MeetingDetails";
 import SelectSlots from "../../../components/Dashboard/Meetings/SelectSlots/SelectSlots";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import axios from "axios";
 import SlotTimingSelector from "../../../components/Dashboard/Meetings/SlotTimingSelector/SlotTimingSelector";
 import MeetingList from "../../../components/MeetingList/MeetingList";
 import MeetingItem from "../../../components/MeetingList/MeetingItem/MeetingItem";
 import BookSlots from "../../../components/Dashboard/Meetings/BookSlots/BookSlots";
+import { WebContext } from "../../../store/website-context";
 
 const Meetings = () => {
+  const { contextHolder } = useContext(WebContext)
   //meeting list code
   const dataRef = useRef(null);
   const [data, setData] = useState(null);
@@ -181,6 +183,7 @@ const Meetings = () => {
   // console.log("isStartup", isStartup);
   return (
     <>
+      {contextHolder}
       <BookSlots
         bookSlots={bookSlots}
         showHideBookSlots={showHideBookSlots}

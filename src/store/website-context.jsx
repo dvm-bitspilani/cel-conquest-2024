@@ -2,12 +2,14 @@ import { createContext, useEffect, useState } from "react";
 import { useGoogleLogin, googleLogout } from "@react-oauth/google";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { message } from "antd";
 
 export const WebContext = createContext({
     user: {},
     isUserLoginBtnDisabled: false,
     loginErrorMessage: null,
     formListRerender: 0,
+    contextHolder: null,
     setFormListRerender: () => { },
     setLoginErrorMessage: () => { },
     setUser: () => { },
@@ -15,7 +17,8 @@ export const WebContext = createContext({
     glogout: () => { },
     usernameLogin: () => { },
     getUserData: () => { },
-    tokenRefreshFunction: () => { }
+    tokenRefreshFunction: () => { },
+    displayMessage: () => { }
 });
 
 export default function WebContextProvider({ children }) {
@@ -71,7 +74,7 @@ export default function WebContextProvider({ children }) {
             })
             .catch((err) => {
                 console.log("In context err")
-                console.log(err)
+                console.log(err.response.data.message)
                 setIsUserLoginBtnDisabled(false)
                 setLoginErrorMessage('Incorrect Credentials!')
                 // if (err.response.status === 401) {
@@ -139,11 +142,23 @@ export default function WebContextProvider({ children }) {
         setUser(JSON.parse(userData))
     }, []);
 
+    // ANT DESIGN MESSAGE
+    const [messageApi, contextHolder] = message.useMessage();
+
+    const displayMessage = (type = 'success', content = 'this is a success message', duration = 3) => {
+        messageApi.open({
+            type,
+            content,
+            duration
+        });
+    }
+
     const ctxValue = {
         user,
         isUserLoginBtnDisabled,
         loginErrorMessage,
         formListRerender,
+        contextHolder,
         setFormListRerender,
         setLoginErrorMessage,
         setUser,
@@ -151,7 +166,8 @@ export default function WebContextProvider({ children }) {
         glogout,
         usernameLogin,
         getUserData,
-        tokenRefreshFunction
+        tokenRefreshFunction,
+        displayMessage
     };
 
     return (

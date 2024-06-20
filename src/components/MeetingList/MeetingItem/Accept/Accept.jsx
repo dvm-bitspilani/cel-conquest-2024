@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import axios from 'axios'
 
 import styles from './accept.module.scss'
+import { WebContext } from '../../../../store/website-context'
 
 export default function AcceptMeet({ meetData }) {
+    const { displayMessage } = useContext(WebContext)
     const [isLoading, setIsLoading] = useState(false)
     // console.log(meetData)
     function clickHandler(e) {
@@ -19,10 +21,12 @@ export default function AcceptMeet({ meetData }) {
             .then(res => {
                 console.log(res)
                 e.target.parentElement.parentElement.parentElement.style.display = "none"
+                displayMessage('success', "Meeting Accepted", 2)
             })
             .catch(err => {
                 console.log(err)
                 setIsLoading(false)
+                displayMessage('error', "An error occured", 2)
             })
     }
 
