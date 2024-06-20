@@ -13,12 +13,15 @@ import { WebContext } from "../../../store/website-context";
 import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
-  const { glogout } = useContext(WebContext);
+  const { glogout, getUserData } = useContext(WebContext);
   const navigate = useNavigate();
 
-  const userData = JSON.parse(
-    localStorage.getItem("userData")
-  ).user_profile_obj;
+  const userData = getUserData();
+  // console.log(userData)
+
+  // const userData = JSON.parse(
+  //   localStorage.getItem("userData")
+  // ).user_profile_obj;
   // console.log(userData);
 
   const [isNotifVisible, setIsNotifVisible] = useState(false);
@@ -94,9 +97,8 @@ const Sidebar = () => {
       axios
         .get(`https://conquest-api.bits-dvm.org/api/staff/notifications/`, {
           headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("userData")).tokens.access
-            }`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
           },
         })
         .then((res) => {
@@ -183,78 +185,88 @@ const Sidebar = () => {
           <p>{userData.name}</p>
         </div>
         <div className={styles.topButtons}>
-          <Button
-            text="Home"
-            active={activeButton === "Home"}
-            handleButtonClick={handleButtonClick}
-            link="/dashboard"
-          ></Button>
+          {userData.role === 'Guest - Tier 2' ? null : (
+            <Button
+              text="Home"
+              active={activeButton === "Home"}
+              handleButtonClick={handleButtonClick}
+              link="/dashboard"
+            />
+          )}
           <Button
             text="Meetings"
             active={activeButton === "Meetings"}
             handleButtonClick={handleButtonClick}
             link="/dashboard/meetings"
-          ></Button>
+          />
           <Button
             text="Cohort of 2024"
             active={activeButton === "Cohort of 2024"}
             handleButtonClick={handleButtonClick}
             link="/dashboard/startups"
-          ></Button>
-          <Button
-            text="Mentors"
-            active={activeButton === "Mentors"}
-            handleButtonClick={handleButtonClick}
-            link="/dashboard/mentors"
-          ></Button>
-          <Button
-            text="Experts"
-            active={activeButton === "Experts"}
-            handleButtonClick={handleButtonClick}
-            link="/dashboard/experts"
-          ></Button>
+          />
+          {userData.role === 'Guest - Tier 2' ? null : (
+            <>
+              <Button
+                text="Mentors"
+                active={activeButton === "Mentors"}
+                handleButtonClick={handleButtonClick}
+                link="/dashboard/mentors"
+              />
+              <Button
+                text="Experts"
+                active={activeButton === "Experts"}
+                handleButtonClick={handleButtonClick}
+                link="/dashboard/experts"
+              />
+            </>
+          )}
           <Button
             text="Investment Partners"
             active={activeButton === "Investment Partners"}
             handleButtonClick={handleButtonClick}
             link="/partners/"
-          ></Button>
+          />
         </div>
         <div className={styles.bottomButtons}>
           <Button
             text="Contact Us"
             active={activeButton === "Contact Us"}
             handleButtonClick={handleButtonClick}
-          ></Button>
-          <Button
-            text="Forms"
-            active={activeButton === "Forms"}
-            handleButtonClick={handleButtonClick}
-            link="/dashboard/forms"
-          ></Button>
+          />
+          {userData.role === 'Guest - Tier 2' ? null : (
+            <Button
+              text="Forms"
+              active={activeButton === "Forms"}
+              handleButtonClick={handleButtonClick}
+              link="/dashboard/forms"
+            />
+          )}
           <Button
             text="Resources"
             active={activeButton === "Resources"}
             handleButtonClick={handleButtonClick}
             link="/dashboard/resources"
-          ></Button>
-          <Button
-            text="Connections"
-            active={activeButton === "Connections"}
-            handleButtonClick={handleButtonClick}
-            link="/dashboard/connections"
-          ></Button>
+          />
+          {userData.role === 'Guest - Tier 2' ? null : (
+            <Button
+              text="Connections"
+              active={activeButton === "Connections"}
+              handleButtonClick={handleButtonClick}
+              link="/dashboard/connections"
+            />
+          )}
           <Button
             text="Conquest Info"
             active={activeButton === "Conquest Info"}
             handleButtonClick={handleButtonClick}
-          ></Button>
+          />
           <Button
             text="Developers"
             active={activeButton === "Developers"}
             handleButtonClick={handleButtonClick}
             link="/dashboard/developers"
-          ></Button>
+          />
         </div>
         {/* <div className={styles.conquestLogo}>
         <img height={50} width={53} src={dashboard_mountain_circle} />

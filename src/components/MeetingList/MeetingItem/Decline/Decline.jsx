@@ -17,7 +17,7 @@ export default function DeclineMeet({ meetData }) {
         })
             .then(res => {
                 console.log(res)
-                e.target.parentElement.parentElement.parentElement.remove()
+                e.target.parentElement.parentElement.parentElement.style.display = "none"
             })
             .catch(err => {
                 console.log(err)

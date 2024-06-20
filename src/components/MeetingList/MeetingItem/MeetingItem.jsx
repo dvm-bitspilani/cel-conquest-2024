@@ -15,6 +15,7 @@ export default function MeetingItem({
   data,
   dataRef,
   handleClick,
+  isGlobal,
   type = "join",
 }) {
   const dateObj = new Date(date * 1000);
@@ -64,7 +65,7 @@ export default function MeetingItem({
 
   return (
     <div
-      className={styles.itemBox}
+      className={`${styles.itemBox} ${isGlobal ? styles.global : ""}`}
       onClick={(e) => {
         if (document.querySelector("#selected-meeting-item")) {
           document
@@ -112,15 +113,14 @@ export default function MeetingItem({
         </div>
       </div>
       <div className={styles.link}>
-        <span>{`${month} ${meetDate}${
-          meetDate % 10 === 1
-            ? "st"
-            : meetDate % 10 === 2
+        <span>{`${month} ${meetDate}${meetDate % 10 === 1
+          ? "st"
+          : meetDate % 10 === 2
             ? "nd"
             : meetDate % 10 === 3
-            ? "rd"
-            : "th"
-        }`}</span>
+              ? "rd"
+              : "th"
+          }`}</span>
         {content}
       </div>
     </div>
