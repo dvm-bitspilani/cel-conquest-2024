@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MentorProfileHeader from "../../../components/Mentors/MentorProfileHeader/MentorProfileHeader";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { WebContext } from "../../../store/website-context";
 
 const MentorProfile = () => {
+  const { contextHolder } = useContext(WebContext)
   const { id } = useParams();
   const [startupProfile, setstartupProfile] = useState({});
   // const [userProfile, setuserProfile] = useState({});
@@ -48,6 +50,7 @@ const MentorProfile = () => {
 
   return (
     <>
+      {contextHolder}
       <MentorProfileHeader
         img={startupProfile.profile_logo}
         name={startupProfile.name}
@@ -61,6 +64,8 @@ const MentorProfile = () => {
         linkedin={startupProfile.linkedin}
         companyname={startupProfile.company_name}
         schedulebtn={startupProfile.role}
+        connection={startupProfile.connection}
+        user={startupProfile.user}
         startupid={id}
       />
     </>

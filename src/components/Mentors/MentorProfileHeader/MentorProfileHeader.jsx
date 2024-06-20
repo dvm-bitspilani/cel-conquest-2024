@@ -1,10 +1,12 @@
-import { useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import * as styles from "./MentorProfileHeader.module.scss";
+import axios from "axios";
 import MentorProfileContact from "../MentorProfileContact/MentorProfileContact";
 import MentorAbout from "../MentorAbout/MentorAbout";
 import FormModal from "../../Dashboard/Forms/FormModal/FormModal";
 import SlotTimingSelector from "../../Dashboard/Meetings/SlotTimingSelector/SlotTimingSelector";
 import BookSlots from "../../Dashboard/Meetings/BookSlots/BookSlots";
+import { WebContext } from "../../../store/website-context";
 // import ProfileModal from "./ProfileEdit/Modal/Modal";
 
 export default function MentorProfileHeader({
@@ -21,10 +23,98 @@ export default function MentorProfileHeader({
   companyname,
   schedulebtn,
   startupid,
+  connection,
+  user
 }) {
+  const { displayMessage } = useContext(WebContext)
   const formModal = useRef(null);
-
   const [requestSent, setRequestSent] = useState(false);
+  const [connectionState, setConnectionState] = useState(connection)
+  const [isLoading, setIsLoading] = useState(false)
+  useEffect(() => {
+    setConnectionState(connection)
+  }, [connection])
+
+  let connectionBtnText;
+  switch (connectionState) {
+    case 'not-connected':
+      connectionBtnText = 'Add Connection';
+      break;
+    case 'connected':
+      connectionBtnText = 'Remove Connection';
+      break;
+    case 'sent':
+      connectionBtnText = 'Sent Connection';
+      break;
+    case 'received':
+      connectionBtnText = 'Accept Connection';
+      break;
+  }
+
+  function connectionHandler() {
+    if (connectionState === 'not-connected') {
+      setIsLoading(true)
+      axios.post('https://conquest-api.bits-dvm.org/api/users/connections/send/', {
+        username: user.username
+      }, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem('tokens')).access}`
+        }
+      })
+        .then(res => {
+          setConnectionState('sent')
+          displayMessage('success', res.data.message)
+          setIsLoading(false)
+        })
+        .catch(err => {
+          displayMessage('error', "An error occured")
+          console.log(err)
+          setIsLoading(false)
+        })
+    }
+    else if (connectionState === 'connected') {
+      setIsLoading(true)
+      axios.post('https://conquest-api.bits-dvm.org/api/users/connections/delete/', {
+        id: startupid
+      }, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem('tokens')).access}`
+        }
+      })
+        .then(res => {
+          setConnectionState('not-connected')
+          displayMessage('success', res.data.message)
+          setIsLoading(false)
+        })
+        .catch(err => {
+          displayMessage('error', "An error occured")
+          console.log(err)
+          setIsLoading(false)
+        })
+    }
+    else if (connectionState === 'received') {
+      setIsLoading(true)
+      axios.post("https://conquest-api.bits-dvm.org/api/users/connections/accept/", {
+        status: true,
+        id: startupid
+      }, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem('tokens')).access}`
+        }
+      })
+        .then(res => {
+          setConnectionState('connected')
+          displayMessage('success', res.data.message)
+          setIsLoading(false)
+        })
+        .catch(err => {
+          displayMessage('error', "An error occured")
+          console.log(err)
+          setIsLoading(false)
+        })
+    }
+  }
+
   const userProfile = JSON.parse(
     localStorage.getItem("userData")
   ).user_profile_obj;
@@ -188,7 +278,9 @@ export default function MentorProfileHeader({
 
                 <button
                   className={styles.schedule}
-                >Add Connection</button>
+                  onClick={connectionHandler}
+                  disabled={connectionState === 'sent' || isLoading}
+                >{connectionBtnText}</button>
               </div>
 
               {(() => {
