@@ -3,7 +3,8 @@ import * as styles from "./StartupCard.module.scss";
 import { Link, Route } from "react-router-dom";
 
 export default function StartupCard({ img, name, tags, id }) {
-  const tagsArray = tags.split(",");
+  console.log(tags)
+  const tagsArray = tags ? tags.split(",") : []
   return (
     <Link
       to={`/dashboard/startup-profile/${id}`}
