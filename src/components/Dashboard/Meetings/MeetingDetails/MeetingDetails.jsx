@@ -3,8 +3,8 @@ import styles from "./MeetingDetails.module.scss";
 const MeetingDetails = ({ myData, listTab }) => {
   console.log(1, myData, 1);
 
-  const startTime = myData.slot_start_time || myData.start_time;
-  const endTime = myData.slot_end_time || myData.end_time;
+  const startTime = myData.slot_start_time;
+  const endTime = myData.slot_end_time;
 
   const dateObj = new Date(startTime * 1000);
   const dateObjEnd = new Date(endTime * 1000);
@@ -33,7 +33,7 @@ const MeetingDetails = ({ myData, listTab }) => {
         <h3 className={styles.MeetingDetailsHeader}>Meeting details</h3>
         <p className={styles.MeetingStatus}>
           {startTime === myData.slot_start_time
-            ? myData.status.charAt(0).toUpperCase() + myData.status.slice(1)
+            ? (myData.status ? myData.status.charAt(0).toUpperCase() + myData.status.slice(1) : "Global")
             : ""}
         </p>
         <div className={styles.DateSlider}>
