@@ -3,6 +3,7 @@ import { useGoogleLogin, googleLogout } from "@react-oauth/google";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
+import * as timestamp from "unix-timestamp";
 
 export const WebContext = createContext({
     user: {},
@@ -18,7 +19,8 @@ export const WebContext = createContext({
     usernameLogin: () => { },
     getUserData: () => { },
     tokenRefreshFunction: () => { },
-    displayMessage: () => { }
+    displayMessage: () => { },
+    customDate: null,
 });
 
 export default function WebContextProvider({ children }) {
@@ -137,6 +139,78 @@ export default function WebContextProvider({ children }) {
         return null;
     }
 
+    class customDate {
+        constructor(date) {
+            this.dateArray = `${timestamp.toDate(date)}`.split(" ")
+        }
+        getMonth() {
+            switch (this.dateArray[1]) {
+                case "Jan":
+                    return "January";
+                    break;
+                case "Feb":
+                    return "February";
+                    break;
+                case "Mar":
+                    return "March";
+                    break;
+                case "Apr":
+                    return "April";
+                    break;
+                case "May":
+                    return "May";
+                    break;
+                case "Jun":
+                    return "June";
+                    break;
+                case "Jul":
+                    return "July";
+                    break;
+                case "Aug":
+                    return "August";
+                    break;
+                case "Sep":
+                    return "September";
+                    break;
+                case "Oct":
+                    return "October";
+                    break;
+                case "Nov":
+                    return "November";
+                    break;
+                case "Dec":
+                    return "December";
+                    break;
+                default:
+                    return this.dateArray[1];
+                    break;
+            }
+        }
+        getTime() {
+            return this.dateArray[4].slice(0, -3);
+        }
+        getDate() {
+            if (this.dateArray[2][0] === "1" && this.dateArray[2].length === 2) {
+                return this.dateArray[2] + "th";
+            } else {
+                switch (this.dateArray[2][1]) {
+                    case "1":
+                        return this.dateArray[2] + "st";
+                        break;
+                    case "2":
+                        return this.dateArray[2] + "nd";
+                        break;
+                    case "3":
+                        return this.dateArray[2] + "rd";
+                        break;
+                    default:
+                        return this.dateArray[2] + "th";
+                        break;
+                }
+            }
+        }
+    }
+
     useEffect(() => {
         const userData = localStorage.getItem("userData");
         setUser(JSON.parse(userData))
@@ -159,6 +233,7 @@ export default function WebContextProvider({ children }) {
         loginErrorMessage,
         formListRerender,
         contextHolder,
+        customDate,
         setFormListRerender,
         setLoginErrorMessage,
         setUser,
