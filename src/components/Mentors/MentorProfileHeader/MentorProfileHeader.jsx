@@ -84,10 +84,47 @@ export default function MentorProfileHeader({
           
           <div className={styles.mobile}>
             <div className={styles.button}>
-              <button className={styles.btn_m}>Message</button>
-              <button className={`${styles.btn_m} ${styles.schedule_m}`}>
-                Schedule
-              </button>
+              {!startupid && (<div
+                className={styles.mobileButton}
+                onClick={() => formModal.current.openForm()}
+              >
+                Edit
+              </div>)}
+
+              <div>
+                <button
+                  style={{ zIndex: 2, display: (role1_Mentor || role1_Startup) && startup.startupid !== undefined ? null : "none" }}
+                  className={styles.mobileButton1}
+                  onClick={role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots}
+                >
+                  {role1_Mentor ? "Select Slot" : "Book Slot"}
+                </button>
+
+                {(() => {
+                  if (role1_Mentor && startup.startupid !== undefined) {
+                    if (selectSlotTiming) {
+                      return (
+                        <SlotTimingSelector
+                          selectSlotTiming={selectSlotTiming}
+                          showHideSelectSlotTiming={showHideSelectSlotTiming}
+                          removeModal={showHideSelectSlotTiming}
+                          changeRequestSent={changeRequestSent}
+                        />
+                      );
+                    }
+                  } else {
+                    if (role1_Startup && startup.startupid !== undefined && bookSlots) {
+                      return (
+                        <BookSlots
+                          bookSlots={bookSlots}
+                          showHideBookSlots={showHideBookSlots}
+                        />
+                      );
+                    }
+                  }
+                  return null;
+                })()}
+              </div>
             </div>
             <div className={styles.head}>
               <p className={styles.headings}>About</p>
@@ -106,12 +143,12 @@ export default function MentorProfileHeader({
         </div>
         <div className={styles.contact}>
           <div className={styles.buttonContainer}>
-            <div
-              className={`${styles.btn} ${styles.schedule}`}
+            {!startupid && (<div
+              className={styles.schedule}
               onClick={() => formModal.current.openForm()}
             >
               Edit
-            </div>
+            </div>)}
 
             <div>
               <button
