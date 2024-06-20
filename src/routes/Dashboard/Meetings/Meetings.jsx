@@ -86,7 +86,7 @@ const Meetings = () => {
                 data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
-                type={listTab === "pending" ? "accept-decline" : ""}
+                type={listTab === "pending" ? "accept-decline" : "join"}
               />
             );
           });
@@ -143,6 +143,7 @@ const Meetings = () => {
                 data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
+                type={listTab === "pending" ? "accept-decline" : "join"}
               />
             );
           });
