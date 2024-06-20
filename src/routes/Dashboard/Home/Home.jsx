@@ -44,9 +44,9 @@ export default function Home() {
           "th";
       } else {
         switch (
-          `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(
-            " "
-          )[2][1]
+        `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(
+          " "
+        )[2][1]
         ) {
           case "1":
             date =
@@ -77,7 +77,7 @@ export default function Home() {
 
       let month;
       switch (
-        `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(" ")[1]
+      `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(" ")[1]
       ) {
         case "Jan":
           month = "January";
@@ -140,15 +140,14 @@ export default function Home() {
       axios
         .get("https://conquest-api.bits-dvm.org/api/meetings/all_meetings/", {
           headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("userData")).tokens.access
-            }`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
           },
         })
         .then((res) => {
           // console.log(res.data)
 
-          const newArr = res.data.map((newItm) => {
+          const newArr = res.data.filter(item => item.status === 'accepted').map((newItm) => {
             return (
               <MeetingItem
                 date={newItm.slot_start_time}
