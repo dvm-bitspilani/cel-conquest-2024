@@ -189,6 +189,14 @@ export default function WebContextProvider({ children }) {
         getTime() {
             return this.dateArray[4].slice(0, -3);
         }
+        getFullTime() {
+            if (parseInt(this.dateArray[4].slice(0, 2)) > 12) {
+                return `${parseInt(this.dateArray[4].slice(0, 2)) - 12}${this.dateArray[4].slice(2, -3)} PM`
+            }
+            else {
+                return `${this.dateArray[4].slice(0, -3)} AM`
+            }
+        }
         getDate() {
             if (this.dateArray[2][0] === "1" && this.dateArray[2].length === 2) {
                 return this.dateArray[2] + "th";

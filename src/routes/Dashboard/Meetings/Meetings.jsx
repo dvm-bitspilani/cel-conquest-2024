@@ -65,6 +65,7 @@ const Meetings = () => {
           console.log(res.data);
 
           const newArr = res.data.map((newItm) => {
+            // console.log(newItm)
             return (
               <MeetingItem
                 date={newItm.slot_start_time}
@@ -151,7 +152,7 @@ const Meetings = () => {
           let newArr2 = res.data.global_events.map((newItm) => {
             return (
               <MeetingItem
-                date={newItm.start_time}
+                date={newItm.slot_start_time}
                 avatar={
                   newItm.requested_name ===
                     JSON.parse(localStorage.getItem("userData")).user_profile_obj
