@@ -151,33 +151,35 @@ export default function Home() {
         .then((res) => {
           console.log(res.data);
 
-          let newArr = res.data.meetings.map((newItm) => {
-            return (
-              <MeetingItem
-                date={newItm.slot_start_time}
-                avatar={
-                  newItm.requested_name ===
-                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                    .name
-                    ? newItm.requester_logo
-                    : newItm.requested_logo
-                }
-                mentorName={
-                  newItm.requested_name ===
-                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                    .name
-                    ? newItm.requester_name
-                    : newItm.requested_name
-                }
-                duration={45}
-                key={newItm.id}
-                data={newItm}
-                handleClick={handleClick}
-                dataRef={dataRef}
-                type="join"
-              />
-            );
-          });
+          const newArr = res.data
+            .filter((item) => item.status === "accepted")
+            .map((newItm) => {
+              return (
+                <MeetingItem
+                  date={newItm.slot_start_time}
+                  avatar={
+                    newItm.requested_name ===
+                    JSON.parse(localStorage.getItem("userData"))
+                      .user_profile_obj.name
+                      ? newItm.requester_logo
+                      : newItm.requested_logo
+                  }
+                  mentorName={
+                    newItm.requested_name ===
+                    JSON.parse(localStorage.getItem("userData"))
+                      .user_profile_obj.name
+                      ? newItm.requester_name
+                      : newItm.requested_name
+                  }
+                  duration={45}
+                  key={newItm.id}
+                  data={newItm}
+                  handleClick={handleClick}
+                  dataRef={dataRef}
+                  type="join"
+                />
+              );
+            });
           let newArr2 = res.data.global_events.map((newItm) => {
             return (
               <MeetingItem
