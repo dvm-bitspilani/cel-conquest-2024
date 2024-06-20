@@ -10,29 +10,27 @@ function BookSlotItem({
   deleteSlot,
 }) {
   const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const dateObjEnd = new Date(dateTimeEnd);
-  const dateObj = new Date(dateTimeStart);
+  const dateObjEnd = new Date(dateTimeEnd * 1000);
+  const dateObj = new Date(dateTimeStart * 1000);
   const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
     dateObj
   );
   const meetDate = dateObj.getDate();
+
   const hours = dateObj.getHours();
   const minutes = dateObj.getMinutes();
-  const fullTime =
-    hours > 12
-      ? `${hours - 12}:${minutes} PM`
-      : hours === 0
-      ? `12:${minutes} AM`
-      : `${hours}:${minutes} AM`;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  const period = hours >= 12 ? "PM" : "AM";
+  const adjustedHours = hours % 12 || 12;
+  const fullTime = `${adjustedHours}:${formattedMinutes} ${period}`;
 
   const hoursEnd = dateObjEnd.getHours();
   const minutesEnd = dateObjEnd.getMinutes();
-  const fullTimeEnd =
-    hoursEnd > 12
-      ? `${hoursEnd - 12}:${minutesEnd} PM`
-      : hoursEnd === 0
-      ? `12:${minutesEnd} AM`
-      : `${hoursEnd}:${minutesEnd} AM`;
+  const formattedMinutesEnd = minutesEnd < 10 ? `0${minutesEnd}` : minutesEnd;
+  const periodEnd = hoursEnd >= 12 ? "PM" : "AM";
+  const adjustedHoursEnd = hoursEnd % 12 || 12;
+  const fullTimeEnd = `${adjustedHoursEnd}:${formattedMinutesEnd} ${periodEnd}`;
+
   return (
     <div className={styles.inputField}>
       <div>

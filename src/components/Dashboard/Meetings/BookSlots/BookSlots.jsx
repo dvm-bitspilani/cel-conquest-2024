@@ -3,7 +3,7 @@ import styles from "./BookSlots.module.scss";
 import BookSlotItem from "./BookSlotItem/BookSlotItem";
 import axios from "axios";
 
-function BookSlots({ bookSlots, showHideBookSlots }) {
+function BookSlots({ bookSlots, showHideBookSlots, startupid }) {
   const [slotList, setSlotList] = useState([]);
   const selectSlot = (id) => {};
   useEffect(() => {
