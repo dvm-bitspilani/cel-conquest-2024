@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import * as timestamp from "unix-timestamp";
@@ -12,8 +12,11 @@ import FormPillList from "../../../components/Dashboard/Forms/FormPillList/FormP
 import avatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
 
 import * as styles from "./home.module.scss";
+import { WebContext } from "../../../store/website-context";
 
 export default function Home() {
+  const { customDate } = useContext(WebContext)
+
   const navigate = useNavigate();
   const [listItms, setListItms] = useState([]);
   const [activeMeet, setActiveMeet] = useState({});
@@ -24,103 +27,12 @@ export default function Home() {
   function handleClick() {
     console.log(dataRef.current);
     try {
-      const startTime = `${timestamp.toDate(dataRef.current.slot_start_time)}`
-        .split(" ")[4]
-        .slice(0, -3);
-      const endTime = `${timestamp.toDate(dataRef.current.slot_end_time)}`
-        .split(" ")[4]
-        .slice(0, -3);
+      const startTime = new customDate(dataRef.current.slot_start_time).getTime();
+      const endTime = new customDate(dataRef.current.slot_end_time).getTime();
 
-      let date;
-      if (
-        `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(
-          " "
-        )[2][0] === "1" &&
-        `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(" ")[2]
-          .length === 2
-      ) {
-        date =
-          `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(" ")[2] +
-          "th";
-      } else {
-        switch (
-          `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(
-            " "
-          )[2][1]
-        ) {
-          case "1":
-            date =
-              `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(
-                " "
-              )[2] + "st";
-            break;
-          case "2":
-            date =
-              `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(
-                " "
-              )[2] + "nd";
-            break;
-          case "3":
-            date =
-              `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(
-                " "
-              )[2] + "rd";
-            break;
-          default:
-            date =
-              `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(
-                " "
-              )[2] + "th";
-            break;
-        }
-      }
+      const date = new customDate(dataRef.current.slot_start_time).getDate();
 
-      let month;
-      switch (
-        `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(" ")[1]
-      ) {
-        case "Jan":
-          month = "January";
-          break;
-        case "Feb":
-          month = "February";
-          break;
-        case "Mar":
-          month = "March";
-          break;
-        case "Apr":
-          month = "April";
-          break;
-        case "May":
-          month = "May";
-          break;
-        case "Jun":
-          month = "June";
-          break;
-        case "Jul":
-          month = "July";
-          break;
-        case "Aug":
-          month = "August";
-          break;
-        case "Sep":
-          month = "September";
-          break;
-        case "Oct":
-          month = "October";
-          break;
-        case "Nov":
-          month = "November";
-          break;
-        case "Dec":
-          month = "December";
-          break;
-        default:
-          month = `${timestamp.toDate(dataRef.current.slot_start_time)}`.split(
-            " "
-          )[1];
-          break;
-      }
+      const month = new customDate(dataRef.current.slot_start_time).getMonth();
 
       const stateObject = {
         ...dataRef.current,
@@ -142,9 +54,8 @@ export default function Home() {
           `https://conquest-api.bits-dvm.org/api/meetings/meetings/upcoming/`,
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
             },
           }
         )
@@ -159,15 +70,15 @@ export default function Home() {
                   date={newItm.slot_start_time}
                   avatar={
                     newItm.requested_name ===
-                    JSON.parse(localStorage.getItem("userData"))
-                      .user_profile_obj.name
+                      JSON.parse(localStorage.getItem("userData"))
+                        .user_profile_obj.name
                       ? newItm.requester_logo
                       : newItm.requested_logo
                   }
                   mentorName={
                     newItm.requested_name ===
-                    JSON.parse(localStorage.getItem("userData"))
-                      .user_profile_obj.name
+                      JSON.parse(localStorage.getItem("userData"))
+                        .user_profile_obj.name
                       ? newItm.requester_name
                       : newItm.requested_name
                   }
@@ -176,6 +87,7 @@ export default function Home() {
                   data={newItm}
                   handleClick={handleClick}
                   dataRef={dataRef}
+                  isGlobal={false}
                   type="join"
                 />
               );
@@ -183,11 +95,11 @@ export default function Home() {
           let newArr2 = res.data.global_events.map((newItm) => {
             return (
               <MeetingItem
-                date={newItm.start_time}
+                date={newItm.slot_start_time}
                 avatar={
                   newItm.requested_name ===
-                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                    .name
+                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                      .name
                     ? newItm.requester_logo
                     : newItm.requested_logo
                 }
@@ -197,6 +109,7 @@ export default function Home() {
                 data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
+                isGlobal={true}
                 type="join"
               />
             );
@@ -245,7 +158,7 @@ export default function Home() {
         <section className={styles.ongoing}>
           {dataRef.current ? (
             <>
-              <h2>Meeting Title</h2>
+              <h2>Meeting Info</h2>
               <span>
                 <svg
                   width="17"

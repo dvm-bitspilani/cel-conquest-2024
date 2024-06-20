@@ -5,6 +5,8 @@ import DeclineMeet from "./Decline/Decline";
 import AcceptMeet from "./Accept/Accept";
 
 import * as styles from "./item.module.scss";
+import { useContext } from "react";
+import { WebContext } from "../../../store/website-context";
 
 export default function MeetingItem({
   date,
@@ -15,20 +17,14 @@ export default function MeetingItem({
   data,
   dataRef,
   handleClick,
+  isGlobal,
   type = "join",
 }) {
-  const dateObj = new Date(date * 1000);
-  const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
-    dateObj
-  );
-  const meetDate = dateObj.getDate();
+  const { customDate } = useContext(WebContext)
 
-  const hours = dateObj.getHours();
-  const minutes = dateObj.getMinutes();
-  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-  const period = hours >= 12 ? "PM" : "AM";
-  const adjustedHours = hours % 12 || 12;
-  const fullTime = `${adjustedHours}:${formattedMinutes} ${period}`;
+  const month = new customDate(date).getMonth()
+  const fullDate = new customDate(date).getDate()
+  const time = new customDate(date).getFullTime()
 
   let content;
   switch (type) {
@@ -64,7 +60,7 @@ export default function MeetingItem({
 
   return (
     <div
-      className={styles.itemBox}
+      className={`${styles.itemBox} ${isGlobal ? styles.global : ""}`}
       onClick={(e) => {
         if (document.querySelector("#selected-meeting-item")) {
           document
@@ -81,7 +77,7 @@ export default function MeetingItem({
       }}
     >
       <div className={styles.time}>
-        <span>{fullTime}</span>
+        <span>{time}</span>
         <span>{`${duration} minutes`}</span>
       </div>
       <div className={styles.mentor}>
@@ -112,15 +108,7 @@ export default function MeetingItem({
         </div>
       </div>
       <div className={styles.link}>
-        <span>{`${month} ${meetDate}${
-          meetDate % 10 === 1
-            ? "st"
-            : meetDate % 10 === 2
-            ? "nd"
-            : meetDate % 10 === 3
-            ? "rd"
-            : "th"
-        }`}</span>
+        <span>{month} {fullDate}</span>
         {content}
       </div>
     </div>

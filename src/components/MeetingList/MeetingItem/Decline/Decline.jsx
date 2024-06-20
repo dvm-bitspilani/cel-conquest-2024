@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import axios from 'axios'
 
 import styles from './decline.module.scss'
+import { WebContext } from '../../../../store/website-context'
 
 export default function DeclineMeet({ meetData }) {
+    const { displayMessage } = useContext(WebContext)
     const [isLoading, setIsLoading] = useState(false)
     function clickHandler(e) {
         setIsLoading(true)
@@ -17,11 +19,13 @@ export default function DeclineMeet({ meetData }) {
         })
             .then(res => {
                 console.log(res)
-                e.target.parentElement.parentElement.parentElement.remove()
+                e.target.parentElement.parentElement.parentElement.style.display = "none"
+                displayMessage('success', "Meeting Rejected", 2)
             })
             .catch(err => {
                 console.log(err)
                 setIsLoading(false)
+                displayMessage('error', "An error occured", 2)
             })
     }
 

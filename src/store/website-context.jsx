@@ -2,12 +2,15 @@ import { createContext, useEffect, useState } from "react";
 import { useGoogleLogin, googleLogout } from "@react-oauth/google";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { message } from "antd";
+import * as timestamp from "unix-timestamp";
 
 export const WebContext = createContext({
     user: {},
     isUserLoginBtnDisabled: false,
     loginErrorMessage: null,
     formListRerender: 0,
+    contextHolder: null,
     setFormListRerender: () => { },
     setLoginErrorMessage: () => { },
     setUser: () => { },
@@ -15,7 +18,9 @@ export const WebContext = createContext({
     glogout: () => { },
     usernameLogin: () => { },
     getUserData: () => { },
-    tokenRefreshFunction: () => { }
+    tokenRefreshFunction: () => { },
+    displayMessage: () => { },
+    customDate: null,
 });
 
 export default function WebContextProvider({ children }) {
@@ -71,7 +76,7 @@ export default function WebContextProvider({ children }) {
             })
             .catch((err) => {
                 console.log("In context err")
-                console.log(err)
+                console.log(err.response.data.message)
                 setIsUserLoginBtnDisabled(false)
                 setLoginErrorMessage('Incorrect Credentials!')
                 // if (err.response.status === 401) {
@@ -114,6 +119,9 @@ export default function WebContextProvider({ children }) {
                     localStorage.setItem("userData", JSON.stringify(res.data))
                     localStorage.setItem("lastSessionCall", `${Date.now()}`)
                     localStorage.setItem("tokens", JSON.stringify(res.data.tokens))
+                    if (res.data.user_profile_obj.role !== "Guest - Tier 2") {
+                        navigate('/dashboard')
+                    }
                     tokenRefreshFunction()
                 }
                 catch (err) {
@@ -134,16 +142,109 @@ export default function WebContextProvider({ children }) {
         return null;
     }
 
+    class customDate {
+        constructor(date) {
+            this.dateArray = `${timestamp.toDate(date)}`.split(" ")
+        }
+        getMonth() {
+            switch (this.dateArray[1]) {
+                case "Jan":
+                    return "January";
+                    break;
+                case "Feb":
+                    return "February";
+                    break;
+                case "Mar":
+                    return "March";
+                    break;
+                case "Apr":
+                    return "April";
+                    break;
+                case "May":
+                    return "May";
+                    break;
+                case "Jun":
+                    return "June";
+                    break;
+                case "Jul":
+                    return "July";
+                    break;
+                case "Aug":
+                    return "August";
+                    break;
+                case "Sep":
+                    return "September";
+                    break;
+                case "Oct":
+                    return "October";
+                    break;
+                case "Nov":
+                    return "November";
+                    break;
+                case "Dec":
+                    return "December";
+                    break;
+                default:
+                    return this.dateArray[1];
+                    break;
+            }
+        }
+        getTime() {
+            return this.dateArray[4].slice(0, -3);
+        }
+        getFullTime() {
+            if (parseInt(this.dateArray[4].slice(0, 2)) > 12) {
+                return `${parseInt(this.dateArray[4].slice(0, 2)) - 12}${this.dateArray[4].slice(2, -3)} PM`
+            }
+            else {
+                return `${this.dateArray[4].slice(0, -3)} AM`
+            }
+        }
+        getDate() {
+            if (this.dateArray[2][0] === "1" && this.dateArray[2].length === 2) {
+                return this.dateArray[2] + "th";
+            } else {
+                switch (this.dateArray[2][1]) {
+                    case "1":
+                        return this.dateArray[2] + "st";
+                        break;
+                    case "2":
+                        return this.dateArray[2] + "nd";
+                        break;
+                    case "3":
+                        return this.dateArray[2] + "rd";
+                        break;
+                    default:
+                        return this.dateArray[2] + "th";
+                        break;
+                }
+            }
+        }
+    }
+
     useEffect(() => {
         const userData = localStorage.getItem("userData");
         setUser(JSON.parse(userData))
     }, []);
+
+    // ANT DESIGN MESSAGE
+    const [messageApi, contextHolder] = message.useMessage();
+
+    const displayMessage = (type = 'success', content = 'this is a success message', duration = 3) => {
+        messageApi.open({
+            type,
+            content,
+            duration
+        });
+    }
 
     const ctxValue = {
         user,
         isUserLoginBtnDisabled,
         loginErrorMessage,
         formListRerender,
+        contextHolder,
+        customDate,
         setFormListRerender,
         setLoginErrorMessage,
         setUser,
@@ -151,7 +252,8 @@ export default function WebContextProvider({ children }) {
         glogout,
         usernameLogin,
         getUserData,
-        tokenRefreshFunction
+        tokenRefreshFunction,
+        displayMessage
     };
 
     return (

@@ -3,7 +3,8 @@ import SlotDateButton from "./SlotDateButton/SlotDateButton";
 import TimeSelectButton from "./TimeSelectButton/TimeSelectButton";
 import TimeSelectButtonHeader from "./TimeSelectButtonHeader/TimeSelectButtonHeader";
 import styles from "./slotTimingSelector.module.scss";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { WebContext } from "../../../../store/website-context";
 
 const morningSvg = (
   <svg
@@ -254,6 +255,7 @@ const SlotTimingSelector = ({
   removeModal,
   changeRequestSent,
 }) => {
+  const { displayMessage } = useContext(WebContext)
   const changeDate = (date, month, year) => {
     setDateTime((prev) => {
       return { ...prev, date: date, month: month, year: year };
@@ -313,8 +315,7 @@ const SlotTimingSelector = ({
   ];
   const createSlot = (dateTime) => {
     const date = new Date(
-      `${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${
-        dateTime.time
+      `${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${dateTime.time
       }`
     );
     // console.log(date);
@@ -336,19 +337,20 @@ const SlotTimingSelector = ({
         },
         {
           headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("userData")).tokens.access
-            }`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
           },
         }
       )
       .then(function (response) {
         changeRequestSent();
+        displayMessage('success', "Slot Created", 2)
 
         console.log(response);
       })
       .catch(function (error) {
         console.log(error);
+        displayMessage('error', "An error occured", 2)
       });
   };
   // console.log(dateTime);

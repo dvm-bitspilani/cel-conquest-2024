@@ -1,21 +1,23 @@
 import styles from "./meetings.module.scss";
 import MeetingDetails from "../../../components/Dashboard/Meetings/MeetingDetails/MeetingDetails";
 import SelectSlots from "../../../components/Dashboard/Meetings/SelectSlots/SelectSlots";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import axios from "axios";
 import SlotTimingSelector from "../../../components/Dashboard/Meetings/SlotTimingSelector/SlotTimingSelector";
 import MeetingList from "../../../components/MeetingList/MeetingList";
 import MeetingItem from "../../../components/MeetingList/MeetingItem/MeetingItem";
 import BookSlots from "../../../components/Dashboard/Meetings/BookSlots/BookSlots";
+import { WebContext } from "../../../store/website-context";
 
 const Meetings = () => {
+  const { contextHolder } = useContext(WebContext)
   //meeting list code
   const dataRef = useRef(null);
   const [data, setData] = useState(null);
   const [requestSent, setRequestSent] = useState(false);
   const isStartup =
     JSON.parse(localStorage.getItem("userData")).user_profile_obj.role ===
-    "Startup"
+      "Startup"
       ? true
       : false;
 
@@ -54,9 +56,8 @@ const Meetings = () => {
           `https://conquest-api.bits-dvm.org/api/meetings/meetings/${listTab}/`,
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
             },
           }
         )
@@ -64,20 +65,21 @@ const Meetings = () => {
           console.log(res.data);
 
           const newArr = res.data.map((newItm) => {
+            // console.log(newItm)
             return (
               <MeetingItem
                 date={newItm.slot_start_time}
                 avatar={
                   newItm.requested_name ===
-                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                    .name
+                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                      .name
                     ? newItm.requester_logo
                     : newItm.requested_logo
                 }
                 mentorName={
                   newItm.requested_name ===
-                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                    .name
+                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                      .name
                     ? newItm.requester_name
                     : newItm.requested_name
                 }
@@ -111,9 +113,8 @@ const Meetings = () => {
           `https://conquest-api.bits-dvm.org/api/meetings/meetings/upcoming/`,
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
             },
           }
         )
@@ -126,15 +127,15 @@ const Meetings = () => {
                 date={newItm.slot_start_time}
                 avatar={
                   newItm.requested_name ===
-                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                    .name
+                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                      .name
                     ? newItm.requester_logo
                     : newItm.requested_logo
                 }
                 mentorName={
                   newItm.requested_name ===
-                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                    .name
+                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                      .name
                     ? newItm.requester_name
                     : newItm.requested_name
                 }
@@ -143,6 +144,7 @@ const Meetings = () => {
                 data={newItm}
                 handleClick={handleClick}
                 dataRef={dataRef}
+                isGlobal={false}
                 type={listTab === "pending" ? "accept-decline" : "join"}
               />
             );
@@ -150,11 +152,11 @@ const Meetings = () => {
           let newArr2 = res.data.global_events.map((newItm) => {
             return (
               <MeetingItem
-                date={newItm.start_time}
+                date={newItm.slot_start_time}
                 avatar={
                   newItm.requested_name ===
-                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                    .name
+                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                      .name
                     ? newItm.requester_logo
                     : newItm.requested_logo
                 }
@@ -163,6 +165,7 @@ const Meetings = () => {
                 key={newItm.id}
                 data={newItm}
                 handleClick={handleClick}
+                isGlobal={true}
                 dataRef={dataRef}
               />
             );
@@ -181,6 +184,7 @@ const Meetings = () => {
   // console.log("isStartup", isStartup);
   return (
     <>
+      {contextHolder}
       <BookSlots
         bookSlots={bookSlots}
         showHideBookSlots={showHideBookSlots}
@@ -215,9 +219,8 @@ const Meetings = () => {
                 setListTab("upcoming");
                 getMeetingList("upcoming");
               }}
-              className={`${styles.meetingsListOptions} ${
-                listTab === "upcoming" ? styles.active : null
-              }`}
+              className={`${styles.meetingsListOptions} ${listTab === "upcoming" ? styles.active : null
+                }`}
             >
               Upcoming
             </div>
@@ -226,9 +229,8 @@ const Meetings = () => {
                 setListTab("pending");
                 getMeetingList("pending");
               }}
-              className={`${styles.meetingsListOptions} ${
-                listTab === "pending" ? styles.active : null
-              }`}
+              className={`${styles.meetingsListOptions} ${listTab === "pending" ? styles.active : null
+                }`}
             >
               Pending
             </div>
@@ -237,9 +239,8 @@ const Meetings = () => {
                 setListTab("past");
                 getMeetingList("past");
               }}
-              className={`${styles.meetingsListOptions} ${
-                listTab === "past" ? styles.active : null
-              }`}
+              className={`${styles.meetingsListOptions} ${listTab === "past" ? styles.active : null
+                }`}
             >
               Past
             </div>
@@ -266,12 +267,11 @@ const Meetings = () => {
             ></SelectSlots>
           ) : null}
           <div
-            className={`${styles.meetingsDetails} ${
-              selectSlots ? styles.blur : null
-            }`}
+            className={`${styles.meetingsDetails} ${selectSlots ? styles.blur : null
+              }`}
           >
             {data !== null ? (
-              <MeetingDetails myData={data}></MeetingDetails>
+              <MeetingDetails myData={data} listTab={listTab}></MeetingDetails>
             ) : null}
           </div>
         </div>

@@ -99,7 +99,7 @@ export default function MentorProfileHeader({
                     zIndex: 2,
                     display:
                       (role1_Mentor || role1_Startup) &&
-                      startup.startupid !== undefined
+                        startup.startupid !== undefined
                         ? null
                         : "none",
                   }}
@@ -167,22 +167,29 @@ export default function MentorProfileHeader({
             )}
 
             <div>
-              <button
-                style={{
-                  zIndex: 2,
-                  display:
-                    (role1_Mentor || role1_Startup) &&
-                    startup.startupid !== undefined
-                      ? null
-                      : "none",
-                }}
-                className={styles.schedule}
-                onClick={
-                  role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
-                }
-              >
-                {role1_Mentor ? "Select Slot" : "Book Slot"}
-              </button>
+              <div className={styles.btnWrapper}>
+                <button
+                  style={{
+                    zIndex: 2,
+                    marginRight: "10px",
+                    display:
+                      (role1_Mentor || role1_Startup) &&
+                        startup.startupid !== undefined
+                        ? null
+                        : "none",
+                  }}
+                  className={styles.schedule}
+                  onClick={
+                    role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
+                  }
+                >
+                  {role1_Mentor ? "Select Slot" : "Book Slot"}
+                </button>
+
+                <button
+                  className={styles.schedule}
+                >Add Connection</button>
+              </div>
 
               {(() => {
                 if (role1_Mentor && startup.startupid !== undefined) {

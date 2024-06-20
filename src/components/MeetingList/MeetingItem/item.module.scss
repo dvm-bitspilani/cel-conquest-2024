@@ -12,6 +12,10 @@
     font-family: 'Montserrat';
     margin-bottom: 1rem;
 
+    &.global {
+        background-color: #e8e8e8;
+    }
+
     &:hover {
         outline: 0.75px solid #FB723D;
     }
