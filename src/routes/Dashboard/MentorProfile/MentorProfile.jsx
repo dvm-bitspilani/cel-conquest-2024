@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { WebContext } from "../../../store/website-context";
 
 const MentorProfile = () => {
-  const { contextHolder } = useContext(WebContext)
+  const { contextHolder } = useContext(WebContext);
   const { id } = useParams();
   const [startupProfile, setstartupProfile] = useState({});
   // const [userProfile, setuserProfile] = useState({});
@@ -19,8 +19,9 @@ const MentorProfile = () => {
             `https://conquest-api.bits-dvm.org/api/users/profile_detail/?id=${id}`,
             {
               headers: {
-                Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-                  }`,
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
               },
               params: {
                 id: id,
@@ -42,9 +43,36 @@ const MentorProfile = () => {
         console.log("error in fetching data");
       }
     } else {
-      setstartupProfile(
-        JSON.parse(localStorage.getItem("userData")).user_profile_obj
-      );
+      if (JSON.parse(localStorage.getItem("userData")).tokens) {
+        axios
+          .get(
+            `https://conquest-api.bits-dvm.org/api/users/profile_detail/?id=${
+              JSON.parse(localStorage.getItem("userData")).user_profile_obj.id
+            }`,
+            {
+              headers: {
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
+              },
+              params: {
+                id: id,
+              },
+            }
+          )
+          .then(function (response) {
+            setstartupProfile(response.data);
+            // setuserProfile(response.data.user_profile);
+            // setTeam(response.data.team_member);
+            console.log(startupProfile);
+          })
+          .catch(function (error) {
+            console.log(error);
+            console.log(id);
+          });
+      } else {
+        console.log("error in fetching data");
+      }
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access, id]);
 
