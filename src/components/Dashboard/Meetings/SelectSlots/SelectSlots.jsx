@@ -16,9 +16,8 @@ const SelectSlots = ({
     axios
       .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
         headers: {
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem("userData")).tokens.access
-          }`,
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
         },
       })
       .then((res) => {
@@ -33,6 +32,7 @@ const SelectSlots = ({
               dateTimeStart={newItm.start_time}
               dateTimeEnd={newItm.end_time}
               deleteSlot={deleteSlot}
+              isFree={newItm.free}
             ></SlotInputField>
           );
         });
@@ -68,18 +68,16 @@ const SelectSlots = ({
     axios
       .delete(`https://conquest-api.bits-dvm.org/api/meetings/slots/${id}`, {
         headers: {
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem("userData")).tokens.access
-          }`,
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
         },
       })
       .then(() => {
         axios
           .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
             },
           })
           .then((res) => {
@@ -94,6 +92,7 @@ const SelectSlots = ({
                   dateTimeStart={newItm.start_time}
                   dateTimeEnd={newItm.end_time}
                   deleteSlot={deleteSlot}
+                  isFree={newItm.free}
                 ></SlotInputField>
               );
             });
@@ -133,9 +132,8 @@ const SelectSlots = ({
       axios
         .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
           headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("userData")).tokens.access
-            }`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
           },
         })
         .then((res) => {
@@ -150,6 +148,7 @@ const SelectSlots = ({
                 dateTimeStart={newItm.start_time}
                 dateTimeEnd={newItm.end_time}
                 deleteSlot={deleteSlot}
+                isFree={newItm.free}
               ></SlotInputField>
             );
           });
