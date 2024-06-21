@@ -356,7 +356,7 @@ const BookMeeting = ({
         });
         axios
             .post(
-                "https://conquest-api.bits-dvm.org/api/meetings/request/",
+                "https://conquest-api.bits-dvm.org/api/meetings/requests/",
                 {
                     requester: JSON.parse(localStorage.getItem("userData")).user_profile_obj.id,
                     requested: id,
