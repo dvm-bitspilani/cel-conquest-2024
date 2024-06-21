@@ -60,6 +60,7 @@ export default function StartupProfileHeader({
   teamArray,
   schedulebtn,
   startupid,
+  requestedID
 }) {
   const [selectedTopic, setSelectedTopic] = useState("about");
 
@@ -177,7 +178,7 @@ export default function StartupProfileHeader({
                     zIndex: 2,
                     display:
                       (role1_Mentor || role1_Startup) &&
-                      startup.startupid !== undefined
+                        startup.startupid !== undefined
                         ? null
                         : "none",
                   }}
@@ -269,7 +270,7 @@ export default function StartupProfileHeader({
                   zIndex: 2,
                   display:
                     (role1_Mentor || role1_Startup) &&
-                    startup.startupid !== undefined
+                      startup.startupid !== undefined
                       ? null
                       : "none",
                 }}

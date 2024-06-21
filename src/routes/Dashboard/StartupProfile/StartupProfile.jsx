@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import StartupProfileHeader from "../../../components/Startups/StartupProfileHeader/StartupProfileHeader";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { WebContext } from "../../../store/website-context";
 
 const StartupProfile = () => {
+  const { setBookSlotRequestedID, contextHolder } = useContext(WebContext)
+
   const { id } = useParams();
   const [startupProfile, setstartupProfile] = useState({});
   const [userProfile, setuserProfile] = useState({});
@@ -29,6 +32,7 @@ const StartupProfile = () => {
             setuserProfile(response.data.user_profile);
             setTeam(response.data.team_member);
             console.log(startupProfile);
+            setBookSlotRequestedID(response.data.user_profile.id);
           })
           .catch(function (error) {
             console.log(error);
@@ -46,6 +50,7 @@ const StartupProfile = () => {
 
   return (
     <>
+      {contextHolder}
       <StartupProfileHeader
         img={startupProfile.profile_logo}
         name={startupProfile.startup_name}

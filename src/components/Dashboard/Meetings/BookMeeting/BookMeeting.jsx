@@ -3,9 +3,10 @@ import SlotDateButton from "../SlotTimingSelector/SlotDateButton/SlotDateButton"
 import TimeSelectButton from "../SlotTimingSelector/TimeSelectButton/TimeSelectButton";
 import TimeSelectButtonHeader from "../SlotTimingSelector/TimeSelectButtonHeader/TimeSelectButtonHeader";
 import styles from "./bookmeeting.module.scss";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useCallback } from "react";
 // import { WebContext } from "../../../../store/website-context";
 import { useParams } from "react-router-dom";
+import { WebContext } from "../../../../store/website-context";
 
 const morningSvg = (
     <svg
@@ -254,9 +255,10 @@ const eveningSvg = (
 const BookMeeting = ({
     selectSlotTiming,
     removeModal,
-    changeRequestSent,
+    changeRequestSent
 }) => {
-    // const { displayMessage } = useContext(WebContext)
+    const { bookSlotRequestedID, displayMessage } = useContext(WebContext)
+    console.log(bookSlotRequestedID)
     const changeDate = (date, month, year) => {
         setDateTime((prev) => {
             return { ...prev, date: date, month: month, year: year };
@@ -339,7 +341,7 @@ const BookMeeting = ({
     const { id } = useParams();
     // console.log(id);
 
-    const createSlot = (dateTime) => {
+    const createSlot = useCallback((dateTime) => {
         const date = new Date(
             `${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${dateTime.time
             }`
@@ -359,7 +361,7 @@ const BookMeeting = ({
                 "https://conquest-api.bits-dvm.org/api/meetings/requests/",
                 {
                     requester: JSON.parse(localStorage.getItem("userData")).user_profile_obj.id,
-                    requested: id,
+                    requested: bookSlotRequestedID,
                     slot_start_time: unixTimeStamp,
                     slot_end_time: unixTimeStamp2,
                 },
@@ -372,15 +374,15 @@ const BookMeeting = ({
             )
             .then(function (response) {
                 changeRequestSent();
-                // displayMessage('success', "Slot Created", 2)
+                displayMessage('success', "Slot Created", 2)
 
                 console.log(response);
             })
             .catch(function (error) {
                 console.log(error);
-                // displayMessage('error', "An error occured", 2)
+                displayMessage('error', error.response.data[0], 2)
             });
-    };
+    }, [bookSlotRequestedID, displayMessage, id]);
     //   console.log(dateTime);
     //   console.log(date);
     return (

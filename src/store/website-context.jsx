@@ -11,6 +11,7 @@ export const WebContext = createContext({
     loginErrorMessage: null,
     formListRerender: 0,
     contextHolder: null,
+    bookSlotRequestedID: null,
     meetingTimeArray: [],
     setFormListRerender: () => { },
     setLoginErrorMessage: () => { },
@@ -22,6 +23,7 @@ export const WebContext = createContext({
     tokenRefreshFunction: () => { },
     displayMessage: () => { },
     setMeetingTimeArray: () => { },
+    setBookSlotRequestedID: () => { },
     customDate: null,
 });
 
@@ -33,6 +35,7 @@ export default function WebContextProvider({ children }) {
     const [loginErrorMessage, setLoginErrorMessage] = useState(null);
     const [formListRerender, setFormListRerender] = useState(Math.random())
     const [meetingTimeArray, setMeetingTimeArray] = useState([])
+    const [bookSlotRequestedID, setBookSlotRequestedID] = useState(null)
 
     const tokenRefreshFunction = () => {
         console.log('token refresh function')
@@ -248,6 +251,7 @@ export default function WebContextProvider({ children }) {
         formListRerender,
         contextHolder,
         meetingTimeArray,
+        bookSlotRequestedID,
         customDate,
         setFormListRerender,
         setLoginErrorMessage,
@@ -258,6 +262,7 @@ export default function WebContextProvider({ children }) {
         getUserData,
         tokenRefreshFunction,
         displayMessage,
+        setBookSlotRequestedID,
         setMeetingTimeArray
     };
 
