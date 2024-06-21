@@ -59,7 +59,22 @@ const LandingPage = () => {
       <div className={styles.pageContainer}>
         <div className={styles.heroSection}>
           <div className={styles.heroSectionUpperPart}>
-            <div className={styles.heroSectionLeft}></div>
+            <div className={styles.heroSectionLeft}>
+              <iframe
+                className={styles.landingVideo}
+                src="https://www.youtube.com/embed/7YSkrMD-AM8?si=TdzTMb-soHLh0zGB?autoplay=0&modestbranding=1&autohide=1&showinfo=0&controls=0&rel=0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; modestbranding"
+                title="YouTube video player"
+                allowFullScreen
+              ></iframe>
+              {/* <iframe
+                width="560"
+                height="315"
+                frameborder="0"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe> */}
+            </div>
             <div className={styles.heroSectionRight}>
               <div>
                 <p className={styles.titleBitsPilani}>BITS Pilani’s</p>
