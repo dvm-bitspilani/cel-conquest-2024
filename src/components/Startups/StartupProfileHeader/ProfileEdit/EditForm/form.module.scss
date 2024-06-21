@@ -1,27 +1,55 @@
 .form {
-    width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .wrapper {
+    width: 85%;
     display: flex;
     flex-direction: column;
+    gap: 30px;
     align-items: center;
 
-    .wrapper {
-        width: 85%;
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-        align-items: center;
-
-        .submit {
-            aspect-ratio: 156 / 56;
-            width: clamp(107px, 20%, 140px);
-            border-radius: 10px;
-            background: #FB723D;
-            border: none;
-            color: white;
-            font-size: 20.48px;
-            font-weight: 600;
-            line-height: 87.891%;
-            cursor: pointer;
-        }
+    .submit {
+      aspect-ratio: 156 / 56;
+      width: clamp(107px, 20%, 140px);
+      border-radius: 10px;
+      background: #fb723d;
+      border: none;
+      color: white;
+      font-size: 20.48px;
+      font-weight: 600;
+      line-height: 87.891%;
+      cursor: pointer;
     }
+  }
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+
+    label {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 100%;
+    }
+
+    .selectInput {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      position: relative;
+      aspect-ratio: 850 / 45;
+      padding: 0px 5px;
+      border-radius: 8px;
+      border: 1px solid #bfbfbf;
+      background: #fff;
+      width: 100%;
+      overflow-y: auto;
+      resize: none;
+      overflow: hidden;
+    }
+  }
 }
