@@ -262,7 +262,7 @@ export default function MentorProfileHeader({
             <div>
               <div className={styles.btnWrapper}>
                 <button
-                  style={{
+                  style={connectionState === 'connected' ? {
                     zIndex: 2,
                     marginRight: "10px",
                     display:
@@ -270,8 +270,19 @@ export default function MentorProfileHeader({
                         startup.startupid !== undefined
                         ? null
                         : "none",
+                  } : {
+                    zIndex: 2,
+                    marginRight: "10px",
+                    display:
+                      (role1_Mentor || role1_Startup) &&
+                        startup.startupid !== undefined
+                        ? null
+                        : "none",
+                    filter: 'grayscale(1)',
+                    cursor: 'not-allowed'
                   }}
                   className={styles.schedule}
+                  disabled={connectionState !== 'connected'}
                   onClick={
                     role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
                   }
