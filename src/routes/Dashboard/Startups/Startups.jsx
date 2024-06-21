@@ -134,10 +134,10 @@ const Startups = () => {
       <div className={styles.startupList}>
         {listItems
           .filter((item) => {
+            if (!value) return true;
             if (
-              item.startup_name
-                .toLowerCase()
-                .includes(value.toLowerCase().trim())
+              item.name &&
+              item.name.toLowerCase().includes(value.toLowerCase().trim())
             ) {
               if (!selectedStage || item.stage == selectedStage) return true;
             }

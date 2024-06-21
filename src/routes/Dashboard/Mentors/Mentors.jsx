@@ -86,8 +86,11 @@ const Mentors = () => {
       <div className={styles.coachList}>
         {listItems
           .filter((item) => {
-            if (!item.name) return true;
-            if (item.name.toLowerCase().includes(value.toLowerCase().trim())) {
+            if (!value) return true;
+            if (
+              item.name &&
+              item.name.toLowerCase().includes(value.toLowerCase().trim())
+            ) {
               if (!selectedStage || item.stage == selectedStage) return true;
             }
             return false;
