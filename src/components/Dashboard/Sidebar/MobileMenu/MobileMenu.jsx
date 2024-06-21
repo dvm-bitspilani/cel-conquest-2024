@@ -61,7 +61,7 @@ export default function MobileMenu() {
       label: "Experts",
     },
     {
-      key: "/dashboard/partners",
+      key: "/dashboard/investors",
       label: "Investment Partners",
     },
     {
@@ -96,10 +96,8 @@ export default function MobileMenu() {
 
 
   function onClick(e) {
-    if (e.key === "/dashboard/partners") {
-      window.open("https://www.conquest.org.in/partners", "_self");
-    }
-    else if (e.key === "/dashboard/contact" || e.key === "/dashboard/info") {
+    
+    if (e.key === "/dashboard/contact" || e.key === "/dashboard/info") {
       window.open("https://www.conquest.org.in/process", "_self");
     }  
     else {
