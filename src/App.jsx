@@ -26,6 +26,7 @@ import Forms from "./routes/Dashboard/Forms/Forms";
 import Developers from "./routes/Dashboard/Developers/Developers";
 import Coaches from "./routes/Dashboard/Coaches/Coaches";
 import Resources from "./routes/Dashboard/Resources/Resources";
+import Investors from "./routes/Dashboard/Investors/Investors";
 ReactGA.initialize("G-ETE2M81K4Z"); // might have to put this in environment variables -> will do later
 
 function App() {
@@ -123,6 +124,7 @@ function App() {
             <Route path="coaches" element={<Coaches />}></Route>
             <Route path="connections" element={<Connections />}></Route>
             <Route path="forms" element={<Forms />}></Route>
+            <Route path="investors" element={<Investors />}></Route>
           </Route>
         </Route>
       </Route>
