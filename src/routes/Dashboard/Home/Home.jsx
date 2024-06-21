@@ -126,28 +126,35 @@ export default function Home() {
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
 
-  // const underGuidanceOf = JSON.parse(
-  //   localStorage.getItem("userData")
-  // ).startup_profile.under_guidance_of.map((item, index) => {
-  //   return {
-  //     role: item.role,
-  //     pill: (
-  //       <UserPill avatar={item.profile_logo} name={item.name} key={index} />
-  //     ),
-  //   };
-  // });
-  // const coach = underGuidanceOf
-  //   .filter((item) => item.role === "Coach")
-  //   .map((item) => item.pill);
-  // const mentors = underGuidanceOf
-  //   .filter((item) => item.role === "Mentor")
-  //   .map((item) => item.pill);
-  // const experts = underGuidanceOf
-  //   .filter((item) => item.role === "Function Expert")
-  //   .map((item) => item.pill);
-  // const startups = underGuidanceOf
-  //   .filter((item) => item.role === "Startup")
-  //   .map((item) => item.pill);
+  let underGuidanceOf = null;
+  let coach;
+  let mentors;
+  let experts;
+
+  if (JSON.parse(localStorage.getItem("userData")).startup_profile) {
+    underGuidanceOf = JSON.parse(
+      localStorage.getItem("userData")
+    ).startup_profile.under_guidance_of.map((item, index) => {
+      return {
+        role: item.role,
+        pill: (
+          <UserPill avatar={item.profile_logo} name={item.name} key={index} />
+        ),
+      };
+    });
+    coach = underGuidanceOf
+      .filter((item) => item.role === "Coach")
+      .map((item) => item.pill);
+    mentors = underGuidanceOf
+      .filter((item) => item.role === "Mentor")
+      .map((item) => item.pill);
+    experts = underGuidanceOf
+      .filter((item) => item.role === "Function Expert")
+      .map((item) => item.pill);
+    // startups = underGuidanceOf
+    //   .filter((item) => item.role === "Startup")
+    //   .map((item) => item.pill);
+  }
 
   return (
     <div className={styles.container}>
@@ -245,7 +252,7 @@ export default function Home() {
         <MeetingList listItms={listItms} />
       </div>
       <div className={styles.right}>
-        {/* <div className={styles.wrapper}>
+        {underGuidanceOf && (<div className={styles.wrapper}>
           <h1 className={styles.heading}>Your <span>Pod:</span></h1>
           <section className={styles.pillsWrapper}>
             {coach[0] ? <div className={styles.userPills}>
@@ -266,14 +273,14 @@ export default function Home() {
                 {experts}
               </div>
             </div> : null}
-            {startups[0] ? <div className={styles.userPills}>
+            {/* {startups[0] ? <div className={styles.userPills}>
               <h3>Startups</h3>
               <div className={styles.pillGrid}>
                 {startups}
               </div>
-            </div> : null}
+            </div> : null} */}
           </section>
-        </div> */}
+        </div>)}
         <div className={styles.formsContainer}>
           <h1 className={styles.heading}>
             <div onClick={() => navigate("/dashboard/forms")}>
