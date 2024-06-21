@@ -15,7 +15,7 @@ const Button = ({ active, text, handleButtonClick, link }) => {
           navigate(`${link}`);
         }
         else {
-          window.open("https://www.conquest.org.in/", "_self");
+          window.open("https://www.conquest.org.in/process/", "_self");
         }
       }}
     >
