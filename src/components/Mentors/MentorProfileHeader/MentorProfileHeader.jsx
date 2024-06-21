@@ -142,6 +142,13 @@ export default function MentorProfileHeader({
 
   const checkProfilePic = img || profilePic;
 
+  const combinedStyle = {
+    ...(connectionState === 'sent' || isLoading ? { filter: 'grayscale(1)', cursor: 'not-allowed' } : {}),
+    zIndex: 2,
+    marginRight: "10px",
+    display: (role1_Mentor || role1_Startup) && startup.startupid !== undefined ? null : "none",
+  };
+
   return (
     <>
       <FormModal ref={formModal} title="Edit Profile" formType="profile edit" />
@@ -177,32 +184,51 @@ export default function MentorProfileHeader({
 
           <div className={styles.mobile}>
             <div className={styles.button}>
-              {!startupid && (
-                <div
-                  className={styles.mobileButton}
-                  onClick={() => formModal.current.openForm()}
-                >
-                  Edit
-                </div>
-              )}
-
               <div>
-                <button
-                  style={{
+                <div className={styles.btnWrapper}>
+                  {!startupid && (
+                    <div
+                      className={styles.mobileButton}
+                      onClick={() => formModal.current.openForm()}
+                    >
+                      Edit
+                    </div>
+                  )}
+                  <button
+                    style={connectionState === 'connected' ? {
                     zIndex: 2,
+                    marginRight: "10px",
                     display:
                       (role1_Mentor || role1_Startup) &&
                         startup.startupid !== undefined
                         ? null
                         : "none",
+                  } : {
+                    zIndex: 2,
+                    marginRight: "10px",
+                    display:
+                      (role1_Mentor || role1_Startup) &&
+                        startup.startupid !== undefined
+                        ? null
+                        : "none",
+                    filter: 'grayscale(1)',
+                    cursor: 'not-allowed'
                   }}
-                  className={styles.mobileButton1}
-                  onClick={
-                    role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
-                  }
-                >
-                  {role1_Mentor ? "Book Meeting" : "Book Slot"}
-                </button>
+                    className={styles.mobileButton1}
+                    onClick={
+                      role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
+                    }
+                  >
+                    {role1_Mentor ? "Book Meeting" : "Book Slot"}
+                  </button>
+
+                  <button
+                    className={styles.mobileButton1}
+                    onClick={connectionHandler}
+                    disabled={connectionState === 'sent' || isLoading}
+                    style={combinedStyle}
+                  >{connectionBtnText}</button>
+                </div>
 
                 {(() => {
                   if (role1_Mentor && startup.startupid !== undefined) {
@@ -252,7 +278,7 @@ export default function MentorProfileHeader({
           <div className={styles.buttonContainer}>
             {!startupid && (
               <div
-                className={styles.schedule}
+                className={styles.edit}
                 onClick={() => formModal.current.openForm()}
               >
                 Edit
@@ -262,7 +288,7 @@ export default function MentorProfileHeader({
             <div>
               <div className={styles.btnWrapper}>
                 <button
-                  style={{
+                  style={connectionState === 'connected' ? {
                     zIndex: 2,
                     marginRight: "10px",
                     display:
@@ -270,8 +296,19 @@ export default function MentorProfileHeader({
                         startup.startupid !== undefined
                         ? null
                         : "none",
+                  } : {
+                    zIndex: 2,
+                    marginRight: "10px",
+                    display:
+                      (role1_Mentor || role1_Startup) &&
+                        startup.startupid !== undefined
+                        ? null
+                        : "none",
+                    filter: 'grayscale(1)',
+                    cursor: 'not-allowed'
                   }}
                   className={styles.schedule}
+                  disabled={connectionState !== 'connected'}
                   onClick={
                     role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
                   }
@@ -283,7 +320,7 @@ export default function MentorProfileHeader({
                   className={styles.schedule}
                   onClick={connectionHandler}
                   disabled={connectionState === 'sent' || isLoading}
-                  style={connectionState === 'sent' || isLoading ? { filter: 'grayscale(1)', cursor: 'not-allowed' } : null}
+                  style={combinedStyle}
                 >{connectionBtnText}</button>
               </div>
 

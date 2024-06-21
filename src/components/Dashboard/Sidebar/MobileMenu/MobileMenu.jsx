@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import * as styles from "./menu.module.scss";
 import "./menuStyles.scss";
 
-import demoAvatar from "../../../../assets/images/Dashboard/demoAvatar.jpeg"
+import profilePic from "../../../../assets/profilePic.svg"
 import { Link } from "react-router-dom";
 
 export default function MobileMenu() {
@@ -92,11 +92,19 @@ export default function MobileMenu() {
     userProfile.role === "Startup"
       ? "/dashboard/startup-profile"
       : "/dashboard/profile";
-  const profileLogo = userProfile.profile_logo || demoAvatar;
+  const profileLogo = userProfile.profile_logo || profilePic;
 
 
   function onClick(e) {
-    navigate(e.key);
+    if (e.key === "/dashboard/partners") {
+      window.open("https://www.conquest.org.in/partners", "_self");
+    }
+    else if (e.key === "/dashboard/contact" || e.key === "/dashboard/info") {
+      window.open("https://www.conquest.org.in/process", "_self");
+    }  
+    else {
+      navigate(e.key);
+    }
   }
 
   return (
@@ -107,7 +115,7 @@ export default function MobileMenu() {
             <img
               src={profileLogo}
               onError={(e) => {
-                e.target.src = demoAvatar;
+                e.target.src = profilePic;
               }}
               alt="Profile Avatar"
             />
