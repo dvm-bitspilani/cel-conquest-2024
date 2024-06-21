@@ -70,7 +70,7 @@ const FooterBody = () => {
                 <a href="https://www.conquest.org.in/about">About us</a>
               </li>
               <li>
-                <a href="https://www.conquest.org.in/process">Our progress</a>
+                <a href="https://www.conquest.org.in/process">Our Process</a>
               </li>
               <li>
                 <a href="">Register</a>
