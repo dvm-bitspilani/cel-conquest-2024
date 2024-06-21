@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./searchbutton.module.scss";
+import profilePic from "../../../../assets/profilePic.svg"
+import { Link } from "react-router-dom";
 import { Input } from "antd";
 import axios from "axios";
 
@@ -156,23 +158,33 @@ export default function SearchButton() {
             <h2>Search results for {searchTerm ? `"${searchTerm}"` : ".."}</h2>
             <div className={styles.searchResult}>
               {filteredResults.map((searchProfile) => (
-                <div className={styles.show} key={searchProfile.id}>
-                  <div className={styles.imageContainer}>
-                    <img
-                      src={searchProfile.profile_logo}
-                      alt={searchProfile.name}
-                    ></img>
-                  </div>
-                  <div className={styles.details}>
-                    <div className={styles.companyName}>
-                      {searchProfile.role}
+                <Link
+                  to={
+                      searchProfile.role === "Startup"
+                      ? `/dashboard/startup-profile/${searchProfile.id}`
+                      : `/dashboard/profile/${searchProfile.id}`
+                    }
+                    className={styles.link}
+                    onClick={() => setModal(false)}
+                  >
+                  <div className={styles.show} key={searchProfile.id}>
+                    <div className={styles.imageContainer}>
+                      <img
+                        src={searchProfile.profile_logo || profilePic}
+                        alt={""}
+                      ></img>
                     </div>
-                    <div className={styles.name}>{searchProfile.name}</div>
-                    <div className={styles.desc}>
-                      {searchProfile.designation}
+                    <div className={styles.details}>
+                      <div className={styles.companyName}>
+                        {searchProfile.role}
+                      </div>
+                      <div className={styles.name}>{searchProfile.name}</div>
+                      <div className={styles.desc}>
+                        {searchProfile.designation}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
             <div className={styles.line}></div>
