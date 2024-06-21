@@ -1,7 +1,7 @@
 import styles from "./sidebar.module.scss";
 
 import Button from "./Button/Button";
-import demoAvatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
+import profilePic from "../../../assets/profilePic.svg"
 
 import SearchButton from "./SearchButton/SearchButton";
 
@@ -173,10 +173,10 @@ const Sidebar = () => {
             <img
               src={
                 JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                  .profile_logo
+                  .profile_logo || profilePic
               }
               onError={(e) => {
-                e.target.src = demoAvatar;
+                e.target.src = profilePic;
               }}
             />
           </Link>
