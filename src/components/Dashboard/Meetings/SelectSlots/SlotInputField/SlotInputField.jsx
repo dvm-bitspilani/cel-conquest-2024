@@ -7,6 +7,7 @@ const SlotInputField = ({
   dateTimeStart,
   dateTimeEnd,
   deleteSlot,
+  isFree
 }) => {
   const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const dateObjEnd = new Date(dateTimeEnd * 1000);
@@ -50,9 +51,11 @@ const SlotInputField = ({
         onClick={() => {
           return deleteSlot(id);
         }}
+        disabled={!isFree}
+        style={!isFree ? { filter: "grayscale(1)" } : {}}
       >
         {window.innerWidth > 600 ? (
-          "Delete"
+          !isFree ? "Booked" : "Delete"
         ) : (
           <svg
             width="24"

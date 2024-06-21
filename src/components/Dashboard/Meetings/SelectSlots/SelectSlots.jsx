@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./SelectSlots.module.scss";
 import SlotInputField from "./SlotInputField/SlotInputField";
 import axios from "axios";
+import { WebContext } from "../../../../store/website-context";
 
 const SelectSlots = ({
   showHideSelectSlotTiming,
   showHideSelectSlots,
   requestSent,
 }) => {
+  const { setMeetingTimeArray } = useContext(WebContext)
   const [slotList, setSlotList] = useState([]);
   const [request, setRequest] = useState(false);
 
@@ -16,14 +18,16 @@ const SelectSlots = ({
     axios
       .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
         headers: {
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem("userData")).tokens.access
-          }`,
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
         },
       })
       .then((res) => {
+        const timeArray = res.data.map(newItm => newItm.start_time)
+        setMeetingTimeArray(timeArray)
         const newArr = res.data.map((newItm, index) => {
           // console.log("time", index, newItm.start_time, newItm.end_time);
+          // console.log(newItm)
           return (
             <SlotInputField
               slotno={index + 1}
@@ -33,6 +37,7 @@ const SelectSlots = ({
               dateTimeStart={newItm.start_time}
               dateTimeEnd={newItm.end_time}
               deleteSlot={deleteSlot}
+              isFree={newItm.free}
             ></SlotInputField>
           );
         });
@@ -68,21 +73,21 @@ const SelectSlots = ({
     axios
       .delete(`https://conquest-api.bits-dvm.org/api/meetings/slots/${id}`, {
         headers: {
-          Authorization: `Bearer ${
-            JSON.parse(localStorage.getItem("userData")).tokens.access
-          }`,
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
         },
       })
       .then(() => {
         axios
           .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
             },
           })
           .then((res) => {
+            const timeArray = res.data.map(newItm => newItm.start_time)
+            setMeetingTimeArray(timeArray)
             const newArr = res.data.map((newItm, index) => {
               // console.log("time", index, newItm.start_time, newItm.end_time);
               return (
@@ -94,6 +99,7 @@ const SelectSlots = ({
                   dateTimeStart={newItm.start_time}
                   dateTimeEnd={newItm.end_time}
                   deleteSlot={deleteSlot}
+                  isFree={newItm.free}
                 ></SlotInputField>
               );
             });
@@ -133,12 +139,13 @@ const SelectSlots = ({
       axios
         .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
           headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("userData")).tokens.access
-            }`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
           },
         })
         .then((res) => {
+          const timeArray = res.data.map(newItm => newItm.start_time)
+          setMeetingTimeArray(timeArray)
           const newArr = res.data.map((newItm, index) => {
             // console.log("time", index, newItm.start_time, newItm.end_time);
             return (
@@ -150,6 +157,7 @@ const SelectSlots = ({
                 dateTimeStart={newItm.start_time}
                 dateTimeEnd={newItm.end_time}
                 deleteSlot={deleteSlot}
+                isFree={newItm.free}
               ></SlotInputField>
             );
           });
