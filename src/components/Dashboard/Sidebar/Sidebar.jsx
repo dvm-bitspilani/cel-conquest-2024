@@ -225,7 +225,7 @@ const Sidebar = () => {
             text="Investment Partners"
             active={activeButton === "Investment Partners"}
             handleButtonClick={handleButtonClick}
-            link="/partners/"
+            link="/dashboard/investors"
           />
         </div>
         <div className={styles.bottomButtons}>
