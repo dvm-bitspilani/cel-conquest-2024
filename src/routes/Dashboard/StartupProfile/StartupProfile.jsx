@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import StartupProfileHeader from "../../../components/Startups/StartupProfileHeader/StartupProfileHeader";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { WebContext } from "../../../store/website-context";
 
 const StartupProfile = () => {
+  const { setBookSlotRequestedID, contextHolder } = useContext(WebContext)
+
   const { id } = useParams();
   const [startupProfile, setstartupProfile] = useState({});
   const [userProfile, setuserProfile] = useState({});
@@ -17,7 +20,41 @@ const StartupProfile = () => {
             `https://conquest-api.bits-dvm.org/api/users/startup_detail/?id=${id}`,
             {
               headers: {
-                Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access}`,
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
+              },
+              params: {
+                id: id,
+              },
+            }
+          )
+          .then(function (response) {
+            setstartupProfile(response.data);
+            setuserProfile(response.data.user_profile);
+            setTeam(response.data.team_member);
+            console.log(startupProfile);
+            setBookSlotRequestedID(response.data.user_profile.id);
+          })
+          .catch(function (error) {
+            console.log(error);
+            console.log(id);
+          });
+      } else {
+        console.log("error in fetching data");
+      }
+    } else {
+      if (JSON.parse(localStorage.getItem("userData")).tokens) {
+        axios
+          .get(
+            `https://conquest-api.bits-dvm.org/api/users/startup_detail/?id=${
+              JSON.parse(localStorage.getItem("userData")).startup_profile.id
+            }`,
+            {
+              headers: {
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
               },
               params: {
                 id: id,
@@ -37,15 +74,12 @@ const StartupProfile = () => {
       } else {
         console.log("error in fetching data");
       }
-    } else {
-      setstartupProfile(
-        JSON.parse(localStorage.getItem("userData")).user_profile_obj
-      );
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access, id]);
 
   return (
     <>
+      {contextHolder}
       <StartupProfileHeader
         img={startupProfile.profile_logo}
         name={startupProfile.startup_name}
