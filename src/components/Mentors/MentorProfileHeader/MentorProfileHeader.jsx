@@ -5,7 +5,7 @@ import MentorProfileContact from "../MentorProfileContact/MentorProfileContact";
 import MentorAbout from "../MentorAbout/MentorAbout";
 import FormModal from "../../Dashboard/Forms/FormModal/FormModal";
 import BookMeeting from "../../Dashboard/Meetings/BookMeeting/BookMeeting";
-// import SlotTimingSelector from "../../Dashboard/Meetings/SlotTimingSelector/SlotTimingSelector";
+import profilePic from "../../../assets/profilePic.svg"
 import BookSlots from "../../Dashboard/Meetings/BookSlots/BookSlots";
 import { WebContext } from "../../../store/website-context";
 // import ProfileModal from "./ProfileEdit/Modal/Modal";
@@ -140,6 +140,8 @@ export default function MentorProfileHeader({
     setBookSlots(!bookSlots);
   };
 
+  const checkProfilePic = img || profilePic;
+
   return (
     <>
       <FormModal ref={formModal} title="Edit Profile" formType="profile edit" />
@@ -148,7 +150,7 @@ export default function MentorProfileHeader({
           <div className={styles.contentContainer}>
             <div className={styles.logoContainer}>
               <div>
-                <img src={img} alt="" />
+                <img src={checkProfilePic} alt="" />
               </div>
             </div>
 
