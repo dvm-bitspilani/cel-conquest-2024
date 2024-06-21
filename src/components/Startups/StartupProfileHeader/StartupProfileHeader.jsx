@@ -8,7 +8,7 @@ import Details from "../Details/Details";
 import Pitch from "../Pitch/Pitch";
 import FormModal from "../../Dashboard/Forms/FormModal/FormModal";
 import BookMeeting from "../../Dashboard/Meetings/BookMeeting/BookMeeting";
-// import SlotTimingSelector from "../../Dashboard/Meetings/SlotTimingSelector/SlotTimingSelector";
+import profilePic from "../../../assets/profilePic.svg"
 import BookSlots from "../../Dashboard/Meetings/BookSlots/BookSlots";
 // import ProfileModal from "./ProfileEdit/Modal/Modal";
 
@@ -110,6 +110,8 @@ export default function StartupProfileHeader({
     setBookSlots(!bookSlots);
   };
 
+  const checkProfilePic = img || profilePic;
+  
   return (
     <>
       <FormModal ref={formModal} title="Edit Profile" formType="profile edit" />
@@ -118,7 +120,7 @@ export default function StartupProfileHeader({
           <div className={styles.contentContainer}>
             <div className={styles.logoContainer}>
               <div>
-                <img src={img} alt="" />
+                <img src={checkProfilePic} alt="" />
               </div>
             </div>
 
