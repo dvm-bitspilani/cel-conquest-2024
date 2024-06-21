@@ -320,7 +320,7 @@ export default function MentorProfileHeader({
                   className={styles.schedule}
                   onClick={connectionHandler}
                   disabled={connectionState === 'sent' || isLoading}
-                  style={combinedStyle} : null}
+                  style={combinedStyle}
                 >{connectionBtnText}</button>
               </div>
 
