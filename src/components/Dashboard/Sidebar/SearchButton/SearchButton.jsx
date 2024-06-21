@@ -20,12 +20,11 @@ export default function SearchButton() {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
         .get(
-          `https://conquest-api.bits-dvm.org/api/users/search/?query=${searchTerm}`,
+          `https://portal.conquest.org.in/api/users/search/?query=${searchTerm}`,
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
             },
           }
         )
@@ -56,7 +55,7 @@ export default function SearchButton() {
     };
   }, []);
 
- useEffect(() => {
+  useEffect(() => {
     const filteredResults = searchResults
       ? searchResults.filter((profile) => {
         if (searchTerm && profile.name && profile.role) {
@@ -160,13 +159,13 @@ export default function SearchButton() {
               {filteredResults.map((searchProfile) => (
                 <Link
                   to={
-                      searchProfile.role === "Startup"
+                    searchProfile.role === "Startup"
                       ? `/dashboard/startup-profile/${searchProfile.id}`
                       : `/dashboard/profile/${searchProfile.id}`
-                    }
-                    className={styles.link}
-                    onClick={() => setModal(false)}
-                  >
+                  }
+                  className={styles.link}
+                  onClick={() => setModal(false)}
+                >
                   <div className={styles.show} key={searchProfile.id}>
                     <div className={styles.imageContainer}>
                       <img

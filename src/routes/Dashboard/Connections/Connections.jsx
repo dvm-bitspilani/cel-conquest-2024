@@ -17,11 +17,10 @@ function Connections() {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       // console.log("fetching data");
       axios
-        .get(`https://conquest-api.bits-dvm.org/api/users/connections/list/`, {
+        .get(`https://portal.conquest.org.in/api/users/connections/list/`, {
           headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("userData")).tokens.access
-            }`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
           },
         })
         .then((res) => {
@@ -30,33 +29,33 @@ function Connections() {
           const newArr =
             listTab == "pending"
               ? res.data.connection_unaccepted_recieved.map((newItm) => {
-                  // console.log(newItm);
-                  return (
-                    <ConnectionListItem
-                      key={newItm.id}
-                      listTab={listTab}
-                      name={newItm.from_user.name}
-                      designation={newItm.from_user.designation}
-                      img={newItm.from_user.profile_logo}
-                      type={newItm.from_user.role}
-                      id={newItm.id}
-                    ></ConnectionListItem>
-                  );
-                })
+                // console.log(newItm);
+                return (
+                  <ConnectionListItem
+                    key={newItm.id}
+                    listTab={listTab}
+                    name={newItm.from_user.name}
+                    designation={newItm.from_user.designation}
+                    img={newItm.from_user.profile_logo}
+                    type={newItm.from_user.role}
+                    id={newItm.id}
+                  ></ConnectionListItem>
+                );
+              })
               : res.data.connected_users.map((newItm) => {
-                  // console.log(newItm);
-                  return (
-                    <ConnectionListItem
-                      key={newItm.connection_id}
-                      listTab={listTab}
-                      name={newItm.user.name}
-                      designation={newItm.user.designation}
-                      img={newItm.user.profile_logo}
-                      type={newItm.user.role}
-                      id={newItm.connection_id}
-                    ></ConnectionListItem>
-                  );
-                });
+                // console.log(newItm);
+                return (
+                  <ConnectionListItem
+                    key={newItm.connection_id}
+                    listTab={listTab}
+                    name={newItm.user.name}
+                    designation={newItm.user.designation}
+                    img={newItm.user.profile_logo}
+                    type={newItm.user.role}
+                    id={newItm.connection_id}
+                  ></ConnectionListItem>
+                );
+              });
           setListItms(newArr);
         })
         .catch((err) => {
@@ -78,9 +77,8 @@ function Connections() {
               // console.log(listTab);
               getList("pending");
             }}
-            className={`${styles.ConnectionsButton} ${
-              listTab === "pending" ? styles.active : null
-            }`}
+            className={`${styles.ConnectionsButton} ${listTab === "pending" ? styles.active : null
+              }`}
           >
             Pending
           </button>
@@ -90,9 +88,8 @@ function Connections() {
               // console.log(listTab);
               getList("connections");
             }}
-            className={`${styles.ConnectionsButton} ${
-              listTab === "connections" ? styles.active : null
-            }`}
+            className={`${styles.ConnectionsButton} ${listTab === "connections" ? styles.active : null
+              }`}
           >
             My Connections
           </button>

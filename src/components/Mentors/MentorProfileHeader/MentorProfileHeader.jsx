@@ -55,7 +55,7 @@ export default function MentorProfileHeader({
   function connectionHandler() {
     if (connectionState === 'not-connected') {
       setIsLoading(true)
-      axios.post('https://conquest-api.bits-dvm.org/api/users/connections/send/', {
+      axios.post('https://portal.conquest.org.in/api/users/connections/send/', {
         username: user.username
       }, {
         headers: {
@@ -75,7 +75,7 @@ export default function MentorProfileHeader({
     }
     else if (connectionState === 'connected') {
       setIsLoading(true)
-      axios.post('https://conquest-api.bits-dvm.org/api/users/connections/delete/', {
+      axios.post('https://portal.conquest.org.in/api/users/connections/delete/', {
         id: startupid
       }, {
         headers: {
@@ -95,7 +95,7 @@ export default function MentorProfileHeader({
     }
     else if (connectionState === 'received') {
       setIsLoading(true)
-      axios.post("https://conquest-api.bits-dvm.org/api/users/connections/accept/", {
+      axios.post("https://portal.conquest.org.in/api/users/connections/accept/", {
         status: true,
         id: startupid
       }, {
@@ -196,24 +196,24 @@ export default function MentorProfileHeader({
                   )}
                   <button
                     style={connectionState === 'connected' ? {
-                    zIndex: 2,
-                    marginRight: "10px",
-                    display:
-                      (role1_Mentor || role1_Startup) &&
-                        startup.startupid !== undefined
-                        ? null
-                        : "none",
-                  } : {
-                    zIndex: 2,
-                    marginRight: "10px",
-                    display:
-                      (role1_Mentor || role1_Startup) &&
-                        startup.startupid !== undefined
-                        ? null
-                        : "none",
-                    filter: 'grayscale(1)',
-                    cursor: 'not-allowed'
-                  }}
+                      zIndex: 2,
+                      marginRight: "10px",
+                      display:
+                        (role1_Mentor || role1_Startup) &&
+                          startup.startupid !== undefined
+                          ? null
+                          : "none",
+                    } : {
+                      zIndex: 2,
+                      marginRight: "10px",
+                      display:
+                        (role1_Mentor || role1_Startup) &&
+                          startup.startupid !== undefined
+                          ? null
+                          : "none",
+                      filter: 'grayscale(1)',
+                      cursor: 'not-allowed'
+                    }}
                     className={styles.mobileButton1}
                     onClick={
                       role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots

@@ -68,13 +68,12 @@ export default function ProfileForm({ formClose }) {
       };
       axios
         .put(
-          "https://conquest-api.bits-dvm.org/api/users/profile/",
+          "https://portal.conquest.org.in/api/users/profile/",
           requestObject,
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
             },
           }
         )

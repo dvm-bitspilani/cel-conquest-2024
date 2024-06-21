@@ -7,18 +7,17 @@ import { useParams } from "react-router-dom";
 function BookSlots({ bookSlots, showHideBookSlots }) {
   const { id } = useParams();
   const [slotList, setSlotList] = useState([]);
-  const selectSlot = (id) => {};
+  const selectSlot = (id) => { };
   // console.log(id);
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
         .get(
-          `https://conquest-api.bits-dvm.org/api/meetings/user/${id}/meeting-slots/`,
+          `https://portal.conquest.org.in/api/meetings/user/${id}/meeting-slots/`,
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
             },
           }
         )
