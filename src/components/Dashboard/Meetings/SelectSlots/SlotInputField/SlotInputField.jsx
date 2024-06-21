@@ -55,7 +55,7 @@ const SlotInputField = ({
         style={!isFree ? { filter: "grayscale(1)" } : {}}
       >
         {window.innerWidth > 600 ? (
-          isFree ? "Delete" : "Booked"
+          !isFree ? "Booked" : "Delete"
         ) : (
           <svg
             width="24"
