@@ -11,6 +11,7 @@ export const WebContext = createContext({
     loginErrorMessage: null,
     formListRerender: 0,
     contextHolder: null,
+    meetingTimeArray: [],
     setFormListRerender: () => { },
     setLoginErrorMessage: () => { },
     setUser: () => { },
@@ -20,6 +21,7 @@ export const WebContext = createContext({
     getUserData: () => { },
     tokenRefreshFunction: () => { },
     displayMessage: () => { },
+    setMeetingTimeArray: () => { },
     customDate: null,
 });
 
@@ -30,6 +32,7 @@ export default function WebContextProvider({ children }) {
     const [isUserLoginBtnDisabled, setIsUserLoginBtnDisabled] = useState(false);
     const [loginErrorMessage, setLoginErrorMessage] = useState(null);
     const [formListRerender, setFormListRerender] = useState(Math.random())
+    const [meetingTimeArray, setMeetingTimeArray] = useState([])
 
     const tokenRefreshFunction = () => {
         console.log('token refresh function')
@@ -244,6 +247,7 @@ export default function WebContextProvider({ children }) {
         loginErrorMessage,
         formListRerender,
         contextHolder,
+        meetingTimeArray,
         customDate,
         setFormListRerender,
         setLoginErrorMessage,
@@ -253,7 +257,8 @@ export default function WebContextProvider({ children }) {
         usernameLogin,
         getUserData,
         tokenRefreshFunction,
-        displayMessage
+        displayMessage,
+        setMeetingTimeArray
     };
 
     return (

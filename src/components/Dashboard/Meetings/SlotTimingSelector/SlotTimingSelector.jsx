@@ -255,7 +255,7 @@ const SlotTimingSelector = ({
   removeModal,
   changeRequestSent,
 }) => {
-  const { displayMessage } = useContext(WebContext)
+  const { displayMessage, meetingTimeArray } = useContext(WebContext)
   const changeDate = (date, month, year) => {
     setDateTime((prev) => {
       return { ...prev, date: date, month: month, year: year };
@@ -327,8 +327,12 @@ const SlotTimingSelector = ({
     //   start_time: unixTimeStamp,
     //   end_time: unixTimeStamp2,
     // });
-    axios
-      .post(
+    // if ()
+    if (meetingTimeArray.find(timeItem => timeItem === unixTimeStamp)) {
+      displayMessage('error', "Slot already exists", 2)
+    }
+    else {
+      axios.post(
         "https://conquest-api.bits-dvm.org/api/meetings/slots/",
         {
           user: "1",
@@ -342,16 +346,18 @@ const SlotTimingSelector = ({
           },
         }
       )
-      .then(function (response) {
-        changeRequestSent();
-        displayMessage('success', "Slot Created", 2)
+        .then(function (response) {
+          changeRequestSent();
+          displayMessage('success', "Slot Created", 2)
 
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-        displayMessage('error', "An error occured", 2)
-      });
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+          displayMessage('error', "An error occured", 2)
+        });
+      removeModal();
+    }
   };
   // console.log(dateTime);
   // console.log(date);
@@ -464,7 +470,6 @@ const SlotTimingSelector = ({
           <button
             onClick={() => {
               createSlot(dateTime);
-              removeModal();
             }}
           >
             Select
