@@ -126,28 +126,28 @@ export default function Home() {
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
 
-  const underGuidanceOf = JSON.parse(
-    localStorage.getItem("userData")
-  ).startup_profile.under_guidance_of.map((item, index) => {
-    return {
-      role: item.role,
-      pill: (
-        <UserPill avatar={item.profile_logo} name={item.name} key={index} />
-      ),
-    };
-  });
-  const coach = underGuidanceOf
-    .filter((item) => item.role === "Coach")
-    .map((item) => item.pill);
-  const mentors = underGuidanceOf
-    .filter((item) => item.role === "Mentor")
-    .map((item) => item.pill);
-  const experts = underGuidanceOf
-    .filter((item) => item.role === "Function Expert")
-    .map((item) => item.pill);
-  const startups = underGuidanceOf
-    .filter((item) => item.role === "Startup")
-    .map((item) => item.pill);
+  // const underGuidanceOf = JSON.parse(
+  //   localStorage.getItem("userData")
+  // ).startup_profile.under_guidance_of.map((item, index) => {
+  //   return {
+  //     role: item.role,
+  //     pill: (
+  //       <UserPill avatar={item.profile_logo} name={item.name} key={index} />
+  //     ),
+  //   };
+  // });
+  // const coach = underGuidanceOf
+  //   .filter((item) => item.role === "Coach")
+  //   .map((item) => item.pill);
+  // const mentors = underGuidanceOf
+  //   .filter((item) => item.role === "Mentor")
+  //   .map((item) => item.pill);
+  // const experts = underGuidanceOf
+  //   .filter((item) => item.role === "Function Expert")
+  //   .map((item) => item.pill);
+  // const startups = underGuidanceOf
+  //   .filter((item) => item.role === "Startup")
+  //   .map((item) => item.pill);
 
   return (
     <div className={styles.container}>
