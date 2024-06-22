@@ -149,7 +149,15 @@ export default function ProfileForm({ formClose }) {
           type="short"
         />
         {userRole === "Startup" ? (
-          ""
+          <TextInput2
+            name="contact_email"
+            heading="Change Contact Email"
+            changeFn={handleChange}
+            blurFn={handleBlur}
+            value={values.contact_email}
+            error={errors.contact_email}
+            type="short"
+          />
         ) : (
           <TextInput2
             name="email"
@@ -161,15 +169,7 @@ export default function ProfileForm({ formClose }) {
             type="short"
           />
         )}
-        <TextInput2
-          name="contact_email"
-          heading="Change Contact Email"
-          changeFn={handleChange}
-          blurFn={handleBlur}
-          value={values.contact_email}
-          error={errors.contact_email}
-          type="short"
-        />
+
         <TextInput2
           name="password"
           heading="Change Password"
@@ -195,60 +195,90 @@ export default function ProfileForm({ formClose }) {
           manualValue={setFieldValue}
           forceType="image"
         />
-        <TextInput2
-          name="company"
-          heading="Change Company Name"
-          changeFn={handleChange}
-          blurFn={handleBlur}
-          value={values.company}
-          error={errors.company}
-          type="short"
-        />
+        {userRole === "Startup" ? (
+          <TextInput2
+            name="company"
+            heading="Change Startup Name"
+            changeFn={handleChange}
+            blurFn={handleBlur}
+            value={values.company}
+            error={errors.company}
+            type="short"
+          />
+        ) : (
+          <TextInput2
+            name="company"
+            heading="Change Company Name"
+            changeFn={handleChange}
+            blurFn={handleBlur}
+            value={values.company}
+            error={errors.company}
+            type="short"
+          />
+        )}
         <TextInput2
           name="location"
-          heading="Change Location HQ"
+          heading={
+            userRole === "Startup" ? "Change Location HQ" : "Change Location"
+          }
           changeFn={handleChange}
           blurFn={handleBlur}
           value={values.location}
           error={errors.location}
           type="short"
         />
-        <TextInput2
-          name="website"
-          heading="Change Website Link"
-          changeFn={handleChange}
-          blurFn={handleBlur}
-          value={values.website}
-          error={errors.website}
-          type="link"
-        />
-        <TextInput2
-          name="resume"
-          heading="Share your resume as a google drive link"
-          changeFn={handleChange}
-          blurFn={handleBlur}
-          value={values.resume}
-          error={errors.resume}
-          type="link"
-        />
-        <TextInput2
-          name="pitchdeck"
-          heading="Share your pitch deck as a google drive link"
-          changeFn={handleChange}
-          blurFn={handleBlur}
-          value={values.pitchdeck}
-          error={errors.pitchdeck}
-          type="link"
-        />
-        <TextInput2
-          name="pitch_video"
-          heading="Share your pitch video as a google drive link"
-          changeFn={handleChange}
-          blurFn={handleBlur}
-          value={values.pitch_video}
-          error={errors.pitch_video}
-          type="link"
-        />
+        {userRole === "Startup" ? (
+          <TextInput2
+            name="website"
+            heading="Change Website Link"
+            changeFn={handleChange}
+            blurFn={handleBlur}
+            value={values.website}
+            error={errors.website}
+            type="link"
+          />
+        ) : (
+          ""
+        )}
+        {userRole === "Startup" ? (
+          ""
+        ) : (
+          <TextInput2
+            name="resume"
+            heading="Share your resume as a google drive link"
+            changeFn={handleChange}
+            blurFn={handleBlur}
+            value={values.resume}
+            error={errors.resume}
+            type="link"
+          />
+        )}
+        {userRole === "Startup" ? (
+          <TextInput2
+            name="pitchdeck"
+            heading="Share your pitch deck as a google drive link"
+            changeFn={handleChange}
+            blurFn={handleBlur}
+            value={values.pitchdeck}
+            error={errors.pitchdeck}
+            type="link"
+          />
+        ) : (
+          ""
+        )}
+        {userRole === "Startup" ? (
+          <TextInput2
+            name="pitch_video"
+            heading="Share your pitch video as a google drive link"
+            changeFn={handleChange}
+            blurFn={handleBlur}
+            value={values.pitch_video}
+            error={errors.pitch_video}
+            type="link"
+          />
+        ) : (
+          ""
+        )}
         <TextInput2
           name="description"
           heading="Change Description"
@@ -276,26 +306,30 @@ export default function ProfileForm({ formClose }) {
                     error={errors.twitter}
                     type='link'
                 /> */}
-        <div className={styles.inputGroup}>
-          <label htmlFor="stage">Select Stage</label>
-          <select
-            name="stage"
-            id="stage"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.stage}
-            className={styles.selectInput}
-          >
-            <option value="" label="Select stage" />
-            <option value="Pre-seed Stage" label="Pre-Seed" />
-            <option value="Seed Stage" label="Seed" />
-            <option value="Early Stage" label="Early" />
-            <option value="Growth Stage" label="Growth" />
-            <option value="Expansion Stage" label="Expansion" />
-            <option value="Exit Stage" label="Exit" />
-          </select>
-          {errors.stage && <div className={styles.error}>{errors.stage}</div>}
-        </div>
+        {userRole === "Startup" ? (
+          <div className={styles.inputGroup}>
+            <label htmlFor="stage">Select Stage</label>
+            <select
+              name="stage"
+              id="stage"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.stage}
+              className={styles.selectInput}
+            >
+              <option value="" label="Select stage" />
+              <option value="Pre-seed Stage" label="Pre-Seed" />
+              <option value="Seed Stage" label="Seed" />
+              <option value="Early Stage" label="Early" />
+              <option value="Growth Stage" label="Growth" />
+              <option value="Expansion Stage" label="Expansion" />
+              <option value="Exit Stage" label="Exit" />
+            </select>
+            {errors.stage && <div className={styles.error}>{errors.stage}</div>}
+          </div>
+        ) : (
+          ""
+        )}
         <button type="submit" className={styles.submit}>
           Submit
         </button>
