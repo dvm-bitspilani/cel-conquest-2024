@@ -10,6 +10,8 @@ import FileUpload from "../../../../Dashboard/Forms/FormModal/Inputs/FileUpload/
 import styles from "./form.module.scss";
 
 export default function ProfileForm({ formClose }) {
+  const userRole = JSON.parse(localStorage.getItem("userData")).user_profile_obj
+    .role;
   const {
     values,
     errors,
@@ -44,31 +46,56 @@ export default function ProfileForm({ formClose }) {
     },
     onSubmit: (values, action) => {
       console.log(values);
-      const requestObject = {
-        user: {
-          username: values.username.trim(),
-          password: values.password.trim(),
-          first_name: values.firstName.trim(),
-          last_name: values.lastName.trim(),
-        },
-        profile_logo: values.profile_logo,
-        google_email: values.email.trim(),
-        contact_email: values.contact_email.trim(),
-        designation: values.designation.trim(),
-        linkedin: values.linkedin.trim(),
-        location: values.location.trim(),
-        description: values.description.trim(),
-        resume: values.resume.trim(),
-        sector_of_expertise: values.expertise,
-        domain_of_expertise: values.domain,
-        company_name: values.company.trim(),
-        pitch_deck: values.pitchdeck.trim(),
-        video_pitch: values.pitch_video.trim(),
-        stage: values.stage,
-      };
+      const requestObject =
+        userRole === "Startup"
+          ? {
+              user_profile: {
+                user: {
+                  username: values.username.trim(),
+                  email: values.email.trim(),
+                  password: values.password.trim(),
+                  first_name: values.firstName.trim(),
+                  last_name: values.lastName.trim(),
+                },
+              },
+              startup_name: values.company.trim(),
+              profile_logo: values.profile_logo,
+              description: values.description.trim(),
+              stage: values.stage,
+              industry: "",
+              functional_areas: "",
+              location_hq: values.location.trim(),
+              pitch_deck: values.pitchdeck.trim(),
+              linkedin: values.linkedin.trim(),
+              twitter: "",
+              contact_email: values.contact_email.trim(),
+              website_url: values.website.trim(),
+              video_pitch: values.pitch_video.trim(),
+              team: "",
+            }
+          : {
+              user: {
+                username: values.username.trim(),
+                password: values.password.trim(),
+                first_name: values.firstName.trim(),
+                last_name: values.lastName.trim(),
+              },
+              profile_logo: values.profile_logo,
+              google_email: values.email.trim(),
+              designation: values.designation.trim(),
+              linkedin: values.linkedin.trim(),
+              location: values.location.trim(),
+              description: values.description.trim(),
+              resume: values.resume.trim(),
+              sector_of_expertise: values.expertise,
+              domain_of_expertise: values.domain,
+              company_name: values.company.trim(),
+            };
       axios
         .put(
-          "https://conquest-api.bits-dvm.org/api/users/profile/",
+          `https://conquest-api.bits-dvm.org/api/users/profile/${
+            userRole === "Startup" ? "startup/" : ""
+          }`,
           requestObject,
           {
             headers: {
@@ -82,6 +109,7 @@ export default function ProfileForm({ formClose }) {
           console.log(res);
         })
         .catch((err) => {
+          console.log(requestObject);
           console.log(err);
         });
       action.resetForm();
@@ -120,15 +148,19 @@ export default function ProfileForm({ formClose }) {
           error={errors.lastName}
           type="short"
         />
-        <TextInput2
-          name="email"
-          heading="Change Email"
-          changeFn={handleChange}
-          blurFn={handleBlur}
-          value={values.email}
-          error={errors.email}
-          type="short"
-        />
+        {userRole === "Startup" ? (
+          ""
+        ) : (
+          <TextInput2
+            name="email"
+            heading="Change Email"
+            changeFn={handleChange}
+            blurFn={handleBlur}
+            value={values.email}
+            error={errors.email}
+            type="short"
+          />
+        )}
         <TextInput2
           name="contact_email"
           heading="Change Contact Email"
