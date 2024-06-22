@@ -60,7 +60,8 @@ export default function StartupProfileHeader({
   teamArray,
   schedulebtn,
   startupid,
-  requestedID
+  requestedID,
+  vision
 }) {
   const [selectedTopic, setSelectedTopic] = useState("about");
 
@@ -126,7 +127,7 @@ export default function StartupProfileHeader({
 
             <div className={styles.headerContainer}>
               <div className={styles.name}>{name}</div>
-              <div className={styles.desc}>{desc}</div>
+              <div className={styles.desc}>{vision}</div>
               <div>
                 <span className={styles.location}>Location HQ : </span>
                 {location}

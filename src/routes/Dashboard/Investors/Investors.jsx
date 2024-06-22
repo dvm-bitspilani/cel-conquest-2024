@@ -95,14 +95,14 @@ const Investors = () => {
             }
             return false;
           })
-          .map((expert) => (
+          .map((investor) => (
             <CoachCard
-              key={expert.id}
-              img={expert.profile_logo}
-              name={expert.name}
-              tags={expert.sector_of_expertise}
-              designation={expert.designation}
-              id={expert.id}
+              key={investor.id}
+              img={investor.profile_logo}
+              name={investor.name}
+              tags={investor.sector_of_expertise}
+              designation={investor.company_name}
+              id={investor.id}
             />
           ))}
       </div>

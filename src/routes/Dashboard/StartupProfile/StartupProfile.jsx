@@ -99,6 +99,7 @@ const StartupProfile = () => {
         teamArray={startupProfile.team_members}
         schedulebtn={startupProfile.role}
         startupid={id}
+        vision={startupProfile.short_term_vision}
       />
     </>
   );
