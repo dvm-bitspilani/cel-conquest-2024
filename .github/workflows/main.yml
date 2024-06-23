@@ -26,9 +26,10 @@ jobs:
 
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@v2.1.5
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.ACTIONS_SECRET }}
         with:
+          SSH_PRIVATE_KEY: ${{ secrets.ACTIONS_SECRET }}
+          REMOTE_HOST: "portal.conquest.org.in"
+          REMOTE_USER: "chaitanya"
           args: "-rltgoDzvO --delete"
           source: "build/"
           target: "chaitanya@portal.conquest.org.in:/srv/static/conquest-front"
