@@ -10,25 +10,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Build project
-      run: npm run build
+      - name: Build project
+        run: npm run build
 
-    - name: Deploy to server
-      uses: easingthemes/ssh-deploy@v2.1.5
-      env:
-        ACTIONS_SECRET: ${{ secrets.ACTIONS_SECRET }}
-        ARGS: "-rltgoDzvO --delete"
-        SOURCE: "build/"
-        TARGET: "chaitanya@portal.conquest.org.in:/src/static/conquest-front"
-
+      - name: Deploy to server
+        uses: easingthemes/ssh-deploy@v2.1.5
+        with:
+          ssh-private-key: ${{ secrets.ACTIONS_SECRET }}
+          args: "-rltgoDzvO --delete"
+          source: "build/"
+          target: "chaitanya@portal.conquest.org.in:/src/static/conquest-front"
