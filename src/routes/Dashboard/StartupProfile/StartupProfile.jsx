@@ -87,7 +87,7 @@ const StartupProfile = () => {
         location={startupProfile.location_hq}
         email={startupProfile.contact_email}
         website={startupProfile.website_url}
-        twitter={startupProfile.twitter}
+        // twitter={startupProfile.twitter}
         linkedin={startupProfile.linkedin}
         founder={startupProfile.location_hq}
         cofounder={startupProfile.location_hq}

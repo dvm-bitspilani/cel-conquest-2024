@@ -62,7 +62,7 @@ export default function MobileMenu() {
     },
     {
       key: "/dashboard/investors",
-      label: "Investment Partners",
+      label: "Partners",
     },
     {
       key: "/dashboard/contact",

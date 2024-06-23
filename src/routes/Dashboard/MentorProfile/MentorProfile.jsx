@@ -87,8 +87,8 @@ const MentorProfile = () => {
         location={startupProfile.location}
         sector={startupProfile.sector_of_expertise}
         domain={startupProfile.domain_of_expertise}
-        resume={startupProfile.resume}
-        twitter={startupProfile.twitter}
+        // resume={startupProfile.resume}
+        // twitter={startupProfile.twitter}
         linkedin={startupProfile.linkedin}
         companyname={startupProfile.company_name}
         schedulebtn={startupProfile.role}

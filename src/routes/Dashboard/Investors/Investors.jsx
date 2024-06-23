@@ -46,7 +46,7 @@ const Investors = () => {
   return (
     <div className={styles.coaches}>
       <div className={styles.heading}>
-        List of <span>Investment Partners:</span>
+        List of <span>Partners:</span>
       </div>
       <div className={styles.searchContainer}>
         <div className={styles.searchBar}>

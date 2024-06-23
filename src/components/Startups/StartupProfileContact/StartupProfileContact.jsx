@@ -1,6 +1,6 @@
 import * as styles from "./StartupProfileContact.module.scss";
 
-export default function StartupProfileContact({ email, website, twitter, linkedin }) {
+export default function StartupProfileContact({ email, website, linkedin }) {
     return (
         <>
             <div className={styles.contactUsWrapper}>
@@ -20,13 +20,13 @@ export default function StartupProfileContact({ email, website, twitter, linkedi
                     <div className={styles.connectContainer}>
                         <div className={styles.title}>Connect</div>
                         <div className={styles.connectButtonsContainer}>
-                            <a href={twitter} target="_blank">
+                            {/* <a href={twitter} target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
                                     <path d="M24.8861 0H7.61821C3.41079 0 0 3.41079 0 7.61821V24.8861C0 29.0936 3.41079 32.5043 7.61821 32.5043H24.8861C29.0936 32.5043 32.5043 29.0936 32.5043 24.8861V7.61821C32.5043 3.41079 29.0936 0 24.8861 0Z" fill="white" />
                                     <path d="M24.8861 0H7.61821C3.41079 0 0 3.41079 0 7.61821V24.8861C0 29.0936 3.41079 32.5043 7.61821 32.5043H24.8861C29.0936 32.5043 32.5043 29.0936 32.5043 24.8861V7.61821C32.5043 3.41079 29.0936 0 24.8861 0Z" fill="#FB723D" />
                                     <path d="M25.339 11.6065C25.353 11.808 25.353 12.0095 25.353 12.2129C25.353 18.4087 20.6363 25.5543 12.0116 25.5543V25.5505C9.46373 25.5542 6.96862 24.8245 4.82422 23.4485C5.19472 23.4931 5.56699 23.5153 5.94029 23.5162C8.05205 23.5179 10.1031 22.8096 11.7638 21.5051C10.7853 21.4866 9.83709 21.1628 9.05167 20.579C8.26624 19.9952 7.68289 19.1805 7.38317 18.2489C8.08567 18.3844 8.80988 18.3568 9.50002 18.1682C7.31258 17.7262 5.73878 15.8043 5.73878 13.5721V13.5127C6.39089 13.8759 7.1207 14.0772 7.8668 14.0996C5.80659 12.7226 5.17148 9.98166 6.41554 7.83866C7.59271 9.28726 9.06146 10.472 10.7264 11.316C12.3913 12.16 14.2151 12.6443 16.0794 12.7374C15.8935 11.9373 15.9209 11.1024 16.159 10.3162C16.397 9.53006 16.8373 8.82016 17.4358 8.25754C19.3243 6.48224 22.2945 6.57328 24.0698 8.46082C25.1199 8.2535 26.1269 7.86855 27.0474 7.32253C26.6974 8.40821 25.9649 9.32976 24.9862 9.91577C25.9157 9.80626 26.8234 9.55744 27.6788 9.17769C27.0496 10.1201 26.2572 10.9425 25.339 11.6065Z" fill="white" />
                                 </svg>
-                            </a>
+                            </a> */}
                             <a href={linkedin} target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
                                     <g clipPath="url(#clip0_1266_2363)">

@@ -33,7 +33,7 @@ export default function ProfileForm({ formClose }) {
       location: "",
       website: "",
       description: "",
-      twitter: "",
+      // twitter: "",
       linkedin: "",
       designation: "",
       resume: "",
@@ -43,6 +43,7 @@ export default function ProfileForm({ formClose }) {
       pitchdeck: "",
       pitch_video: "",
       stage: "",
+      short_term_vision: "",
     },
     onSubmit: (values, action) => {
       console.log(values);
@@ -68,6 +69,7 @@ export default function ProfileForm({ formClose }) {
               pitch_deck: values.pitchdeck.trim(),
               linkedin: values.linkedin.trim(),
               twitter: "",
+              short_term_vision: values.short_term_vision.trim(),
               contact_email: values.contact_email.trim(),
               website_url: values.website.trim(),
               video_pitch: values.pitch_video.trim(),
@@ -286,6 +288,15 @@ export default function ProfileForm({ formClose }) {
           blurFn={handleBlur}
           value={values.description}
           error={errors.description}
+          type="long"
+        />
+        <TextInput2
+          name="short_term_vision"
+          heading="Change Short Term Vision"
+          changeFn={handleChange}
+          blurFn={handleBlur}
+          value={values.short_term_vision}
+          error={errors.short_term_vision}
           type="long"
         />
         <TextInput2

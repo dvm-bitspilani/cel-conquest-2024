@@ -222,7 +222,7 @@ const Sidebar = () => {
             </>
           )}
           <Button
-            text="Investment Partners"
+            text="Partners"
             active={activeButton === "Investment Partners"}
             handleButtonClick={handleButtonClick}
             link="/dashboard/investors"

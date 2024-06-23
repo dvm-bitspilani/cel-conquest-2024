@@ -20,12 +20,13 @@ export const profileSchemas = Yup.object({
   resume: Yup.string().url("Invalid URL"),
   description: Yup.string(),
   location: Yup.string(),
-  twitter: Yup.string()
-    .url("Invalid URL")
-    .matches(/^(https:\/\/x\.com\/)/gi, {
-      excludeEmptyString: true,
-      message: "Invalid Twitter / X.com URL",
-    }),
+  short_term_vision: Yup.string(),
+  // twitter: Yup.string()
+  //   .url("Invalid URL")
+  //   .matches(/^(https:\/\/x\.com\/)/gi, {
+  //     excludeEmptyString: true,
+  //     message: "Invalid Twitter / X.com URL",
+  //   }),
   linkedin: Yup.string()
     .url("Invalid URL")
     .matches(/^(https:\/\/www\.linkedin\.com\/company\/)/gi, {

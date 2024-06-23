@@ -89,9 +89,10 @@ body{
     }
 
     .contact {
-        width: 30%;
+        width: 24%;
         height: 100%;
-        overflow: hidden;
+        text-align: left;
+        // overflow: hidden;
 
         &::after {
             content: "";

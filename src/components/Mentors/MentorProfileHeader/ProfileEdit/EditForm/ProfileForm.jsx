@@ -22,10 +22,10 @@ export default function ProfileForm({ formClose }) {
             location: '',
             website: '',
             description: '',
-            twitter: '',
+            // twitter: '',
             linkedin: '',
             designation: '',
-            resume: '',
+            // resume: '',
             expertise: '',
             domain: '',
             company: '',
@@ -45,7 +45,7 @@ export default function ProfileForm({ formClose }) {
                 linkedin: values.linkedin.trim(),
                 location: values.location.trim(),
                 description: values.description,
-                resume: values.resume.trim(),
+                // resume: values.resume.trim(),
                 sector_of_expertise: values.expertise,
                 domain_of_expertise: values.domain,
                 company_name: values.company,
@@ -161,7 +161,7 @@ export default function ProfileForm({ formClose }) {
                     error={errors.website}
                     type='link'
                 />
-                <TextInput2
+                {/* <TextInput2
                     name='resume'
                     heading="Share your resume as a google drive link"
                     changeFn={handleChange}
@@ -169,7 +169,7 @@ export default function ProfileForm({ formClose }) {
                     value={values.resume}
                     error={errors.resume}
                     type='link'
-                />
+                /> */}
                 <TextInput2
                     name='description'
                     heading="Change Description"

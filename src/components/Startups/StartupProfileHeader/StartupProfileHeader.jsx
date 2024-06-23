@@ -48,7 +48,7 @@ export default function StartupProfileHeader({
   location,
   email,
   website,
-  twitter,
+  // twitter,
   linkedin,
   founder,
   cofounder,
@@ -249,7 +249,7 @@ export default function StartupProfileHeader({
               <StartupProfileContact
                 email={email}
                 website={website}
-                twitter={twitter}
+                // twitter={twitter}
                 linkedin={linkedin}
               />
             </div>
@@ -318,7 +318,7 @@ export default function StartupProfileHeader({
           <StartupProfileContact
             email={email}
             website={website}
-            twitter={twitter}
+            // twitter={twitter}
             linkedin={linkedin}
           />
         </div>
