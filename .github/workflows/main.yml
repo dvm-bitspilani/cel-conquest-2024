@@ -32,4 +32,4 @@ jobs:
           REMOTE_USER: "chaitanya"
           args: "-rltgoDzvO --delete"
           source: "build/"
-          target: "chaitanya@portal.conquest.org.in:/srv/static/conquest-front"
+          target: "/srv/static/conquest-front"
