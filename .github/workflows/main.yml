@@ -30,6 +30,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.ACTIONS_SECRET }}
           REMOTE_HOST: "portal.conquest.org.in"
           REMOTE_USER: "chaitanya"
+          ssh_passphrase: "dL986L8X9c"
           args: "-rltgoDzvO --delete"
           source: "build/"
           target: "/srv/static/conquest-front"
