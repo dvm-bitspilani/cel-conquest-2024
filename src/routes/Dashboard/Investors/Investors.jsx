@@ -24,7 +24,7 @@ const Investors = () => {
           },
         })
         .then((res) => {
-          console.log(res.data.investment_partners)
+          // console.log(res.data.investment_partners)
           setListItems(res.data.investment_partners);
         })
         .catch((err) => {
