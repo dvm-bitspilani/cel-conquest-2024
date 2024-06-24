@@ -98,7 +98,7 @@ const Sidebar = () => {
   const getNotifs = () => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
-        .get(`https://conquest-api.bits-dvm.org/api/staff/notifications/`, {
+        .get(`https://portal.conquest.org.in/api/staff/notifications/`, {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
               }`,

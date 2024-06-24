@@ -17,7 +17,7 @@ const StartupProfile = () => {
       if (JSON.parse(localStorage.getItem("userData")).tokens) {
         axios
           .get(
-            `https://conquest-api.bits-dvm.org/api/users/startup_detail/?id=${id}`,
+            `https://portal.conquest.org.in/api/users/startup_detail/?id=${id}`,
             {
               headers: {
                 Authorization: `Bearer ${
@@ -47,7 +47,7 @@ const StartupProfile = () => {
       if (JSON.parse(localStorage.getItem("userData")).tokens) {
         axios
           .get(
-            `https://conquest-api.bits-dvm.org/api/users/startup_detail/?id=${
+            `https://portal.conquest.org.in/api/users/startup_detail/?id=${
               JSON.parse(localStorage.getItem("userData")).startup_profile.id
             }`,
             {
