@@ -1,14 +1,16 @@
 import { Menu, ConfigProvider } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 import * as styles from "./menu.module.scss";
 import "./menuStyles.scss";
 
 import profilePic from "../../../../assets/profilePic.svg"
 import { Link } from "react-router-dom";
+import { WebContext } from "../../../../store/website-context";
 
 export default function MobileMenu() {
+  const { glogout } = useContext(WebContext)
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -84,6 +86,10 @@ export default function MobileMenu() {
       key: "/dashboard/developers",
       label: "Developers",
     },
+    {
+      key: "/",
+      label: "Logout",
+    },
   ];
 
   const userData = JSON.parse(localStorage.getItem("userData") || "{}");
@@ -101,7 +107,13 @@ export default function MobileMenu() {
       window.open("https://www.conquest.org.in/process", "_self");
     }
     else {
-      navigate(e.key);
+      if (e.label === 'Logout') {
+        navigate(e.key);
+        glogout()
+      }
+      else {
+        navigate(e.key)
+      }
     }
   }
 
