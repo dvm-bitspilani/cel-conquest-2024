@@ -195,8 +195,10 @@ export default function SearchButton() {
                   }
                   className={styles.link}
                   onClick={() => setModal(false)}
+                  // key={`${searchProfile.id}-${searchProfile.role}`}
+                  key={searchProfile.id}
                 >
-                  <div className={styles.show} key={searchProfile.id}>
+                  <div className={styles.show}>
                     <div className={styles.imageContainer}>
                       <img
                         src={searchProfile.profile_logo || profilePic}
