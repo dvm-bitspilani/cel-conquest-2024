@@ -61,7 +61,7 @@ export default function MobileMenu() {
       label: "Experts",
     },
     {
-      key: "/dashboard/investors",
+      key: "/dashboard/partners",
       label: "Partners",
     },
     {

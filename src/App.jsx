@@ -124,7 +124,7 @@ function App() {
             <Route path="coaches" element={<Coaches />}></Route>
             <Route path="connections" element={<Connections />}></Route>
             <Route path="forms" element={<Forms />}></Route>
-            <Route path="investors" element={<Investors />}></Route>
+            <Route path="partners" element={<Investors />}></Route>
           </Route>
         </Route>
       </Route>
