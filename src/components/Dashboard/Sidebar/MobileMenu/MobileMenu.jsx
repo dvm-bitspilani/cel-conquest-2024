@@ -102,12 +102,11 @@ export default function MobileMenu() {
 
 
   function onClick(e) {
-
     if (e.key === "/dashboard/contact" || e.key === "/dashboard/info") {
       window.open("https://www.conquest.org.in/process", "_self");
     }
     else {
-      if (e.label === 'Logout') {
+      if (e.key === '/') {
         navigate(e.key);
         glogout()
       }
