@@ -9,7 +9,8 @@ const Mentors = () => {
   const [value, setValue] = useState("");
   const [isFilterBtnActive, setIsFilterBtnActive] = useState(false);
   const [listItems, setListItems] = useState([]);
-  const [selectedStage, setSelectedStage] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("");
+  const [filterActive, setFilterActive] = useState(false);
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
@@ -23,6 +24,7 @@ const Mentors = () => {
         })
         .then((res) => {
           setListItems(res.data.mentor_list);
+          // console.log(res.data.mentor_list);
         })
         .catch((err) => {
           console.log(err);
@@ -32,8 +34,9 @@ const Mentors = () => {
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
 
-  const handleClickFilter = () => {
+  const handleClickFilter = (filter) => {
     setIsFilterBtnActive((e) => !e);
+    setFilterActive(!!filter);
   };
 
   return (
@@ -70,22 +73,28 @@ const Mentors = () => {
           onClick={handleClickFilter}
           isFilterBtnActive={isFilterBtnActive}
           setIsFilterBtnActive={setIsFilterBtnActive}
-          setSelectedStage={setSelectedStage}
-          selectedStage={selectedStage}
+          setSelectedStage={setSelectedFilter}
+          selectedStage={selectedFilter}
+          setFilterActive={setFilterActive}
         />
       </div>
       <h2>Showing results for {value ? value : ".."}</h2>
       <div className={styles.coachList}>
         {listItems
           .filter((item) => {
-            if (!value) return true;
-            if (
-              item.name &&
-              item.name.toLowerCase().includes(value.toLowerCase().trim())
-            ) {
-              if (!selectedStage || item.stage == selectedStage) return true;
-            }
-            return false;
+            const nameMatches =
+              !value ||
+              (item.name &&
+                item.name.toLowerCase().includes(value.toLowerCase().trim()));
+            const tagMatches =
+              !filterActive ||
+              !selectedFilter ||
+              (item.domain_of_expertise &&
+                selectedFilter &&
+                item.domain_of_expertise
+                  .toLowerCase()
+                  .includes(selectedFilter.toLowerCase().trim()));
+            return nameMatches && tagMatches;
           })
           .map((mentor) => (
             <CoachCard

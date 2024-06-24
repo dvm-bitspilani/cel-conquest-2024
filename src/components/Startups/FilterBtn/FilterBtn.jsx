@@ -40,37 +40,143 @@ const MenuSVG = () => {
   );
 };
 
+const verticals = [
+  "Advertising",
+  "Aeronautics/Aerospace",
+  "Agriculture",
+  "AI",
+  "Analytics",
+  "AR/VR (Augmented/Virtual Reality)",
+  "Automotive",
+  "Big Data",
+  "Careers",
+  "Communication",
+  "Computer Vision",
+  "Consumer Goods",
+  "Matrimonial",
+  "Defence",
+  "Design",
+  "Education",
+  "Energy and Sustainability",
+  "Enterprise Software",
+  "Events",
+  "Fashion",
+  "Fintech",
+  "Foodtech",
+  "Food and Beverages",
+  "Gaming",
+  "Generative AI",
+  "Gifting",
+  "Grocery",
+  "Hardware",
+  "Healthcare",
+  "Healthtech",
+  "Human Resources",
+  "Information/Tech",
+  "IoT",
+  "IT Services",
+  "Legal",
+  "Logistics",
+  "Manufacturing",
+  "Marketing",
+  "Media and Entertainment",
+  "Nano Technology",
+  "Networking",
+  "Real Estate",
+  "Retail",
+  "Robotics",
+  "Safety",
+  "Security",
+  "Services",
+  "Social Impact",
+  "Social Network",
+  "Sports",
+  "Transportation",
+  "Travel and Tourism",
+];
+const horizontals = [
+  "Consulting",
+  "Consumer Interest",
+  "E-Commerce",
+  "Engineering",
+  "Enterprise Mobility",
+  "Government",
+  "Hyperlocal",
+  "Location-Based Service",
+  "Marketplace",
+  "Mobile",
+  "Offline",
+  "Online",
+  "Aggregator",
+  "Peer to Peer",
+  "Platform",
+  "Rental",
+  "Research",
+  "SaaS",
+  "Sharing Economy",
+  "Subscription Commerce",
+];
+const businessModels = ["B2B", "B2C", "D2C", "B2B2C", "B2G", "C2C"];
+const domainsOfExpertise = [
+  "Marketing and Branding",
+  "Product",
+  "Design",
+  "Sales and Operations",
+  "Hiring/ Team Management",
+  "Government Relations",
+  "Fundraising",
+  "Production/ Manufacture",
+  "Legal and Compliance",
+  "Tech",
+  "Finance",
+  "Growth and Strategy",
+  "Pitching",
+];
+
+const verticalItems = verticals.map((vertical, index) => ({
+  key: `2${index + 1}`,
+  label: vertical,
+}));
+
+const horizontalItems = horizontals.map((horizontal, index) => ({
+  key: `3${index + 1}`,
+  label: horizontal,
+}));
+
+const businessModelItems = businessModels.map((model, index) => ({
+  key: `4${index + 1}`,
+  label: model,
+}));
+
+const domainItems = domainsOfExpertise.map((domain, index) => ({
+  key: `5${index + 1}`,
+  label: domain,
+}));
+
 const items = [
   {
-    key: "1",
+    key: "2",
     icon: <MenuSVG />,
-    label: "By Stage",
-    children: [
-      {
-        key: "11",
-        label: "Pre-Seed Stage",
-      },
-      {
-        key: "12",
-        label: "Seed Stage",
-      },
-      {
-        key: "13",
-        label: "Early Stage",
-      },
-      {
-        key: "14",
-        label: "Growth Stage",
-      },
-      {
-        key: "15",
-        label: "Expansion Stage",
-      },
-      {
-        key: "16",
-        label: "Exit Stage",
-      },
-    ],
+    label: "By Vertical",
+    children: verticalItems,
+  },
+  {
+    key: "3",
+    icon: <MenuSVG />,
+    label: "By Horizontal",
+    children: horizontalItems,
+  },
+  {
+    key: "4",
+    icon: <MenuSVG />,
+    label: "By Business Model",
+    children: businessModelItems,
+  },
+  {
+    key: "5",
+    icon: <MenuSVG />,
+    label: "By Domain of Expertise",
+    children: domainItems,
   },
 ];
 
@@ -113,6 +219,7 @@ export default function FilterBtn({
   setIsFilterBtnActive,
   setSelectedStage,
   selectedStage,
+  setFilterActive,
 }) {
   const [stateOpenKeys, setStateOpenKeys] = useState([]);
   const [selectedKeys, setSelectedKeys] = useState([]);
@@ -156,9 +263,11 @@ export default function FilterBtn({
   const handleMenuClick = (e) => {
     let selectedLabel = getLabelByKey(e.key, items);
     if (selectedStage == selectedLabel) selectedLabel = "";
+    if (selectedStage) setFilterActive(true);
+    else setFilterActive(false);
     setSelectedStage(selectedLabel);
     setIsFilterBtnActive(false);
-    // console.log(selectedKeys);
+    setFilterActive(!!selectedLabel);
     selectedKeys == e.key ? setSelectedKeys([]) : setSelectedKeys(e.key);
   };
 
