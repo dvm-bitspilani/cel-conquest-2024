@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./BookSlotItem.module.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { WebContext } from "../../../../../store/website-context";
 
 function BookSlotItem({
   showHideSelectSlotTiming,
@@ -11,6 +12,7 @@ function BookSlotItem({
   dateTimeEnd,
   deleteSlot,
 }) {
+  const { displayMessage } = useContext(WebContext)
   const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const dateObjEnd = new Date(dateTimeEnd * 1000);
   const dateObj = new Date(dateTimeStart * 1000);
@@ -55,9 +57,11 @@ function BookSlotItem({
         )
         .then((res) => {
           console.log(res);
+          displayMessage('success', 'Slot Booked', 2)
         })
         .catch((err) => {
           console.log(err);
+          displayMessage('error', err.response.data[0], 2)
         });
     } else {
       console.log("error in fetching data");
