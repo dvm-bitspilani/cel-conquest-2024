@@ -3,7 +3,6 @@ import { Input, Button } from "antd";
 import * as styles from "./Startups.module.scss";
 import StartupCard from "../../../components/Startups/StartupCard/StartupCard";
 import FilterBtn from "../../../components/Startups/FilterBtn/FilterBtn";
-import TagsBtn from "../../../components/Startups/TagsBtn/TagsBtn";
 import axios from "axios";
 
 // const exampleData = [
@@ -42,21 +41,23 @@ import axios from "axios";
 const Startups = () => {
   const [value, setValue] = useState("");
   const [isFilterBtnActive, setIsFilterBtnActive] = useState(false);
-  const [isTagsBtnActive, setIsTagsBtnActive] = useState(false);
   const [listItems, setListItems] = useState([]);
-  const [selectedStage, setSelectedStage] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("");
+  const [filterActive, setFilterActive] = useState(false);
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
         .get("https://portal.conquest.org.in/api/users/startup_list/", {
           headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
           },
         })
         .then((res) => {
           setListItems(res.data.startup_list);
+          // console.log(res.data.startup_list);
         })
         // .then((res) => {
         //   // console.log(res.data.startup_list);
@@ -81,13 +82,9 @@ const Startups = () => {
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
 
-  const handleClickTags = () => {
-    setIsTagsBtnActive((e) => !e);
-    setIsFilterBtnActive(false);
-  };
-  const handleClickFilter = () => {
+  const handleClickFilter = (filter) => {
     setIsFilterBtnActive((e) => !e);
-    setIsTagsBtnActive(false);
+    setFilterActive(!!filter);
   };
 
   return (
@@ -124,23 +121,29 @@ const Startups = () => {
           onClick={handleClickFilter}
           isFilterBtnActive={isFilterBtnActive}
           setIsFilterBtnActive={setIsFilterBtnActive}
-          setSelectedStage={setSelectedStage}
-          selectedStage={selectedStage}
+          setSelectedStage={setSelectedFilter}
+          selectedStage={selectedFilter}
+          setFilterActive={setFilterActive}
         />
-        <TagsBtn onClick={handleClickTags} isTagsBtnActive={isTagsBtnActive} />
       </div>
       <h2>Showing results for {value ? value : ".."}</h2>
       <div className={styles.startupList}>
         {listItems
           .filter((item) => {
-            if (!value) return true;
-            if (
-              item.startup_name &&
-              item.startup_name.toLowerCase().includes(value.toLowerCase().trim())
-            ) {
-              if (!selectedStage || item.stage == selectedStage) return true;
-            }
-            return false;
+            const nameMatches =
+              !value ||
+              item.startup_name
+                .toLowerCase()
+                .includes(value.toLowerCase().trim());
+            const tagMatches =
+              !filterActive ||
+              !selectedFilter ||
+              (item.industry &&
+                selectedFilter &&
+                item.industry
+                  .toLowerCase()
+                  .includes(selectedFilter.toLowerCase().trim()));
+            return nameMatches && tagMatches;
           })
           .map((startup) => (
             <StartupCard
