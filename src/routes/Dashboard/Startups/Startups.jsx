@@ -145,7 +145,7 @@ const Startups = () => {
           .map((startup) => (
             <StartupCard
               key={startup.id}
-              img={startup.user_profile.profile_logo}
+              img={startup.profile_logo}
               name={startup.startup_name}
               tags={startup.industry}
               id={startup.id}

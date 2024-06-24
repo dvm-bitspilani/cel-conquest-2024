@@ -52,34 +52,11 @@ const Sidebar = () => {
     </svg>
   );
   const back_arrow = (
-    // <svg
-    //   width="24"
-    //   height="24"
-    //   viewBox="0 0 24 24"
-    //   fill="none"
-    //   xmlns="http://www.w3.org/2000/svg"
-    // >
-    //   <path
-    //     d="M19 12H5"
-    //     stroke="#111213"
-    //     strokeWidth="2"
-    //     strokeLinecap="round"
-    //     strokeLinejoin="round"
-    //   />
-    //   <path
-    //     d="M12 19L5 12L12 5"
-    //     stroke="#111213"
-    //     strokeWidth="2"
-    //     strokeLinecap="round"
-    //     strokeLinejoin="round"
-    //   />
-    // </svg>
     <svg
       className={styles.backBtn}
       onClick={(e) => {
-        e.preventDefault();
-        navigate("/");
-        glogout();
+        e.preventDefault()
+        navigate('/dashboard')
       }}
       width="24"
       height="24"
@@ -87,8 +64,34 @@ const Sidebar = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M7 7L8.41 8.41L5.83 11H16V13H5.83L8.41 15.58L7 17L2 12M20 5H12V3H20C21.1 3 22 3.9 22 5V19C22 20.1 21.1 21 20 21H12V19H20V5Z" />
+      <path
+        d="M19 12H5"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 19L5 12L12 5"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
+    // <svg
+    //   className={styles.backBtn}
+    //   onClick={(e) => {
+    //     e.preventDefault();
+    //     navigate("/");
+    //     glogout();
+    //   }}
+    //   width="24"
+    //   height="24"
+    //   viewBox="0 0 24 24"
+    //   fill="none"
+    //   xmlns="http://www.w3.org/2000/svg"
+    // >
+    //   <path d="M7 7L8.41 8.41L5.83 11H16V13H5.83L8.41 15.58L7 17L2 12M20 5H12V3H20C21.1 3 22 3.9 22 5V19C22 20.1 21.1 21 20 21H12V19H20V5Z" />
+    // </svg>
   );
   const [activeButton, setActiveButton] = useState("Home");
 
@@ -222,10 +225,10 @@ const Sidebar = () => {
             </>
           )}
           <Button
-            text="Investment Partners"
-            active={activeButton === "Investment Partners"}
+            text="Partners"
+            active={activeButton === "Partners"}
             handleButtonClick={handleButtonClick}
-            link="/dashboard/investors"
+            link="/dashboard/partners"
           />
         </div>
         <div className={styles.bottomButtons}>
@@ -267,6 +270,13 @@ const Sidebar = () => {
             handleButtonClick={handleButtonClick}
             link="/dashboard/developers"
           />
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              navigate('/')
+              glogout()
+            }}
+          >Logout</button>
         </div>
         {/* <div className={styles.conquestLogo}>
         <img height={50} width={53} src={dashboard_mountain_circle} />

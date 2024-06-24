@@ -18,8 +18,8 @@ export default function MentorProfileHeader({
   location,
   sector,
   domain,
-  resume,
-  twitter,
+  // resume,
+  // twitter,
   linkedin,
   companyname,
   schedulebtn,
@@ -267,8 +267,8 @@ export default function MentorProfileHeader({
 
             <div className={styles.head}>
               <MentorProfileContact
-                resume={resume}
-                twitter={twitter}
+                // resume={resume}
+                // twitter={twitter}
                 linkedin={linkedin}
               />
             </div>
@@ -355,8 +355,8 @@ export default function MentorProfileHeader({
             </div>
           </div>
           <MentorProfileContact
-            resume={resume}
-            twitter={twitter}
+            // resume={resume}
+            // twitter={twitter}
             linkedin={linkedin}
           />
         </div>

@@ -46,6 +46,7 @@ body{
                 gap: 7px;
                 flex-direction: column;
                 margin: 15px 0 0 5px;
+                overflow:hidden;
 
                 .name {
                     color: #000;
@@ -89,9 +90,10 @@ body{
     }
 
     .contact {
-        width: 30%;
+        width: 24%;
         height: 100%;
-        overflow: hidden;
+        text-align: left;
+        // overflow: hidden;
 
         &::after {
             content: "";

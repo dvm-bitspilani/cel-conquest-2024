@@ -19,8 +19,9 @@ const MentorProfile = () => {
             `https://portal.conquest.org.in/api/users/profile_detail/?id=${id}`,
             {
               headers: {
-                Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-                  }`,
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
               },
               params: {
                 id: id,
@@ -45,12 +46,14 @@ const MentorProfile = () => {
       if (JSON.parse(localStorage.getItem("userData")).tokens) {
         axios
           .get(
-            `https://portal.conquest.org.in/api/users/profile_detail/?id=${JSON.parse(localStorage.getItem("userData")).user_profile_obj.id
+            `https://portal.conquest.org.in/api/users/profile_detail/?id=${
+              JSON.parse(localStorage.getItem("userData")).user_profile_obj.id
             }`,
             {
               headers: {
-                Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-                  }`,
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
               },
               params: {
                 id: id,
@@ -84,8 +87,8 @@ const MentorProfile = () => {
         location={startupProfile.location}
         sector={startupProfile.sector_of_expertise}
         domain={startupProfile.domain_of_expertise}
-        resume={startupProfile}
-        twitter={startupProfile.twitter}
+        // resume={startupProfile.resume}
+        // twitter={startupProfile.twitter}
         linkedin={startupProfile.linkedin}
         companyname={startupProfile.company_name}
         schedulebtn={startupProfile.role}

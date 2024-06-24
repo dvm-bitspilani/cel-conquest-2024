@@ -8,19 +8,43 @@
 .superCont {
     width: 100vw;
     height: 100dvh;
-    overflow: hidden;
 }
 
-.backBtn {
+@mixin backBtnStyles($viewPortWidth) {
     position: absolute;
     left: 80px;
     top: 32px;
     width: 3rem;
 
-    @media screen and (max-width: 640px) {
-        margin-top: 0.25rem;
-        left: calc(20 / 1024 * 100dvh);
+    @if($viewPortWidth =='desktop') {
+
+        @media screen and (max-width: 670px) {
+            display: none;
+        }
     }
+
+    @else if($viewPortWidth =='mobile') {
+        @media screen and (min-width: 671px) {
+            display: none;
+        }
+
+        @media screen and (max-width: 670px) {
+            // margin-top: 0.5rem;
+            top: 52px;
+            left: calc(20 / 1024 * 100dvh);
+        }
+    }
+
+}
+
+.backBtn {
+    @include backBtnStyles('desktop');
+
+}
+
+.backBtnMobile {
+    @include backBtnStyles('mobile');
+
 }
 
 // @function marginFactorDesktopValue() {
@@ -271,8 +295,7 @@
                 @include marginFactorDesktopXL(3);
 
                 @media screen and (max-width: 670px) {
-                    margin-top: 29px;
-                    font-size: 1.125rem;
+                    display: none;
                 }
 
                 @media screen and (max-height: 580px) and (min-width: 670px) {
@@ -290,6 +313,7 @@
                 // margin-top: calc(52 / 69 * $marginFactorDesktop);
                 @include marginFactorDesktopXL(4);
                 gap: 0.75rem;
+
 
                 @media screen and (max-height: 580px) and (min-width: 670px) {
                     @include marginFactorDesktopL(4);

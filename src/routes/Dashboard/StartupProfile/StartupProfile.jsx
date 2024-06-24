@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { WebContext } from "../../../store/website-context";
 
 const StartupProfile = () => {
-  const { setBookSlotRequestedID, contextHolder } = useContext(WebContext)
+  const { setBookSlotRequestedID, contextHolder } = useContext(WebContext);
 
   const { id } = useParams();
   const [startupProfile, setstartupProfile] = useState({});
@@ -20,8 +20,9 @@ const StartupProfile = () => {
             `https://portal.conquest.org.in/api/users/startup_detail/?id=${id}`,
             {
               headers: {
-                Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-                  }`,
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
               },
               params: {
                 id: id,
@@ -46,12 +47,14 @@ const StartupProfile = () => {
       if (JSON.parse(localStorage.getItem("userData")).tokens) {
         axios
           .get(
-            `https://portal.conquest.org.in/api/users/startup_detail/?id=${JSON.parse(localStorage.getItem("userData")).startup_profile.id
+            `https://portal.conquest.org.in/api/users/startup_detail/?id=${
+              JSON.parse(localStorage.getItem("userData")).startup_profile.id
             }`,
             {
               headers: {
-                Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-                  }`,
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
               },
               params: {
                 id: id,
@@ -84,7 +87,7 @@ const StartupProfile = () => {
         location={startupProfile.location_hq}
         email={startupProfile.contact_email}
         website={startupProfile.website_url}
-        twitter={startupProfile.twitter}
+        // twitter={startupProfile.twitter}
         linkedin={startupProfile.linkedin}
         founder={startupProfile.location_hq}
         cofounder={startupProfile.location_hq}
@@ -96,6 +99,7 @@ const StartupProfile = () => {
         teamArray={startupProfile.team_members}
         schedulebtn={startupProfile.role}
         startupid={id}
+        vision={startupProfile.short_term_vision}
       />
     </>
   );

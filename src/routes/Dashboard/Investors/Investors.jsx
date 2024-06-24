@@ -23,6 +23,7 @@ const Investors = () => {
           },
         })
         .then((res) => {
+          // console.log(res.data.investment_partners)
           setListItems(res.data.investment_partners);
         })
         .catch((err) => {
@@ -45,7 +46,7 @@ const Investors = () => {
   return (
     <div className={styles.coaches}>
       <div className={styles.heading}>
-        List of <span>Investment Partners:</span>
+        List of <span>Partners:</span>
       </div>
       <div className={styles.searchContainer}>
         <div className={styles.searchBar}>
@@ -94,14 +95,14 @@ const Investors = () => {
             }
             return false;
           })
-          .map((expert) => (
+          .map((investor) => (
             <CoachCard
-              key={expert.id}
-              img={expert.profile_logo}
-              name={expert.name}
-              tags={expert.sector_of_expertise}
-              designation={expert.designation}
-              id={expert.id}
+              key={investor.id}
+              img={investor.profile_logo}
+              name={investor.company_name}
+              tags={investor.type_of_partner}
+              designation={investor.website}
+              id={investor.id}
             />
           ))}
       </div>
