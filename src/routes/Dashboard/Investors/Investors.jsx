@@ -24,6 +24,7 @@ const Investors = () => {
           },
         })
         .then((res) => {
+          console.log(res.data.investment_partners)
           setListItems(res.data.investment_partners);
         })
         .catch((err) => {
@@ -99,9 +100,9 @@ const Investors = () => {
             <CoachCard
               key={investor.id}
               img={investor.profile_logo}
-              name={investor.name}
+              name={investor.company_name}
               tags={investor.type_of_partner}
-              designation={investor.company_name}
+              designation={investor.website}
               id={investor.id}
             />
           ))}
