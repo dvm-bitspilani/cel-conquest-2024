@@ -15,11 +15,13 @@ import * as styles from "./home.module.scss";
 import { WebContext } from "../../../store/website-context";
 
 export default function Home() {
-  const { customDate } = useContext(WebContext)
+  const { customDate } = useContext(WebContext);
 
   const navigate = useNavigate();
   const [listItms, setListItms] = useState([]);
   const [activeMeet, setActiveMeet] = useState({});
+  const userRole = JSON.parse(localStorage.getItem("userData")).user_profile_obj
+    .role;
 
   // GETTING MEETING DATA FROM CLICK
   const dataRef = useRef(null);
@@ -27,7 +29,9 @@ export default function Home() {
   function handleClick() {
     console.log(dataRef.current);
     try {
-      const startTime = new customDate(dataRef.current.slot_start_time).getTime();
+      const startTime = new customDate(
+        dataRef.current.slot_start_time
+      ).getTime();
       const endTime = new customDate(dataRef.current.slot_end_time).getTime();
 
       const date = new customDate(dataRef.current.slot_start_time).getDate();
@@ -50,15 +54,13 @@ export default function Home() {
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
-        .get(
-          `https://portal.conquest.org.in/api/meetings/meetings/upcoming/`,
-          {
-            headers: {
-              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-                }`,
-            },
-          }
-        )
+        .get(`https://portal.conquest.org.in/api/meetings/meetings/upcoming/`, {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
+          },
+        })
         .then((res) => {
           console.log(res.data);
 
@@ -70,15 +72,15 @@ export default function Home() {
                   date={newItm.slot_start_time}
                   avatar={
                     newItm.requested_name ===
-                      JSON.parse(localStorage.getItem("userData"))
-                        .user_profile_obj.name
+                    JSON.parse(localStorage.getItem("userData"))
+                      .user_profile_obj.name
                       ? newItm.requester_logo
                       : newItm.requested_logo
                   }
                   mentorName={
                     newItm.requested_name ===
-                      JSON.parse(localStorage.getItem("userData"))
-                        .user_profile_obj.name
+                    JSON.parse(localStorage.getItem("userData"))
+                      .user_profile_obj.name
                       ? newItm.requester_name
                       : newItm.requested_name
                   }
@@ -98,8 +100,8 @@ export default function Home() {
                 date={newItm.slot_start_time}
                 avatar={
                   newItm.requested_name ===
-                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                      .name
+                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                    .name
                     ? newItm.requester_logo
                     : newItm.requested_logo
                 }
@@ -252,35 +254,39 @@ export default function Home() {
         <MeetingList listItms={listItms} />
       </div>
       <div className={styles.right}>
-        {underGuidanceOf && (<div className={styles.wrapper}>
-          <h1 className={styles.heading}>Your <span>Pod:</span></h1>
-          <section className={styles.pillsWrapper}>
-            {coach[0] ? <div className={styles.userPills}>
-              <h3>Coach</h3>
-              <div className={styles.pillGrid}>
-                {coach}
-              </div>
-            </div> : null}
-            {mentors[0] ? <div className={styles.userPills}>
-              <h3>Mentors</h3>
-              <div className={styles.pillGrid}>
-                {mentors}
-              </div>
-            </div> : null}
-            {experts[0] ? <div className={styles.userPills}>
-              <h3>Experts</h3>
-              <div className={styles.pillGrid}>
-                {experts}
-              </div>
-            </div> : null}
-            {/* {startups[0] ? <div className={styles.userPills}>
+        {userRole === "Startup" && underGuidanceOf && (
+          <div className={styles.wrapper}>
+            <h1 className={styles.heading}>
+              Your <span>Pod:</span>
+            </h1>
+            <section className={styles.pillsWrapper}>
+              {coach[0] ? (
+                <div className={styles.userPills}>
+                  <h3>Coach</h3>
+                  <div className={styles.pillGrid}>{coach}</div>
+                </div>
+              ) : null}
+              {mentors[0] ? (
+                <div className={styles.userPills}>
+                  <h3>Mentors</h3>
+                  <div className={styles.pillGrid}>{mentors}</div>
+                </div>
+              ) : null}
+              {experts[0] ? (
+                <div className={styles.userPills}>
+                  <h3>Experts</h3>
+                  <div className={styles.pillGrid}>{experts}</div>
+                </div>
+              ) : null}
+              {/* {startups[0] ? <div className={styles.userPills}>
               <h3>Startups</h3>
               <div className={styles.pillGrid}>
                 {startups}
               </div>
             </div> : null} */}
-          </section>
-        </div>)}
+            </section>
+          </div>
+        )}
         <div className={styles.formsContainer}>
           <h1 className={styles.heading}>
             <div onClick={() => navigate("/dashboard/forms")}>
