@@ -3,7 +3,6 @@ import { Input, Button } from "antd";
 import * as styles from "./Startups.module.scss";
 import StartupCard from "../../../components/Startups/StartupCard/StartupCard";
 import FilterBtn from "../../../components/Startups/FilterBtn/FilterBtn";
-import TagsBtn from "../../../components/Startups/TagsBtn/TagsBtn";
 import axios from "axios";
 
 // const exampleData = [
@@ -42,7 +41,6 @@ import axios from "axios";
 const Startups = () => {
   const [value, setValue] = useState("");
   const [isFilterBtnActive, setIsFilterBtnActive] = useState(false);
-  const [isTagsBtnActive, setIsTagsBtnActive] = useState(false);
   const [listItems, setListItems] = useState([]);
   const [selectedStage, setSelectedStage] = useState("");
 
@@ -51,8 +49,9 @@ const Startups = () => {
       axios
         .get("https://portal.conquest.org.in/api/users/startup_list/", {
           headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
           },
         })
         .then((res) => {
@@ -81,13 +80,8 @@ const Startups = () => {
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
 
-  const handleClickTags = () => {
-    setIsTagsBtnActive((e) => !e);
-    setIsFilterBtnActive(false);
-  };
   const handleClickFilter = () => {
     setIsFilterBtnActive((e) => !e);
-    setIsTagsBtnActive(false);
   };
 
   return (
@@ -127,7 +121,6 @@ const Startups = () => {
           setSelectedStage={setSelectedStage}
           selectedStage={selectedStage}
         />
-        <TagsBtn onClick={handleClickTags} isTagsBtnActive={isTagsBtnActive} />
       </div>
       <h2>Showing results for {value ? value : ".."}</h2>
       <div className={styles.startupList}>

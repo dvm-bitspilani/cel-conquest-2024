@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Input, Button } from "antd";
 import * as styles from "./Mentors.module.scss";
 import FilterBtn from "../../../components/Startups/FilterBtn/FilterBtn";
-import TagsBtn from "../../../components/Startups/TagsBtn/TagsBtn";
 import axios from "axios";
 import CoachCard from "../../../components/Coaches/CoachCard";
 
 const Mentors = () => {
   const [value, setValue] = useState("");
   const [isFilterBtnActive, setIsFilterBtnActive] = useState(false);
-  const [isTagsBtnActive, setIsTagsBtnActive] = useState(false);
   const [listItems, setListItems] = useState([]);
   const [selectedStage, setSelectedStage] = useState("");
 
@@ -18,8 +16,9 @@ const Mentors = () => {
       axios
         .get("https://portal.conquest.org.in/api/users/expert_list/", {
           headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
           },
         })
         .then((res) => {
@@ -33,13 +32,8 @@ const Mentors = () => {
     }
   }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
 
-  const handleClickTags = () => {
-    setIsTagsBtnActive((e) => !e);
-    setIsFilterBtnActive(false);
-  };
   const handleClickFilter = () => {
     setIsFilterBtnActive((e) => !e);
-    setIsTagsBtnActive(false);
   };
 
   return (
@@ -79,7 +73,6 @@ const Mentors = () => {
           setSelectedStage={setSelectedStage}
           selectedStage={selectedStage}
         />
-        <TagsBtn onClick={handleClickTags} isTagsBtnActive={isTagsBtnActive} />
       </div>
       <h2>Showing results for {value ? value : ".."}</h2>
       <div className={styles.coachList}>
