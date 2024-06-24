@@ -12,23 +12,53 @@ export default function SearchButton() {
   const [filteredResults, setFilteredResults] = useState([]);
   const searchContainerRef = useRef(null);
 
+  // const toggleModal = () => {
+  //   setModal(!modal);
+  // };
+
+  // useEffect(() => {
+  //   if (JSON.parse(localStorage.getItem("userData")).tokens) {
+  //     axios
+  //       .get(
+  //         `https://portal.conquest.org.in/api/users/search/?query=${searchTerm}`,
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+  //               }`,
+  //           },
+  //         }
+  //       )
+
+  //       .then((res) => {
+  //         console.log(res.data.user_profiles)
+  //         setSearchResults(res.data.user_profiles);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   } else {
+  //     console.log("error in fetching data");
+  //   }
+  // }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
+
   const toggleModal = () => {
     setModal(!modal);
+    if (!modal && searchResults.length === 0) {
+      fetchData();
+    }
   };
 
-  useEffect(() => {
+  const fetchData = () => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
         .get(
-          `https://portal.conquest.org.in/api/users/search/?query=${searchTerm}`,
+          `https://portal.conquest.org.in/api/users/search/`,
           {
             headers: {
-              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-                }`,
-            },
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access}`
+            }
           }
         )
-
         .then((res) => {
           setSearchResults(res.data.user_profiles);
         })
@@ -38,7 +68,7 @@ export default function SearchButton() {
     } else {
       console.log("error in fetching data");
     }
-  }, [JSON.parse(localStorage.getItem("userData")).tokens.access]);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {

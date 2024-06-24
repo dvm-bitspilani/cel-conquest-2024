@@ -135,8 +135,8 @@ const Startups = () => {
           .filter((item) => {
             if (!value) return true;
             if (
-              item.name &&
-              item.name.toLowerCase().includes(value.toLowerCase().trim())
+              item.startup_name &&
+              item.startup_name.toLowerCase().includes(value.toLowerCase().trim())
             ) {
               if (!selectedStage || item.stage == selectedStage) return true;
             }

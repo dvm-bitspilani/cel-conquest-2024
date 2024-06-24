@@ -88,8 +88,8 @@ const Investors = () => {
           .filter((item) => {
             if (!value) return true;
             if (
-              item.name &&
-              item.name.toLowerCase().includes(value.toLowerCase().trim())
+              item.company_name &&
+              item.company_name.toLowerCase().includes(value.toLowerCase().trim())
             ) {
               if (!selectedStage || item.stage == selectedStage) return true;
             }
