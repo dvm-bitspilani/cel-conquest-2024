@@ -5,12 +5,12 @@ import { useContext, useEffect } from "react";
 import * as styles from "./menu.module.scss";
 import "./menuStyles.scss";
 
-import profilePic from "../../../../assets/profilePic.svg"
+import profilePic from "../../../../assets/profilePic.svg";
 import { Link } from "react-router-dom";
 import { WebContext } from "../../../../store/website-context";
 
 export default function MobileMenu() {
-  const { glogout } = useContext(WebContext)
+  const { glogout } = useContext(WebContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -63,6 +63,10 @@ export default function MobileMenu() {
       label: "Experts",
     },
     {
+      key: "/dashboard/coaches",
+      label: "Coaches",
+    },
+    {
       key: "/dashboard/partners",
       label: "Partners",
     },
@@ -100,18 +104,15 @@ export default function MobileMenu() {
       : "/dashboard/profile";
   const profileLogo = userProfile.profile_logo || profilePic;
 
-
   function onClick(e) {
     if (e.key === "/dashboard/contact" || e.key === "/dashboard/info") {
       window.open("https://www.conquest.org.in/process", "_self");
-    }
-    else {
-      if (e.key === '/') {
+    } else {
+      if (e.key === "/") {
         navigate(e.key);
-        glogout()
-      }
-      else {
-        navigate(e.key)
+        glogout();
+      } else {
+        navigate(e.key);
       }
     }
   }
