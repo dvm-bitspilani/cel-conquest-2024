@@ -17,7 +17,7 @@ function Connections() {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       // console.log("fetching data");
       axios
-        .get(`https://portal.conquest.org.in/api/users/connections/list/`, {
+        .get(`https://conquest-api.bits-dvm.org/api/users/connections/list/`, {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
               }`,
