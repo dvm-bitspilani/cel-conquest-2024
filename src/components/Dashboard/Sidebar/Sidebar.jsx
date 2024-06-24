@@ -1,7 +1,7 @@
 import styles from "./sidebar.module.scss";
 
 import Button from "./Button/Button";
-import profilePic from "../../../assets/profilePic.svg"
+import profilePic from "../../../assets/profilePic.svg";
 
 import SearchButton from "./SearchButton/SearchButton";
 
@@ -55,8 +55,8 @@ const Sidebar = () => {
     <svg
       className={styles.backBtn}
       onClick={(e) => {
-        e.preventDefault()
-        navigate('/dashboard')
+        e.preventDefault();
+        navigate("/dashboard");
       }}
       width="24"
       height="24"
@@ -100,8 +100,9 @@ const Sidebar = () => {
       axios
         .get(`https://portal.conquest.org.in/api/staff/notifications/`, {
           headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
           },
         })
         .then((res) => {
@@ -188,7 +189,7 @@ const Sidebar = () => {
           <p>{userData.name}</p>
         </div>
         <div className={styles.topButtons}>
-          {userData.role === 'Guest - Tier 2' ? null : (
+          {userData.role === "Guest - Tier 2" ? null : (
             <Button
               text="Home"
               active={activeButton === "Home"}
@@ -208,7 +209,7 @@ const Sidebar = () => {
             handleButtonClick={handleButtonClick}
             link="/dashboard/startups"
           />
-          {userData.role === 'Guest - Tier 2' ? null : (
+          {userData.role === "Guest - Tier 2" ? null : (
             <>
               <Button
                 text="Mentors"
@@ -221,6 +222,12 @@ const Sidebar = () => {
                 active={activeButton === "Experts"}
                 handleButtonClick={handleButtonClick}
                 link="/dashboard/experts"
+              />
+              <Button
+                text="Coaches"
+                active={activeButton === "Coaches"}
+                handleButtonClick={handleButtonClick}
+                link="/dashboard/coaches"
               />
             </>
           )}
@@ -237,7 +244,7 @@ const Sidebar = () => {
             active={activeButton === "Contact Us"}
             handleButtonClick={handleButtonClick}
           />
-          {userData.role === 'Guest - Tier 2' ? null : (
+          {userData.role === "Guest - Tier 2" ? null : (
             <Button
               text="Forms"
               active={activeButton === "Forms"}
@@ -251,7 +258,7 @@ const Sidebar = () => {
             handleButtonClick={handleButtonClick}
             link="/dashboard/resources"
           />
-          {userData.role === 'Guest - Tier 2' ? null : (
+          {userData.role === "Guest - Tier 2" ? null : (
             <Button
               text="Connections"
               active={activeButton === "Connections"}
@@ -272,11 +279,13 @@ const Sidebar = () => {
           />
           <button
             onClick={(e) => {
-              e.preventDefault()
-              navigate('/')
-              glogout()
+              e.preventDefault();
+              navigate("/");
+              glogout();
             }}
-          >Logout</button>
+          >
+            Logout
+          </button>
         </div>
         {/* <div className={styles.conquestLogo}>
         <img height={50} width={53} src={dashboard_mountain_circle} />
