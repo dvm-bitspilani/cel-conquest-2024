@@ -8,7 +8,7 @@ import Details from "../Details/Details";
 import Pitch from "../Pitch/Pitch";
 import FormModal from "../../Dashboard/Forms/FormModal/FormModal";
 import BookMeeting from "../../Dashboard/Meetings/BookMeeting/BookMeeting";
-import profilePic from "../../../assets/profilePic.svg"
+import profilePic from "../../../assets/profilePic.svg";
 import BookSlots from "../../Dashboard/Meetings/BookSlots/BookSlots";
 // import ProfileModal from "./ProfileEdit/Modal/Modal";
 
@@ -61,7 +61,7 @@ export default function StartupProfileHeader({
   schedulebtn,
   startupid,
   requestedID,
-  vision
+  vision,
 }) {
   const [selectedTopic, setSelectedTopic] = useState("about");
 
@@ -112,7 +112,7 @@ export default function StartupProfileHeader({
   };
 
   const checkProfilePic = img || profilePic;
-  
+
   return (
     <>
       <FormModal ref={formModal} title="Edit Profile" formType="profile edit" />
@@ -181,7 +181,7 @@ export default function StartupProfileHeader({
                     zIndex: 2,
                     display:
                       (role1_Mentor || role1_Startup) &&
-                        startup.startupid !== undefined
+                      startup.startupid !== undefined
                         ? null
                         : "none",
                   }}
@@ -273,14 +273,12 @@ export default function StartupProfileHeader({
                   zIndex: 2,
                   display:
                     (role1_Mentor || role1_Startup) &&
-                      startup.startupid !== undefined
+                    startup.startupid !== undefined
                       ? null
                       : "none",
                 }}
                 className={styles.schedule}
-                onClick={
-                  role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
-                }
+                onClick={() => showHideSelectSlotTiming()}
               >
                 {role1_Mentor ? "Book Meeting" : "Book Slot"}
               </button>
@@ -298,15 +296,13 @@ export default function StartupProfileHeader({
                     );
                   }
                 } else {
-                  if (
-                    role1_Startup &&
-                    startup.startupid !== undefined &&
-                    bookSlots
-                  ) {
+                  if (role1_Startup && startup.startupid !== undefined) {
                     return (
-                      <BookSlots
-                        bookSlots={bookSlots}
-                        showHideBookSlots={showHideBookSlots}
+                      <BookMeeting
+                        selectSlotTiming={selectSlotTiming}
+                        showHideSelectSlotTiming={showHideSelectSlotTiming}
+                        removeModal={showHideSelectSlotTiming}
+                        changeRequestSent={changeRequestSent}
                       />
                     );
                   }
