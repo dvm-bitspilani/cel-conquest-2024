@@ -16,7 +16,7 @@ const MentorProfile = () => {
       if (JSON.parse(localStorage.getItem("userData")).tokens) {
         axios
           .get(
-            `https://conquest-api.bits-dvm.org/api/users/profile_detail/?id=${id}`,
+            `https://portal.conquest.org.in/api/users/profile_detail/?id=${id}`,
             {
               headers: {
                 Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
@@ -45,7 +45,7 @@ const MentorProfile = () => {
       if (JSON.parse(localStorage.getItem("userData")).tokens) {
         axios
           .get(
-            `https://conquest-api.bits-dvm.org/api/users/profile_detail/?id=${JSON.parse(localStorage.getItem("userData")).user_profile_obj.id
+            `https://portal.conquest.org.in/api/users/profile_detail/?id=${JSON.parse(localStorage.getItem("userData")).user_profile_obj.id
             }`,
             {
               headers: {

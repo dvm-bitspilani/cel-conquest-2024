@@ -95,7 +95,7 @@ export default function ProfileForm({ formClose }) {
           };
       axios
         .put(
-          `https://conquest-api.bits-dvm.org/api/users/profile/${userRole === "Startup" ? "startup/" : ""
+          `https://portal.conquest.org.in/api/users/profile/${userRole === "Startup" ? "startup/" : ""
           }`,
           requestObject,
           {
