@@ -1,5 +1,8 @@
 import { useCallback, useState } from 'react'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { useDropzone } from 'react-dropzone'
+
+import { imageDB } from './firebaseConfig'
 
 import styles from './fileupload.module.scss'
 
@@ -7,13 +10,24 @@ export default function FileUpload({ name, heading, manualValue, hasPreview = fa
     const [uploadedFile, setUploadedFile] = useState(null)
 
     const onDrop = useCallback(acceptedFiles => {
-        const reader = new FileReader()
         setUploadedFile(acceptedFiles[0])
-        reader.readAsDataURL(acceptedFiles[0])
-        reader.onload = () => {
-            manualValue(name, reader.result)
-            console.log(reader.result)
-        }
+        const pfpDB = ref(imageDB, `pfps/user_${JSON.parse(localStorage.getItem("userData")).user_profile_obj.id}/profile_image`)
+        uploadBytes(pfpDB, acceptedFiles[0])
+            .then(res => {
+                console.log("Success")
+                console.log(res)
+                getDownloadURL(ref(imageDB, `pfps/user_${JSON.parse(localStorage.getItem("userData")).user_profile_obj.id}/profile_image`))
+                    .then(url => {
+                        manualValue(name, url)
+                        console.log("URL recieved")
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }, [])
 
     let dropzoneConfig;
