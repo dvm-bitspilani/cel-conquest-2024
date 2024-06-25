@@ -49,6 +49,9 @@ const Meetings = () => {
 
   const [listTab, setListTab] = useState("upcoming");
 
+  const userData = JSON.parse(localStorage.getItem("userData")).user_profile_obj;
+  console.log(userData);
+
   const getMeetingList = (listTab) => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
@@ -213,7 +216,7 @@ const Meetings = () => {
               ></SelectSlots>
             ) : null}
           </div>
-          <div className={styles.meetingsListOptionsContainer}>
+          <div className={styles.meetingsListOptionsContainer} style={{display: userData.role === "Guest - Tier 2" ? "none" : null}}>
             <div
               onClick={() => {
                 setListTab("upcoming");
@@ -249,8 +252,8 @@ const Meetings = () => {
             <MeetingList listItms={listItms} />
           </div>
         </div>
-        <div className={styles.divider}></div>
-        <div className={styles.rightPart}>
+        <div className={styles.divider} style={{display: userData.role === "Guest - Tier 2" ? "none" : null}}></div>
+        <div className={styles.rightPart} style={{display: userData.role === "Guest - Tier 2" ? "none" : null}}>
           <button
             style={{ zIndex: 2, display: isStartup ? "none" : null }}
             className={styles.selectSlots}
