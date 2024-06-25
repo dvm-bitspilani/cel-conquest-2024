@@ -212,26 +212,26 @@ export default function MentorProfileHeader({
                     </div>
                   )}
                   <button
-                    style={connectionState === 'connected' ? {
-                      zIndex: 2,
-                      marginRight: "10px",
-                      display:
-                        (role1_Mentor || role1_Startup) &&
-                          startup.startupid !== undefined
-                          ? null
-                          : "none",
-                    } : {
-                      zIndex: 2,
-                      marginRight: "10px",
-                      display:
-                        (role1_Mentor || role1_Startup) &&
-                          startup.startupid !== undefined
-                          ? null
-                          : "none",
-                      filter: 'grayscale(1)',
-                      cursor: 'not-allowed'
-                    }}
-                    className={styles.mobileButton1}
+                    style={
+                      {
+                        zIndex: 2,
+                        marginRight: "10px",
+                        display:
+                          (role1_Mentor || role1_Startup) &&
+                            startup.startupid !== undefined
+                            ? null
+                            : "none"
+                      }
+                    }
+                    className={
+                      role1_Startup ?
+                        (startupBookingState ?
+                          `${styles.mobileButton1}` :
+                          `${styles.mobileButton1} ${styles.disabledMobile}`) :
+                        (connectionState === 'connected' ?
+                          `${styles.mobileButton1}` :
+                          `${styles.mobileButton1} ${styles.disabledMobile}`)}
+                    disabled={role1_Startup ? !startupBookingState : connectionState !== 'connected'}
                     onClick={
                       role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
                     }

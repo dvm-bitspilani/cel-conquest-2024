@@ -493,6 +493,11 @@ body {
                             background-color: #FB723D;
                             color: white;
                             border: 1px solid #FB723D;
+
+                            &.disabledMobile {
+                                filter: grayscale(1);
+                                cursor: not-allowed;
+                            }
                         }
                     }
 
