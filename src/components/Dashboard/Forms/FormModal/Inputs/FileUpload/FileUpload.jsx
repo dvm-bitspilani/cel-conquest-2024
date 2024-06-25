@@ -1,19 +1,35 @@
 import { useCallback, useState } from 'react'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { useDropzone } from 'react-dropzone'
+
+import { imageDB } from './firebaseConfig'
 
 import styles from './fileupload.module.scss'
 
-export default function FileUpload({ name, heading, manualValue, hasPreview = false, forceType }) {
+export default function FileUpload({ name, heading, manualValue, hasPreview = false, forceType, setIsSubmitDisabled, isSubmitDisabled }) {
     const [uploadedFile, setUploadedFile] = useState(null)
 
     const onDrop = useCallback(acceptedFiles => {
-        const reader = new FileReader()
+        setIsSubmitDisabled(true)
         setUploadedFile(acceptedFiles[0])
-        reader.readAsDataURL(acceptedFiles[0])
-        reader.onload = () => {
-            manualValue(name, reader.result)
-            console.log(reader.result)
-        }
+        const pfpDB = ref(imageDB, `pfps/user_${JSON.parse(localStorage.getItem("userData")).user_profile_obj.id}/profile_image`)
+        uploadBytes(pfpDB, acceptedFiles[0])
+            .then(res => {
+                console.log("Success")
+                console.log(res)
+                getDownloadURL(ref(imageDB, `pfps/user_${JSON.parse(localStorage.getItem("userData")).user_profile_obj.id}/profile_image`))
+                    .then(url => {
+                        manualValue(name, url)
+                        console.log("URL recieved")
+                        setIsSubmitDisabled(false)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }, [])
 
     let dropzoneConfig;
@@ -70,8 +86,10 @@ export default function FileUpload({ name, heading, manualValue, hasPreview = fa
                     <button
                         onClick={(e) => {
                             e.preventDefault()
-                            setUploadedFile(null)
-                            manualValue(name, null)
+                            if (!isSubmitDisabled) {
+                                setUploadedFile(null)
+                                manualValue(name, null)
+                            }
                         }}
                     >
                         <svg viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
