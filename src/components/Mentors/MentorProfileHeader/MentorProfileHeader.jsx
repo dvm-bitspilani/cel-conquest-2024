@@ -31,6 +31,7 @@ export default function MentorProfileHeader({
   const formModal = useRef(null);
   const [requestSent, setRequestSent] = useState(false);
   const [connectionState, setConnectionState] = useState(connection)
+  const [startupBookingState, setStartupBookingState] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
     setConnectionState(connection)
@@ -121,6 +122,22 @@ export default function MentorProfileHeader({
   ).user_profile_obj;
   const role1_Startup = userProfile.role === "Startup";
   const role1_Mentor = userProfile.role === "Mentor";
+
+  useEffect(() => {
+    if (role1_Startup) {
+      axios.get('https://conquest-api.bits-dvm.org/api/meetings/portal_state/', {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("tokens")).access}`
+        }
+      })
+        .then(res => {
+          setStartupBookingState(res.data.is_active)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  }, [])
 
   // const role = { schedulebtn };
   const startup = { startupid };
@@ -288,27 +305,26 @@ export default function MentorProfileHeader({
             <div>
               <div className={styles.btnWrapper}>
                 <button
-                  style={connectionState === 'connected' ? {
-                    zIndex: 2,
-                    marginRight: "10px",
-                    display:
-                      (role1_Mentor || role1_Startup) &&
-                        startup.startupid !== undefined
-                        ? null
-                        : "none",
-                  } : {
-                    zIndex: 2,
-                    marginRight: "10px",
-                    display:
-                      (role1_Mentor || role1_Startup) &&
-                        startup.startupid !== undefined
-                        ? null
-                        : "none",
-                    filter: 'grayscale(1)',
-                    cursor: 'not-allowed'
-                  }}
-                  className={styles.schedule}
-                  disabled={connectionState !== 'connected'}
+                  style={
+                    {
+                      zIndex: 2,
+                      marginRight: "10px",
+                      display:
+                        (role1_Mentor || role1_Startup) &&
+                          startup.startupid !== undefined
+                          ? null
+                          : "none"
+                    }
+                  }
+                  className={
+                    role1_Startup ?
+                      (startupBookingState ?
+                        `${styles.schedule}` :
+                        `${styles.schedule} ${styles.disabled}`) :
+                      (connectionState === 'connected' ?
+                        `${styles.schedule}` :
+                        `${styles.schedule} ${styles.disabled}`)}
+                  disabled={role1_Startup ? !startupBookingState : connectionState !== 'connected'}
                   onClick={
                     role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
                   }
