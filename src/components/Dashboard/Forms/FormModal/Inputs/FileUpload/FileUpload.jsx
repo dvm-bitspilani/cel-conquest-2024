@@ -6,10 +6,11 @@ import { imageDB } from './firebaseConfig'
 
 import styles from './fileupload.module.scss'
 
-export default function FileUpload({ name, heading, manualValue, hasPreview = false, forceType }) {
+export default function FileUpload({ name, heading, manualValue, hasPreview = false, forceType, setIsSubmitDisabled, isSubmitDisabled }) {
     const [uploadedFile, setUploadedFile] = useState(null)
 
     const onDrop = useCallback(acceptedFiles => {
+        setIsSubmitDisabled(true)
         setUploadedFile(acceptedFiles[0])
         const pfpDB = ref(imageDB, `pfps/user_${JSON.parse(localStorage.getItem("userData")).user_profile_obj.id}/profile_image`)
         uploadBytes(pfpDB, acceptedFiles[0])
@@ -20,6 +21,7 @@ export default function FileUpload({ name, heading, manualValue, hasPreview = fa
                     .then(url => {
                         manualValue(name, url)
                         console.log("URL recieved")
+                        setIsSubmitDisabled(false)
                     })
                     .catch(err => {
                         console.log(err)
@@ -84,8 +86,10 @@ export default function FileUpload({ name, heading, manualValue, hasPreview = fa
                     <button
                         onClick={(e) => {
                             e.preventDefault()
-                            setUploadedFile(null)
-                            manualValue(name, null)
+                            if (!isSubmitDisabled) {
+                                setUploadedFile(null)
+                                manualValue(name, null)
+                            }
                         }}
                     >
                         <svg viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">

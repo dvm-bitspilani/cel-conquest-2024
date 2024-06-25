@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 
@@ -10,6 +11,8 @@ import FileUpload from "../../../../Dashboard/Forms/FormModal/Inputs/FileUpload/
 import styles from "./form.module.scss";
 
 export default function ProfileForm({ formClose }) {
+  const [pfpDisableSubmit, setPfpDisableSubmit] = useState(null);
+
   const userRole = JSON.parse(localStorage.getItem("userData")).user_profile_obj
     .role;
   const {
@@ -193,6 +196,8 @@ export default function ProfileForm({ formClose }) {
           name="profile_logo"
           heading="Change Profile Logo"
           manualValue={setFieldValue}
+          setIsSubmitDisabled={setPfpDisableSubmit}
+          isSubmitDisabled={pfpDisableSubmit}
           forceType="image"
         />
         {userRole === "Startup" ? (
@@ -339,7 +344,11 @@ export default function ProfileForm({ formClose }) {
         ) : (
           ""
         )}
-        <button type="submit" className={styles.submit}>
+        <button
+          type="submit"
+          className={pfpDisableSubmit ? `${styles.submit} ${styles.disable}` : `${styles.submit}`}
+          disabled={pfpDisableSubmit === null ? false : pfpDisableSubmit}
+        >
           Submit
         </button>
       </form>
