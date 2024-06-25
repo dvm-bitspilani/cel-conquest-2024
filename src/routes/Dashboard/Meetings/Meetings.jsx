@@ -50,7 +50,7 @@ const Meetings = () => {
   const [listTab, setListTab] = useState("upcoming");
 
   const userData = JSON.parse(localStorage.getItem("userData")).user_profile_obj;
-  console.log(userData);
+  // console.log(userData);
 
   const getMeetingList = (listTab) => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
