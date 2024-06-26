@@ -202,7 +202,7 @@ const Meetings = () => {
           <div className={styles.phoneView}>
             <h2>Meetings</h2>
             <button
-              style={{ zIndex: 2, display: isStartup ? "none" : null }}
+              style={{ zIndex: 2, display: (isStartup || userData.role === "Guest - Tier 2") ? "none" : null }}
               className={styles.selectSlots}
               onClick={isStartup ? showHideBookSlots : showHideSelectSlots}
             >
