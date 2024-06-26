@@ -112,6 +112,7 @@ function App() {
           <Route path="resources" element={<Resources />}></Route>
           <Route path="developers" element={<Developers />}></Route>
           <Route path="startups" element={<Startups />}></Route>
+          <Route path="partners" element={<Investors />}></Route>
           <Route element={<RequireAuth />}>
             <Route index element={<Home />}></Route>
             <Route path="experts" element={<Experts />}></Route>
@@ -124,7 +125,6 @@ function App() {
             <Route path="coaches" element={<Coaches />}></Route>
             <Route path="connections" element={<Connections />}></Route>
             <Route path="forms" element={<Forms />}></Route>
-            <Route path="partners" element={<Investors />}></Route>
           </Route>
         </Route>
       </Route>
