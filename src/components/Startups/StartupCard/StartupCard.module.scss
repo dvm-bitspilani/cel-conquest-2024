@@ -23,6 +23,7 @@
       background-size: cover;
       width: 62px;
       height: 62px;
+      flex-shrink: 0;
     }
     .textContainer {
       display: flex;

@@ -179,7 +179,22 @@ export default function MentorProfileHeader({
     setBookSlots(!bookSlots);
   };
 
-  const checkProfilePic = img || profilePic;
+  const [convertedImg, setConvertedImg] = useState('');
+
+  useEffect(() => {
+    if (img && img.startsWith('https://drive.google.com')) {
+      const url = new URL(img);
+      const pathParts = url.pathname.split('/');
+      const id = pathParts[3];
+      if (id) {
+        setConvertedImg(`https://drive.google.com/thumbnail?sz=w1000&id=${id}`);
+      } else {
+        console.error('Invalid Google Drive URL format.');
+      }
+    }
+  }, [img]);
+
+  const checkProfilePic = convertedImg || img || profilePic;
 
   const combinedStyle = {
     ...(connectionState === "sent" || isLoading

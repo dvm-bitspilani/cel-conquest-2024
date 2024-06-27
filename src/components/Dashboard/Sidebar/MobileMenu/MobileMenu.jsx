@@ -1,6 +1,6 @@
 import { Menu, ConfigProvider } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import * as styles from "./menu.module.scss";
 import "./menuStyles.scss";
@@ -102,7 +102,24 @@ export default function MobileMenu() {
     userProfile.role === "Startup"
       ? "/dashboard/startup-profile"
       : "/dashboard/profile";
-  const profileLogo = userProfile.profile_logo || profilePic;
+
+  const img = userProfile.profile_logo ;
+  const [convertedImg, setConvertedImg] = useState('');
+
+  useEffect(() => {
+    if (img && img.startsWith('https://drive.google.com')) {
+      const url = new URL(img);
+      const pathParts = url.pathname.split('/');
+      const id = pathParts[3];
+      if (id) {
+        setConvertedImg(`https://drive.google.com/thumbnail?sz=w1000&id=${id}`);
+      } else {
+        console.error('Invalid Google Drive URL format.');
+      }
+    }
+  }, [img]);
+
+  const checkProfilePic = convertedImg || img || profilePic;
 
   function onClick(e) {
     if (e.key === "/dashboard/contact" || e.key === "/dashboard/info") {
@@ -123,7 +140,7 @@ export default function MobileMenu() {
         <div className={styles.profileSection}>
           <Link to={profileLink} className={styles.profileAvatar}>
             <img
-              src={profileLogo}
+              src={checkProfilePic}
               onError={(e) => {
                 e.target.src = profilePic;
               }}

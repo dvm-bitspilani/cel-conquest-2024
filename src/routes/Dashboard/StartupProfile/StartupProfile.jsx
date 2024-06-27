@@ -62,7 +62,7 @@ const StartupProfile = () => {
             setstartupProfile(response.data);
             setuserProfile(response.data.user_profile);
             setTeam(response.data.team_member);
-            console.log(startupProfile);
+            // console.log(startupProfile);
           })
           .catch(function (error) {
             console.log(error);
