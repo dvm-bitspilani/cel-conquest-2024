@@ -10,26 +10,32 @@ export default function FileUpload({ name, heading, manualValue, hasPreview = fa
     const [uploadedFile, setUploadedFile] = useState(null)
 
     const onDrop = useCallback(acceptedFiles => {
-        setIsSubmitDisabled(true)
+        // setIsSubmitDisabled(true)
         setUploadedFile(acceptedFiles[0])
-        const pfpDB = ref(imageDB, `pfps/user_${JSON.parse(localStorage.getItem("userData")).user_profile_obj.id}/profile_image`)
-        uploadBytes(pfpDB, acceptedFiles[0])
-            .then(res => {
-                console.log("Success")
-                console.log(res)
-                getDownloadURL(ref(imageDB, `pfps/user_${JSON.parse(localStorage.getItem("userData")).user_profile_obj.id}/profile_image`))
-                    .then(url => {
-                        manualValue(name, url)
-                        console.log("URL recieved")
-                        setIsSubmitDisabled(false)
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        const reader = new FileReader()
+        reader.readAsDataURL(acceptedFiles[0])
+        reader.onload = () => {
+            manualValue(name, reader.result)
+            console.log(reader.result)
+        }
+        // const pfpDB = ref(imageDB, `pfps/user_${JSON.parse(localStorage.getItem("userData")).user_profile_obj.id}/profile_image`)
+        // uploadBytes(pfpDB, acceptedFiles[0])
+        //     .then(res => {
+        //         console.log("Success")
+        //         console.log(res)
+        //         getDownloadURL(ref(imageDB, `pfps/user_${JSON.parse(localStorage.getItem("userData")).user_profile_obj.id}/profile_image`))
+        //             .then(url => {
+        //                 manualValue(name, url)
+        //                 console.log("URL recieved")
+        //                 setIsSubmitDisabled(false)
+        //             })
+        //             .catch(err => {
+        //                 console.log(err)
+        //             })
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //     })
     }, [])
 
     let dropzoneConfig;
@@ -86,7 +92,7 @@ export default function FileUpload({ name, heading, manualValue, hasPreview = fa
                     <button
                         onClick={(e) => {
                             e.preventDefault()
-                            if (!isSubmitDisabled) {
+                            if (!isSubmitDisabled || isSubmitDisabled === null) {
                                 setUploadedFile(null)
                                 manualValue(name, null)
                             }
