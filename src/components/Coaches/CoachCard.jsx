@@ -20,7 +20,7 @@ export default function CoachCard({ img, name, tags, designation, id }) {
     }
   }, [img]);
 
-  const checkProfilePic = convertedImg || img || profilePic;
+  const checkProfilePic = convertedImg || img ;
 
   const tagsArray = tags ? tags.split(",") : [];
   return (
@@ -33,7 +33,7 @@ export default function CoachCard({ img, name, tags, designation, id }) {
           <div className={styles.cardImg}>
             <div
               className={styles.imgContainer}
-              style={{ backgroundImage: `url(${checkProfilePic})` }}
+              style={{ backgroundImage: `url(${checkProfilePic || profilePic})` }}
             />
           </div>
           <div className={styles.textContainer}>

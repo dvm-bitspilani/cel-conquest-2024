@@ -20,7 +20,7 @@ export default function StartupCard({ img, name, tags, id }) {
     }
   }, [img]);
 
-  const checkProfilePic = convertedImg || img || profilePic;
+  const checkProfilePic = convertedImg || img ;
 
   const tagsArray = tags ? tags.split(",") : [];
   return (
@@ -32,7 +32,7 @@ export default function StartupCard({ img, name, tags, id }) {
         <div className={styles.cardPrimary}>
           <div
             className={styles.imgContainer}
-            style={{ backgroundImage: `url(${checkProfilePic})` }}
+            style={{ backgroundImage: `url(${checkProfilePic || profilePic})` }}
           />
           <div className={styles.textContainer}>
             <h6>{name}</h6>
