@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as styles from "./StartupCard.module.scss";
 import { Link, Route } from "react-router-dom";
-import profilePic from "../../../../src/assets/profilePic.svg";
+import profilePic from "../../../assets/profilePic.svg";
 
 export default function StartupCard({ img, name, tags, id }) {
 

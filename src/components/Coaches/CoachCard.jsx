@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import * as styles from "./CoachCard.module.scss";
 import { Link, Route } from "react-router-dom";
-import profilePic from "../../../src/assets/profilePic.svg";
+// import profilePic from "../../../src/assets/profilePic.svg";
+import profilePic from "../../assets/images/Dashboard/demoAvatar.jpeg"
 
 export default function CoachCard({ img, name, tags, designation, id }) {
 
