@@ -3,7 +3,7 @@ import * as styles from "./CoachCard.module.scss";
 import { Link, Route } from "react-router-dom";
 import profilePic from "../../assets/images/Dashboard/profilePic.jpg"
 
-export default function CoachCard({ img, name, tags, designation, id, companyname }) {
+export default function CoachCard({ img, name, tags, designation, id, companyname, website }) {
 
   const [convertedImg, setConvertedImg] = useState('');
 
@@ -20,7 +20,7 @@ export default function CoachCard({ img, name, tags, designation, id, companynam
     }
   }, [img]);
 
-  const checkProfilePic = convertedImg || img ;
+  const checkProfilePic = convertedImg || img;
 
   const tagsArray = tags ? tags.split(",") : [];
   return (
@@ -41,16 +41,22 @@ export default function CoachCard({ img, name, tags, designation, id, companynam
           </div>
         </div>
         <div className={styles.cardTertiary}>
-          <h5>{companyname}</h5>
-          <h6>{designation}</h6>
+          <div className={styles.info}>
+            <h5>{companyname}</h5>
+            <h6>{designation}</h6>
+          </div>
+          <h6>{website}</h6>
         </div>
         <div className={styles.cardSecondary}>
           <div className={styles.textContainerSecondary}>
             <h6>{name}</h6>
           </div>
           <div className={styles.textContainerTertiary}>
-            <h5>{companyname}</h5>
-            <h6>{designation}</h6>
+            <div className={styles.info1}>
+              <h5>{companyname}</h5>
+              <h6>{designation}</h6>
+            </div>
+            <h6>{website}</h6>
           </div>
           <div className={styles.tagContainer}>
             {tagsArray.length < (window.innerWidth > 820 ? 4 : 4) ? (

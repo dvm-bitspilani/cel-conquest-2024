@@ -18,6 +18,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
       .imgContainer {
         border-radius: 50%;
         background-color: #e0e0e0;
@@ -27,11 +28,13 @@
         height: 62px;
       }
     }
+
     .textContainer {
       display: flex;
       align-items: center;
       margin-left: 2rem;
       width: 75%;
+
       h6 {
         font-size: 20px;
         font-weight: 500;
@@ -52,25 +55,39 @@
       }
     }
   }
+
   .cardTertiary {
     width: 30%;
     position: relative;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
     justify-content: center;
     align-items: center;
     text-align: center;
 
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      h6 {
+        color: #a0a0a0;
+        font-size: 18px;
+        font-weight: 600;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      h5 {
+        color: #fb723d;
+        font-size: 18px;
+        font-weight: 600;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+
     h6 {
       color: #a0a0a0;
-      font-size: 18px;
-      font-weight: 600;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-    h5 {
-      color: #fb723d;
       font-size: 18px;
       font-weight: 600;
       text-overflow: ellipsis;
@@ -88,12 +105,15 @@
       border-radius: 1.5px;
     }
   }
+
   .cardSecondary {
     width: 30%;
+
     .textContainerSecondary,
     .textContainerTertiary {
       display: none;
     }
+
     .tagContainer {
       width: 100%;
       height: 100%;
@@ -123,6 +143,7 @@
           font-size: 14px;
         }
       }
+
       .moreTag {
         background-color: #fb723d;
         color: #fff;
@@ -136,16 +157,20 @@
     width: 4.5rem !important;
     height: 4.5rem !important;
   }
+
   .cardContainer {
     position: relative;
     // width: calc(100vw - 4rem);
     width: 100%;
     padding: 1.5rem 1rem;
+
     // flex-direction: column;
     .cardPrimary {
       width: fit-content;
+
       .textContainer {
         display: none;
+
         // font-size: 15.49px;
         // margin-left: 0;
         &::after {
@@ -153,17 +178,21 @@
         }
       }
     }
+
     .cardTertiary {
       display: none;
     }
+
     .cardSecondary {
       width: 70%;
       top: 1rem;
+
       .textContainerSecondary {
         display: flex;
         justify-content: start;
         align-items: center;
         margin-bottom: 0.5rem;
+
         h6 {
           width: 100%;
           font-size: 15.49px;
@@ -174,15 +203,40 @@
           text-wrap: nowrap;
         }
       }
+
       .textContainerTertiary {
         display: flex;
         flex-direction: row;
-        row-gap: 4px;
-        column-gap: 20px;
-        flex-wrap: wrap;
         justify-content: start;
         align-items: center;
         margin-bottom: 0.5rem;
+
+        .info1 {
+          display: flex;
+          flex-direction: row;
+          row-gap: 4px;
+          column-gap: 20px;
+          flex-wrap: wrap;
+
+          h6 {
+            // width: 50%;
+            color: #a0a0a0;
+            font-size: 13px;
+            font-weight: 600;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+
+          h5 {
+            // width: 50%;
+            color: #fb723d;
+            font-size: 13px;
+            font-weight: 600;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+        }
+
         h6 {
           // width: 50%;
           color: #a0a0a0;
@@ -191,18 +245,12 @@
           text-overflow: ellipsis;
           overflow: hidden;
         }
-        h5 {
-          // width: 50%;
-          color: #fb723d;
-          font-size: 13px;
-          font-weight: 600;
-          text-overflow: ellipsis;
-          overflow: hidden;
-        }
+
       }
+
       .tagContainer {
         width: 100%;
-        height:fit-content;
+        height: fit-content;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;

@@ -113,14 +113,14 @@ function App() {
           <Route path="developers" element={<Developers />}></Route>
           <Route path="startups" element={<Startups />}></Route>
           <Route path="partners" element={<Investors />}></Route>
+          <Route
+            path="startup-profile/:id?"
+            element={<StartupProfile />}
+          ></Route>
+          <Route path="profile/:id?" element={<MentorProfile />}></Route>
           <Route element={<RequireAuth />}>
             <Route index element={<Home />}></Route>
             <Route path="experts" element={<Experts />}></Route>
-            <Route
-              path="startup-profile/:id?"
-              element={<StartupProfile />}
-            ></Route>
-            <Route path="profile/:id?" element={<MentorProfile />}></Route>
             <Route path="mentors" element={<Mentors />}></Route>
             <Route path="coaches" element={<Coaches />}></Route>
             <Route path="connections" element={<Connections />}></Route>
