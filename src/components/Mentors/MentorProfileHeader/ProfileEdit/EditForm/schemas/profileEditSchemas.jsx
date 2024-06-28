@@ -14,5 +14,5 @@ export const profileSchemas = Yup.object({
     description: Yup.string(),
     location: Yup.string(),
     // twitter: Yup.string().url('Invalid URL').matches(/^(https:\/\/x\.com\/)/gi, { excludeEmptyString: true, message: 'Invalid Twitter / X.com URL' }),
-    linkedin: Yup.string().url('Invalid URL').matches(/^(https:\/\/www\.linkedin\.com\/company\/)/gi, { excludeEmptyString: true, message: 'Invalid LinkedIn URL' })
+    linkedin: Yup.string().url('Invalid URL').matches(/^(https:\/\/www\.linkedin\.com\/)/gi, { excludeEmptyString: true, message: 'Invalid LinkedIn URL' })
 })

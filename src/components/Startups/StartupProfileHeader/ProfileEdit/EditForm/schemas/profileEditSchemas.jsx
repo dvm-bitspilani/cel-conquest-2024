@@ -29,7 +29,7 @@ export const profileSchemas = Yup.object({
   //   }),
   linkedin: Yup.string()
     .url("Invalid URL")
-    .matches(/^(https:\/\/www\.linkedin\.com\/company\/)/gi, {
+    .matches(/^(https:\/\/www\.linkedin\.com\/)/gi, {
       excludeEmptyString: true,
       message: "Invalid LinkedIn URL",
     }),
