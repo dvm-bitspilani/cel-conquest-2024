@@ -10,6 +10,7 @@ import MeetingItem from "../../../components/MeetingList/MeetingItem/MeetingItem
 import UserPill from "../../../components/UserPill/UserPill";
 import FormPillList from "../../../components/Dashboard/Forms/FormPillList/FormPillList";
 import avatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
+import profilePic from "../../../assets/images/Dashboard/profilePic.jpg"
 
 import * as styles from "./home.module.scss";
 import { WebContext } from "../../../store/website-context";
@@ -157,6 +158,24 @@ export default function Home() {
     //   .map((item) => item.pill);
   }
 
+  const requester = activeMeet.requester_logo;
+  const [convertedRequester, setConvertedRequester] = useState('');
+
+  useEffect(() => {
+    if (requester && requester.startsWith('https://drive.google.com')) {
+      const url = new URL(img);
+      const pathParts = url.pathname.split('/');
+      const id = pathParts[3];
+      if (id) {
+        setConvertedRequester(`https://drive.google.com/thumbnail?sz=w1000&id=${id}`);
+      } else {
+        console.error('Invalid Google Drive URL format.');
+      }
+    }
+  }, [requester]);
+
+  const checkRequester = convertedRequester || requester || profilePic;
+
   return (
     <div className={styles.container}>
       <div className={styles.meetings}>
@@ -217,7 +236,7 @@ export default function Home() {
                         xl: 42,
                         xxl: 42,
                       }}
-                      icon={<img src={activeMeet.requester_logo} alt="icon" />}
+                      icon={<img src={checkRequester} alt="icon" />}
                     />
                   </ConfigProvider>
                   <span>
