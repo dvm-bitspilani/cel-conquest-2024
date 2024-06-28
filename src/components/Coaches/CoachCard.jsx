@@ -3,7 +3,7 @@ import * as styles from "./CoachCard.module.scss";
 import { Link, Route } from "react-router-dom";
 import profilePic from "../../assets/images/Dashboard/profilePic.jpg"
 
-export default function CoachCard({ img, name, tags, designation, id }) {
+export default function CoachCard({ img, name, tags, designation, id, companyname }) {
 
   const [convertedImg, setConvertedImg] = useState('');
 
@@ -41,6 +41,7 @@ export default function CoachCard({ img, name, tags, designation, id }) {
           </div>
         </div>
         <div className={styles.cardTertiary}>
+          <h5>{companyname}</h5>
           <h6>{designation}</h6>
         </div>
         <div className={styles.cardSecondary}>
@@ -48,6 +49,7 @@ export default function CoachCard({ img, name, tags, designation, id }) {
             <h6>{name}</h6>
           </div>
           <div className={styles.textContainerTertiary}>
+            <h5>{companyname}</h5>
             <h6>{designation}</h6>
           </div>
           <div className={styles.tagContainer}>

@@ -56,12 +56,21 @@
     width: 30%;
     position: relative;
     display: flex;
+    flex-direction: column;
+    gap: 10px;
     justify-content: center;
     align-items: center;
     text-align: center;
 
     h6 {
       color: #a0a0a0;
+      font-size: 18px;
+      font-weight: 600;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    h5 {
+      color: #fb723d;
       font-size: 18px;
       font-weight: 600;
       text-overflow: ellipsis;
@@ -167,12 +176,24 @@
       }
       .textContainerTertiary {
         display: flex;
+        flex-direction: row;
+        row-gap: 4px;
+        column-gap: 20px;
+        flex-wrap: wrap;
         justify-content: start;
         align-items: center;
         margin-bottom: 0.5rem;
         h6 {
-          width: 100%;
+          // width: 50%;
           color: #a0a0a0;
+          font-size: 13px;
+          font-weight: 600;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        h5 {
+          // width: 50%;
+          color: #fb723d;
           font-size: 13px;
           font-weight: 600;
           text-overflow: ellipsis;

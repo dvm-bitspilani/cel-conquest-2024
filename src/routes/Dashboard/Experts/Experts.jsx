@@ -101,6 +101,7 @@ const Experts = () => {
               name={expert.name}
               tags={expert.sector_of_expertise}
               designation={expert.designation}
+              companyname={expert.company_name}
               id={expert.id}
             />
           ))}
