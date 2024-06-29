@@ -55,16 +55,13 @@ export default function Home() {
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
-        .get(
-          `https://conquest-api.bits-dvm.org/api/meetings/meetings/upcoming/`,
-          {
-            headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
-            },
-          }
-        )
+        .get(`https://portal.conquest.org.in/api/meetings/meetings/upcoming/`, {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
+          },
+        })
         .then((res) => {
           console.log(res.data);
 
