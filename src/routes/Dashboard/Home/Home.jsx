@@ -55,13 +55,16 @@ export default function Home() {
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
-        .get(`https://portal.conquest.org.in/api/meetings/meetings/upcoming/`, {
-          headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("userData")).tokens.access
-            }`,
-          },
-        })
+        .get(
+          `https://conquest-api.bits-dvm.org/api/meetings/meetings/upcoming/`,
+          {
+            headers: {
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
+            },
+          }
+        )
         .then((res) => {
           console.log(res.data);
 
@@ -139,6 +142,8 @@ export default function Home() {
   let guests;
   let alumni;
   let community;
+  let startupChampion;
+  let startupPOC;
 
   if (JSON.parse(localStorage.getItem("userData")).startup_profile) {
     underGuidanceOf = JSON.parse(
@@ -189,6 +194,21 @@ export default function Home() {
     //   .filter((item) => item.role === "Startup")
     //   .map((item) => item.pill);
   }
+  const startupChampionData = JSON.parse(localStorage.getItem("userData"))
+    .startup_profile.startup_champion;
+
+  startupChampion = startupChampionData ? (
+    <UserPill
+      avatar={startupChampionData.profile_logo}
+      name={startupChampionData.name}
+    />
+  ) : null;
+  const startupPOCData = JSON.parse(localStorage.getItem("userData"))
+    .startup_profile.startup_poc;
+
+  startupPOC = startupPOCData ? (
+    <UserPill avatar={startupPOCData.profile_logo} name={startupPOCData.name} />
+  ) : null;
 
   const requester = activeMeet.requester_logo;
   const [convertedRequester, setConvertedRequester] = useState("");
@@ -312,6 +332,18 @@ export default function Home() {
               Your <span>Pod:</span>
             </h1>
             <section className={styles.pillsWrapper}>
+              {startupChampion && (
+                <div className={styles.userPills}>
+                  <h3>Startup Champion</h3>
+                  <div className={styles.pillGrid}>{startupChampion}</div>
+                </div>
+              )}
+              {startupPOC && (
+                <div className={styles.userPills}>
+                  <h3>Startup POC</h3>
+                  <div className={styles.pillGrid}>{startupPOC}</div>
+                </div>
+              )}
               {coach[0] ? (
                 <div className={styles.userPills}>
                   <h3>Coach</h3>
