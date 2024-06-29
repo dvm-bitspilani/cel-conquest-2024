@@ -50,7 +50,7 @@ export default function ProfileForm({ formClose }) {
                 domain_of_expertise: values.domain,
                 company_name: values.company,
             }
-            axios.put('https://conquest-api.bits-dvm.org/api/users/profile/', requestObject, {
+            axios.put('https://portal.conquest.org.in/api/users/profile/', requestObject, {
                 headers: {
                     Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
                 }

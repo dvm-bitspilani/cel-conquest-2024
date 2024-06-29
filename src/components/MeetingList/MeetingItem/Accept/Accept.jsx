@@ -10,7 +10,7 @@ export default function AcceptMeet({ meetData }) {
     // console.log(meetData)
     function clickHandler(e) {
         setIsLoading(true)
-        axios.patch(`https://conquest-api.bits-dvm.org/api/meetings/requests/${meetData.id}/`, {
+        axios.patch(`https://portal.conquest.org.in/api/meetings/requests/${meetData.id}/`, {
             status: "accepted",
             slot: meetData.slot
         }, {

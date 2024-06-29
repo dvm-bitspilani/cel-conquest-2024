@@ -51,7 +51,7 @@ function App() {
         ) {
           axios
             .post(
-              "https://conquest-api.bits-dvm.org/api/users/token/refresh/",
+              "https://portal.conquest.org.in/api/users/token/refresh/",
               {
                 refresh: JSON.parse(localStorage.getItem("tokens")).refresh,
               }

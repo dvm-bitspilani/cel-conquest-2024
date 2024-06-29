@@ -98,7 +98,7 @@ function ConnectionListItem({ img, type, name, designation, listTab, id }) {
       // console.log("fetching data");
       axios
         .post(
-          "https://conquest-api.bits-dvm.org/api/users/connections/accept/",
+          "https://portal.conquest.org.in/api/users/connections/accept/",
           {
             status: status,
             id: id,
@@ -126,7 +126,7 @@ function ConnectionListItem({ img, type, name, designation, listTab, id }) {
       // console.log("fetching data");
       axios
         .post(
-          "https://conquest-api.bits-dvm.org/api/users/connections/delete/",
+          "https://portal.conquest.org.in/api/users/connections/delete/",
           {
             id: id,
           },
