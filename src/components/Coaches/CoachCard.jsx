@@ -45,7 +45,7 @@ export default function CoachCard({ img, name, tags, designation, id, companynam
             <h5>{companyname}</h5>
             <h6>{designation}</h6>
           </div>
-          <h6>{website}</h6>
+          <a href={website} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>{website}</a>
         </div>
         <div className={styles.cardSecondary}>
           <div className={styles.textContainerSecondary}>
@@ -56,7 +56,7 @@ export default function CoachCard({ img, name, tags, designation, id, companynam
               <h5>{companyname}</h5>
               <h6>{designation}</h6>
             </div>
-            <h6>{website}</h6>
+            <a href={website} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>{website}</a>
           </div>
           <div className={styles.tagContainer}>
             {tagsArray.length < (window.innerWidth > 820 ? 4 : 4) ? (

@@ -72,7 +72,7 @@
       h6 {
         color: #a0a0a0;
         font-size: 18px;
-        font-weight: 600;
+        font-weight: 550;
         text-overflow: ellipsis;
         overflow: hidden;
       }
@@ -86,12 +86,14 @@
       }
     }
 
-    h6 {
-      color: #a0a0a0;
+    a {
+      color: #138CFD;
+      text-decoration: none;
       font-size: 18px;
       font-weight: 600;
       text-overflow: ellipsis;
       overflow: hidden;
+
     }
 
     &::after {
@@ -207,7 +209,6 @@
       .textContainerTertiary {
         display: flex;
         flex-direction: row;
-        justify-content: start;
         align-items: center;
         margin-bottom: 0.5rem;
 
@@ -222,7 +223,7 @@
             // width: 50%;
             color: #a0a0a0;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 500;
             text-overflow: ellipsis;
             overflow: hidden;
           }
@@ -237,13 +238,15 @@
           }
         }
 
-        h6 {
+        a {
           // width: 50%;
-          color: #a0a0a0;
+          color: #138CFD;
+          text-decoration: none;
           font-size: 13px;
           font-weight: 600;
           text-overflow: ellipsis;
           overflow: hidden;
+          transform: translateX(-20px);
         }
 
       }
@@ -279,4 +282,19 @@
       }
     }
   }
+}
+
+@media screen and (max-width: 450px) {
+
+  .cardContainer {
+    .cardSecondary {
+      .textContainerTertiary {
+
+        a {
+          transform: translateX(-18px);
+        }
+      }
+    }
+  }
+
 }
