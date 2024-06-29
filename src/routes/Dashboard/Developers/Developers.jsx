@@ -1,57 +1,108 @@
 import * as styles from "./Developers.module.scss";
 
+import animesh from "../../../assets/images/front/animesh.jpg";
+import atharv from "../../../assets/images/front/atharv.png";
+import chaitanya from "../../../assets/images/front/chaitanya.jpg";
+import manas from "../../../assets/images/front/manas.png";
+import samyak from "../../../assets/images/front/samyak.jpg";
+import ashutosh from "../../../assets/images/back/ashutosh.jpg";
+import avyakt from "../../../assets/images/back/avyakt.jpg";
+import ayush from "../../../assets/images/back/ayush.jpeg";
+import daksh from "../../../assets/images/back/daksh.jpg";
+import dhayanidhi from "../../../assets/images/back/dhayanidhi.jpg";
+import ankit from "../../../assets/images/design/ankit.jpg";
+import bhavesh from "../../../assets/images/design/bhavesh.jpg";
+import madhur from "../../../assets/images/design/madhur.jpg";
+import satyasheel from "../../../assets/images/design/satyasheel.jpg";
+
 const exampleData = [
   {
-    vertical: "Vertical",
+    vertical: "Frontend",
     members: [
       {
-        name: "Name",
-        profile_logo:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.GPFEY6kfgxbsja6gmrW6rwHaE7%26pid%3DApi%26h%3D160&f=1&ipt=87d56deabe6ecd4dab3cc0672b4ebf6321591a9c8abc2b661650b900e8658ac3&ipo=images",
+        name: "Animesh",
+        profile_logo: `${animesh}`,
+        linkedin: "https://www.linkedin.com/in/animesh-datta-jaiswal-a3b15729a/",
       },
       {
-        name: "Name",
-        profile_logo:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.GPFEY6kfgxbsja6gmrW6rwHaE7%26pid%3DApi%26h%3D160&f=1&ipt=87d56deabe6ecd4dab3cc0672b4ebf6321591a9c8abc2b661650b900e8658ac3&ipo=images",
+        name: "Atharv",
+        profile_logo: `${atharv}`,
+        linkedin: "https://www.linkedin.com/in/atharv-amit-agarwal/",
       },
       {
-        name: "Name",
-        profile_logo:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.GPFEY6kfgxbsja6gmrW6rwHaE7%26pid%3DApi%26h%3D160&f=1&ipt=87d56deabe6ecd4dab3cc0672b4ebf6321591a9c8abc2b661650b900e8658ac3&ipo=images",
+        name: "Chaitanya",
+        profile_logo: `${chaitanya}`,
+        linkedin: "https://www.linkedin.com/in/chaitanya-rahul-jain/",
       },
       {
-        name: "Name",
-        profile_logo:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.GPFEY6kfgxbsja6gmrW6rwHaE7%26pid%3DApi%26h%3D160&f=1&ipt=87d56deabe6ecd4dab3cc0672b4ebf6321591a9c8abc2b661650b900e8658ac3&ipo=images",
+        name: "Manas",
+        profile_logo: `${manas}`,
+        linkedin: "https://www.linkedin.com/in/manas-choudhary-56374028b/",
       },
+      {
+        name: "Samyak",
+        profile_logo: `${samyak}`,
+        linkedin: "https://www.linkedin.com/in/samyak-jain-bab61730b/",
+      }
     ],
   },
   {
-    vertical: "Vertical",
+    vertical: "Backend",
     members: [
       {
-        name: "Name",
-        profile_logo:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.GPFEY6kfgxbsja6gmrW6rwHaE7%26pid%3DApi%26h%3D160&f=1&ipt=87d56deabe6ecd4dab3cc0672b4ebf6321591a9c8abc2b661650b900e8658ac3&ipo=images",
+        name: "Ashutosh",
+        profile_logo: `${ashutosh}`,
+        linkedin: "https://www.linkedin.com/in/ashutosh-desai-676820278/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       },
       {
-        name: "Name",
-        profile_logo:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.GPFEY6kfgxbsja6gmrW6rwHaE7%26pid%3DApi%26h%3D160&f=1&ipt=87d56deabe6ecd4dab3cc0672b4ebf6321591a9c8abc2b661650b900e8658ac3&ipo=images",
+        name: "Avyakt",
+        profile_logo: `${avyakt}`,
+        linkedin: "https://www.linkedin.com/in/avyakt-verma-89264727b/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       },
       {
-        name: "Name",
-        profile_logo:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.GPFEY6kfgxbsja6gmrW6rwHaE7%26pid%3DApi%26h%3D160&f=1&ipt=87d56deabe6ecd4dab3cc0672b4ebf6321591a9c8abc2b661650b900e8658ac3&ipo=images",
+        name: "Ayush",
+        profile_logo: `${ayush}`,
+        linkedin: "https://www.linkedin.com/in/ayush-gupta-dev/",
       },
       {
-        name: "Name",
-        profile_logo:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.GPFEY6kfgxbsja6gmrW6rwHaE7%26pid%3DApi%26h%3D160&f=1&ipt=87d56deabe6ecd4dab3cc0672b4ebf6321591a9c8abc2b661650b900e8658ac3&ipo=images",
+        name: "Daksh",
+        profile_logo: `${daksh}`,
+        linkedin: "https://www.linkedin.com/in/daksh-jain-996b541b4/",
       },
+      {
+        name: "Dhayanidhi",
+        profile_logo: `${dhayanidhi}`,
+        linkedin: "https://www.linkedin.com/in/dhayanidhi-purushothaman-410b511b4/",
+      }
     ],
   },
+  {
+    vertical: "Design",
+    members: [
+      {
+        name: "Ankit",
+        profile_logo: `${ankit}`,
+        linkedin: "https://www.linkedin.com/in/ankit-khatua-409976283/",
+      },
+      {
+        name: "Bhavesh",
+        profile_logo: `${bhavesh}`,
+        linkedin: "https://www.linkedin.com/in/bhavesh-j-911854271/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      },
+      {
+        name: "Madhur",
+        profile_logo: `${madhur}`,
+        linkedin: "https://www.linkedin.com/in/madhur-jain-a03260211/",
+      },
+      {
+        name: "Satyasheel",
+        profile_logo: `${satyasheel}`,
+        linkedin: "https://www.linkedin.com/in/satyasheel-singh-a82106290/",
+      },
+    ],
+  }
 ];
+
 
 export default function Developers() {
   return (
@@ -66,10 +117,10 @@ export default function Developers() {
                 <div key={memberIndex} className={styles.memberCard}>
                   <div className={styles.imgWrapper}>
                     <img
-                      src={member.profile_logo}
+                      src={`${member.profile_logo}`}
                       alt={`${member.name} profile`}
                     />
-                    <a className={styles.linkedIn} href="/">
+                    <a className={styles.linkedIn} href={`${member.linkedin}`} target="_blank">
                       <svg
                         width="32"
                         height="32"

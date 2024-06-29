@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as styles from "./StartupCard.module.scss";
 import { Link, Route } from "react-router-dom";
+import profilePic from "../../../assets//images/Dashboard/profilePic.jpg"
 
 export default function StartupCard({ img, name, tags, id }) {
+
+  const [convertedImg, setConvertedImg] = useState('');
+
+  useEffect(() => {
+    if (img && img.startsWith('https://drive.google.com')) {
+      const url = new URL(img);
+      const pathParts = url.pathname.split('/');
+      const id = pathParts[3];
+      if (id) {
+        setConvertedImg(`https://drive.google.com/thumbnail?sz=w1000&id=${id}`);
+      } else {
+        console.error('Invalid Google Drive URL format.');
+      }
+    }
+  }, [img]);
+
+  const checkProfilePic = convertedImg || img ;
+
   const tagsArray = tags ? tags.split(",") : [];
   return (
     <Link
@@ -13,7 +32,7 @@ export default function StartupCard({ img, name, tags, id }) {
         <div className={styles.cardPrimary}>
           <div
             className={styles.imgContainer}
-            style={{ backgroundImage: `url(${img})` }}
+            style={{ backgroundImage: `url(${checkProfilePic || profilePic})` }}
           />
           <div className={styles.textContainer}>
             <h6>{name}</h6>

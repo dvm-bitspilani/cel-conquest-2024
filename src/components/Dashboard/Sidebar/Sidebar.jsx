@@ -5,7 +5,7 @@ import profilePic from "../../../assets/profilePic.svg";
 
 import SearchButton from "./SearchButton/SearchButton";
 
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Notifications from "../Notifications/Notifications";
 import axios from "axios";
 import { WebContext } from "../../../store/website-context";
@@ -138,6 +138,25 @@ const Sidebar = () => {
     getNotifs();
   };
 
+  const img = JSON.parse(localStorage.getItem("userData")).user_profile_obj.profile_logo ;
+  const [convertedImg, setConvertedImg] = useState('');
+
+  useEffect(() => {
+    if (img && img.startsWith('https://drive.google.com')) {
+      const url = new URL(img);
+      const pathParts = url.pathname.split('/');
+      const id = pathParts[3];
+      if (id) {
+        setConvertedImg(`https://drive.google.com/thumbnail?sz=w1000&id=${id}`);
+      } else {
+        console.error('Invalid Google Drive URL format.');
+      }
+    }
+  }, [img]);
+
+  const checkProfilePic = convertedImg || img || profilePic;
+
+
   return (
     <div className={styles.sidebarContainer}>
       <Notifications
@@ -174,10 +193,7 @@ const Sidebar = () => {
             className={styles.profileAvatar}
           >
             <img
-              src={
-                JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                  .profile_logo || profilePic
-              }
+              src={checkProfilePic}
               onError={(e) => {
                 e.target.src = profilePic;
               }}

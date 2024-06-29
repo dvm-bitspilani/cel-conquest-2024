@@ -103,7 +103,7 @@ const Investors = () => {
               img={investor.profile_logo}
               name={investor.company_name}
               tags={investor.type_of_partner}
-              designation={investor.website}
+              website={investor.website}
               id={investor.id}
             />
           ))}

@@ -43,6 +43,7 @@
             height: 100px;
             width: 100px;
             margin-bottom: 1rem;
+            object-fit: cover;
 
             @media screen and (max-width: 820px) {
               border-radius: 0;

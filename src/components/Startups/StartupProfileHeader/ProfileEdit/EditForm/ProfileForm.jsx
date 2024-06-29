@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 
@@ -10,6 +11,11 @@ import FileUpload from "../../../../Dashboard/Forms/FormModal/Inputs/FileUpload/
 import styles from "./form.module.scss";
 
 export default function ProfileForm({ formClose }) {
+  const [pfpDisableSubmit, setPfpDisableSubmit] = useState(null);
+
+  const userData = JSON.parse(
+    localStorage.getItem("userData")
+  ).user_profile_obj;
   const userRole = JSON.parse(localStorage.getItem("userData")).user_profile_obj
     .role;
   const {
@@ -50,58 +56,60 @@ export default function ProfileForm({ formClose }) {
       const requestObject =
         userRole === "Startup"
           ? {
-            user_profile: {
+              user_profile: {
+                user: {
+                  username: values.username.trim(),
+                  email: values.email.trim(),
+                  password: values.password.trim(),
+                  first_name: values.firstName.trim(),
+                  last_name: values.lastName.trim(),
+                },
+              },
+              startup_name: values.company.trim(),
+              profile_logo: values.profile_logo,
+              description: values.description.trim(),
+              stage: values.stage,
+              industry: "",
+              functional_areas: "",
+              location_hq: values.location.trim(),
+              pitch_deck: values.pitchdeck.trim(),
+              linkedin: values.linkedin.trim(),
+              twitter: "",
+              short_term_vision: values.short_term_vision.trim(),
+              contact_email: values.contact_email.trim(),
+              website_url: values.website.trim(),
+              video_pitch: values.pitch_video.trim(),
+              team: "",
+            }
+          : {
               user: {
                 username: values.username.trim(),
-                email: values.email.trim(),
                 password: values.password.trim(),
                 first_name: values.firstName.trim(),
                 last_name: values.lastName.trim(),
               },
-            },
-            startup_name: values.company.trim(),
-            profile_logo: values.profile_logo,
-            description: values.description.trim(),
-            stage: values.stage,
-            industry: "",
-            functional_areas: "",
-            location_hq: values.location.trim(),
-            pitch_deck: values.pitchdeck.trim(),
-            linkedin: values.linkedin.trim(),
-            twitter: "",
-            short_term_vision: values.short_term_vision.trim(),
-            contact_email: values.contact_email.trim(),
-            website_url: values.website.trim(),
-            video_pitch: values.pitch_video.trim(),
-            team: "",
-          }
-          : {
-            user: {
-              username: values.username.trim(),
-              password: values.password.trim(),
-              first_name: values.firstName.trim(),
-              last_name: values.lastName.trim(),
-            },
-            profile_logo: values.profile_logo,
-            google_email: values.email.trim(),
-            designation: values.designation.trim(),
-            linkedin: values.linkedin.trim(),
-            location: values.location.trim(),
-            description: values.description.trim(),
-            resume: values.resume.trim(),
-            sector_of_expertise: values.expertise,
-            domain_of_expertise: values.domain,
-            company_name: values.company.trim(),
-          };
+              profile_logo: values.profile_logo,
+              google_email: values.email.trim(),
+              designation: values.designation.trim(),
+              linkedin: values.linkedin.trim(),
+              location: values.location.trim(),
+              description: values.description.trim(),
+              resume: values.resume.trim(),
+              sector_of_expertise: values.expertise,
+              domain_of_expertise: values.domain,
+              company_name: values.company.trim(),
+            };
       axios
         .put(
-          `https://portal.conquest.org.in/api/users/profile/${userRole === "Startup" ? "startup/" : ""
+          `https://portal.conquest.org.in/api/users/profile/${
+            userRole === "Startup" ? "startup/" : ""
           }`,
           requestObject,
           {
             headers: {
-              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-                }`,
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
             },
           }
         )
@@ -124,6 +132,7 @@ export default function ProfileForm({ formClose }) {
         <TextInput2
           name="username"
           heading="Change Username"
+          placeholder={userData.name}
           changeFn={handleChange}
           blurFn={handleBlur}
           value={values.username}
@@ -133,6 +142,7 @@ export default function ProfileForm({ formClose }) {
         <TextInput2
           name="firstName"
           heading="Change First Name"
+          placeholder={userData.user.first_name}
           changeFn={handleChange}
           blurFn={handleBlur}
           value={values.firstName}
@@ -142,6 +152,7 @@ export default function ProfileForm({ formClose }) {
         <TextInput2
           name="lastName"
           heading="Change Last Name"
+          placeholder={userData.user.last_name}
           changeFn={handleChange}
           blurFn={handleBlur}
           value={values.lastName}
@@ -152,6 +163,7 @@ export default function ProfileForm({ formClose }) {
           <TextInput2
             name="contact_email"
             heading="Change Contact Email"
+            placeholder={userData.user.email}
             changeFn={handleChange}
             blurFn={handleBlur}
             value={values.contact_email}
@@ -162,6 +174,7 @@ export default function ProfileForm({ formClose }) {
           <TextInput2
             name="email"
             heading="Change Email"
+            placeholder={userData.user.email}
             changeFn={handleChange}
             blurFn={handleBlur}
             value={values.email}
@@ -193,12 +206,18 @@ export default function ProfileForm({ formClose }) {
           name="profile_logo"
           heading="Change Profile Logo"
           manualValue={setFieldValue}
+          setIsSubmitDisabled={setPfpDisableSubmit}
+          isSubmitDisabled={pfpDisableSubmit}
           forceType="image"
         />
         {userRole === "Startup" ? (
           <TextInput2
             name="company"
             heading="Change Startup Name"
+            placeholder={
+              JSON.parse(localStorage.getItem("userData")).startup_profile
+                .startup_name
+            }
             changeFn={handleChange}
             blurFn={handleBlur}
             value={values.company}
@@ -209,6 +228,7 @@ export default function ProfileForm({ formClose }) {
           <TextInput2
             name="company"
             heading="Change Company Name"
+            placeholder={userData.company_name}
             changeFn={handleChange}
             blurFn={handleBlur}
             value={values.company}
@@ -220,6 +240,12 @@ export default function ProfileForm({ formClose }) {
           name="location"
           heading={
             userRole === "Startup" ? "Change Location HQ" : "Change Location"
+          }
+          placeholder={
+            userRole === "Startup"
+              ? JSON.parse(localStorage.getItem("userData")).startup_profile
+                  .location_hq
+              : userData.location
           }
           changeFn={handleChange}
           blurFn={handleBlur}
@@ -283,20 +309,34 @@ export default function ProfileForm({ formClose }) {
           name="description"
           heading="Change Description"
           changeFn={handleChange}
+          placeholder={
+            userRole === "Startup"
+              ? JSON.parse(localStorage.getItem("userData")).startup_profile
+                  .description
+              : userData.description
+          }
           blurFn={handleBlur}
           value={values.description}
           error={errors.description}
           type="long"
         />
-        <TextInput2
-          name="short_term_vision"
-          heading="Change Short Term Vision"
-          changeFn={handleChange}
-          blurFn={handleBlur}
-          value={values.short_term_vision}
-          error={errors.short_term_vision}
-          type="long"
-        />
+        {userRole === "Startup" ? (
+          <TextInput2
+            name="short_term_vision"
+            heading="Change Short Term Vision"
+            placeholder={
+              JSON.parse(localStorage.getItem("userData")).startup_profile
+                .short_term_vision
+            }
+            changeFn={handleChange}
+            blurFn={handleBlur}
+            value={values.short_term_vision}
+            error={errors.short_term_vision}
+            type="long"
+          />
+        ) : (
+          ""
+        )}
         <TextInput2
           name="linkedin"
           heading="Change LinkedIn URL"
@@ -326,7 +366,7 @@ export default function ProfileForm({ formClose }) {
               value={values.stage}
               className={styles.selectInput}
             >
-              <option value="" label="Select stage" />
+              <option value="" label="Select stage" selected disabled hidden />
               <option value="Pre-seed Stage" label="Pre-Seed" />
               <option value="Seed Stage" label="Seed" />
               <option value="Early Stage" label="Early" />
@@ -339,7 +379,15 @@ export default function ProfileForm({ formClose }) {
         ) : (
           ""
         )}
-        <button type="submit" className={styles.submit}>
+        <button
+          type="submit"
+          className={
+            pfpDisableSubmit
+              ? `${styles.submit} ${styles.disable}`
+              : `${styles.submit}`
+          }
+          disabled={pfpDisableSubmit === null ? false : pfpDisableSubmit}
+        >
           Submit
         </button>
       </form>

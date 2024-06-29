@@ -102,6 +102,7 @@ const Mentors = () => {
               name={mentor.name}
               tags={mentor.sector_of_expertise}
               designation={mentor.designation}
+              companyname={mentor.company_name}
               id={mentor.id}
             />
           ))}

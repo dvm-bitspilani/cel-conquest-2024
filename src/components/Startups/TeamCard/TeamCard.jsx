@@ -1,5 +1,5 @@
 import * as styles from "./TeamCard.module.scss";
-import avatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
+// import avatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
 
 export default function TeamCard({ img, name, position, linkedin }) {
     return (
