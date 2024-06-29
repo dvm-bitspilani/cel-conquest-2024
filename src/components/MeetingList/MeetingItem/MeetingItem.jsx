@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Avatar, ConfigProvider } from "antd";
 
 import JoinMeet from "./Join/Join";
@@ -7,6 +8,7 @@ import AcceptMeet from "./Accept/Accept";
 import * as styles from "./item.module.scss";
 import { useContext } from "react";
 import { WebContext } from "../../../store/website-context";
+import profilePic from "../../../assets/images/Dashboard/profilePic.jpg"
 
 export default function MeetingItem({
   date,
@@ -25,6 +27,24 @@ export default function MeetingItem({
   const month = new customDate(date).getMonth()
   const fullDate = new customDate(date).getDate()
   const time = new customDate(date).getFullTime()
+
+  const [convertedImg, setConvertedImg] = useState('');
+
+    useEffect(() => {
+        if (avatar && avatar.startsWith('https://drive.google.com')) {
+            const url = new URL(img);
+            const pathParts = url.pathname.split('/');
+            const id = pathParts[3];
+            if (id) {
+                setConvertedImg(`https://drive.google.com/thumbnail?sz=w1000&id=${id}`);
+            } else {
+                console.error('Invalid Google Drive URL format.');
+            }
+        }
+    }, [avatar]);
+
+    const checkProfilePic = convertedImg || avatar || profilePic;
+
 
   let content;
   switch (type) {
@@ -98,7 +118,7 @@ export default function MeetingItem({
                 xl: 64,
                 xxl: 80,
               }}
-              icon={<img src={avatar} alt="user avatar" />}
+              icon={<img src={checkProfilePic} alt="user avatar" />}
             />
           </ConfigProvider>
         </div>

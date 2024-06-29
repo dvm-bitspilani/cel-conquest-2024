@@ -13,6 +13,9 @@ import styles from "./form.module.scss";
 export default function ProfileForm({ formClose }) {
   const [pfpDisableSubmit, setPfpDisableSubmit] = useState(null);
 
+  const userData = JSON.parse(
+    localStorage.getItem("userData")
+  ).user_profile_obj;
   const userRole = JSON.parse(localStorage.getItem("userData")).user_profile_obj
     .role;
   const {
@@ -129,6 +132,7 @@ export default function ProfileForm({ formClose }) {
         <TextInput2
           name="username"
           heading="Change Username"
+          placeholder={userData.name}
           changeFn={handleChange}
           blurFn={handleBlur}
           value={values.username}
@@ -138,6 +142,7 @@ export default function ProfileForm({ formClose }) {
         <TextInput2
           name="firstName"
           heading="Change First Name"
+          placeholder={userData.user.first_name}
           changeFn={handleChange}
           blurFn={handleBlur}
           value={values.firstName}
@@ -147,6 +152,7 @@ export default function ProfileForm({ formClose }) {
         <TextInput2
           name="lastName"
           heading="Change Last Name"
+          placeholder={userData.user.last_name}
           changeFn={handleChange}
           blurFn={handleBlur}
           value={values.lastName}
@@ -157,6 +163,7 @@ export default function ProfileForm({ formClose }) {
           <TextInput2
             name="contact_email"
             heading="Change Contact Email"
+            placeholder={userData.user.email}
             changeFn={handleChange}
             blurFn={handleBlur}
             value={values.contact_email}
@@ -167,6 +174,7 @@ export default function ProfileForm({ formClose }) {
           <TextInput2
             name="email"
             heading="Change Email"
+            placeholder={userData.user.email}
             changeFn={handleChange}
             blurFn={handleBlur}
             value={values.email}
@@ -206,6 +214,10 @@ export default function ProfileForm({ formClose }) {
           <TextInput2
             name="company"
             heading="Change Startup Name"
+            placeholder={
+              JSON.parse(localStorage.getItem("userData")).startup_profile
+                .startup_name
+            }
             changeFn={handleChange}
             blurFn={handleBlur}
             value={values.company}
@@ -216,6 +228,7 @@ export default function ProfileForm({ formClose }) {
           <TextInput2
             name="company"
             heading="Change Company Name"
+            placeholder={userData.company_name}
             changeFn={handleChange}
             blurFn={handleBlur}
             value={values.company}
@@ -227,6 +240,12 @@ export default function ProfileForm({ formClose }) {
           name="location"
           heading={
             userRole === "Startup" ? "Change Location HQ" : "Change Location"
+          }
+          placeholder={
+            userRole === "Startup"
+              ? JSON.parse(localStorage.getItem("userData")).startup_profile
+                  .location_hq
+              : userData.location
           }
           changeFn={handleChange}
           blurFn={handleBlur}
@@ -290,6 +309,12 @@ export default function ProfileForm({ formClose }) {
           name="description"
           heading="Change Description"
           changeFn={handleChange}
+          placeholder={
+            userRole === "Startup"
+              ? JSON.parse(localStorage.getItem("userData")).startup_profile
+                  .description
+              : userData.description
+          }
           blurFn={handleBlur}
           value={values.description}
           error={errors.description}
@@ -299,6 +324,10 @@ export default function ProfileForm({ formClose }) {
           <TextInput2
             name="short_term_vision"
             heading="Change Short Term Vision"
+            placeholder={
+              JSON.parse(localStorage.getItem("userData")).startup_profile
+                .short_term_vision
+            }
             changeFn={handleChange}
             blurFn={handleBlur}
             value={values.short_term_vision}
@@ -337,7 +366,7 @@ export default function ProfileForm({ formClose }) {
               value={values.stage}
               className={styles.selectInput}
             >
-              <option value="" label="Select stage" />
+              <option value="" label="Select stage" selected disabled hidden />
               <option value="Pre-seed Stage" label="Pre-Seed" />
               <option value="Seed Stage" label="Seed" />
               <option value="Early Stage" label="Early" />
@@ -352,7 +381,11 @@ export default function ProfileForm({ formClose }) {
         )}
         <button
           type="submit"
-          className={pfpDisableSubmit ? `${styles.submit} ${styles.disable}` : `${styles.submit}`}
+          className={
+            pfpDisableSubmit
+              ? `${styles.submit} ${styles.disable}`
+              : `${styles.submit}`
+          }
           disabled={pfpDisableSubmit === null ? false : pfpDisableSubmit}
         >
           Submit

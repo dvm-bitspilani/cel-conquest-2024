@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import styles from "./MeetingDetails.module.scss";
+import profilePic from "../../../../assets/images/Dashboard/profilePic.jpg";
 
 const MeetingDetails = ({ myData, listTab }) => {
   console.log(1, myData, 1);
@@ -26,6 +28,42 @@ const MeetingDetails = ({ myData, listTab }) => {
   const periodEnd = hoursEnd >= 12 ? "PM" : "AM";
   const adjustedHoursEnd = hoursEnd % 12 || 12;
   const fullTimeEnd = `${adjustedHoursEnd}:${formattedMinutesEnd} ${periodEnd}`;
+
+  const requested = myData.requested_logo;
+  const [convertedRequested, setConvertedRequested] = useState('');
+
+  useEffect(() => {
+    if (requested && requested.startsWith('https://drive.google.com')) {
+      const url = new URL(img);
+      const pathParts = url.pathname.split('/');
+      const id = pathParts[3];
+      if (id) {
+        setConvertedRequested(`https://drive.google.com/thumbnail?sz=w1000&id=${id}`);
+      } else {
+        console.error('Invalid Google Drive URL format.');
+      }
+    }
+  }, [requested]);
+
+  const checkRequested = convertedRequested || requested || profilePic;
+
+  const requester = myData.requester_logo;
+  const [convertedRequester, setConvertedRequester] = useState('');
+
+  useEffect(() => {
+    if (requester && requester.startsWith('https://drive.google.com')) {
+      const url = new URL(img);
+      const pathParts = url.pathname.split('/');
+      const id = pathParts[3];
+      if (id) {
+        setConvertedRequester(`https://drive.google.com/thumbnail?sz=w1000&id=${id}`);
+      } else {
+        console.error('Invalid Google Drive URL format.');
+      }
+    }
+  }, [requester]);
+
+  const checkRequester = convertedRequester || requester || profilePic;
 
   return (
     <div className={styles.MeetingDetailsContainer}>
@@ -67,7 +105,7 @@ const MeetingDetails = ({ myData, listTab }) => {
         </div>
         <div className={styles.photos}>
           <div className={styles.avatarContainer}>
-            <img src={myData.requested_logo} alt="" />
+            <img src={checkRequested} alt="" />
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +151,7 @@ const MeetingDetails = ({ myData, listTab }) => {
             />
           </svg>
           <div className={styles.avatarContainer}>
-            <img src={myData.requester_logo} alt="" />
+            <img src={checkRequester} alt="" />
           </div>
         </div>
         <div className={styles.personDetails}>

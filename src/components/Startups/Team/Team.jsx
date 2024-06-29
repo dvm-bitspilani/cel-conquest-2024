@@ -1,6 +1,6 @@
 import * as styles from "./Team.module.scss";
 import TeamCard from "../TeamCard/TeamCard";
-import avatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
+import avatar from "../../../assets/images/Dashboard/profilePic.jpg";
 
 // const dummyTeamData = {
 //     img: avatar,

@@ -10,6 +10,7 @@ import MeetingItem from "../../../components/MeetingList/MeetingItem/MeetingItem
 import UserPill from "../../../components/UserPill/UserPill";
 import FormPillList from "../../../components/Dashboard/Forms/FormPillList/FormPillList";
 import avatar from "../../../assets/images/Dashboard/demoAvatar.jpeg";
+import profilePic from "../../../assets/images/Dashboard/profilePic.jpg";
 
 import * as styles from "./home.module.scss";
 import { WebContext } from "../../../store/website-context";
@@ -54,12 +55,16 @@ export default function Home() {
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
-        .get(`https://conquest-api.bits-dvm.org/api/meetings/meetings/upcoming/`, {
-          headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+        .get(
+          `https://conquest-api.bits-dvm.org/api/meetings/meetings/upcoming/`,
+          {
+            headers: {
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("userData")).tokens.access
               }`,
-          },
-        })
+            },
+          }
+        )
         .then((res) => {
           console.log(res.data);
 
@@ -71,15 +76,15 @@ export default function Home() {
                   date={newItm.slot_start_time}
                   avatar={
                     newItm.requested_name ===
-                      JSON.parse(localStorage.getItem("userData"))
-                        .user_profile_obj.name
+                    JSON.parse(localStorage.getItem("userData"))
+                      .user_profile_obj.name
                       ? newItm.requester_logo
                       : newItm.requested_logo
                   }
                   mentorName={
                     newItm.requested_name ===
-                      JSON.parse(localStorage.getItem("userData"))
-                        .user_profile_obj.name
+                    JSON.parse(localStorage.getItem("userData"))
+                      .user_profile_obj.name
                       ? newItm.requester_name
                       : newItm.requested_name
                   }
@@ -99,8 +104,8 @@ export default function Home() {
                 date={newItm.slot_start_time}
                 avatar={
                   newItm.requested_name ===
-                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                      .name
+                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                    .name
                     ? newItm.requester_logo
                     : newItm.requested_logo
                 }
@@ -131,6 +136,12 @@ export default function Home() {
   let coach;
   let mentors;
   let experts;
+  let partners;
+  let angels;
+  let startups;
+  let guests;
+  let alumni;
+  let community;
 
   if (JSON.parse(localStorage.getItem("userData")).startup_profile) {
     underGuidanceOf = JSON.parse(
@@ -152,10 +163,55 @@ export default function Home() {
     experts = underGuidanceOf
       .filter((item) => item.role === "Function Expert")
       .map((item) => item.pill);
+    partners = underGuidanceOf
+      .filter(
+        (item) =>
+          item.role === "Partner - Company" ||
+          item.role === "Partner - Individual Connected"
+      )
+      .map((item) => item.pill);
+    angels = underGuidanceOf
+      .filter((item) => item.role === "Angel")
+      .map((item) => item.pill);
+    startups = underGuidanceOf
+      .filter((item) => item.role === "Startup")
+      .map((item) => item.pill);
+    guests = underGuidanceOf
+      .filter(
+        (item) =>
+          item.role === "Guest - Tier 2" || item.role === "Guest - Tier 1"
+      )
+      .map((item) => item.pill);
+    alumni = underGuidanceOf
+      .filter((item) => item.role === "Alumni")
+      .map((item) => item.pill);
+    community = underGuidanceOf
+      .filter((item) => item.role === "Community")
+      .map((item) => item.pill);
     // startups = underGuidanceOf
     //   .filter((item) => item.role === "Startup")
     //   .map((item) => item.pill);
   }
+
+  const requester = activeMeet.requester_logo;
+  const [convertedRequester, setConvertedRequester] = useState("");
+
+  useEffect(() => {
+    if (requester && requester.startsWith("https://drive.google.com")) {
+      const url = new URL(img);
+      const pathParts = url.pathname.split("/");
+      const id = pathParts[3];
+      if (id) {
+        setConvertedRequester(
+          `https://drive.google.com/thumbnail?sz=w1000&id=${id}`
+        );
+      } else {
+        console.error("Invalid Google Drive URL format.");
+      }
+    }
+  }, [requester]);
+
+  const checkRequester = convertedRequester || requester || profilePic;
 
   return (
     <div className={styles.container}>
@@ -217,7 +273,7 @@ export default function Home() {
                         xl: 42,
                         xxl: 42,
                       }}
-                      icon={<img src={activeMeet.requester_logo} alt="icon" />}
+                      icon={<img src={checkRequester} alt="icon" />}
                     />
                   </ConfigProvider>
                   <span>
@@ -275,6 +331,42 @@ export default function Home() {
                 <div className={styles.userPills}>
                   <h3>Experts</h3>
                   <div className={styles.pillGrid}>{experts}</div>
+                </div>
+              ) : null}
+              {partners[0] ? (
+                <div className={styles.userPills}>
+                  <h3>Partners</h3>
+                  <div className={styles.pillGrid}>{partners}</div>
+                </div>
+              ) : null}
+              {angels[0] ? (
+                <div className={styles.userPills}>
+                  <h3>Angels</h3>
+                  <div className={styles.pillGrid}>{angels}</div>
+                </div>
+              ) : null}
+              {startups[0] ? (
+                <div className={styles.userPills}>
+                  <h3>Startups</h3>
+                  <div className={styles.pillGrid}>{startups}</div>
+                </div>
+              ) : null}
+              {community[0] ? (
+                <div className={styles.userPills}>
+                  <h3>Community</h3>
+                  <div className={styles.pillGrid}>{community}</div>
+                </div>
+              ) : null}
+              {alumni[0] ? (
+                <div className={styles.userPills}>
+                  <h3>Alumni</h3>
+                  <div className={styles.pillGrid}>{alumni}</div>
+                </div>
+              ) : null}
+              {guests[0] ? (
+                <div className={styles.userPills}>
+                  <h3>Guests</h3>
+                  <div className={styles.pillGrid}>{guests}</div>
                 </div>
               ) : null}
               {/* {startups[0] ? <div className={styles.userPills}>
