@@ -267,19 +267,6 @@ export default function ProfileForm({ formClose }) {
           ""
         )}
         {userRole === "Startup" ? (
-          ""
-        ) : (
-          <TextInput2
-            name="resume"
-            heading="Share your resume as a google drive link"
-            changeFn={handleChange}
-            blurFn={handleBlur}
-            value={values.resume}
-            error={errors.resume}
-            type="link"
-          />
-        )}
-        {userRole === "Startup" ? (
           <TextInput2
             name="pitchdeck"
             heading="Share your pitch deck as a google drive link"
