@@ -191,21 +191,26 @@ export default function Home() {
     //   .filter((item) => item.role === "Startup")
     //   .map((item) => item.pill);
   }
-  const startupChampionData = JSON.parse(localStorage.getItem("userData"))
-    .startup_profile.startup_champion;
+  if (JSON.parse(localStorage.getItem("userData")).startup_profile) {
+    const startupChampionData = JSON.parse(localStorage.getItem("userData"))
+      .startup_profile.startup_champion;
 
-  startupChampion = startupChampionData ? (
-    <UserPill
-      avatar={startupChampionData.profile_logo}
-      name={startupChampionData.name}
-    />
-  ) : null;
-  const startupPOCData = JSON.parse(localStorage.getItem("userData"))
-    .startup_profile.startup_poc;
+    startupChampion = startupChampionData ? (
+      <UserPill
+        avatar={startupChampionData.profile_logo}
+        name={startupChampionData.name}
+      />
+    ) : null;
+    const startupPOCData = JSON.parse(localStorage.getItem("userData"))
+      .startup_profile.startup_poc;
 
-  startupPOC = startupPOCData ? (
-    <UserPill avatar={startupPOCData.profile_logo} name={startupPOCData.name} />
-  ) : null;
+    startupPOC = startupPOCData ? (
+      <UserPill
+        avatar={startupPOCData.profile_logo}
+        name={startupPOCData.name}
+      />
+    ) : null;
+  }
 
   const requester = activeMeet.requester_logo;
   const [convertedRequester, setConvertedRequester] = useState("");
