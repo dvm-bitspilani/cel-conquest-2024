@@ -10,14 +10,14 @@ import BookSlots from "../../../components/Dashboard/Meetings/BookSlots/BookSlot
 import { WebContext } from "../../../store/website-context";
 
 const Meetings = () => {
-  const { contextHolder } = useContext(WebContext)
+  const { contextHolder } = useContext(WebContext);
   //meeting list code
   const dataRef = useRef(null);
   const [data, setData] = useState(null);
   const [requestSent, setRequestSent] = useState(false);
   const isStartup =
     JSON.parse(localStorage.getItem("userData")).user_profile_obj.role ===
-      "Startup"
+    "Startup"
       ? true
       : false;
 
@@ -49,25 +49,31 @@ const Meetings = () => {
 
   const [listTab, setListTab] = useState("upcoming");
 
-  const userData = JSON.parse(localStorage.getItem("userData")).user_profile_obj;
+  const userData = JSON.parse(
+    localStorage.getItem("userData")
+  ).user_profile_obj;
   // console.log(userData);
 
   const getMeetingList = (listTab) => {
-    if (JSON.parse(localStorage.getItem("userData")).tokens) {
+    if (
+      JSON.parse(localStorage.getItem("userData")).tokens &&
+      listTab !== "upcoming"
+    ) {
       axios
         .get(
           `https://portal.conquest.org.in/api/meetings/meetings/${listTab}/`,
           {
             headers: {
-              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-                }`,
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
             },
           }
         )
         .then((res) => {
           console.log(res.data);
 
-          if (listTab === 'pending') {
+          if (listTab === "pending") {
             const newArr = res.data.map((newItm) => {
               // console.log(newItm)
               return (
@@ -75,15 +81,15 @@ const Meetings = () => {
                   date={newItm.slot_start_time}
                   avatar={
                     newItm.requested_name ===
-                      JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                        .name
+                    JSON.parse(localStorage.getItem("userData"))
+                      .user_profile_obj.name
                       ? newItm.requester_logo
                       : newItm.requested_logo
                   }
                   mentorName={
                     newItm.requested_name ===
-                      JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                        .name
+                    JSON.parse(localStorage.getItem("userData"))
+                      .user_profile_obj.name
                       ? newItm.requester_name
                       : newItm.requested_name
                   }
@@ -96,25 +102,23 @@ const Meetings = () => {
                 />
               );
             });
-
             setListItms(newArr);
-          }
-          else {
+          } else {
             let newArr = res.data.meetings.map((newItm) => {
               return (
                 <MeetingItem
                   date={newItm.slot_start_time}
                   avatar={
                     newItm.requested_name ===
-                      JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                        .name
+                    JSON.parse(localStorage.getItem("userData"))
+                      .user_profile_obj.name
                       ? newItm.requester_logo
                       : newItm.requested_logo
                   }
                   mentorName={
                     newItm.requested_name ===
-                      JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                        .name
+                    JSON.parse(localStorage.getItem("userData"))
+                      .user_profile_obj.name
                       ? newItm.requester_name
                       : newItm.requested_name
                   }
@@ -134,8 +138,8 @@ const Meetings = () => {
                   date={newItm.slot_start_time}
                   avatar={
                     newItm.requested_name ===
-                      JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                        .name
+                    JSON.parse(localStorage.getItem("userData"))
+                      .user_profile_obj.name
                       ? newItm.requester_logo
                       : newItm.requested_logo
                   }
@@ -158,7 +162,7 @@ const Meetings = () => {
           console.log(err);
         });
     } else {
-      console.log("error in fetching data");
+      console.log("error in fetching data1");
     }
   };
 
@@ -168,15 +172,13 @@ const Meetings = () => {
       listTab === "upcoming"
     ) {
       axios
-        .get(
-          `https://portal.conquest.org.in/api/meetings/meetings/upcoming/`,
-          {
-            headers: {
-              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-                }`,
-            },
-          }
-        )
+        .get(`https://portal.conquest.org.in/api/meetings/meetings/upcoming/`, {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
+          },
+        })
         .then((res) => {
           console.log(res.data);
 
@@ -186,15 +188,15 @@ const Meetings = () => {
                 date={newItm.slot_start_time}
                 avatar={
                   newItm.requested_name ===
-                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                      .name
+                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                    .name
                     ? newItm.requester_logo
                     : newItm.requested_logo
                 }
                 mentorName={
                   newItm.requested_name ===
-                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                      .name
+                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                    .name
                     ? newItm.requester_name
                     : newItm.requested_name
                 }
@@ -214,8 +216,8 @@ const Meetings = () => {
                 date={newItm.slot_start_time}
                 avatar={
                   newItm.requested_name ===
-                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                      .name
+                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                    .name
                     ? newItm.requester_logo
                     : newItm.requested_logo
                 }
@@ -258,7 +260,13 @@ const Meetings = () => {
           <div className={styles.phoneView}>
             <h2>Meetings</h2>
             <button
-              style={{ zIndex: 2, display: (isStartup || userData.role === "Guest - Tier 2") ? "none" : null }}
+              style={{
+                zIndex: 2,
+                display:
+                  isStartup || userData.role === "Guest - Tier 2"
+                    ? "none"
+                    : null,
+              }}
               className={styles.selectSlots}
               onClick={isStartup ? showHideBookSlots : showHideSelectSlots}
             >
@@ -272,14 +280,19 @@ const Meetings = () => {
               ></SelectSlots>
             ) : null}
           </div>
-          <div className={styles.meetingsListOptionsContainer} style={{ display: userData.role === "Guest - Tier 2" ? "none" : null }}>
+          <div
+            className={styles.meetingsListOptionsContainer}
+            style={{
+              display: userData.role === "Guest - Tier 2" ? "none" : null,
+            }}
+          >
             <div
               onClick={() => {
                 setListTab("upcoming");
-                getMeetingList("upcoming");
               }}
-              className={`${styles.meetingsListOptions} ${listTab === "upcoming" ? styles.active : null
-                }`}
+              className={`${styles.meetingsListOptions} ${
+                listTab === "upcoming" ? styles.active : null
+              }`}
             >
               Upcoming
             </div>
@@ -288,8 +301,9 @@ const Meetings = () => {
                 setListTab("pending");
                 getMeetingList("pending");
               }}
-              className={`${styles.meetingsListOptions} ${listTab === "pending" ? styles.active : null
-                }`}
+              className={`${styles.meetingsListOptions} ${
+                listTab === "pending" ? styles.active : null
+              }`}
             >
               Pending
             </div>
@@ -298,8 +312,9 @@ const Meetings = () => {
                 setListTab("past");
                 getMeetingList("past");
               }}
-              className={`${styles.meetingsListOptions} ${listTab === "past" ? styles.active : null
-                }`}
+              className={`${styles.meetingsListOptions} ${
+                listTab === "past" ? styles.active : null
+              }`}
             >
               Past
             </div>
@@ -308,8 +323,18 @@ const Meetings = () => {
             <MeetingList listItms={listItms} />
           </div>
         </div>
-        <div className={styles.divider} style={{ display: userData.role === "Guest - Tier 2" ? "none" : null }}></div>
-        <div className={styles.rightPart} style={{ display: userData.role === "Guest - Tier 2" ? "none" : null }}>
+        <div
+          className={styles.divider}
+          style={{
+            display: userData.role === "Guest - Tier 2" ? "none" : null,
+          }}
+        ></div>
+        <div
+          className={styles.rightPart}
+          style={{
+            display: userData.role === "Guest - Tier 2" ? "none" : null,
+          }}
+        >
           <button
             style={{ zIndex: 2, display: isStartup ? "none" : null }}
             className={styles.selectSlots}
@@ -326,8 +351,9 @@ const Meetings = () => {
             ></SelectSlots>
           ) : null}
           <div
-            className={`${styles.meetingsDetails} ${selectSlots ? styles.blur : null
-              }`}
+            className={`${styles.meetingsDetails} ${
+              selectSlots ? styles.blur : null
+            }`}
           >
             {data !== null ? (
               <MeetingDetails myData={data} listTab={listTab}></MeetingDetails>
