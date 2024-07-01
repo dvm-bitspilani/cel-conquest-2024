@@ -67,36 +67,92 @@ const Meetings = () => {
         .then((res) => {
           console.log(res.data);
 
-          const newArr = res.data.map((newItm) => {
-            // console.log(newItm)
-            return (
-              <MeetingItem
-                date={newItm.slot_start_time}
-                avatar={
-                  newItm.requested_name ===
-                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                      .name
-                    ? newItm.requester_logo
-                    : newItm.requested_logo
-                }
-                mentorName={
-                  newItm.requested_name ===
-                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                      .name
-                    ? newItm.requester_name
-                    : newItm.requested_name
-                }
-                duration={45}
-                key={newItm.id}
-                data={newItm}
-                handleClick={handleClick}
-                dataRef={dataRef}
-                type={listTab === "pending" ? "accept-decline" : "join"}
-              />
-            );
-          });
+          if (listTab === 'pending') {
+            const newArr = res.data.map((newItm) => {
+              // console.log(newItm)
+              return (
+                <MeetingItem
+                  date={newItm.slot_start_time}
+                  avatar={
+                    newItm.requested_name ===
+                      JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                        .name
+                      ? newItm.requester_logo
+                      : newItm.requested_logo
+                  }
+                  mentorName={
+                    newItm.requested_name ===
+                      JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                        .name
+                      ? newItm.requester_name
+                      : newItm.requested_name
+                  }
+                  duration={45}
+                  key={newItm.id}
+                  data={newItm}
+                  handleClick={handleClick}
+                  dataRef={dataRef}
+                  type={listTab === "pending" ? "accept-decline" : "join"}
+                />
+              );
+            });
 
-          setListItms(newArr);
+            setListItms(newArr);
+          }
+          else {
+            let newArr = res.data.meetings.map((newItm) => {
+              return (
+                <MeetingItem
+                  date={newItm.slot_start_time}
+                  avatar={
+                    newItm.requested_name ===
+                      JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                        .name
+                      ? newItm.requester_logo
+                      : newItm.requested_logo
+                  }
+                  mentorName={
+                    newItm.requested_name ===
+                      JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                        .name
+                      ? newItm.requester_name
+                      : newItm.requested_name
+                  }
+                  duration={45}
+                  key={newItm.id}
+                  data={newItm}
+                  handleClick={handleClick}
+                  dataRef={dataRef}
+                  isGlobal={false}
+                  type={listTab === "pending" ? "accept-decline" : "join"}
+                />
+              );
+            });
+            let newArr2 = res.data.global_events.map((newItm) => {
+              return (
+                <MeetingItem
+                  date={newItm.slot_start_time}
+                  avatar={
+                    newItm.requested_name ===
+                      JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                        .name
+                      ? newItm.requester_logo
+                      : newItm.requested_logo
+                  }
+                  mentorName={newItm.name}
+                  duration={45}
+                  key={newItm.id}
+                  data={newItm}
+                  handleClick={handleClick}
+                  isGlobal={true}
+                  dataRef={dataRef}
+                />
+              );
+            });
+            newArr.push(newArr2);
+            console.log("abc", newArr);
+            setListItms(newArr);
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -216,7 +272,7 @@ const Meetings = () => {
               ></SelectSlots>
             ) : null}
           </div>
-          <div className={styles.meetingsListOptionsContainer} style={{display: userData.role === "Guest - Tier 2" ? "none" : null}}>
+          <div className={styles.meetingsListOptionsContainer} style={{ display: userData.role === "Guest - Tier 2" ? "none" : null }}>
             <div
               onClick={() => {
                 setListTab("upcoming");
@@ -252,8 +308,8 @@ const Meetings = () => {
             <MeetingList listItms={listItms} />
           </div>
         </div>
-        <div className={styles.divider} style={{display: userData.role === "Guest - Tier 2" ? "none" : null}}></div>
-        <div className={styles.rightPart} style={{display: userData.role === "Guest - Tier 2" ? "none" : null}}>
+        <div className={styles.divider} style={{ display: userData.role === "Guest - Tier 2" ? "none" : null }}></div>
+        <div className={styles.rightPart} style={{ display: userData.role === "Guest - Tier 2" ? "none" : null }}>
           <button
             style={{ zIndex: 2, display: isStartup ? "none" : null }}
             className={styles.selectSlots}

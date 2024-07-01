@@ -10,7 +10,7 @@ function BookSlots({ bookSlots, showHideBookSlots }) {
   const selectSlot = (id) => { };
   // console.log(id);
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("userData")).tokens) {
+    if (JSON.parse(localStorage.getItem("userData")).tokens && id) {
       axios
         .get(
           `https://conquest-api.bits-dvm.org/api/meetings/user/${id}/meeting-slots/`,
