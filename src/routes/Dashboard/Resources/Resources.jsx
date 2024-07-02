@@ -15,12 +15,14 @@ export default function Resources() {
             }
         })
             .then(res => {
+                // console.log(res)
                 const resourceData = res.data.resource_partners.map((resource, index) => {
                     return (
                         <ResourcePill
                             key={index}
                             title={resource.company_name}
                             description={resource.description}
+                            offering={resource.offering}
                             url={resource.website}
                             avatar={resource.profile_logo}
                         />
