@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './pill.module.scss'
 
-export default function ResourcePill({ title, description, url, avatar }) {
+export default function ResourcePill({ title, description, url, avatar, offering }) {
     const [isExpanded, setIsExpanded] = useState(false)
     return (
         <div className={styles.box}>
@@ -12,7 +12,7 @@ export default function ResourcePill({ title, description, url, avatar }) {
                 <h3 className={styles.title}>{title}</h3>
                 <p className={styles.description}>
                     <span className={isExpanded ? styles.text : `${styles.text} ${styles.truncated}`}>
-                        {description}
+                        {`${description}\n\n${offering}`}
                         {isExpanded && (
                             <span
                                 className={styles.expander}

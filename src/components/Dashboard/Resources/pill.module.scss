@@ -54,6 +54,7 @@
                 display: inline-block;
                 color: #A0A0A0;
                 width: 100%;
+                white-space: pre-wrap;
 
                 &.truncated {
                     overflow: hidden;
