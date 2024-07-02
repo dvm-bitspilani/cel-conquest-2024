@@ -34,6 +34,18 @@ function App() {
   const { setUser, getUserData, tokenRefreshFunction } = useContext(WebContext);
   // const location = useLocation();
   useEffect(() => {
+    if (window.location.href) {
+      const urlArray = window.location.href.split(':')
+      console.log(urlArray)
+      if (urlArray[0] === 'http') {
+        urlArray[0] = 'https'
+        const redirectUrl = urlArray.join(':')
+        console.log(redirectUrl)
+        if (urlArray[1] !== '//localhost') {
+          window.location.replace(redirectUrl);
+        }
+      }
+    }
     console.log(window.location.pathname + window.location.search); // for debugging
     ReactGA.send({
       hitType: "pageview",
