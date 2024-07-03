@@ -108,7 +108,7 @@ export default function Home() {
                     ? newItm.requester_logo
                     : newItm.requested_logo
                 }
-                mentorName="Global Meet"
+                mentorName={newItm.name}
                 duration={45}
                 key={newItm.id}
                 data={newItm}
