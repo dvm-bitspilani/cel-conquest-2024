@@ -151,6 +151,7 @@ const Startups = () => {
               name={startup.startup_name}
               tags={startup.industry}
               id={startup.id}
+              description={"Test description"}
             />
           ))}
       </div>
