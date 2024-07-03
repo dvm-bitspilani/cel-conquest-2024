@@ -59,9 +59,8 @@ export default function Home() {
           `https://conquest-api.bits-dvm.org/api/meetings/meetings/upcoming/`,
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
             },
           }
         )
@@ -76,15 +75,15 @@ export default function Home() {
                   date={newItm.slot_start_time}
                   avatar={
                     newItm.requested_name ===
-                    JSON.parse(localStorage.getItem("userData"))
-                      .user_profile_obj.name
+                      JSON.parse(localStorage.getItem("userData"))
+                        .user_profile_obj.name
                       ? newItm.requester_logo
                       : newItm.requested_logo
                   }
                   mentorName={
                     newItm.requested_name ===
-                    JSON.parse(localStorage.getItem("userData"))
-                      .user_profile_obj.name
+                      JSON.parse(localStorage.getItem("userData"))
+                        .user_profile_obj.name
                       ? newItm.requester_name
                       : newItm.requested_name
                   }
@@ -104,12 +103,12 @@ export default function Home() {
                 date={newItm.slot_start_time}
                 avatar={
                   newItm.requested_name ===
-                  JSON.parse(localStorage.getItem("userData")).user_profile_obj
-                    .name
+                    JSON.parse(localStorage.getItem("userData")).user_profile_obj
+                      .name
                     ? newItm.requester_logo
                     : newItm.requested_logo
                 }
-                mentorName={newItm.name}
+                mentorName="Global Meet"
                 duration={45}
                 key={newItm.id}
                 data={newItm}
@@ -194,8 +193,11 @@ export default function Home() {
     //   .filter((item) => item.role === "Startup")
     //   .map((item) => item.pill);
   }
-  const startupChampionData = JSON.parse(localStorage.getItem("userData"))
-    .startup_profile.startup_champion;
+  let startupChampionData;
+  if (JSON.parse(localStorage.getItem("userData")).user_profile_obj.role === "Startup") {
+    startupChampion = JSON.parse(localStorage.getItem("userData"))
+      .startup_profile.startup_champion;
+  }
 
   startupChampion = startupChampionData ? (
     <UserPill
@@ -203,8 +205,12 @@ export default function Home() {
       name={startupChampionData.name}
     />
   ) : null;
-  const startupPOCData = JSON.parse(localStorage.getItem("userData"))
-    .startup_profile.startup_poc;
+
+  let startupPOCData
+  if (JSON.parse(localStorage.getItem("userData")).user_profile_obj.role === "Startup") {
+    startupPOCData = JSON.parse(localStorage.getItem("userData"))
+      .startup_profile.startup_poc;
+  }
 
   startupPOC = startupPOCData ? (
     <UserPill avatar={startupPOCData.profile_logo} name={startupPOCData.name} />
