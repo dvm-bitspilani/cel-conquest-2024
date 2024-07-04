@@ -32,11 +32,19 @@
       justify-content: center;
       align-items: center;
       margin-left: 2rem;
+      overflow: hidden;
 
       h6 {
         font-size: 20px;
         font-weight: 500;
-        text-align: center;
+        width: 100%;
+      }
+      p {
+        overflow: hidden;
+        font-size: 13px;
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
       }
 
       &::after {
