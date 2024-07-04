@@ -151,7 +151,13 @@ export default function Home() {
       return {
         role: item.role,
         pill: (
-          <UserPill avatar={item.profile_logo} name={item.name} key={index} />
+          <UserPill
+            avatar={item.profile_logo}
+            name={item.name}
+            profilePage={
+              item.role === 'Startup' ? `/dashboard/startup-profile/${item.id}` : `/dashboard/profile/${item.id}`
+            }
+            key={index} />
         ),
       };
     });
