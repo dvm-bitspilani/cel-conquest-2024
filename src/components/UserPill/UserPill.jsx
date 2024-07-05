@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Avatar, ConfigProvider } from 'antd'
 import profilePic from "../../assets/images/Dashboard/profilePic.jpg"
 
 import * as styles from './pill.module.scss'
 
-export default function UserPill({ avatar, name }) {
+export default function UserPill({ avatar, name, profilePage }) {
+    const navigate = useNavigate()
 
     const [convertedImg, setConvertedImg] = useState('');
 
@@ -24,7 +26,10 @@ export default function UserPill({ avatar, name }) {
     const checkProfilePic = convertedImg || avatar || profilePic;
 
     return (
-        <div className={styles.pillbox}>
+        <div
+            className={styles.pillbox}
+            onClick={() => navigate(profilePage)}
+        >
             <div className={styles.pfp}>
                 <ConfigProvider
                     theme={{

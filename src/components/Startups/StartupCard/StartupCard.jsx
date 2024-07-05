@@ -3,7 +3,7 @@ import * as styles from "./StartupCard.module.scss";
 import { Link, Route } from "react-router-dom";
 import profilePic from "../../../assets//images/Dashboard/profilePic.jpg"
 
-export default function StartupCard({ img, name, tags, id }) {
+export default function StartupCard({ img, name, tags, id, description }) {
 
   const [convertedImg, setConvertedImg] = useState('');
 
@@ -20,7 +20,7 @@ export default function StartupCard({ img, name, tags, id }) {
     }
   }, [img]);
 
-  const checkProfilePic = convertedImg || img ;
+  const checkProfilePic = convertedImg || img;
 
   const tagsArray = tags ? tags.split(",") : [];
   return (
@@ -36,6 +36,7 @@ export default function StartupCard({ img, name, tags, id }) {
           />
           <div className={styles.textContainer}>
             <h6>{name}</h6>
+            <p>{description}</p>
           </div>
         </div>
         <div className={styles.cardSecondary}>

@@ -50,8 +50,9 @@ const Startups = () => {
       axios
         .get("https://portal.conquest.org.in/api/users/startup_list/", {
           headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userData")).tokens.access
+            }`,
           },
         })
         .then((res) => {
@@ -151,6 +152,7 @@ const Startups = () => {
               name={startup.startup_name}
               tags={startup.industry}
               id={startup.id}
+              description={startup.problem_statement}
             />
           ))}
       </div>
