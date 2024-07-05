@@ -12,7 +12,7 @@ function BookSlotItem({
   dateTimeEnd,
   deleteSlot,
 }) {
-  const { displayMessage } = useContext(WebContext)
+  const { displayMessage, customDate } = useContext(WebContext)
   const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const dateObjEnd = new Date(dateTimeEnd * 1000);
   const dateObj = new Date(dateTimeStart * 1000);
@@ -26,7 +26,8 @@ function BookSlotItem({
   const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
   const period = hours >= 12 ? "PM" : "AM";
   const adjustedHours = hours % 12 || 12;
-  const fullTime = `${adjustedHours}:${formattedMinutes} ${period}`;
+  // const fullTime = `${adjustedHours}:${formattedMinutes} ${period}`;
+  const fullTime = new customDate(dateTimeStart).getFullTime()
 
   const hoursEnd = dateObjEnd.getHours();
   const minutesEnd = dateObjEnd.getMinutes();
