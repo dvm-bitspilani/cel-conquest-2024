@@ -64,9 +64,8 @@ export default function MentorProfileHeader({
           },
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("tokens")).access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("tokens")).access
+                }`,
             },
           }
         )
@@ -90,9 +89,8 @@ export default function MentorProfileHeader({
           },
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("tokens")).access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("tokens")).access
+                }`,
             },
           }
         )
@@ -117,9 +115,8 @@ export default function MentorProfileHeader({
           },
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("tokens")).access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("tokens")).access
+                }`,
             },
           }
         )
@@ -147,9 +144,8 @@ export default function MentorProfileHeader({
       axios
         .get("https://conquest-api.bits-dvm.org/api/meetings/portal_state/", {
           headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("tokens")).access
-            }`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("tokens")).access
+              }`,
           },
         })
         .then((res) => {
@@ -259,7 +255,7 @@ export default function MentorProfileHeader({
                       marginRight: "10px",
                       display:
                         (role1_Mentor || role1_Startup) &&
-                        startup.startupid !== undefined
+                          startup.startupid !== undefined
                           ? null
                           : "none",
                     }}
@@ -269,8 +265,8 @@ export default function MentorProfileHeader({
                           ? `${styles.mobileButton1}`
                           : `${styles.mobileButton1} ${styles.disabledMobile}`
                         : connectionState === "connected"
-                        ? `${styles.mobileButton1}`
-                        : `${styles.mobileButton1} ${styles.disabledMobile}`
+                          ? `${styles.mobileButton1}`
+                          : `${styles.mobileButton1} ${styles.disabledMobile}`
                     }
                     disabled={
                       role1_Startup
@@ -359,7 +355,7 @@ export default function MentorProfileHeader({
                     marginRight: "10px",
                     display:
                       (role1_Mentor || role1_Startup) &&
-                      startup.startupid !== undefined
+                        startup.startupid !== undefined
                         ? null
                         : "none",
                   }}
@@ -369,14 +365,14 @@ export default function MentorProfileHeader({
                         ? `${styles.schedule}`
                         : `${styles.schedule} ${styles.disabled}`
                       : connectionState === "connected"
-                      ? `${styles.schedule}`
-                      : `${styles.schedule} ${styles.disabled}`
+                        ? `${styles.schedule}`
+                        : `${styles.schedule} ${styles.disabled}`
                   }
-                  disabled={
-                    role1_Startup
-                      ? !startupBookingState
-                      : connectionState !== "connected"
-                  }
+                  // disabled={
+                  //   role1_Startup
+                  //     ? !startupBookingState
+                  //     : connectionState !== "connected"
+                  // }
                   onClick={
                     role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
                   }
