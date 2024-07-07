@@ -17,7 +17,7 @@ export default function InterestCaptureBtn({ data }) {
                 else {
                     // console.log(data)
                     if (JSON.parse(localStorage.getItem('userData'))) {
-                        axios.post('https://conquest-api.bits-dvm.org/api/forms/send-email', data, {
+                        axios.post('https://portal.conquest.org.in/api/forms/send-email', data, {
                             headers: {
                                 Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access}`
                             }
