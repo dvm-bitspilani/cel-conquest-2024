@@ -17,9 +17,7 @@ export default function InterestCaptureBtn({ data }) {
                 else {
                     // console.log("email sent")
                     if (JSON.parse(localStorage.getItem('userData'))) {
-                        axios.post('dummyUrl', {
-                            resource_id: data.id
-                        }, {
+                        axios.post('dummyUrl', data, {
                             headers: {
                                 Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access}`
                             }
