@@ -15,11 +15,12 @@ export default function Resources() {
             }
         })
             .then(res => {
-                // console.log(res)
+                console.log(res)
                 const resourceData = res.data.resource_partners.map((resource, index) => {
                     return (
                         <ResourcePill
                             key={index}
+                            fullData={resource}
                             title={resource.company_name}
                             description={resource.description}
                             offering={resource.offering}

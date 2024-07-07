@@ -32,7 +32,7 @@ const MentorProfile = () => {
             // setuserProfile(response.data.user_profile);
             // console.log(response.data.user_profile);
             // setTeam(response.data.team_member);
-            console.log(startupProfile);
+            console.log(response);
           })
           .catch(function (error) {
             console.log(error);
@@ -83,6 +83,10 @@ const MentorProfile = () => {
         desc={startupProfile.description}
         location={startupProfile.location}
         sector={startupProfile.sector_of_expertise}
+        verticals={startupProfile.verticals}
+        horizontals={startupProfile.horizontals}
+        functionsOfExpertise={startupProfile.function_of_expertise}
+        businessModels={startupProfile.business_models}
         domain={startupProfile.domain_of_expertise}
         // resume={startupProfile.resume}
         // twitter={startupProfile.twitter}
