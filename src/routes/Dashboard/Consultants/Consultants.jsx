@@ -15,7 +15,7 @@ const Investors = () => {
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
-        .get("https://conquest-api.bits-dvm.org/api/users/role-list/?role=Angel", {
+        .get("https://conquest-api.bits-dvm.org/api/users/role-list/?role=Consultant", {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
               }`,
@@ -102,8 +102,7 @@ const Investors = () => {
               img={investor.profile_logo}
               name={investor.name}
               tags={investor.domain_of_expertise}
-              designation={investor.designation}
-              companyname={investor.company_name}
+              website={investor.website}
               id={investor.id}
             />
           ))}
