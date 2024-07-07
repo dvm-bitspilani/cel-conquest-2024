@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     font-family: Montserrat;
-    
+
 
     .desc {
         display: flex;
@@ -10,7 +10,7 @@
         width: 556px;
         gap: 3vh;
         padding-bottom: 20px;
-    
+
 
         h5 {
             font-size: 24px;
@@ -64,6 +64,7 @@
             }
         }
     }
+
     .areas {
         display: flex;
         flex-direction: column;
@@ -81,11 +82,11 @@
             flex-direction: row;
             gap: 12px;
             flex-wrap: wrap;
-            padding-bottom: 10.2vh;
+            padding-bottom: 40px;
 
             .area {
                 border: 1.35px solid #FB723D;
-                background-color:#FB723D;
+                background-color: #FB723D;
                 color: #fff;
                 border-radius: 10px;
                 min-width: 130px;
@@ -98,8 +99,6 @@
                 font-weight: 400;
                 padding-top: 5.5px;
                 cursor: pointer;
-
-
             }
         }
     }
@@ -107,11 +106,11 @@
 
 @media(max-width:1100px) {
 
-    .about .desc{
+    .about .desc {
         width: 465px;
     }
 
-    .about .indust  {
+    .about .indust {
         width: 465px;
     }
 
@@ -123,43 +122,44 @@
 @media(min-width: 820px) and (max-width: 900px) {
 
     .about {
-        
-    
+
+
         .desc {
             width: 80%;
             gap: 3vh;
             padding-bottom: 20px;
-        
-    
+
+
             h5 {
                 font-size: 20px;
                 line-height: 24px;
             }
-    
+
             p {
                 font-size: 14px;
-    
+
             }
         }
-    
+
         .indust {
             margin-top: 20px;
             width: 80%;
             gap: 20px;
-    
+
             h5 {
                 font-size: 20px;
                 line-height: 24px;
             }
-    
+
             .incontainer {
                 gap: 20px;
             }
         }
+
         .areas {
             width: 80%;
             gap: 20px;
-    
+
             h5 {
                 font-size: 20px;
                 line-height: 24px;
@@ -173,43 +173,44 @@
 @media(max-width: 750px) {
 
     .about {
-        
-    
+
+
         .desc {
             width: 80%;
             gap: 3vh;
             padding-bottom: 20px;
-        
-    
+
+
             h5 {
                 font-size: 20px;
                 line-height: 24px;
             }
-    
+
             p {
                 font-size: 14px;
-    
+
             }
         }
-    
+
         .indust {
             margin-top: 20px;
             width: 80%;
             gap: 20px;
-    
+
             h5 {
                 font-size: 20px;
                 line-height: 24px;
             }
-    
+
             .incontainer {
                 gap: 20px;
             }
         }
+
         .areas {
             width: 80%;
             gap: 20px;
-    
+
             h5 {
                 font-size: 20px;
                 line-height: 24px;
@@ -220,40 +221,40 @@
 
 }
 
-@media(max-width:500px){
+@media(max-width:500px) {
 
     .about {
         .desc {
             width: 100%;
             gap: 6px;
             padding-bottom: 0px;
-        
-    
+
+
             h5 {
                 font-size: 18px;
                 font-weight: 500;
             }
-    
+
             p {
                 font-size: 12px;
                 font-weight: 400;
             }
         }
-    
+
         .indust {
             width: 100%;
             gap: 8px;
-    
+
             h5 {
                 font-size: 18px;
                 font-weight: 500;
             }
-    
+
             .incontainer {
                 padding-bottom: 30px;
                 display: flex;
                 justify-content: space-between;
-    
+
                 .industries {
                     border: 1px solid #FB723D;
                     min-width: 128px;
@@ -263,25 +264,26 @@
                     height: 28px;
                     font-size: 12.5px;
                     padding-top: 4.5px;
-    
+
                 }
             }
         }
+
         .areas {
             width: 100%;
             gap: 0;
-    
+
             h5 {
                 font-size: 18px;
                 font-weight: 500;
                 padding-bottom: 6px;
             }
-    
+
             .areacontainer {
                 padding-bottom: 0;
                 display: flex;
                 justify-content: space-between;
-                
+
                 .area {
                     border: 1px solid #FB723D;
                     min-width: 128px;
@@ -297,4 +299,3 @@
     }
 
 }
-
