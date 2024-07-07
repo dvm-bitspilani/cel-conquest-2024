@@ -101,8 +101,8 @@ const Investors = () => {
               key={investor.id}
               img={investor.profile_logo}
               name={investor.name}
-              tags={investor.domain_of_expertise}
-              website={investor.website}
+              tags={investor.no_of_calls}
+              companyname={investor.comments}
               id={investor.id}
             />
           ))}
