@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styles from './pill.module.scss'
 import InterestCaptureBtn from './InterestCapture'
 
-export default function ResourcePill({ title, description, url, avatar, offering }) {
+export default function ResourcePill({ title, description, url, avatar, offering, fullData }) {
     const [isExpanded, setIsExpanded] = useState(false)
 
     return (
@@ -18,7 +18,7 @@ export default function ResourcePill({ title, description, url, avatar, offering
                         {/* {isExpanded ?  : null} */}
                         {isExpanded && (
                             <span className={styles.wrapper}>
-                                <InterestCaptureBtn />
+                                <InterestCaptureBtn data={fullData} />
                                 <span
                                     className={styles.expander}
                                     onClick={() => setIsExpanded(false)}
