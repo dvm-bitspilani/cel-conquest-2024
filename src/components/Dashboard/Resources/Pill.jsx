@@ -18,7 +18,7 @@ export default function ResourcePill({ title, description, url, avatar, offering
                         {/* {isExpanded ?  : null} */}
                         {isExpanded && (
                             <span className={styles.wrapper}>
-                                <InterestCaptureBtn data={fullData} />
+                                {JSON.parse(localStorage.getItem('userData')) && JSON.parse(localStorage.getItem('userData')).user_profile_obj.role === 'Startup' ? <InterestCaptureBtn data={fullData} /> : null}
                                 <span
                                     className={styles.expander}
                                     onClick={() => setIsExpanded(false)}
