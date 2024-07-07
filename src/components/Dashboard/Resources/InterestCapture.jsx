@@ -15,7 +15,7 @@ export default function InterestCaptureBtn({ data }) {
                     setIsInterestCapture(false)
                 }
                 else {
-                    console.log(data)
+                    // console.log(data)
                     if (JSON.parse(localStorage.getItem('userData'))) {
                         axios.post('https://conquest-api.bits-dvm.org/api/forms/send-email', data, {
                             headers: {
