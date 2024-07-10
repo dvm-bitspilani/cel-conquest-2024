@@ -6,7 +6,6 @@ import styles from './interest.module.scss'
 
 export default function InterestCaptureBtn({ data }) {
     const [isInterestCapture, setIsInterestCapture] = useState(true)
-    const body = data.name;
 
     return (
         <a
@@ -16,9 +15,8 @@ export default function InterestCaptureBtn({ data }) {
                     setIsInterestCapture(false)
                 }
                 else {
-                    // console.log(data)
                     if (JSON.parse(localStorage.getItem('userData'))) {
-                        axios.post('https://portal.conquest.org.in/api/users/consultant/interestcapture/', body, {
+                        axios.post('https://portal.conquest.org.in/api/forms/send-email', data, {
                             headers: {
                                 Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access}`
                             }

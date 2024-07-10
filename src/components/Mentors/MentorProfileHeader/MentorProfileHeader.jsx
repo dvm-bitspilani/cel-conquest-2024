@@ -9,7 +9,8 @@ import profilePic from "../../../assets/profilePic.svg";
 import BookSlots from "../../Dashboard/Meetings/BookSlots/BookSlots";
 import { WebContext } from "../../../store/website-context";
 // import ProfileModal from "./ProfileEdit/Modal/Modal";
-import InterestCaptureBtn from "../../Dashboard/Resources/InterestCapture";
+// import InterestCaptureBtn from "../../Dashboard/Resources/InterestCapture";
+import InterestCaptureConsultant from "../../Consultants/InterestCaptureConsultant";
 
 export default function MentorProfileHeader({
   img,
@@ -34,7 +35,7 @@ export default function MentorProfileHeader({
   const [connectionState, setConnectionState] = useState(connection);
   const [startupBookingState, setStartupBookingState] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const interest = ["GrowthRocks", "Lean Labs", "Inventus Law", "Arete Ventures"];
+  const interest = ["GrowthRocks", "Lean Labs", "Inventus Law", "Arete Ventures", "Nervure Partners"];
   const isInInterests = interest.includes(name);
   const fullData = {"name": {name}}
 
@@ -360,7 +361,8 @@ export default function MentorProfileHeader({
                     style={{
                       zIndex: 2,
                       marginRight: "10px",
-                    }}>{JSON.parse(localStorage.getItem('userData')) && JSON.parse(localStorage.getItem('userData')).user_profile_obj.role === 'Startup' ? <InterestCaptureBtn data={fullData}/> : null}</div>
+                      transform: "translateY(10px)",
+                    }}>{JSON.parse(localStorage.getItem('userData')) && JSON.parse(localStorage.getItem('userData')).user_profile_obj.role === 'Startup' ? <InterestCaptureConsultant data={fullData}/> : null}</div>
                   ) : (
                     <button
                       style={{
