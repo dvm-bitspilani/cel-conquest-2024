@@ -9,6 +9,7 @@ import profilePic from "../../../assets/profilePic.svg";
 import BookSlots from "../../Dashboard/Meetings/BookSlots/BookSlots";
 import { WebContext } from "../../../store/website-context";
 // import ProfileModal from "./ProfileEdit/Modal/Modal";
+import InterestCaptureBtn from "../../Dashboard/Resources/InterestCapture";
 
 export default function MentorProfileHeader({
   img,
@@ -33,6 +34,10 @@ export default function MentorProfileHeader({
   const [connectionState, setConnectionState] = useState(connection);
   const [startupBookingState, setStartupBookingState] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const interest = ["GrowthRocks", "Lean Labs", "Inventus Law", "Arete Ventures"];
+  const isInInterests = interest.includes(name);
+  const fullData = {"name": {name}}
+
   useEffect(() => {
     setConnectionState(connection);
   }, [connection]);
@@ -349,36 +354,46 @@ export default function MentorProfileHeader({
 
             <div>
               <div className={styles.btnWrapper}>
-                <button
-                  style={{
-                    zIndex: 2,
-                    marginRight: "10px",
-                    display:
-                      (role1_Mentor || role1_Startup) &&
-                        startup.startupid !== undefined
-                        ? null
-                        : "none",
-                  }}
-                  className={
-                    role1_Startup
-                      ? startupBookingState
-                        ? `${styles.schedule}`
-                        : `${styles.schedule} ${styles.disabled}`
-                      : connectionState === "connected"
-                        ? `${styles.schedule}`
-                        : `${styles.schedule} ${styles.disabled}`
-                  }
-                  // disabled={
-                  //   role1_Startup
-                  //     ? !startupBookingState
-                  //     : connectionState !== "connected"
-                  // }
-                  onClick={
-                    role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
-                  }
-                >
-                  {role1_Mentor ? "Book Meeting" : "Book Slot"}
-                </button>
+                <div>
+                  {isInInterests ? (
+                    <div 
+                    style={{
+                      zIndex: 2,
+                      marginRight: "10px",
+                    }}>{JSON.parse(localStorage.getItem('userData')) && JSON.parse(localStorage.getItem('userData')).user_profile_obj.role === 'Startup' ? <InterestCaptureBtn data={fullData}/> : null}</div>
+                  ) : (
+                    <button
+                      style={{
+                        zIndex: 2,
+                        marginRight: "10px",
+                        display:
+                          (role1_Mentor || role1_Startup) &&
+                            startup.startupid !== undefined
+                            ? null
+                            : "none",
+                      }}
+                      className={
+                        role1_Startup
+                          ? startupBookingState
+                            ? `${styles.schedule}`
+                            : `${styles.schedule} ${styles.disabled}`
+                          : connectionState === "connected"
+                            ? `${styles.schedule}`
+                            : `${styles.schedule} ${styles.disabled}`
+                      }
+                      // disabled={
+                      //   role1_Startup
+                      //     ? !startupBookingState
+                      //     : connectionState !== "connected"
+                      // }
+                      onClick={
+                        role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
+                      }
+                    >
+                      {role1_Mentor ? "Book Meeting" : "Book Slot"}
+                    </button>
+                  )}
+                </div>
 
                 <button
                   className={styles.schedule}
