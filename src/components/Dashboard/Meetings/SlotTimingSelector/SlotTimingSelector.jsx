@@ -288,7 +288,7 @@ const SlotTimingSelector = ({
   }
 
   const days = [];
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 8; i++) {
     days[i] = new Date(startDate.getTime() + i * 24 * 60 * 60 * 1000);
   }
   let dateComponents = [];
@@ -298,7 +298,7 @@ const SlotTimingSelector = ({
     month: days[0].getMonth(),
     year: days[0].getFullYear(),
   });
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 8; i++) {
     dateComponents[i] = (
       <SlotDateButton
         key={i}
