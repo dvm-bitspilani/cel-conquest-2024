@@ -255,7 +255,7 @@ const SlotTimingSelector = ({
   removeModal,
   changeRequestSent,
 }) => {
-  const { displayMessage, meetingTimeArray } = useContext(WebContext)
+  const { displayMessage, meetingTimeArray } = useContext(WebContext);
   const changeDate = (date, month, year) => {
     setDateTime((prev) => {
       return { ...prev, date: date, month: month, year: year };
@@ -275,9 +275,21 @@ const SlotTimingSelector = ({
   if (screen.width < 820) {
     week = weekday_mobile;
   }
+
+  let startDate = new Date(d);
+  const currentDay = d.getDay();
+
+  if (currentDay === 4 || currentDay === 5) {
+    startDate.setDate(d.getDate() + ((6 - currentDay + 7) % 7));
+  } else if (currentDay === 6) {
+    startDate = d;
+  } else {
+    startDate.setDate(d.getDate() - ((currentDay + 1) % 7));
+  }
+
   const days = [];
-  for (let i = 0; i < 7; i++) {
-    days[i] = new Date(new Date().getTime() + i * 24 * 60 * 60 * 1000);
+  for (let i = 0; i < 8; i++) {
+    days[i] = new Date(startDate.getTime() + i * 24 * 60 * 60 * 1000);
   }
   let dateComponents = [];
   const [dateTime, setDateTime] = useState({
@@ -286,7 +298,7 @@ const SlotTimingSelector = ({
     month: days[0].getMonth(),
     year: days[0].getFullYear(),
   });
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 8; i++) {
     dateComponents[i] = (
       <SlotDateButton
         key={i}
@@ -315,7 +327,8 @@ const SlotTimingSelector = ({
   ];
   const createSlot = (dateTime) => {
     const date = new Date(
-      `${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${dateTime.time
+      `${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${
+        dateTime.time
       }`
     );
     // console.log(date);
@@ -343,18 +356,18 @@ const SlotTimingSelector = ({
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
               }`,
-          },
-        }
-      )
+            },
+          }
+        )
         .then(function (response) {
           changeRequestSent();
-          displayMessage('success', "Slot Created", 2)
+          displayMessage("success", "Slot Created", 2);
 
           console.log(response);
         })
         .catch(function (error) {
           console.log(error);
-          displayMessage('error', "An error occured", 2)
+          displayMessage("error", "An error occured", 2);
         });
       removeModal();
     }
