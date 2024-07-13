@@ -1,37 +1,66 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import axios from "axios"
+import axios from "axios";
 
-import styles from './interest.module.scss'
+import styles from "./interest.module.scss";
 
 export default function InterestCaptureBtn({ data }) {
-    const [isInterestCapture, setIsInterestCapture] = useState(true)
+  const [isInterestCapture, setIsInterestCapture] = useState(true);
 
-    return (
-        <a
-            className={styles.interest}
-            onClick={() => {
-                if (isInterestCapture) {
-                    setIsInterestCapture(false)
+  return (
+    <a
+      className={styles.interest}
+      onClick={() => {
+        if (isInterestCapture) {
+          if (JSON.parse(localStorage.getItem("userData"))) {
+            axios
+              .post(
+                "https://portal.conquest.org.in/api/users/consultant-resource/interestcapture/",
+                {
+                  name: data.company_name,
+                  type: "resource",
+                },
+                {
+                  headers: {
+                    Authorization: `Bearer ${
+                      JSON.parse(localStorage.getItem("userData")).tokens.access
+                    }`,
+                  },
                 }
-                else {
-                    if (JSON.parse(localStorage.getItem('userData'))) {
-                        axios.post('https://portal.conquest.org.in/api/forms/send-email', data, {
-                            headers: {
-                                Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access}`
-                            }
-                        })
-                            .then(res => {
-                                console.log(res)
-                            })
-                            .catch(err => {
-                                console.log(err)
-                            })
-                    }
+              )
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
+          setIsInterestCapture(false);
+        } else {
+          if (JSON.parse(localStorage.getItem("userData"))) {
+            axios
+              .post(
+                "https://portal.conquest.org.in/api/forms/send-email",
+                data,
+                {
+                  headers: {
+                    Authorization: `Bearer ${
+                      JSON.parse(localStorage.getItem("userData")).tokens.access
+                    }`,
+                  },
                 }
-            }}
-        >
-            {isInterestCapture ? "Interest Capture" : "Send Details"}
-        </a>
-    )
+              )
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
+        }
+      }}
+    >
+      {isInterestCapture ? "Interest Capture" : "Send Details"}
+    </a>
+  );
 }
