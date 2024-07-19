@@ -37,7 +37,7 @@ export default function MentorProfileHeader({
   const [isLoading, setIsLoading] = useState(false);
   const interest = ["GrowthRocks", "Lean Labs", "Inventus Law", "Arete Ventures", "Nervure Partners"];
   const isInInterests = interest.includes(name);
-  const fullData = {"name": {name}}
+  const fullData = { "name": { name } }
 
   useEffect(() => {
     setConnectionState(connection);
@@ -357,43 +357,45 @@ export default function MentorProfileHeader({
               <div className={styles.btnWrapper}>
                 <div>
                   {isInInterests ? (
-                    <div 
-                    style={{
-                      zIndex: 2,
-                      marginRight: "10px",
-                      transform: "translateY(10px)",
-                    }}>{JSON.parse(localStorage.getItem('userData')) && JSON.parse(localStorage.getItem('userData')).user_profile_obj.role === 'Startup' ? <InterestCaptureConsultant data={fullData}/> : null}</div>
-                  ) : (
-                    <button
+                    <div
                       style={{
                         zIndex: 2,
                         marginRight: "10px",
-                        display:
-                          (role1_Mentor || role1_Startup) &&
-                            startup.startupid !== undefined
-                            ? null
-                            : "none",
-                      }}
-                      className={
-                        role1_Startup
-                          ? startupBookingState
-                            ? `${styles.schedule}`
-                            : `${styles.schedule} ${styles.disabled}`
-                          : connectionState === "connected"
-                            ? `${styles.schedule}`
-                            : `${styles.schedule} ${styles.disabled}`
-                      }
-                      // disabled={
-                      //   role1_Startup
-                      //     ? !startupBookingState
-                      //     : connectionState !== "connected"
-                      // }
-                      onClick={
-                        role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
-                      }
-                    >
-                      {role1_Mentor ? "Book Meeting" : "Book Slot"}
-                    </button>
+                        transform: "translateY(10px)",
+                      }}>{JSON.parse(localStorage.getItem('userData')) && JSON.parse(localStorage.getItem('userData')).user_profile_obj.role === 'Startup' ? <InterestCaptureConsultant data={fullData} /> : null}</div>
+                  ) : (
+                    schedulebtn !== 'Angel' ?
+                      (<button
+                        style={{
+                          zIndex: 2,
+                          marginRight: "10px",
+                          display:
+                            (role1_Mentor || role1_Startup) &&
+                              startup.startupid !== undefined
+                              ? null
+                              : "none",
+                        }}
+                        className={
+                          role1_Startup
+                            ? startupBookingState
+                              ? `${styles.schedule}`
+                              : `${styles.schedule} ${styles.disabled}`
+                            : connectionState === "connected"
+                              ? `${styles.schedule}`
+                              : `${styles.schedule} ${styles.disabled}`
+                        }
+                        // disabled={
+                        //   role1_Startup
+                        //     ? !startupBookingState
+                        //     : connectionState !== "connected"
+                        // }
+                        onClick={
+                          role1_Mentor ? showHideSelectSlotTiming : showHideBookSlots
+                        }
+                      >
+                        {role1_Mentor ? "Book Meeting" : "Book Slot"}
+                      </button>)
+                      : null
                   )}
                 </div>
 
