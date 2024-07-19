@@ -61,7 +61,7 @@ const Meetings = () => {
     ) {
       axios
         .get(
-          `https://conquest-api.bits-dvm.org/api/meetings/meetings/${listTab}/`,
+          `https://portal.conquest.org.in/api/meetings/meetings/${listTab}/`,
           {
             headers: {
               Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
@@ -171,7 +171,7 @@ const Meetings = () => {
       listTab === "upcoming"
     ) {
       axios
-        .get(`https://conquest-api.bits-dvm.org/api/meetings/meetings/upcoming/`, {
+        .get(`https://portal.conquest.org.in/api/meetings/meetings/upcoming/`, {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
               }`,

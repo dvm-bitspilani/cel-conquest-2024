@@ -16,7 +16,7 @@ const SelectSlots = ({
   if (requestSent !== request) {
     setRequest(requestSent);
     axios
-      .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
+      .get("https://portal.conquest.org.in/api/meetings/slots/", {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
             }`,
@@ -71,7 +71,7 @@ const SelectSlots = ({
     // setSlotList(newArr);
     console.log("delete", id);
     axios
-      .delete(`https://conquest-api.bits-dvm.org/api/meetings/slots/${id}`, {
+      .delete(`https://portal.conquest.org.in/api/meetings/slots/${id}`, {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
             }`,
@@ -79,7 +79,7 @@ const SelectSlots = ({
       })
       .then(() => {
         axios
-          .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
+          .get("https://portal.conquest.org.in/api/meetings/slots/", {
             headers: {
               Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
                 }`,
@@ -137,7 +137,7 @@ const SelectSlots = ({
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       console.log("request sent");
       axios
-        .get("https://conquest-api.bits-dvm.org/api/meetings/slots/", {
+        .get("https://portal.conquest.org.in/api/meetings/slots/", {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
               }`,

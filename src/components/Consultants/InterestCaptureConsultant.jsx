@@ -17,7 +17,7 @@ export default function InterestCaptureConsultant({ data }) {
       });
       axios
         .post(
-          "https://conquest-api.bits-dvm.org/api/users/consultant-resource/interestcapture/",
+          "https://portal.conquest.org.in/api/users/consultant-resource/interestcapture/",
           {
             name: data.name.name,
             type: "consultant",

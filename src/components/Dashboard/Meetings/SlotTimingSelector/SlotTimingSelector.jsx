@@ -345,7 +345,7 @@ const SlotTimingSelector = ({
     }
     else {
       axios.post(
-        "https://conquest-api.bits-dvm.org/api/meetings/slots/",
+        "https://portal.conquest.org.in/api/meetings/slots/",
         {
           user: "1",
           start_time: unixTimeStamp,

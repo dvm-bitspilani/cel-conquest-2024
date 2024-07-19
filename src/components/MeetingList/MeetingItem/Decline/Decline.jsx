@@ -9,7 +9,7 @@ export default function DeclineMeet({ meetData }) {
     const [isLoading, setIsLoading] = useState(false)
     function clickHandler(e) {
         setIsLoading(true)
-        axios.patch(`https://conquest-api.bits-dvm.org/api/meetings/requests/${meetData.id}/`, {
+        axios.patch(`https://portal.conquest.org.in/api/meetings/requests/${meetData.id}/`, {
             status: "rejected",
             slot: meetData.slot
         }, {

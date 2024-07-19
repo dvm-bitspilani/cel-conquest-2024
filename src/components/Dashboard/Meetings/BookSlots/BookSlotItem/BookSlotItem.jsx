@@ -42,7 +42,7 @@ function BookSlotItem({
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
         .post(
-          `https://conquest-api.bits-dvm.org/api/meetings/requests/`,
+          `https://portal.conquest.org.in/api/meetings/requests/`,
           {
             requester: JSON.parse(localStorage.getItem("userData"))
               .user_profile_obj.id,

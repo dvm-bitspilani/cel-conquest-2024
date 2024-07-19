@@ -15,7 +15,7 @@ export default function InterestCaptureBtn({ data }) {
           if (JSON.parse(localStorage.getItem("userData"))) {
             axios
               .post(
-                "https://conquest-api.bits-dvm.org/api/users/consultant-resource/interestcapture/",
+                "https://portal.conquest.org.in/api/users/consultant-resource/interestcapture/",
                 {
                   name: data.company_name,
                   type: "resource",
@@ -39,7 +39,7 @@ export default function InterestCaptureBtn({ data }) {
           if (JSON.parse(localStorage.getItem("userData"))) {
             axios
               .post(
-                "https://conquest-api.bits-dvm.org/api/forms/send-email",
+                "https://portal.conquest.org.in/api/forms/send-email",
                 data,
                 {
                   headers: {

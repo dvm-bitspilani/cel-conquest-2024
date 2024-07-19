@@ -15,7 +15,7 @@ const Investors = () => {
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
-        .get("https://conquest-api.bits-dvm.org/api/users/role-list/?role=Angel", {
+        .get("https://portal.conquest.org.in/api/users/role-list/?role=Angel", {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
               }`,
