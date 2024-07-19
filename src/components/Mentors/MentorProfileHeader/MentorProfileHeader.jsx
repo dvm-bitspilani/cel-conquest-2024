@@ -28,6 +28,7 @@ export default function MentorProfileHeader({
   startupid,
   connection,
   user,
+  role
 }) {
   const { displayMessage } = useContext(WebContext);
   const formModal = useRef(null);
@@ -240,7 +241,7 @@ export default function MentorProfileHeader({
           </div>
 
           <div className={styles.profileInfoContainer}>
-            <MentorAbout desc={desc} sector={sector} domain={domain} />
+            <MentorAbout desc={desc} sector={sector} domain={domain} role={role} />
           </div>
 
           <div className={styles.mobile}>
@@ -330,7 +331,7 @@ export default function MentorProfileHeader({
             </div>
             <div className={styles.head}>
               <p className={styles.headings}>About</p>
-              <MentorAbout desc={desc} sector={sector} domain={domain} />
+              <MentorAbout desc={desc} sector={sector} domain={domain} role={role} />
             </div>
 
             <div className={styles.head}>

@@ -105,6 +105,7 @@ const Investors = () => {
               designation={investor.designation}
               companyname={investor.company_name}
               id={investor.id}
+              role="Angel"
             />
           ))}
       </div>

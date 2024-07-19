@@ -96,6 +96,7 @@ const MentorProfile = () => {
         connection={startupProfile.connection}
         user={startupProfile.user}
         startupid={id}
+        role={startupProfile.role}
       />
     </>
   );
