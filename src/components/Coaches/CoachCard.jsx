@@ -3,7 +3,7 @@ import * as styles from "./CoachCard.module.scss";
 import { Link, Route } from "react-router-dom";
 import profilePic from "../../assets/images/Dashboard/profilePic.jpg"
 
-export default function CoachCard({ img, name, tags, designation, id, companyname, website }) {
+export default function CoachCard({ img, name, tags, designation, id, companyname, website, role }) {
 
   const [convertedImg, setConvertedImg] = useState('');
 
@@ -40,7 +40,7 @@ export default function CoachCard({ img, name, tags, designation, id, companynam
             <h6>{name}</h6>
           </div>
         </div>
-        <div className={styles.cardTertiary}>
+        <div className={role !== 'Angel' ? `${styles.cardTertiary} ${styles.notAngel}` : `${styles.cardTertiary}`}>
           <div className={styles.info}>
             <h5>{companyname}</h5>
             <h6>{designation}</h6>
@@ -58,26 +58,28 @@ export default function CoachCard({ img, name, tags, designation, id, companynam
             </div>
             <a href={website} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>{website}</a>
           </div>
-          <div className={styles.tagContainer}>
-            {tagsArray.length < (window.innerWidth > 820 ? 4 : 4) ? (
-              tagsArray.map((tag, index) => (
-                <div key={index} className={styles.cardTag}>
-                  <p>{tag}</p>
-                </div>
-              ))
-            ) : (
-              <>
-                {tagsArray.slice(0, 3).map((tag, index) => (
+          {
+            (role !== 'Angel' && <div className={styles.tagContainer}>
+              {tagsArray.length < (window.innerWidth > 820 ? 4 : 4) ? (
+                tagsArray.map((tag, index) => (
                   <div key={index} className={styles.cardTag}>
                     <p>{tag}</p>
                   </div>
-                ))}
-                <div className={styles.moreTag}>
-                  <p>View More</p>
-                </div>
-              </>
-            )}
-          </div>
+                ))
+              ) : (
+                <>
+                  {tagsArray.slice(0, 3).map((tag, index) => (
+                    <div key={index} className={styles.cardTag}>
+                      <p>{tag}</p>
+                    </div>
+                  ))}
+                  <div className={styles.moreTag}>
+                    <p>View More</p>
+                  </div>
+                </>
+              )}
+            </div>)
+          }
         </div>
       </div>
     </Link>
