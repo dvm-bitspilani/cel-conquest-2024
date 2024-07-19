@@ -349,7 +349,7 @@ export default function MentorProfileHeader({
 
             <div>
               <div className={styles.btnWrapper}>
-                <button
+                {schedulebtn !== 'Angel' && (<button
                   style={{
                     zIndex: 2,
                     marginRight: "10px",
@@ -378,7 +378,7 @@ export default function MentorProfileHeader({
                   }
                 >
                   {role1_Mentor ? "Book Meeting" : "Book Slot"}
-                </button>
+                </button>)}
 
                 <button
                   className={styles.schedule}
