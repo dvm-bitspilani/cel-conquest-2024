@@ -327,8 +327,7 @@ const SlotTimingSelector = ({
   ];
   const createSlot = (dateTime) => {
     const date = new Date(
-      `${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${
-        dateTime.time
+      `${month[dateTime.month]}} ${dateTime.date}, ${dateTime.year} ${dateTime.time
       }`
     );
     // console.log(date);
@@ -346,7 +345,7 @@ const SlotTimingSelector = ({
     }
     else {
       axios.post(
-        "https://portal.conquest.org.in/api/meetings/slots/",
+        "https://conquest-api.bits-dvm.org/api/meetings/slots/",
         {
           user: "1",
           start_time: unixTimeStamp,
@@ -356,9 +355,9 @@ const SlotTimingSelector = ({
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
               }`,
-            },
-          }
-        )
+          },
+        }
+      )
         .then(function (response) {
           changeRequestSent();
           displayMessage("success", "Slot Created", 2);

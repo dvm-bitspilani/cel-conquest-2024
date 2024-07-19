@@ -17,16 +17,15 @@ export default function InterestCaptureConsultant({ data }) {
       });
       axios
         .post(
-          "https://portal.conquest.org.in/api/users/consultant-resource/interestcapture/",
+          "https://conquest-api.bits-dvm.org/api/users/consultant-resource/interestcapture/",
           {
             name: data.name.name,
             type: "consultant",
           },
           {
             headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("userData")).tokens.access
-              }`,
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                }`,
             },
           }
         )

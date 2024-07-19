@@ -15,16 +15,15 @@ export default function InterestCaptureBtn({ data }) {
           if (JSON.parse(localStorage.getItem("userData"))) {
             axios
               .post(
-                "https://portal.conquest.org.in/api/users/consultant-resource/interestcapture/",
+                "https://conquest-api.bits-dvm.org/api/users/consultant-resource/interestcapture/",
                 {
                   name: data.company_name,
                   type: "resource",
                 },
                 {
                   headers: {
-                    Authorization: `Bearer ${
-                      JSON.parse(localStorage.getItem("userData")).tokens.access
-                    }`,
+                    Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                      }`,
                   },
                 }
               )
@@ -40,13 +39,12 @@ export default function InterestCaptureBtn({ data }) {
           if (JSON.parse(localStorage.getItem("userData"))) {
             axios
               .post(
-                "https://portal.conquest.org.in/api/forms/send-email",
+                "https://conquest-api.bits-dvm.org/api/forms/send-email",
                 data,
                 {
                   headers: {
-                    Authorization: `Bearer ${
-                      JSON.parse(localStorage.getItem("userData")).tokens.access
-                    }`,
+                    Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+                      }`,
                   },
                 }
               )

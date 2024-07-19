@@ -146,7 +146,7 @@ export default function FormPillList2() {
     const formModal = useRef(null)
 
     function formOpenHandler(formId) {
-        axios.get(`https://portal.conquest.org.in/api/forms/${formId}/questions/`, {
+        axios.get(`https://conquest-api.bits-dvm.org/api/forms/${formId}/questions/`, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
             }
@@ -164,7 +164,7 @@ export default function FormPillList2() {
     }
 
     useEffect(() => {
-        axios.get('https://portal.conquest.org.in/api/forms/list/', {
+        axios.get('https://conquest-api.bits-dvm.org/api/forms/list/', {
             headers: {
                 Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
             }

@@ -13,7 +13,7 @@ function BookSlots({ bookSlots, showHideBookSlots }) {
     if (JSON.parse(localStorage.getItem("userData")).tokens && id) {
       axios
         .get(
-          `https://portal.conquest.org.in/api/meetings/user/${id}/meeting-slots/`,
+          `https://conquest-api.bits-dvm.org/api/meetings/user/${id}/meeting-slots/`,
           {
             headers: {
               Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access

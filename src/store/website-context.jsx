@@ -41,7 +41,7 @@ export default function WebContextProvider({ children }) {
         console.log('token refresh function')
         const refreshTokenInterval = setInterval(() => {
             console.log('interval')
-            axios.post('https://portal.conquest.org.in/api/users/token/refresh/', {
+            axios.post('https://conquest-api.bits-dvm.org/api/users/token/refresh/', {
                 refresh: JSON.parse(localStorage.getItem("tokens")).refresh
             })
                 .then(res => {
@@ -67,7 +67,7 @@ export default function WebContextProvider({ children }) {
 
     const usernameLogin = (credentials) => {
         setIsUserLoginBtnDisabled(true)
-        axios.post('https://portal.conquest.org.in/api/users/login/username/', credentials)
+        axios.post('https://conquest-api.bits-dvm.org/api/users/login/username/', credentials)
             .then((res) => {
                 console.log("In context")
                 // console.log(res)
@@ -97,7 +97,7 @@ export default function WebContextProvider({ children }) {
         const refresh_token = JSON.parse(localStorage.getItem("userData")).tokens.refresh
         const access_token = JSON.parse(localStorage.getItem("userData")).tokens.access
         googleLogout();
-        axios.post('https://portal.conquest.org.in/api/users/logout/', {
+        axios.post('https://conquest-api.bits-dvm.org/api/users/logout/', {
             refresh_token
         }, {
             headers: {
@@ -116,7 +116,7 @@ export default function WebContextProvider({ children }) {
         onSuccess: response => {
             // console.log(response)
             // Send access token
-            axios.post('https://portal.conquest.org.in/api/users/login/google/', {
+            axios.post('https://conquest-api.bits-dvm.org/api/users/login/google/', {
                 access_token: response.access_token
             }).then((res) => {
                 try {

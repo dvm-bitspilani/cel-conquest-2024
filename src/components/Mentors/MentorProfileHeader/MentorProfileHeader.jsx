@@ -64,7 +64,7 @@ export default function MentorProfileHeader({
       setIsLoading(true);
       axios
         .post(
-          "https://portal.conquest.org.in/api/users/connections/send/",
+          "https://conquest-api.bits-dvm.org/api/users/connections/send/",
           {
             username: user.username,
           },
@@ -89,7 +89,7 @@ export default function MentorProfileHeader({
       setIsLoading(true);
       axios
         .post(
-          "https://portal.conquest.org.in/api/users/connections/delete/",
+          "https://conquest-api.bits-dvm.org/api/users/connections/delete/",
           {
             id: startupid,
           },
@@ -114,7 +114,7 @@ export default function MentorProfileHeader({
       setIsLoading(true);
       axios
         .post(
-          "https://portal.conquest.org.in/api/users/connections/accept/",
+          "https://conquest-api.bits-dvm.org/api/users/connections/accept/",
           {
             status: true,
             id: startupid,
@@ -148,7 +148,7 @@ export default function MentorProfileHeader({
   useEffect(() => {
     if (role1_Startup) {
       axios
-        .get("https://portal.conquest.org.in/api/meetings/portal_state/", {
+        .get("https://conquest-api.bits-dvm.org/api/meetings/portal_state/", {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem("tokens")).access
               }`,

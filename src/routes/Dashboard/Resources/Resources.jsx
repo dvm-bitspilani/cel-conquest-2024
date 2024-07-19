@@ -9,7 +9,7 @@ export default function Resources() {
     const [resources, setResources] = useState([])
 
     useEffect(() => {
-        axios.get('https://portal.conquest.org.in/api/users/expert_list/', {
+        axios.get('https://conquest-api.bits-dvm.org/api/users/expert_list/', {
             headers: {
                 Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access}`
             }

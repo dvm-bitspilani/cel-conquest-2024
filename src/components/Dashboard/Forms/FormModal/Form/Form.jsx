@@ -96,7 +96,7 @@ export default function Form({ data, formClose }) {
         onSubmit: (values, action) => {
             // console.log("In Form.jsx")
             const response = responseObjectGenerator(values)
-            axios.post(`https://portal.conquest.org.in/api/forms/${data.form_id}/answers/`, response, {
+            axios.post(`https://conquest-api.bits-dvm.org/api/forms/${data.form_id}/answers/`, response, {
                 headers: {
                     Authorization: `Bearer ${JSON.parse(localStorage.getItem('userData')).tokens.access}`
                 }

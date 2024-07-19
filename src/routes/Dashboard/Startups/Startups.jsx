@@ -48,11 +48,10 @@ const Startups = () => {
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
-        .get("https://portal.conquest.org.in/api/users/startup_list/", {
+        .get("https://conquest-api.bits-dvm.org/api/users/startup_list/", {
           headers: {
-            Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("userData")).tokens.access
-            }`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
+              }`,
           },
         })
         .then((res) => {

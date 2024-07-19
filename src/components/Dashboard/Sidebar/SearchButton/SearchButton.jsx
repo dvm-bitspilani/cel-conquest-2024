@@ -20,7 +20,7 @@ export default function SearchButton() {
   //   if (JSON.parse(localStorage.getItem("userData")).tokens) {
   //     axios
   //       .get(
-  //         `https://portal.conquest.org.in/api/users/search/?query=${searchTerm}`,
+  //         `https://conquest-api.bits-dvm.org/api/users/search/?query=${searchTerm}`,
   //         {
   //           headers: {
   //             Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access
@@ -52,7 +52,7 @@ export default function SearchButton() {
     if (JSON.parse(localStorage.getItem("userData")).tokens) {
       axios
         .get(
-          `https://portal.conquest.org.in/api/users/search/`,
+          `https://conquest-api.bits-dvm.org/api/users/search/`,
           {
             headers: {
               Authorization: `Bearer ${JSON.parse(localStorage.getItem("userData")).tokens.access}`
